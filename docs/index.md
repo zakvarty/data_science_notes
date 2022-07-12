@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "Effective Data Science"
+author: "Zak Varty"
 date: "2022-07-12"
 site: bookdown::bookdown_site
 documentclass: book
