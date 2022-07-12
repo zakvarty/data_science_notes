@@ -5,13 +5,13 @@ date: "2022-07-12"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+biblio-style: apalike
+url: https://eds-book.zakvarty.com/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::bs4_book,
-  set in the _output.yml file.
-biblio-style: apalike
+  Course notes for MATH70076 Data Science.
+  These notes are for the academic year 2022/23.
+link-citations: true
 csl: chicago-fullnote-bibliography.csl
 ---
 
