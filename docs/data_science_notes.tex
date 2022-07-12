@@ -143,8 +143,33 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{about}{%
-\chapter{About}\label{about}}
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+\addcontentsline{toc}{chapter}{Preface}
+
+These notes are intended for students on the course \textbf{MATH70076: Data Science} in the academic year 2022/23.
+
+As the course is schedled to take place over five weeks, the suggested schedule is
+
+\begin{itemize}
+\tightlist
+\item
+  1st week: Chapters \ref{intro} and \ref{workflows}
+\item
+  2nd week: Chapter \ref{data}
+\item
+  3rd week: Chapter \ref{edav}
+\item
+  4th week: Chapters \ref{production}
+\item
+  5th week: Chapter \ref{context}
+\end{itemize}
+
+\hypertarget{acknowledgements}{%
+\section*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
 
 This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
 
@@ -172,12 +197,6 @@ You can render the HTML version of this example book without changing anything:
 
 Or build the book from the R console:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
 To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
 
 \hypertarget{preview-book}{%
@@ -185,21 +204,85 @@ To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to 
 
 As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{intro}{%
+\chapter{Introduction}\label{intro}}
 
-\hypertarget{hello-bookdown}{%
-\chapter{Hello bookdown}\label{hello-bookdown}}
+\hypertarget{module-description}{%
+\section{Module Description}\label{module-description}}
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
+Model building and evaluation are are necessary but not sufficient skills for the effective practice of data science. In this module you will develop the technical and personal skills that are required to work successfully as a data scientist within an organisation.
 
-\hypertarget{a-section}{%
-\section{A section}\label{a-section}}
+During this module you will critically explore how to:
 
-All chapter sections start with a second-level (\texttt{\#\#}) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+\begin{itemize}
+\tightlist
+\item
+  effectively scope and manage a data science project;
+\item
+  efficiently acquire, manipulate, and present data;
+\item
+  interpret and explain your work for a variety of stakeholders;
+\item
+  ensure that your work can be put into production;
+\item
+  assess the ethical implications of your work as a data scientist.
+\end{itemize}
+
+This interdisciplinary course will draw from fields including statistics, computing, management science and data ethics. Each topic will be investigated through a selection of lecture videos, conference presentations and academic papers, hands-on lab exercises, and readings on industry best-practices from recognised professional bodies.
+
+This course will be assessed entirely by coursework, reflecting the practical and pragmatic nature of the course material.
+
+\hypertarget{allocation-of-study-hours}{%
+\section{Allocation of Study Hours}\label{allocation-of-study-hours}}
+
+\textbf{Lectures:} 10 Hours (2 hours per week)
+
+\textbf{Group Teaching:} 5 Hours (1 hour per week)
+
+\textbf{Lab / Practical:} 5 hours (1 hour per week)
+
+\textbf{Independent Study:} 105 hours (17 hours per week + 20 hours coursework)
+
+\hypertarget{learning-outcomes}{%
+\subsection{Learning outcomes}\label{learning-outcomes}}
+
+On successful completion of this module students should be able to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Independently scope and manage a data science project;
+\item
+  Source data from the internet through web scraping and APIs;
+\item
+  Clean, explore and visualise data, justifying and documenting the decisions made;
+\item
+  Evaluate the need for (and implement) approaches that are explainable, reproducible and scalable;
+\item
+  Appraise the ethical implications of a data science projects, particularly the risks of compromising privacy or fairness and the potential to cause harm.
+\end{enumerate}
+
+\hypertarget{module-content}{%
+\subsection{Module Content}\label{module-content}}
+
+This module will cover:
+
+\begin{itemize}
+\tightlist
+\item
+  effective management of a data science project;
+\item
+  open and reproducible work flows;
+\item
+  sourcing and preparing data for analysis;
+\item
+  exploratory and expository data visualisation;
+\item
+  minimal requirements for models to go into production;
+\item
+  ethical implications of modern data science.
+\end{itemize}
 
 \hypertarget{an-unnumbered-section}{%
 \subsection*{An unnumbered section}\label{an-unnumbered-section}}
@@ -207,8 +290,8 @@ All chapter sections start with a second-level (\texttt{\#\#}) or higher heading
 
 Chapters and sections are numbered by default. To un-number a heading, add a \texttt{\{.unnumbered\}} or the shorter \texttt{\{-\}} at the end of the heading, like in this section.
 
-\hypertarget{cross}{%
-\chapter{Cross-references}\label{cross}}
+\hypertarget{workflows}{%
+\chapter{Data Science Workflows}\label{workflows}}
 
 Cross-references make it easier for your readers to find and link to elements in your book.
 
@@ -256,7 +339,7 @@ See Figure \ref{fig:nice-fig}.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{02-cross-refs_files/figure-latex/nice-fig-1} 
+{\centering \includegraphics[width=0.8\linewidth]{02-workflows_files/figure-latex/nice-fig-1} 
 
 }
 
@@ -297,8 +380,8 @@ temperature & pressure\\
 \end{tabular}
 \end{table}
 
-\hypertarget{parts}{%
-\chapter{Parts}\label{parts}}
+\hypertarget{data}{%
+\chapter{Aquiring and Sharing Data}\label{data}}
 
 You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
 
@@ -308,8 +391,8 @@ Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (f
 
 Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
 
-\hypertarget{footnotes-and-citations}{%
-\chapter{Footnotes and citations}\label{footnotes-and-citations}}
+\hypertarget{edav}{%
+\chapter{Cleaning, Exploring and Visualising}\label{edav}}
 
 \hypertarget{footnotes}{%
 \section{Footnotes}\label{footnotes}}
@@ -328,8 +411,8 @@ The \texttt{bs4\_book} theme makes footnotes appear inline when you click on the
 
 The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
 
-\hypertarget{blocks}{%
-\chapter{Blocks}\label{blocks}}
+\hypertarget{production}{%
+\chapter{Getting Your Work into Production}\label{production}}
 
 \hypertarget{equations}{%
 \section{Equations}\label{equations}}
@@ -381,8 +464,8 @@ You may also use: \texttt{.rmdcaution}, \texttt{.rmdimportant}, \texttt{.rmdtip}
 
 The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
 
-\hypertarget{sharing-your-book}{%
-\chapter{Sharing your book}\label{sharing-your-book}}
+\hypertarget{context}{%
+\chapter{Wider Context and Ethics}\label{context}}
 
 \hypertarget{publishing}{%
 \section{Publishing}\label{publishing}}

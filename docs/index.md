@@ -15,7 +15,23 @@ link-citations: true
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# About
+# Preface {-}
+
+These notes are intended for students on the course **MATH70076: Data Science** in the academic year 2022/23.
+
+As the course is schedled to take place over five weeks, the suggested schedule is
+
+- 1st week: Chapters \@ref(intro) and \@ref(workflows)
+- 2nd week: Chapter \@ref(data)
+- 3rd week: Chapter \@ref(edav)
+- 4th week: Chapters \@ref(production) 
+- 5th week: Chapter \@ref(context)
+
+## Acknowledgements {-}
+
+These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
+
+
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
 
@@ -38,9 +54,6 @@ You can render the HTML version of this example book without changing anything:
 Or build the book from the R console:
 
 
-```r
-bookdown::render_book()
-```
 
 To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
 
@@ -49,9 +62,6 @@ To render this example to PDF as a `bookdown::pdf_book`, you'll need to install 
 As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
 
 
-```r
-bookdown::serve_book()
-```
 
 
 

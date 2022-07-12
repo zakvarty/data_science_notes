@@ -15,7 +15,54 @@ link-citations: true
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# About
+# Preface {-}
+
+These notes are intended for students on the course **MATH70076: Data Science** in the academic year 2022/23.
+
+As the course is schedled to take place over five weeks, the suggested schedule is
+
+- 1st week: Chapters \@ref(intro) and \@ref(workflows)
+- 2nd week: Chapter \@ref(data)
+- 3rd week: Chapter \@ref(edav)
+- 4th week: Chapters \@ref(production) 
+- 5th week: Chapter \@ref(context)
+
+## Acknowledgements {-}
+
+These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
+
+```{r setup, include = FALSE, messages = FALSE}
+
+#library(tidyverse)
+#library(lax)
+#library(ismev)
+#library(evir)
+#library(lubridate)
+#library(xts)
+#library(qrmdata)
+#library(tseries)
+#source("../labs/extremes-functions.R")
+
+knitr::opts_chunk$set(
+  fig.path = "images/",
+  echo = FALSE,
+  out.width = "85%",
+  fig.align = "center",
+  message = FALSE,
+  fig.width = 8.5,
+  fig.asp = 0.7)
+
+ggplot2::theme_set(ggplot2::theme_bw(12))
+
+colorise <- function(x, color = "red") {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color, 
+      x)
+  } else x
+}
+``` 
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
 
