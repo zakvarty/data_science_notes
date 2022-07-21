@@ -1,9 +1,6 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-usage
-render-book
-preview-book
 intro
 module-description
 allocation-of-study-hours

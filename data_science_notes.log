@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  21 JUL 2022 17:24
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  21 JUL 2022 17:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -901,11 +901,11 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 [3] [4
 
-] [5] [6]
-Chapter 1.
-[7
+] [5] [6
 
 ]
+Chapter 1.
+[7]
 Underfull \vbox (badness 3108) has occurred while \output is active []
 
 [8] [9] [10
@@ -913,13 +913,13 @@ Underfull \vbox (badness 3108) has occurred while \output is active []
 ]
 Chapter 2.
 
-Underfull \hbox (badness 1102) in paragraph at lines 317--319
+Underfull \hbox (badness 1102) in paragraph at lines 286--288
 \TU/lmr/m/n/12 on your heading title: for example, \TU/lmtt/m/n/12 # Hello worl
 d \TU/lmr/m/n/12 = \TU/lmtt/m/n/12 # Hello world
  []
 
 
-LaTeX Warning: Reference `cross' on page 11 undefined on input line 322.
+LaTeX Warning: Reference `cross' on page 11 undefined on input line 291.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -936,11 +936,11 @@ Chapter 3.
 ]
 Chapter 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 405.
+(Font)              scaled to size 5.0pt on input line 374.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 405.
+(Font)              scaled to size 5.00046pt on input line 374.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 405.
+(Font)              scaled to size 4.99947pt on input line 374.
 [17] [18]
 Chapter 5.
 [19
@@ -957,10 +957,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18983 strings out of 476919
- 334335 string characters out of 5821840
- 821228 words of memory out of 5000000
- 38671 multiletter control sequences out of 15000+600000
+ 18979 strings out of 476919
+ 334307 string characters out of 5821840
+ 820158 words of memory out of 5000000
+ 38667 multiletter control sequences out of 15000+600000
  410882 words of font info for 91 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,523b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
