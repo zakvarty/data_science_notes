@@ -1,13 +1,16 @@
---- 
+---
 title: "Effective Data Science"
 author: "Zak Varty"
-date: "2022-07-12"
+date: "2022-07-21"
 site: bookdown::bookdown_site
 documentclass: book
+classoptions: twosides, a4paper
+fontsize: 12pt
+linestretch: 1.5
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 url: https://eds-book.zakvarty.com/
-# cover-image: path to the social sharing image like images/cover.jpg
+cover-image: images/EDS-logo.jpg
 description: |
   Course notes for MATH70076 Data Science.
   These notes are for the academic year 2022/23.
@@ -15,27 +18,33 @@ link-citations: true
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Preface {-}
+# Preface {.unnumbered}
+
+::: small_right
+<img src="EDS-logo.jpg" alt="Logo"/>
+:::
 
 These notes are intended for students on the course **MATH70076: Data Science** in the academic year 2022/23.
 
 As the course is schedled to take place over five weeks, the suggested schedule is
 
-- 1st week: Chapters \@ref(intro) and \@ref(workflows)
-- 2nd week: Chapter \@ref(data)
-- 3rd week: Chapter \@ref(edav)
-- 4th week: Chapters \@ref(production) 
-- 5th week: Chapter \@ref(context)
+-   1st week: Chapters \@ref(intro) and \@ref(workflows)
+-   2nd week: Chapter \@ref(data)
+-   3rd week: Chapter \@ref(edav)
+-   4th week: Chapters \@ref(production)
+-   5th week: Chapter \@ref(context)
 
-## Acknowledgements {-}
+A pdf version of these notes may be downloaded [here](./data_science_notes.pdf).
+
+\## Acknowledgements {-}
 
 These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
 
 
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+This is a *sample* book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
 
-## Usage 
+## Usage
 
 Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
 
@@ -47,9 +56,9 @@ The `index.Rmd` file is required, and is also your first book chapter. It will b
 
 You can render the HTML version of this example book without changing anything:
 
-1. Find the **Build** pane in the RStudio IDE, and
+1.  Find the **Build** pane in the RStudio IDE, and
 
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+2.  Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
 
 Or build the book from the R console:
 
@@ -60,7 +69,6 @@ To render this example to PDF as a `bookdown::pdf_book`, you'll need to install 
 ## Preview book
 
 As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
 
 
 

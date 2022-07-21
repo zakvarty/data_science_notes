@@ -3,9 +3,11 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
+  12pt,
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
+\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -101,6 +103,8 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+\usepackage[inner=30mm,outer=25mm,top=25mm,bottom=25mm]{geometry}
+%\usepackage[parfill]{parskip}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -117,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2022-07-12}
+\date{2022-07-21}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -143,6 +147,7 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
+\setstretch{1.5}
 \hypertarget{preface}{%
 \chapter*{Preface}\label{preface}}
 \addcontentsline{toc}{chapter}{Preface}
@@ -165,9 +170,9 @@ As the course is schedled to take place over five weeks, the suggested schedule 
   5th week: Chapter \ref{context}
 \end{itemize}
 
-\hypertarget{acknowledgements}{%
-\section*{Acknowledgements}\label{acknowledgements}}
-\addcontentsline{toc}{section}{Acknowledgements}
+A pdf version of these notes may be downloaded \href{./data_science_notes.pdf}{here}.
+
+\#\# Acknowledgements \{-\}
 
 These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
 
