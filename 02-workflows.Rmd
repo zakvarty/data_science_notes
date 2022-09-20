@@ -1,34 +1,30 @@
 # Data Science Workflows {#workflows}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+## Introduction 
 
-## Chapters and sub-chapters
+- As a data scientist you do not work alone. 
+- Even if you do work alone, you are your own collaborator.
+- Treat your future self like a current collegue that is new to the team
+- This is because when you return to the project that you are working on in several weeks, months or years you will have forgotten most of what you did 
+- You will also have forgotten why you made the decisions that you did and what the other options are. 
 
-There are two steps to cross-reference any heading:
+- The aim here is to provide you with a structure on how you organise and perform your work so that you can be a good collaborator to current collegues and your future self. 
+- Yes, this is going to require a bit more effort upfront, but the benefits will compound over time. 
 
-1. Label the heading: `# Hello world {#nice-label}`. 
-    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
-    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+- The structures and workflows that I recommend will be focused around a workflow that predominantly uses R, markdown and LaTeX. Similar techniques, code and software are available to achieve the same things when working with Python, C, Quarto and a range of other programming and mark-up languages. 
 
-1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
-    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+To motivate this focus, I will rely on an analogy with natural languages. You probably wouldn't want a complex analysis course that tried to teach in English, Japanese and Maori all at once. First you learn the concepts of complex analysis in one language and then (assuming you are already proficient in another) it is a much simpler step to do complex analysis in that language, though it might require you learning some new vocabulary or slightly different syntax.
 
-## Captioned figures and tables
+## Organising and Navigating your files
 
-Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
 
-See Figure \@ref(fig:nice-fig).
+## A Project-Oriented Workflow 
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
 
-Don't miss Table \@ref(tab:nice-tab).
+## Creating a Project Directory 
 
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(pressure, 10), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
+
+## Where to work: cl vs notebook vs scripting
+
+## 
+
