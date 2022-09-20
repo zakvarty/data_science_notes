@@ -121,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2022-07-21}
+\date{2022-09-20}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -267,92 +267,279 @@ Chapters and sections are numbered by default. To un-number a heading, add a \te
 \hypertarget{workflows}{%
 \chapter{Data Science Workflows}\label{workflows}}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-\hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\begin{itemize}
+\item
+  As a data scientist you do not work alone.
+\item
+  Even if you do work alone, you are your own collaborator.
+\item
+  Treat your future self like a current college who is new to the team
+\item
+  This is because when you return to the project that you are working on in several weeks, months or years you will have forgotten most of what you did
+\item
+  You will also have forgotten why you made the decisions that you did and what the other options are.
+\item
+  The aim here is to provide you with a structure on how you organise and perform your work so that you can be a good collaborator to current collegues and your future self.
+\item
+  Yes, this is going to require a bit more effort upfront, but the benefits will compound over time.
+\item
+  The structures and workflows that I recommend will be focused around a workflow that predominantly uses R, markdown and LaTeX. Similar techniques, code and software are available to achieve the same things when working with Python, C, Quarto and a range of other programming and mark-up languages.
+\end{itemize}
 
-There are two steps to cross-reference any heading:
+To motivate this focus, I will rely on an analogy with natural languages. You probably wouldn't want a complex analysis course that tried to teach in English, Japanese and Maori all at once. First you learn the concepts of complex analysis in one language and then (assuming you are already proficient in another) it is a much simpler step to do complex analysis in that language, though it might require you learning some new vocabulary or slightly different syntax.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\hypertarget{organising-and-navigating-your-files}{%
+\section{Organising and Navigating your files}\label{organising-and-navigating-your-files}}
+
+\begin{itemize}
 \tightlist
 \item
-  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
+  What type of files do you use and where do you code?
 
   \begin{itemize}
   \tightlist
   \item
-    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
+    plaintext vs proprietry (csv / xlsx, markdown / googledoc)
   \item
-    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
+    command line vs notebook vs scripting (no file, .Rmd, .R)
+  \item
+    Open source languages vs closed source
   \end{itemize}
 \item
-  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
+  All work for one project goes into a single directory
 
   \begin{itemize}
   \tightlist
   \item
-    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
+    Portability (filepaths, backslashes, setwd())
+  \item
+    Version control
+  \item
+    IDEs play nicely (RStudio projects)
+  \item
+    reproducibility
   \end{itemize}
-\end{enumerate}
+\item
+  Organising within that directory: Every project different, will develop over course of project. Want to give a sensible starting point but often a company will have a `house style'. If so IGNORE ME (unless the house style is rubbish, in which case only ignore me while you lobby for that to be changed.)
 
-\hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+  \begin{itemize}
+  \tightlist
+  \item
+    README.md
+  \item
+    data
 
-Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+    \begin{itemize}
+    \tightlist
+    \item
+      raw (anything you do not make for yourself)
+    \item
+      refined (everything that you make for yourself)
+    \end{itemize}
+  \item
+    src (functions)
+  \item
+    tests (checks for each of your functions)
+  \item
+    analyses (scripts, models)
+  \item
+    outputs (results of all your hard work)
 
-See Figure \ref{fig:nice-fig}.
+    \begin{itemize}
+    \tightlist
+    \item
+      analysis-1
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(pressure, }\AttributeTok{type =} \StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+      \begin{itemize}
+      \tightlist
+      \item
+        data
+      \item
+        tables
+      \item
+        figures
+      \end{itemize}
+    \item
+      analysis-2
 
-\begin{figure}
+      \begin{itemize}
+      \tightlist
+      \item
+        data
+      \item
+        tables
+      \item
+        figures
+      \end{itemize}
+    \end{itemize}
+  \item
+    reports (write-up)
 
-{\centering \includegraphics[width=0.8\linewidth]{02-workflows_files/figure-latex/nice-fig-1} 
+    \begin{itemize}
+    \tightlist
+    \item
+      analysis-1
+    \item
+      analysis-2
+    \end{itemize}
+  \item
+    \emph{bonus:} Makefiles \& meta-programming
+  \end{itemize}
+\item
+  Naming things
 
-}
+  \begin{itemize}
+  \item
+    Jenny Bryan slide summary (\url{https://speakerdeck.com/jennybc/how-to-name-files})
+  \item
+    We would like file names to be:
 
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
+    \begin{itemize}
+    \tightlist
+    \item
+      Machine Readable
+    \item
+      Human Readable
+    \item
+      Order friendly
+    \end{itemize}
+  \item
+    Machine readable:
 
-Don't miss Table \ref{tab:nice-tab}.
+    \begin{itemize}
+    \tightlist
+    \item
+      regex and globbing friendly: avoid spaces, punctuation, accents, cases
+    \item
+      easy to compute on: deliberate use of delimiters (spaces that aren't spaces)
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
-  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
-  \AttributeTok{booktabs =} \ConstantTok{TRUE}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+      \begin{itemize}
+      \tightlist
+      \item
+        hyphens separate words, underscores separate metadata
+      \end{itemize}
+    \item
+      useful when: searching for files later, narrow file list based on names, extract information from file names, new to regex (or not a sadist)
+    \end{itemize}
+  \item
+    Human Readable:
 
-\begin{table}
+    \begin{itemize}
+    \tightlist
+    \item
+      Name contains information on content. ( untitled31.R, finalreportV8.docx, temp.txt)
+    \item
+      connects to a concept of a slug from URLs
+    \item
+      Which set of filenames do you want at 3am before a deadline?
+    \end{itemize}
+  \item
+    Default order friendly
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}[t]{rr}
-\toprule
-temperature & pressure\\
-\midrule
-0 & 0.0002\\
-20 & 0.0012\\
-40 & 0.0060\\
-60 & 0.0300\\
-80 & 0.0900\\
-\addlinespace
-100 & 0.2700\\
-120 & 0.7500\\
-140 & 1.8500\\
-160 & 4.2000\\
-180 & 8.8000\\
-\bottomrule
-\end{tabular}
-\end{table}
+    \begin{itemize}
+    \tightlist
+    \item
+      put something numeric first
+    \item
+      use ISO 8601 standard for dates: YYYY-MM-DD
+    \item
+      left pad with zeros to achieve chronological or logical order within each directory
+    \end{itemize}
+  \item
+    Summary:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Machine readable, human readable, default order friendly
+    \item
+      Brushing teeth analogy: tedious until you get in the habit. Huge long-term rewards
+    \end{itemize}
+  \end{itemize}
+\item
+  Code
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If you do the same thing twice write a function
+  \item
+    If your write a function, document it
+  \item
+    If you write a function, test it
+  \item
+    If might ever want to use your function again, add it to a package
+  \item
+    naming things revisited:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      functions=verbs,
+    \item
+      objects=nouns,
+    \item
+      readable code,
+    \item
+      CamelCase snakecase pointless.points
+    \item
+      tidyverse and google style guides for R
+    \end{itemize}
+  \item
+    all filepaths relative to the root directory (the top level of your project)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      advanced: here::here
+    \end{itemize}
+  \end{itemize}
+\item
+  Project management
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Defining outcomes
+  \item
+    scoping projects,
+  \item
+    continuous development, agile + jira ?
+  \item
+    Linking to github (extension)
+  \end{itemize}
+\end{itemize}
+
+Tasks:
+- go to github and find 3 different data science projects, explore how they organise their work.
+- create your own projects for this course and for the assignments.
+- \emph{bonus:} put these on Github (make sure the assignments are private repos!)
+
+Reading:
+- Good enough practices in scientific computing
+- Bayesian workflows: Micheal Battencourt
+- \url{https://www.atlassian.com/agile/project-management}
+
+\begin{itemize}
+\tightlist
+\item
+  R4DS project workflow
+\item
+  here::here
+\item
+  R packages
+\item
+  happy git with R
+\end{itemize}
+
+Live session:
+Discussion point in live session:
+- Did you make the assignment projects as subdirectories or as their stand alone projects? Why?
+- What were some terms that you had not met before during the readings?
+- Live session activity: making a minimal R package for this course.
 
 \hypertarget{data}{%
 \chapter{Aquiring and Sharing Data}\label{data}}
@@ -363,7 +550,35 @@ Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by \texttt{\
 
 Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
 
-Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
+Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are pre-pended with letters instead of numbers.
+
+\emph{Data can be difficult to acquire and gnarly when you get it.}
+- Structure of a webpage. Web Scraping as a source of data
+- APIs as a source of data, data files beyond csv.
+- Data bases and SQL
+
+\begin{itemize}
+\item
+  Data will not always be in a nicely formatted csv
+\item
+  Beginner: reading from clipboard and googlesheets
+\item
+  Intermediate: reading messy csvs and making your workflow robust to new versions
+\item
+  Advanced:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Webscraping and APIs as data sources, data files beyond CSV
+  \item
+    data files beyond csv, benefits and drawbacks: JSON, xml, parquet, .Rdata, .pkl
+  \item
+    Data bases as data sources: Basic SQL verbs
+  \item
+    Learning SQL theory on a small scale: dplyr verbs
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{edav}{%
 \chapter{Cleaning, Exploring and Visualising}\label{edav}}

@@ -1,58 +1,120 @@
 # Data Science Workflows {#workflows}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+## Introduction 
 
-## Chapters and sub-chapters
+- As a data scientist you do not work alone. 
+- Even if you do work alone, you are your own collaborator.
+- Treat your future self like a current college who is new to the team
+- This is because when you return to the project that you are working on in several weeks, months or years you will have forgotten most of what you did 
+- You will also have forgotten why you made the decisions that you did and what the other options are. 
 
-There are two steps to cross-reference any heading:
+- The aim here is to provide you with a structure on how you organise and perform your work so that you can be a good collaborator to current collegues and your future self. 
+- Yes, this is going to require a bit more effort upfront, but the benefits will compound over time. 
 
-1. Label the heading: `# Hello world {#nice-label}`. 
-    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
-    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+- The structures and workflows that I recommend will be focused around a workflow that predominantly uses R, markdown and LaTeX. Similar techniques, code and software are available to achieve the same things when working with Python, C, Quarto and a range of other programming and mark-up languages. 
 
-1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
-    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+To motivate this focus, I will rely on an analogy with natural languages. You probably wouldn't want a complex analysis course that tried to teach in English, Japanese and Maori all at once. First you learn the concepts of complex analysis in one language and then (assuming you are already proficient in another) it is a much simpler step to do complex analysis in that language, though it might require you learning some new vocabulary or slightly different syntax.
 
-## Captioned figures and tables
+## Organising and Navigating your files
 
-Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+- What type of files do you use and where do you code? 
+  - plaintext vs proprietry (csv / xlsx, markdown / googledoc)
+  - command line vs notebook vs scripting (no file, .Rmd, .R)
+  - Open source languages vs closed source
+  
+- All work for one project goes into a single directory 
+  - Portability (filepaths, backslashes, setwd())
+  - Version control
+  - IDEs play nicely (RStudio projects)
+  - reproducibility
 
-See Figure \@ref(fig:nice-fig).
+- Organising within that directory: Every project different, will develop over course of project. Want to give a sensible starting point but often a company will have a 'house style'. If so IGNORE ME (unless the house style is rubbish, in which case only ignore me while you lobby for that to be changed.)
+  - README.md
+  - data
+    - raw (anything you do not make for yourself)
+    - refined (everything that you make for yourself)
+  - src (functions)
+  - tests (checks for each of your functions)
+  - analyses (scripts, models)
+  - outputs (results of all your hard work)
+    - analysis-1
+      - data 
+      - tables 
+      - figures
+    - analysis-2
+      - data 
+      - tables 
+      - figures
+  - reports (write-up)
+    - analysis-1
+    - analysis-2
+  - *bonus:* Makefiles & meta-programming
+  
+  
+- Naming things 
+  - Jenny Bryan slide summary (https://speakerdeck.com/jennybc/how-to-name-files) 
+  
+  - We would like file names to be:
+    - Machine Readable
+    - Human Readable
+    - Order friendly
+  - Machine readable:
+    - regex and globbing friendly: avoid spaces, punctuation, accents, cases 
+    - easy to compute on: deliberate use of delimiters (spaces that aren't spaces)
+      - hyphens separate words, underscores separate metadata 
+    - useful when: searching for files later, narrow file list based on names, extract information from file names, new to regex (or not a sadist)
+  - Human Readable: 
+    - Name contains information on content. ( untitled31.R, finalreportV8.docx, temp.txt) 
+    - connects to a concept of a slug from URLs
+    - Which set of filenames do you want at 3am before a deadline? 
+  - Default order friendly 
+    - put something numeric first 
+    - use ISO 8601 standard for dates: YYYY-MM-DD
+    - left pad with zeros to achieve chronological or logical order within each directory
+  - Summary: 
+    - Machine readable, human readable, default order friendly 
+    - Brushing teeth analogy: tedious until you get in the habit. Huge long-term rewards
+    
 
 
-```r
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
+- Code
+  - If you do the same thing twice write a function 
+  - If your write a function, document it 
+  - If you write a function, test it 
+  - If might ever want to use your function again, add it to a package
+  - naming things revisited: 
+    - functions=verbs, 
+    - objects=nouns,
+    - readable code,
+    - CamelCase snakecase pointless.points
+    - tidyverse and google style guides for R
+  - all filepaths relative to the root directory (the top level of your project)
+    - advanced: here::here
+  
+- Project management 
+  - Defining outcomes 
+  - scoping projects,
+  - continuous development, agile + jira ?
+  - Linking to github (extension)
 
-<div class="figure" style="text-align: center">
-<img src="02-workflows_files/figure-epub3/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
-<p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
-</div>
+Tasks: 
+- go to github and find 3 different data science projects, explore how they organise their work. 
+- create your own projects for this course and for the assignments. 
+- *bonus:* put these on Github (make sure the assignments are private repos!)
 
-Don't miss Table \@ref(tab:nice-tab).
+Reading: 
+- Good enough practices in scientific computing 
+- Bayesian workflows: Micheal Battencourt
+- https://www.atlassian.com/agile/project-management 
+
+- R4DS project workflow
+- here::here 
+- R packages 
+- happy git with R
 
 
-```r
-knitr::kable(
-  head(pressure, 10), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-
-
-Table: (\#tab:nice-tab)Here is a nice table!
-
-| temperature| pressure|
-|-----------:|--------:|
-|           0|   0.0002|
-|          20|   0.0012|
-|          40|   0.0060|
-|          60|   0.0300|
-|          80|   0.0900|
-|         100|   0.2700|
-|         120|   0.7500|
-|         140|   1.8500|
-|         160|   4.2000|
-|         180|   8.8000|
+Live session:
+Discussion point in live session: 
+- Did you make the assignment projects as subdirectories or as their stand alone projects? Why? 
+- What were some terms that you had not met before during the readings?
+- Live session activity: making a minimal R package for this course. 
