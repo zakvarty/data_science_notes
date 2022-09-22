@@ -6,7 +6,15 @@ learning-outcomes
 module-content
 workflows
 introduction
-organising-and-navigating-your-files
+organising-your-work
+one-directory-per-project
+file-types-and-development-environments
+naming-things
+code
+bigger-picture-project-management
+tasks
+reading
+live-session-plan
 data
 edav
 footnotes
