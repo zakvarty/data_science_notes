@@ -72,3 +72,8 @@ The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
 Suggested articles by Oliver:
 * https://www.nature.com/articles/s41586-021-04198-4 
 * https://www.somo.nl/wp-content/uploads/2008/02/Examples-of-unethical-trials.pdf 
+
+
+# TODO: 
+
+- [ ] Refactor book to have weeks as sections and topics as chapters. Hopefully without breaking everything in the process.
