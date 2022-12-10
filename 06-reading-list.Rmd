@@ -150,3 +150,70 @@ The paper that brought tidy data to the mainstream.
 - [R for Data Science (Second Edition)](https://r4ds.hadley.nz/) Chapters within the [Import](https://r4ds.hadley.nz/import.html) section. 
 
 This covers importing data from spreadsheets, databases, using Apache Arrow and importing hierarchical data as well as web scraping.  
+
+
+## Week 3: Data Exploration and Visualisation 
+
+### EDAV - Core Materials 
+
+----
+
+[Exploratory Data Analysis with R](https://bookdown.org/rdpeng/exdata/) by Roger Peng.
+
+Chapters 3 and 4 are core reading, respectively introducing [data frame manipulation with {dplyr}](https://bookdown.org/rdpeng/exdata/managing-data-frames-with-the-dplyr-package.html) and an example [workflow for exploratory data analysis](https://bookdown.org/rdpeng/exdata/exploratory-data-analysis-checklist.html). Other chapters may be useful as references. 
+
+----
+
+[Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/) by Stef van Buuren. 
+
+[Sections 1.1-1.4](https://stefvanbuuren.name/fimd/ch-introduction.html) give a thorough introduction to missing data problems.
+
+----
+
+
+### EDAV - Referene Materials 
+
+----
+
+- [A ggplot2 Tutorial for Beautiful Plotting in R]() https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) by Cédric Scherer.
+
+- The {dplyr} [documentation](https://dplyr.tidyverse.org/)
+
+- [RStudio Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) 
+
+- [R for Data Science (First Edition)](https://r4ds.had.co.nz/index.html) Chapters on [Data Transformations](https://r4ds.had.co.nz/transform.html), [Exploratory Data Analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) and [Relational Data](https://r4ds.had.co.nz/relational-data.html). 
+
+- Equivalent sections in R for Data Science [Second Edition](https://r4ds.hadley.nz/)
+
+### EDAV - Materials of Interest
+
+----
+
+[Wickham, H. (2010)](https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=cdi_informaworld_taylorfrancis_310_1198_jcgs_2009_07098&context=PC&vid=44IMP_INST:ICL_VU1&lang=en&search_scope=MyInst_and_CI&adaptor=Primo%20Central&tab=Everything&query=any,contains,layered%20grammar%20of%20graphics&offset=0). A Layered Grammar of Graphics. Journal of Computational and Graphical Statistics.
+
+----
+
+
+[Better Data Visualisations](https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=alma991000664639501591&context=L&vid=44IMP_INST:ICL_VU1&lang=en&search_scope=MyInst_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,better%20data%20visualisations&offset=0) by Jonathan Schwabish 
+
+Strategies to create more effective data visualizations, presented in a way that is agnostic to the software you use to construct your visualisations. 
+
+----
+
+[Data Visualization: A Practical Introduction](https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=alma991000211295101591&context=L&vid=44IMP_INST:ICL_VU1&lang=en&search_scope=MyInst_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Data%20Visualization%20%E2%80%93%20A%20Practical%20Introduction&offset=0) by Kieran Healy 
+
+## Week 4: Getting Your Work Into Production 
+
+### Production - Core Materials 
+
+### Production - Reference Materials 
+
+### Produciton - Materials of Interest 
+
+## Week 5: Wider Context and Data Ethics 
+
+### Ethics - Core Materials 
+
+### Ethics - Reference Materials 
+
+### Ethics - Materials of Interest 

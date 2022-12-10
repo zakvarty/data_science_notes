@@ -41,3 +41,15 @@ week-2-aquiring-and-sharing-data
 data---core-materials
 data---reference-materials
 data---materials-of-interest
+week-3-data-exploration-and-visualisation
+edav---core-materials
+edav---referene-materials
+edav---materials-of-interest
+week-4-getting-your-work-into-production
+production---core-materials
+production---reference-materials
+produciton---materials-of-interest
+week-5-wider-context-and-data-ethics
+ethics---core-materials
+ethics---reference-materials
+ethics---materials-of-interest
