@@ -1,7 +1,7 @@
 ---
 title: "Effective Data Science"
 author: "Zak Varty"
-date: "2022-12-09"
+date: "2022-12-10"
 site: bookdown::bookdown_site
 documentclass: book
 classoptions: twosides, a4paper
