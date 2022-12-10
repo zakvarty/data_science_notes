@@ -1,5 +1,5 @@
 eq:binom
-intro
+thm:tri
 module-description
 allocation-of-study-hours
 learning-outcomes
@@ -16,6 +16,11 @@ tasks
 reading
 live-session-plan
 data
+reading-tabular-data
+excel-is-not-the-only-file-type
+reading-in-tabular-data
+webscraping-and-apis
+databases-and-sql
 edav
 footnotes
 citations
@@ -27,3 +32,12 @@ context
 publishing
 pages
 metadata-for-sharing
+reading-list
+week-1-effective-data-science-workflows
+workflows---core-materials
+workflows---reference-materials
+workflows---materials-of-interest
+week-2-aquiring-and-sharing-data
+data---core-materials
+data---reference-materials
+data---materials-of-interest

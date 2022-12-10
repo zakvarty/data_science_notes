@@ -1,7 +1,7 @@
 ---
 title: "Effective Data Science"
 author: "Zak Varty"
-date: "2022-09-22"
+date: "2022-12-09"
 site: bookdown::bookdown_site
 documentclass: book
 classoptions: twosides, a4paper
@@ -28,7 +28,7 @@ These notes are intended for students on the course **MATH70076: Data Science** 
 
 As the course is schedled to take place over five weeks, the suggested schedule is
 
--   1st week: Chapters \@ref(intro) and \@ref(workflows)
+-   1st week: [Introduction](./intro.html) and Chapter \@ref(workflows)
 -   2nd week: Chapter \@ref(data)
 -   3rd week: Chapter \@ref(edav)
 -   4th week: Chapters \@ref(production)
