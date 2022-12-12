@@ -1,0 +1,10 @@
+# Web Scraping {#data-webscraping}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```
+
+## What is Webscraping
+
+

@@ -1,0 +1,10 @@
+# (PART) Aquiring and Sharing Data {-}
+
+# Introduction {#data-introduction .unnumbered}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```
+
+*Data can be difficult to acquire and gnarly when you get it.*

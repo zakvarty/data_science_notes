@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Data Science Workflows: libe session | Effective Data Science</title>
+<meta name="author" content="Zak Varty">
+<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Data Science Workflows: libe session | Effective Data Science">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://eds-book.zakvarty.com/workflows-live-session.html">
+<meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
+<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Data Science Workflows: libe session | Effective Data Science">
+<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Effective Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">About this Course</a></li>
+<li class="book-part">Effective Data Science Workflows</li>
+<li><a class="" href="workflows-introduction.html">Introduction</a></li>
+<li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Data Science Workflows: Organising your work</a></li>
+<li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Data Science Workflows: Naming Files</a></li>
+<li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Data Science Workflows: Code</a></li>
+<li><a class="" href="workflows-project-management.html"><span class="header-section-number">5</span> Data Science Workflows: Project Management</a></li>
+<li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
+<li><a class="active" href="workflows-live-session.html"><span class="header-section-number">6</span> Data Science Workflows: libe session</a></li>
+<li class="book-part">Aquiring and Sharing Data</li>
+<li><a class="" href="data-introduction.html"><span class="header-section-number">7</span> Introduction</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">8</span> Tabular Data</a></li>
+<li><a class="" href="data-webscraping.html"><span class="header-section-number">9</span> Webscraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">10</span> APIs for data aquisition</a></li>
+<li><a class="" href="data-sql.html"><span class="header-section-number">11</span> SQL</a></li>
+<li><a class="" href="data-checklist.html">Checklist</a></li>
+<li class="book-part">Effective Data Exploration</li>
+<li><a class="" href="edav-introduction.html">Introduction</a></li>
+<li><a class="" href="edav-cleaning.html"><span class="header-section-number">13</span> Data Cleaning</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">14</span> Exploratory Data Analysis</a></li>
+<li><a class="" href="edav-visualisation.html"><span class="header-section-number">15</span> Data Visualisation</a></li>
+<li><a class="" href="edav-checklist.html">Checklist</a></li>
+<li><a class="" href="production-introduction.html">Introduction</a></li>
+<li><a class="" href="production-reproducibility.html">Reproducibility</a></li>
+<li><a class="" href="production-explainability.html">Explainability</a></li>
+<li><a class="" href="production-scalability.html">Scalability</a></li>
+<li><a class="" href="production-checklist.html">Checklist</a></li>
+<li class="book-part">Effective Data Ethics</li>
+<li><a class="" href="ethics-introduction.html">Wider Context and Ethics</a></li>
+<li><a class="" href="ethics-privacy.html">Privacy</a></li>
+<li><a class="" href="ethics-conduct.html">Codes of Conduct</a></li>
+<li><a class="" href="ethics-fairness.html">Fairness</a></li>
+<li><a class="" href="ethics-checklist.html">Checklist</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">17</span> Reading List</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/zakvarty/data_science_notes/">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="workflows-live-session" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Data Science Workflows: libe session<a class="anchor" aria-label="anchor" href="#workflows-live-session"><i class="fas fa-link"></i></a>
+</h1>
+<div class="rmdimportant">
+<p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
+<p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
+</div>
+<div id="code-1" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Code<a class="anchor" aria-label="anchor" href="#code-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Code
+<ul>
+<li>If you do the same thing twice write a function</li>
+<li>If your write a function, document it</li>
+<li>If you write a function, test it</li>
+<li>If might ever want to use your function again, add it to a package</li>
+<li>naming things revisited:
+<ul>
+<li>functions=verbs,</li>
+<li>objects=nouns,</li>
+<li>readable code,</li>
+<li>CamelCase snakecase pointless.points</li>
+<li>tidyverse and google style guides for R</li>
+</ul>
+</li>
+<li>all filepaths relative to the root directory (the top level of your project)
+<ul>
+<li>advanced: here::here</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="bigger-picture-project-management-1" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Bigger Picture: Project management<a class="anchor" aria-label="anchor" href="#bigger-picture-project-management-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Project management
+<ul>
+<li>Defining outcomes</li>
+<li>scoping projects, (rembmember how we said all code for a silg eproject should live in a single directory?)</li>
+<li>continuous development, agile + jira ?</li>
+<li>Linking to github (extension)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="tasks-1" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Tasks:<a class="anchor" aria-label="anchor" href="#tasks-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>go to github and find 3 different data science projects, explore how they organise their work.</li>
+<li>create your own projects for this course and for the assignments.</li>
+<li>
+<em>bonus:</em> put these on Github (make sure the assignments are private repos!)</li>
+</ul>
+</div>
+<div id="reading-1" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Reading<a class="anchor" aria-label="anchor" href="#reading-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Good enough practices in scientific computing</p></li>
+<li><p>Bayesian workflows: Micheal Battencourt</p></li>
+<li><p><a href="https://www.atlassian.com/agile/project-management" class="uri">https://www.atlassian.com/agile/project-management</a></p></li>
+<li><p>R4DS project workflow</p></li>
+<li><p>here::here</p></li>
+<li><p>R packages</p></li>
+<li><p>happy git with R</p></li>
+</ul>
+</div>
+<div id="live-session-plan" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Live Session Plan<a class="anchor" aria-label="anchor" href="#live-session-plan"><i class="fas fa-link"></i></a>
+</h2>
+<p>Discussion point in live session:</p>
+<ul>
+<li>Did you make the assignment projects as subdirectories or as their stand alone projects? Why?</li>
+<li>What were some terms that you had not met before during the readings?</li>
+</ul>
+<p>Activity in live session:</p>
+<ul>
+<li>making a minimal R package for this course</li>
+</ul>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="workflows-checklist.html">Workflows: Checklist</a></div>
+<div class="next"><a href="data-introduction.html"><span class="header-section-number">7</span> Introduction</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#workflows-live-session"><span class="header-section-number">6</span> Data Science Workflows: libe session</a></li>
+<li><a class="nav-link" href="#code-1"><span class="header-section-number">6.1</span> Code</a></li>
+<li><a class="nav-link" href="#bigger-picture-project-management-1"><span class="header-section-number">6.2</span> Bigger Picture: Project management</a></li>
+<li><a class="nav-link" href="#tasks-1"><span class="header-section-number">6.3</span> Tasks:</a></li>
+<li><a class="nav-link" href="#reading-1"><span class="header-section-number">6.4</span> Reading</a></li>
+<li><a class="nav-link" href="#live-session-plan"><span class="header-section-number">6.5</span> Live Session Plan</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/zakvarty/data_science_notes//blob/master/120-workflows-live-session.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/zakvarty/data_science_notes//edit/master/120-workflows-live-session.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2022-12-12.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

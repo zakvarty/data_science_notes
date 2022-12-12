@@ -1,7 +1,7 @@
 ---
 title: "Effective Data Science"
 author: "Zak Varty"
-date: "2022-12-10"
+date: "2022-12-12"
 site: bookdown::bookdown_site
 documentclass: book
 classoptions: twosides, a4paper
@@ -18,27 +18,83 @@ link-citations: true
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Preface {.unnumbered}
+# About this Course {.unnumbered}
+
+
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
+
+If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
+:::
+
+## Course Description {.unnumbered}
+
+Model building and evaluation are are necessary but not sufficient skills for the effective practice of data science. In this module you will develop the technical and personal skills that are required to work successfully as a data scientist within an organisation. 
 
 ::: small_right
-<img src="EDS-logo.jpg" alt="Logo"/>
+<img src="images/EDS-logo.jpg" alt="Logo"/>
 :::
+
+During this module you will critically explore how to:
+
+- effectively scope and manage a data science project; 
+- work openly and reproducibly;
+- efficiently acquire, manipulate, and present data;
+- interpret and explain your work for a variety of stakeholders;
+- ensure that your work can be put into production; 
+- assess the ethical implications of your work as a data scientist.
+
+
+This interdisciplinary course will draw from fields including statistics, computing, management science and data ethics. Each topic will be investigated through a selection of lecture videos, conference presentations and academic papers, hands-on lab exercises, and readings on industry best-practices from recognised professional bodies. 
+
+
+## Schedule {-}
 
 These notes are intended for students on the course **MATH70076: Data Science** in the academic year 2022/23.
 
-As the course is schedled to take place over five weeks, the suggested schedule is
+As the course is scheduled to take place over five weeks, the suggested schedule is:
 
--   1st week: [Introduction](./intro.html) and Chapter \@ref(workflows)
--   2nd week: Chapter \@ref(data)
--   3rd week: Chapter \@ref(edav)
--   4th week: Chapters \@ref(production)
--   5th week: Chapter \@ref(context)
+-   1st week: effective data science workflows;
+-   2nd week: aquiring and sharing data;
+-   3rd week: exploratory data analysis and visualisation;
+-   4th week: preparing for production;
+-   5th week: ethics and context of data science.
 
 A pdf version of these notes may be downloaded [here](./data_science_notes.pdf).
 
+
+## Learning outcomes {-}
+
+On successful completion of this module students should be able to:
+
+1. Independently scope and manage a data science project; 
+2. Source data from the internet through web scraping and APIs;
+3. Clean, explore and visualise data, justifying and documenting the decisions made;
+4. Evaluate the need for (and implement) approaches that are explainable, reproducible and scalable;
+5. Appraise the ethical implications of a data science projects, particularly the risks of compromising privacy or fairness and the potential to cause harm.
+
+## Allocation of Study Hours {-}
+
+**Lectures:** 10 Hours (2 hours per week)
+
+**Group Teaching:** 5 Hours  (1 hour per week)
+
+**Lab / Practical:** 5 hours  (1 hour per week)
+
+**Independent Study:** 105 hours (17 hours per week + 20 hours coursework)
+
+## Assessment Structure {-}
+
+The course will be assessed entirely by coursework, reflecting the practical and pragmatic nature of the course material.
+
+**Coursework 1 (30%):** To be completed during the fourth week of the course.
+
+**Coursework 2 (70%):** To be released in the last week of the course and submitted following the examination period in Summer term. 
+
 ## Acknowledgements {-}
 
-These notes were created by Dr Zak Varty based on a lecture series at Imperial College London that was developed by Dr Purvasha Chakravarti and others.
+These notes were created by Dr Zak Varty. They were inspired by a previous lecture series by Dr Purvasha Chakravarti at Imperial College London and draw from many resource that were made available by the R community.
+
 
 
 

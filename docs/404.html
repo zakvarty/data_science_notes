@@ -24,28 +24,6 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -68,14 +46,40 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="intro.html">Introduction</a></li>
-<li><a class="" href="workflows.html"><span class="header-section-number">1</span> Data Science Workflows</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">2</span> Aquiring and Sharing Data</a></li>
-<li><a class="" href="edav.html"><span class="header-section-number">3</span> Cleaning, Exploring and Visualising</a></li>
-<li><a class="" href="production.html"><span class="header-section-number">4</span> Getting Your Work into Production</a></li>
-<li><a class="" href="context.html"><span class="header-section-number">5</span> Wider Context and Ethics</a></li>
-<li><a class="" href="reading-list.html"><span class="header-section-number">6</span> Reading List</a></li>
+<li><a class="" href="index.html">About this Course</a></li>
+<li class="book-part">Effective Data Science Workflows</li>
+<li><a class="" href="workflows-introduction.html">Introduction</a></li>
+<li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
+<li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
+<li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
+<li><a class="" href="workflows-project-management.html"><span class="header-section-number">5</span> Project Management</a></li>
+<li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
+<li class="book-part">Aquiring and Sharing Data</li>
+<li><a class="" href="data-introduction.html">Introduction</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">6</span> Tabular Data</a></li>
+<li><a class="" href="data-webscraping.html"><span class="header-section-number">7</span> Web Scraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">8</span> APIs</a></li>
+<li><a class="" href="data-sql.html"><span class="header-section-number">9</span> SQL</a></li>
+<li><a class="" href="data-checklist.html">Checklist</a></li>
+<li class="book-part">Data Exploration and Visualisation</li>
+<li><a class="" href="edav-introduction.html">Introduction</a></li>
+<li><a class="" href="edav-cleaning.html"><span class="header-section-number">11</span> Data Cleaning</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">12</span> Exploratory Data Analysis</a></li>
+<li><a class="" href="edav-visualisation.html"><span class="header-section-number">13</span> Data Visualisation</a></li>
+<li><a class="" href="edav-checklist.html">Checklist</a></li>
+<li class="book-part">Preparing for Production</li>
+<li><a class="" href="production-introduction.html">Introduction</a></li>
+<li><a class="" href="production-reproducibility.html"><span class="header-section-number">14</span> Reproducibility</a></li>
+<li><a class="" href="production-explainability.html"><span class="header-section-number">15</span> Explainability</a></li>
+<li><a class="" href="production-scalability.html"><span class="header-section-number">16</span> Scalability</a></li>
+<li><a class="" href="production-checklist.html">Checklist</a></li>
+<li class="book-part">Data Science Ethics</li>
+<li><a class="" href="ethics-introduction.html">Introduction</a></li>
+<li><a class="" href="ethics-privacy.html"><span class="header-section-number">18</span> Privacy</a></li>
+<li><a class="" href="ethics-fairness.html"><span class="header-section-number">19</span> Fairness</a></li>
+<li><a class="" href="ethics-conduct.html"><span class="header-section-number">20</span> Fairness</a></li>
+<li><a class="" href="ethics-checklist.html">Checklist</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">21</span> Reading List</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -103,7 +107,7 @@ the table of contents to find the page you are looking for.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2022-12-10.</p>
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2022-12-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -111,34 +115,6 @@ the table of contents to find the page you are looking for.</p>
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

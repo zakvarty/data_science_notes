@@ -1,0 +1,6 @@
+# Exploratory Data Analysis {#edav-analysis}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```

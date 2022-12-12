@@ -1,0 +1,22 @@
+# Checklist {#edav-checklist .unnumbered}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```
+
+## Videos / Chapters 
+
+- [ ]
+
+- [ ]
+
+- [ ]
+
+## Reading 
+
+
+## Activities 
+
+
+## Live Session 

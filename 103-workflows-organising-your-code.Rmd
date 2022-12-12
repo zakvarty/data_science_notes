@@ -1,0 +1,21 @@
+# Code {#workflows-code}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```
+
+## Code
+- Code
+  - If you do the same thing twice write a function 
+  - If your write a function, document it 
+  - If you write a function, test it 
+  - If might ever want to use your function again, add it to a package
+  - naming things revisited: 
+    - functions=verbs, 
+    - objects=nouns,
+    - readable code,
+    - CamelCase snakecase pointless.points
+    - tidyverse and google style guides for R
+  - all filepaths relative to the root directory (the top level of your project)
+    - advanced: here::here
