@@ -1,0 +1,26 @@
+# Scalability {#production-scalability}
+
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("drafting")
+```
+
+
+## Scalability --------------------------------------------------
+
+Structure talk around Alex's parallelisation slides 
+
+- Code profiling 
+- vectorise 
+- parallelise 
+- Use a better language: C++, Python
+
+* Documentation for 
+- apply
+- purr::map
+- furr::pmap
+
+* Advanced R (Second Edition) by Hadley Wickham. Chapters 23 and 24, measuring and improving performance 
+
+*  Advanced R (Second Edition) by Hadley Wickham. Chapter 25, measuring and improving performance 
+
