@@ -52,8 +52,11 @@ reading-2
 activities-1
 live-session-2
 production-reproducibility
+reproducibility-and-replicability
 production-explainability
+explainability--
 production-scalability
+scalability
 videos-chapters-3
 reading-3
 activities-2
