@@ -1,5 +1,10 @@
 # Reading List {#reading-list} 
 
+```{r, results='asis', echo=FALSE}
+source("_common.R")
+status("complete")
+```
+
 This reading list is organised by topic, according to each week of the course. These are split into several categories.
 
 - **Core Materials:** These form a core part of the course activities.
@@ -174,6 +179,26 @@ hypothesis was posited ahead of time](http://stat.columbia.edu/~gelman/research/
 
 ### Core Materials {.unnumbered}
 
+- [The Ethical Algorithm](https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=alma991000531083101591&context=L&vid=44IMP_INST:ICL_VU1&lang=en&search_scope=MyInst_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,kearns%20and%20roth&mode=Basic) M Kearns and A Roth.  Chapters 1 and 2 on Algorithmic Privacy and Algortihmic Fairness.
+
+- [Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification](https://proceedings.mlr.press/v81/buolamwini18a.html) by Joy Buolamwini and Timnit Gebru (2018). Proceedings of the 1st Conference on Fairness, Accountability and Transparency. 
+
+- [Robust De-anonymization of Large Sparse Datasets](https://ieeexplore.ieee.org/document/4531148) by Arvind Narayanan and Vitaly Shmatikov (2008). IEEE Symposium on Security and Privacy.
+
 ### Reference Materials {.unnumbered}
 
+- [Fairness and machine learning
+Limitations and Opportunities](https://fairmlbook.org/) by Solon Barocas, Moritz Hardt and Arvind Narayanan.
+
+- Professional Guidleines on Data Ethics from: 
+  - [The American Mathematical Society](http://www.ams.org/about-us/governance/policy-statements/sec-ethics)
+  - [The European Union](http://www.ams.org/about-us/governance/policy-statements/sec-ethics)
+  - [UK Government](https://www.gov.uk/guidance/understanding-artificial-intelligence-ethics-and-safety)
+  - [Royal Statistical Society](https://rss.org.uk/RSS/media/News-and-publications/Publications/Reports%20and%20guides/A-Guide-for-Ethical-Data-Science-Final-Oct-2019.pdf)
+  - [Dutch Government](https://www.government.nl/documents/reports/2021/07/31/impact-assessment-fundamental-rights-and-algorithms)
+
 ### Materials of Interest {.unnumbered}
+
+- [Algorithmic Fairness](https://arxiv.org/abs/2001.09784)  (2020). Pre-print of review paper by Dana Pessach and Erez Shmueli. 
+
+
