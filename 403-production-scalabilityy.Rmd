@@ -1,7 +1,0 @@
-# Scalability {#production-scalability}
-
-```{r, results='asis', echo=FALSE}
-source("_common.R")
-status("drafting")
-```
-
