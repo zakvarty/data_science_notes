@@ -74,6 +74,6 @@ Suggested articles by Oliver:
 * https://www.somo.nl/wp-content/uploads/2008/02/Examples-of-unethical-trials.pdf 
 
 
-# TODO: 
+# TODOs 
 
-- [ ] Refactor book to have weeks as sections and topics as chapters. Hopefully without breaking everything in the process.
+
