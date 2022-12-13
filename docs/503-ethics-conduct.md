@@ -1,4 +1,4 @@
-# Fairness {#ethics-conduct}
+# Codes of Conduct {#ethics-conduct}
 
 
 ::: {.rmdimportant} 
