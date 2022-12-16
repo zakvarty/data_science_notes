@@ -75,7 +75,7 @@ This request-response model is the basis for HTTP, the communication system used
 
 ## HTTP Requests 
 
-An HTML request consists of: 
+An HTTP request consists of: 
 
 - Uniform Resource Locator (URL) [unique identifier for a thing] 
 - Method [tells server the type of action requested by client]
@@ -83,7 +83,7 @@ An HTML request consists of:
 - Body [Data the client wants to send to the server] 
 
 ::: medium_right
-<img style = "border-radius: 10%;" src="images/203-data-apis/html-request.png" alt="Schematic diagram showing the structure of an HTML request, composed of: a URL, method, headers and body.">
+<img style = "border-radius: 10%;" src="images/203-data-apis/http-request.png" alt="Schematic diagram showing the structure of an HTTP request, composed of: a URL, method, headers and body.">
 :::
 
 ### URL 
@@ -108,7 +108,7 @@ Finally, the body of the request contains the data that the client is providing 
 When the server receives a request it will attempt to fulfil it and then send a response back to the client. 
 
 ::: medium_left
-<img style = "border-radius: 10%;" src="images/203-data-apis/html-response.png" alt="Schematic diagram showing the structure of an HTML response, composed of: a status code, headers and body.">
+<img style = "border-radius: 10%;" src="images/203-data-apis/http-response.png" alt="Schematic diagram showing the structure of an HTTP response, composed of: a status code, headers and body.">
 :::
 
 A response has a similar structure to a request apart from: 
@@ -154,7 +154,7 @@ Unlike Basic Authentication, there is no standard way of a client sharing a key 
 
 We've learned a lot about how the internet works. Fortunately, a lot of the time we won't have to worry about all of that new information other than for debugging purposes. 
 
-In the best case scenario, a very kind developer has written a "wrapper" function for the API. These wrappers are functions in R that will construct the HTML request for you. If you are particularly lucky, the API wrapper will also format the response for you, converting it from XML or JSON back into an R object that is ready for immediate use. 
+In the best case scenario, a very kind developer has written a "wrapper" function for the API. These wrappers are functions in R that will construct the HTTP request for you. If you are particularly lucky, the API wrapper will also format the response for you, converting it from XML or JSON back into an R object that is ready for immediate use. 
 
 
 ## `{geonames}` wrapper
@@ -175,7 +175,7 @@ Before we can get any data from the GeoNames API, we first need to do a little b
 library(geonames)
 ```
 
-2. Create a user account for the GeoNames API
+2. Create a [user account](https://www.geonames.org/login) for the GeoNames API
 
 <img style = "border-radius: 0%;" src="images/203-data-apis/sign-up.png" alt="Screenshot of the GeoNames login page. Example text has been added in the fields to create a new user account.">
 
