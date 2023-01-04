@@ -53,6 +53,9 @@ Golden Rule:
 
 This is worth repeating. Every single project that you work on should be self-contained and live in a single directory. An analogy here might be having a separate ring-binder folder for each of your modules on a degree program. 
 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-1.png" width="80%" />
+
 This one golden rule is deceptively simple. 
 
 The first issue here is that it requires a predetermined scope of what is and
@@ -79,6 +82,9 @@ Don't worry if you haven't heard of some of these terms already. We're going to 
 
 A project is said to be portable if it can be easily moved without breaking. 
 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-2.png" width="80%" />
+
 This might be a small move, like relocating the directory to a different location on your own computer. It might also mean a moderate move, say to another machine if yours dies just before a big deadline. Alternatively, it might be a large shift - to be uses by another person who is using a different operating system. 
 
 From this thought experiment you can see that there's a full spectrum of how portable a project may or may not need to be.
@@ -93,6 +99,11 @@ By organising your workflow around incremental changes helps you to acknowledge 
 
 
 ### Reproducibility 
+
+> A study is <em>reproducible</em> if <u>you</u> can take <u>the original data and the computer code</u> used to analyze the data and <u>recreate all of the numerical findings</u> from the study.
+> <br><br>
+>
+> Broman et al (2017). "Recommendations to Funding Agencies for Supporting Reproducible Research"
 
 In their paper, Broman et al define reproducibility as a project where you can take the original data and code used to perform the analysis and using these we create all of the numerical findings of the study.
 
@@ -134,14 +145,18 @@ One final caveat before we get started: companies and businesses will many times
 
 Okay, so imagine now that you've been assigned a shiny new project and have created a single directory in which to house that project. Here we've, quite imaginatively, called that directory `exciting-new-project`. What do we populate this folder with? 
 
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-3.png" width="80%" />
 
-In the rest of this video, I'll define the house-style for organizing the root
-directory of your data science projects in this module. 
+In the rest of this video, I'll define the house-style for organizing the root directory of your data science projects in this module. 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-4.png" width="80%" />
 
 Within the project directory there will be some subdirectories, which you can  tell a folders in this file structure because they have a forward slash following their names. There will also be some files directly in the root directory. One of these is called `readme.md` and the another called either `makefile` or `make.r`. We're going to explore each of these files and directories in turn.
 
 
 ### README.md
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-5.png" width="80%" />
 
 Let's begin with the readme file. This gives a brief introduction to your project and  gives information on what the project aims to do. The readme file should describe how to get started using the project and how to contribute to its development. 
 
@@ -154,20 +169,20 @@ The readme file should be the first thing that someone who's new to your project
 
 An additional benefit to keeping the readme in the root directory of your project is that code hosting services like GitHub, GitLab or BitBucket will display the contents of that readme file next to the contents of your project. Those services will also nicely format any markdown that you use for you in your readme file. 
 
-When writing the readme, it can be useful to imaginge that you are writing this for a new, junior team member. The readme file should let them get started with the project and make some simple contributions after reading only that file. It might also link out to more detailed project documentation that wll help the new team member toward a more advanced understanding or complex contribution. 
+When writing the readme, it can be useful to imaginge that you are writing this for a new, junior team member. The readme file should let them get started with the project and make some simple contributions after reading only that file. It might also link out to more detailed project documentation that will help the new team member toward a more advanced understanding or complex contribution. 
 
 ### Inside the README
 
-let's take a quick aside to see in more detial what should be covered within a readme file.
+let's take a quick aside to see in more detail what should be covered within a readme file.
 
-A readme we should include the name of the project, which should be self-explanatory (so nothing like my generic chouce of `exciting-new-project`). The readme should also give the project status, which is just a couple of sentences to say whether your project is still under development, the version oft the current release or, on the other end of the project life-cylce, if the project is being deprecated or
+A readme we should include the name of the project, which should be self-explanatory (so nothing like my generic choice of `exciting-new-project`). The readme should also give the project status, which is just a couple of sentences to say whether your project is still under development, the version oft the current release or, on the other end of the project life-cycle, if the project is being deprecated or
 closed. 
 
 Following this, we should also include a description of your project. This will state the purpose of your work and to provide, or link to, any additional context or references that visitors aren't assumed to be familiar with. 
 
-If your project involves code or depends on other packages then you should give some instruction on how to install those dependencies and run your code. This might just be text but it could also include thing sline screenshots, code snippets, gifs or a video of the whole process. 
+If your project involves code or depends on other packages then you should give some instruction on how to install those dependencies and run your code. This might just be text but it could also include things like screenshots, code snippets, gifs or a video of the whole process. 
 
-Tt's also a good practice to include some simple examples of how to use the code within your project an the expected results, so that new users can confirm that everything's working on their local instance. Keep the examples as simple and minimal as you can so that new users
+It's also a good practice to include some simple examples of how to use the code within your project an the expected results, so that new users can confirm that everything is working on their local instance. Keep the examples as simple and minimal as you can so that new users
 
 For longer or more complicated examples that aren't necessary in this short introductory document you can add links to those in the readme and explain them
 in detail elsewhere. 
@@ -182,10 +197,14 @@ attribution to your work in any modifications that they use.
 
 
 ### data 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-7.png" width="80%" />
+
 Moving back to our project structure, next we have the data directory.
 
-The data directory will have two subdirectories one called `raw` and one
-called `derived`. All data that is not generate as part of your project is stored in the `raw` subdirectory. To ensure that a project is reproducible, data in the Raw folder should never be edited or modified. 
+The data directory will have two subdirectories one called `raw` and one called `derived`. All data that is not generate as part of your project is stored in the `raw` subdirectory. To ensure that a project is reproducible, data in the Raw folder should never be edited or modified. 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-8.png" width="80%" />
 
 In this example we've got two different data types: an Excel spreadsheet the XLS file and a JSON file. These files are exacty as we received them from our project stakeholder.
 
@@ -193,10 +212,14 @@ The text file `metadata.txt` is a plain text file explaining the contents and in
 
 The raw data likely isn't going to be in a form that's amenable to analyzing straight away. To get the data into a more pleasant form to work, it will require some data manipulation and cleaning. Any manipulation or cleaning that is applied should be well documented and the resulting cleaned files saved within the `derived` data directory.
 
-In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is
-data that we've aquired for ourselves through web scraping, using a script within the project. 
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12.png" width="80%" />
+
+In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've aquired for ourselves through web scraping, using a script within the project. 
 
 ### src
+
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-16.png" width="80%" />
 
 The `src` or source directory contains all the source code for your project. This will typically be the functions that you've written to make the analysis or modelling code more accessible. 
 
@@ -209,6 +232,8 @@ web data we saw in the derived data subdirectory.
 
 ### tests
 
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12.png" width="80%" />
+
 Moving on then to the tests directory. The structure of this directory mirrors that of the source directory. Each function file has its own counterpart file of tests. 
 
 These test files provide example sets of inputs and the expected outputs for each
@@ -216,6 +241,8 @@ function. The test files are used to check edge cases of a function or to assure
 yourself that you haven't broken anything while fixing some small bug or adding new capabilities to that function. 
 
 ### analyses
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-23.png" width="80%" />
 
 The analyses directory contains what you probably think of as the bulk of your
 data science work. It's going to have one subdirectory for each major analysis that's performed within your project and within each of these there might be a series of steps that we collect into separate scripts. 
@@ -228,11 +255,16 @@ forecasts.
 
 
 ### outputs
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-26.png" width="80%" />
+
 The outputs directory has again one subdirectory for each meta-analysis within the project. These are then further organized by the output type whether that be some data, a figure, or a table. 
 
 Depending on the nature of your project, you might want to use a modified subdirectory structure here. For example, if you're doing several numerical experiments then you might want to arrange your outputs by experiment, rather than by output type. 
 
 ### reports 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-29.png" width="80%" />
 
 The reports directory is then where everything comes together. This is where the written documents that form the final deliverables of your project are created. If these final documents are written in LaTeX or markdown, both the source and
 the compiled documents can be found within this directory. 
@@ -248,6 +280,8 @@ In our exciting new project, here we can see that the annual report is written i
 
 ### make file 
 
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-32.png" width="80%" />
+
 The final element of our template project structure is a make file. We aren't going to cover how to read or write make files in this course. Instead, I'll give you a brief description of what they are and what it is supposed to do. 
 
 At a high level, the make file is just a text file. What makes it special is what it contains. Similar to a shell or a bash script, make file contains code that could be run at the command line. This code will create or update each element of your project.
@@ -258,9 +292,11 @@ We're omitting make files from this course not because they're fiendishly diffic
 
 ## Wrapping up
 
-Wrapping up then, that's everything for this video. 
+Wrapping up then, that's everything for this chapter. 
 
 I've introduced a project structure that will serve you well as a baseline for the vast majority of projects in data science. 
+
+<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-33.png" width="80%" />
 
 In your own work, remember that the key here is standardisation. Working consistently across projects, a company or a group is more important than sticking rigidly to the particular structure that I have defined here. 
 

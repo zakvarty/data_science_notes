@@ -52,34 +52,33 @@
 <li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
 <li><a class="active" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
 <li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
-<li><a class="" href="workflows-project-management.html"><span class="header-section-number">5</span> Project Management</a></li>
 <li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
 <li class="book-part">Aquiring and Sharing Data</li>
 <li><a class="" href="data-introduction.html">Introduction</a></li>
-<li><a class="" href="data-tabular.html"><span class="header-section-number">6</span> Tabular Data</a></li>
-<li><a class="" href="data-webscraping.html"><span class="header-section-number">7</span> Web Scraping</a></li>
-<li><a class="" href="data-apis.html"><span class="header-section-number">8</span> APIs</a></li>
-<li><a class="" href="data-sql.html"><span class="header-section-number">9</span> SQL</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></li>
+<li><a class="" href="data-webscraping.html"><span class="header-section-number">6</span> Web Scraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">7</span> APIs</a></li>
+<li><a class="" href="data-sql.html"><span class="header-section-number">8</span> SQL</a></li>
 <li><a class="" href="data-checklist.html">Checklist</a></li>
 <li class="book-part">Data Exploration and Visualisation</li>
 <li><a class="" href="edav-introduction.html">Introduction</a></li>
-<li><a class="" href="edav-cleaning.html"><span class="header-section-number">11</span> Data Cleaning</a></li>
-<li><a class="" href="edav-analysis.html"><span class="header-section-number">12</span> Exploratory Data Analysis</a></li>
-<li><a class="" href="edav-visualisation.html"><span class="header-section-number">13</span> Data Visualisation</a></li>
+<li><a class="" href="edav-cleaning.html"><span class="header-section-number">10</span> Data Cleaning</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">11</span> Exploratory Data Analysis</a></li>
+<li><a class="" href="edav-visualisation.html"><span class="header-section-number">12</span> Data Visualisation</a></li>
 <li><a class="" href="edav-checklist.html">Checklist</a></li>
 <li class="book-part">Preparing for Production</li>
 <li><a class="" href="production-introduction.html">Introduction</a></li>
-<li><a class="" href="production-reproducibility.html"><span class="header-section-number">14</span> Reproducibility</a></li>
-<li><a class="" href="production-explainability.html"><span class="header-section-number">15</span> Explainability</a></li>
-<li><a class="" href="production-scalability.html"><span class="header-section-number">16</span> Scalability</a></li>
+<li><a class="" href="production-reproducibility.html"><span class="header-section-number">13</span> Reproducibility</a></li>
+<li><a class="" href="production-explainability.html"><span class="header-section-number">14</span> Explainability</a></li>
+<li><a class="" href="production-scalability.html"><span class="header-section-number">15</span> Scalability</a></li>
 <li><a class="" href="production-checklist.html">Checklist</a></li>
 <li class="book-part">Data Science Ethics</li>
 <li><a class="" href="ethics-introduction.html">Introduction</a></li>
-<li><a class="" href="ethics-privacy.html"><span class="header-section-number">18</span> Privacy</a></li>
-<li><a class="" href="ethics-fairness.html"><span class="header-section-number">19</span> Fairness</a></li>
-<li><a class="" href="ethics-conduct.html"><span class="header-section-number">20</span> Codes of Conduct</a></li>
+<li><a class="" href="ethics-privacy.html"><span class="header-section-number">17</span> Privacy</a></li>
+<li><a class="" href="ethics-fairness.html"><span class="header-section-number">18</span> Fairness</a></li>
+<li><a class="" href="ethics-conduct.html"><span class="header-section-number">19</span> Codes of Conduct</a></li>
 <li><a class="" href="ethics-checklist.html">Checklist</a></li>
-<li><a class="" href="reading-list.html"><span class="header-section-number">21</span> Reading List</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">20</span> Reading List</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -96,60 +95,366 @@
 <p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
 <p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
 </div>
-<div id="naming-things" class="section level2" number="3.1">
+<div id="introduction" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">3.1</span> Naming things<a class="anchor" aria-label="anchor" href="#naming-things"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li>Naming things
-<ul>
-<li><p>Jenny Bryan slide summary (<a href="https://speakerdeck.com/jennybc/how-to-name-files" class="uri">https://speakerdeck.com/jennybc/how-to-name-files</a>)</p></li>
-<li>
-<p>We would like file names to be:</p>
-<ul>
+<blockquote>
+<p>“There are only two hard things in Computer Science: cache invalidation and naming things.”</p>
+<p><strong>Phil Karlton, Netscape Developer</strong></p>
+</blockquote>
+<p>When working on a data science project we can in principle name directories, files, functions and other objects whatever we like. In reality though, using an ad-hoc system of naming is likely to cause confusion, headaches and mistakes. We obviously want to avoid all of those things, in the spirit of being kind to our current colleges and also to our future selves.</p>
+<p>Coming up with good names is an art form. Like most art, naming things is an activity that you get better at with practice. Another similarity is that the best naming systems don’t come from giving data scientists free reign over their naming system. Like all art, the best approaches to naming things give you strong guidelines and boundaries within which to express your creativity and skill.</p>
+<p>In this lecture we’ll explore what these boundaries and what we want them to achieve for us. The content of this lecture is based largely around a <a href="https://speakerdeck.com/jennybc/how-to-name-files">talk of the same name</a> given by Jennifer Bryan and the <a href="https://style.tidyverse.org/">tidyverse style guide</a>, which forms the basis of Google’s style guide for R programming.</p>
+</div>
+<div id="naming-files" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Naming Files<a class="anchor" aria-label="anchor" href="#naming-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>We’ll be begin by focusing in on what we call our files. That is, we’ll first focus on the part of the file name that comes before the dot. In the second part of this video, we’ll then cycle back around to discuss file extensions.</p>
+<div id="what-do-we-want-from-our-file-names" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> What do we want from our file names?<a class="anchor" aria-label="anchor" href="#what-do-we-want-from-our-file-names"><i class="fas fa-link"></i></a>
+</h3>
+<p>Before we dive into naming files, we should first consider what we want from the file names that we choose. There are three key properties that that we would like to satisfy.</p>
+<ol style="list-style-type: decimal">
 <li>Machine Readable</li>
 <li>Human Readable</li>
-<li>Order friendly</li>
-</ul>
-</li>
+<li>Order Friendly</li>
+</ol>
+<p>Thee first desirable property is for file names to be easily readable by computers, the second is for the file names to be easily readable by humans and finally the file names should take advantage of the default ordering imposed on our files.</p>
+<p>This set of current file names is sorely lacking across all of these properties:</p>
+<pre><code>abstract.docx
+Effective Data Science's module guide 2022.docx 
+fig 12.png
+Rplot7.png
+1711.05189.pdf
+HR Protocols 2015 FINAL (Nov 2015).pdf</code></pre>
+<p>We want to provide naming conventions to move us toward the better file names listed below.</p>
+<pre><code>2015-10-22_human-resources-protocols.pdf
+2022_effective-data-science-module-guide.docx
+2022_RSS-conference-abstract.docx 
+fig12_earthquake-timeseries.png 
+fig07_earthquake-location-map.png
+ogata_1984_spacetime-clustering.pdf</code></pre>
+<p>Let’s take a few minutes to examine what exactly we mean by each of these properties.</p>
+</div>
+<div id="machine-readable" class="section level3" number="3.2.2">
+<h3>
+<span class="header-section-number">3.2.2</span> Machine Readable<a class="anchor" aria-label="anchor" href="#machine-readable"><i class="fas fa-link"></i></a>
+</h3>
+<p>What do we mean by machine readable file names?</p>
+<ul>
+<li>Easy to compute on by <em>deliberate use of delimiters</em>:
+<ul>
 <li>
-<p>Machine readable:</p>
+<code>underscores_separate_metadata</code>, <code>hyphens-separate-words</code>.</li>
+</ul>
+</li>
+<li>Play nicely with <em>regular expressions</em> and <em>globbing</em>:
 <ul>
-<li>regex and globbing friendly: avoid spaces, punctuation, accents, cases</li>
-<li>easy to compute on: deliberate use of delimiters (spaces that aren’t spaces)
+<li>avoid spaces, punctuation, accents, cases;</li>
+<li><code>rm Rplot*.png</code></li>
+</ul>
+</li>
+</ul>
+<p>Machine readable names are useful when:</p>
 <ul>
-<li>hyphens separate words, underscores separate metadata</li>
+<li><p><em>managing files</em>: ordering, finding, moving, deleting:</p></li>
+<li><p><em>extracting information</em> directly from file names,</p></li>
+<li><p><em>working programmatically</em> with file names and regex.</p></li>
 </ul>
-</li>
-<li>useful when: searching for files later, narrow file list based on names, extract information from file names, new to regex (or not a sadist)</li>
-</ul>
-</li>
-<li>
-<p>Human Readable:</p>
+<p>When we are operating on a large number of files it is useful to be able to work with them programmatically.</p>
+<p>One example of where this might be useful is when downloading assessments for marking. This might require me to unzip a large number of zip files, copying the pdf report from each unzipped folder into a single directory and all of the R scripts from each unzipped folder into another directory. The marked scripts and code then need to be paired back up in folders named by student, and re-zipped ready to be returned.</p>
+<p>This is <em>monotonously</em> dull and might work for ~50 students but not for ~5000. Working programmatically with files is the way to get this job done efficiently. This requires the file names to play nicely with the way that computers interpret file names, which they regard as a string of characters.</p>
+<p>It is often helpful to have some metadata included in the file name, for example the student’s id number and the assessment title. We will use an underscore to separate elements of metadata within the file name and a hyphen to separate sub-elements of meta-data, for example words within the assessment title.</p>
+<p>Regular expressions and globbing are two ideas from string manipulation that you may not have met, but which will inform our naming conventions. Regular expressions allow you to search for strings (in our case file names) that match a particular pattern. Regular expressions can do really complicated searches but become gnarly when you have to worry about special characters like spaces, punctuation, accents and cases, so these should be avoided in file names.</p>
+<p>A special type of regular expression is called globbing where a star is used to replace any number of subsequent characters in a file name, so that here we can delete all png images that begin with Rplot using a single line of code. Globbing becomes particular powerful when you use a consistent structure to create your file names.</p>
+<p>As in the assessment marking example, having machine readable file names is particularly useful when managing files, such as ordering, finding, moving or deleting them. Another example of this is when your analysis requires you to load a large number of individual data files.</p>
+<p>Machine readable file names are also useful for extracting meta-information from files without having to open them in memory. This is particularly useful when the files might be too large to load into memory, or you only want to load data from a certain year.</p>
+<p>The final benefit we list here is the scalability, reduction in drudgery and lowered risk for human error when operating on a very large number of files.</p>
+</div>
+<div id="order-friendly" class="section level3" number="3.2.3">
+<h3>
+<span class="header-section-number">3.2.3</span> Order Friendly<a class="anchor" aria-label="anchor" href="#order-friendly"><i class="fas fa-link"></i></a>
+</h3>
+<p>The next property we will focus on also links to how computers operate. We’d like our file names to exploit the default orderings used by computers. This means starting file names with character strings or metadata that allow us order our files in some meaningful way.</p>
+<div id="running-order" class="section level4" number="3.2.3.1">
+<h4>
+<span class="header-section-number">3.2.3.1</span> Running Order<a class="anchor" aria-label="anchor" href="#running-order"><i class="fas fa-link"></i></a>
+</h4>
+<p>One example of this is where there’s some logical order in which your code should be executed, as in the example analysis below.</p>
+<pre><code>diagnositc-plots.R
+download.R
+runtime-comparison.R
+...
+model-evaluation.R
+wrangle.R</code></pre>
+<p>Prepreding numbers to these file names can make the intended ordering immediately obvious.</p>
+<pre><code>00_download.R
+01_wrangle.R
+02_model.R
+...
+09_model-evaluation.R
+10_model-comparison-plots.R</code></pre>
+<p>Starting single digit numbers with a leading 0 is a very good idea here to prevent script 1 being sorted in with the tens, script 2 in with the twenties and so on. If you might have over 100 files, for example when saving the output from many simulations, use two or more zeros to maintain this nice ordering.</p>
+</div>
+<div id="date-order" class="section level4" number="3.2.3.2">
+<h4>
+<span class="header-section-number">3.2.3.2</span> Date Order<a class="anchor" aria-label="anchor" href="#date-order"><i class="fas fa-link"></i></a>
+</h4>
+<p>A second example of orderable file names is when the file has a date associated with it. This might be a version of a report or the date on which some data were recorded, cleaned or updated.</p>
+<pre><code>2015-10-22_human-resources-protocols.pdf
+...
+2022-effective-data-science-module-guide.docx</code></pre>
+<p>When using dates, in file names or elsewhere, you should conform to the ISO standard date format.</p>
+<blockquote>
+<p>ISO 8601 sets an international standard format for dates: <code>YYYY-MM-DD</code>.</p>
+</blockquote>
+<p>This format uses four numbers for the year, followed by two numbers for the month and two numbers of the day of the month. This structure mirrors a nested file structure moving from least to most specific. It also avoids confusion over the ordering of the date elements. Without using the ISO standard a date like 04-05-22 might be interpreted as the fourth of May 2022, the fifth of April 2022, or the 22nd of May 2004.</p>
+</div>
+</div>
+<div id="human-readable" class="section level3" number="3.2.4">
+<h3>
+<span class="header-section-number">3.2.4</span> Human Readable<a class="anchor" aria-label="anchor" href="#human-readable"><i class="fas fa-link"></i></a>
+</h3>
+<p>The final property we would like our file names to have is human readability. This requires the names of our files to be meaningful, informative and easily read by real people.</p>
+<p>The first two of these are handled by including appropriate metadata in the file name. The ease with which these are read by real people is determined by the length of the file name and by how that name is formatted.</p>
+<p>There are lots of formatting options with fun names like <code>camelCase</code>, <code>PascalCase</code>, and <code>snake_case</code>.</p>
+<pre><code>   easilyReadByRealPeople (camelCase)
+   EasilyReadByRealPeople (PascalCase)
+   easily_read_by_real_people (snake_case)
+   easily-read-by-real-people (skewer-case)</code></pre>
+<p>here’s weak evidence that suggests snake and skewer cases are most the readable. We’ll use a mixture of these, using snake case <em>between</em> metadata items and skewer case <em>within</em> them. This has a slight cost to legibility, in a trade-off against making computing on these file names easier.</p>
+<p>The final aspect that you have control over is the length of the name. Having short, evocative and useful file names is not easy and is a skill in itself. For some hints and tips you might want to look into tips for writing URL slugs. These are last part of a web address that are intended to improve accessibility by being immediately and intuitively meaningful to any user.</p>
+</div>
+<div id="naming-files---summary" class="section level3" number="3.2.5">
+<h3>
+<span class="header-section-number">3.2.5</span> Naming Files - Summary<a class="anchor" aria-label="anchor" href="#naming-files---summary"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p>File names should be meaningful, informative and scripts end in <code>.r</code></p></li>
+<li><p>Stick to letters, numbers underscores (<code>_</code>) and hyphens (<code>-</code>).</p></li>
+<li><p>Pay attention to capitalisation <code>file.r</code> <span class="math inline">\(\neq\)</span> <code>File.r</code> on all operating systems.</p></li>
+<li><p>Show order with left-padded numbers or ISO dates.</p></li>
+</ol>
+</div>
+</div>
+<div id="file-extensions-and-where-you-work" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> File Extensions and Where You Work<a class="anchor" aria-label="anchor" href="#file-extensions-and-where-you-work"><i class="fas fa-link"></i></a>
+</h2>
+<p>So far we have focused entirely on what comes before the dot, that is the file name.Equally, if not more, important is what comes after the dot, the file extension.</p>
+<pre><code>example-script.r
+example-script.py
+
+project-writeup.doc
+project-writeup.tex</code></pre>
+<p>The file extension describes how information is stored in that file and determines the software that can use, view or run that file.</p>
+<p>You likely already use file extensions to distinguish between code scripts, written documents, images, and notebook files. We’ll now explore the benefits and drawbacks of various file types with respect to several important features.</p>
+<div id="open-source-vs-proprietary-file-types" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Open Source vs Proprietary File Types<a class="anchor" aria-label="anchor" href="#open-source-vs-proprietary-file-types"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first feature we’ll consider is whether the file type is open source, and can be used by anyone without charge, or if specialist software must be paid for in order to interact with those files.</p>
+<div class="inline-figure"><img src="images/102-workflows-naming-files/file-types-image.png" width="80%"></div>
+<p>In the figure above, each column represents a different class of file, moving left to right we have example file types for tabular data, list-like data and text documents. File types closer to the top are open source while those lower down rely on proprietary software, which may or may not require payment.</p>
+<p>To make sure that our work is accessible to as many people as possible we should favour the open source options like csv files over Google sheets or excel, JSON files over Matlab data files, and tex or markdown over a word or Google doc.</p>
+<p>This usually has a benefit in terms of project longevity and scalability. The open source file types are often somewhat simpler in structure, making them more robust to changes over time less memory intensive.</p>
+<p>To see this, let’s take a look inside some data files.</p>
+</div>
+<div id="inside-data-files" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Inside Data Files<a class="anchor" aria-label="anchor" href="#inside-data-files"><i class="fas fa-link"></i></a>
+</h3>
+<div id="inside-a-csv-file" class="section level4" number="3.3.2.1">
+<h4>
+<span class="header-section-number">3.3.2.1</span> Inside a CSV file<a class="anchor" aria-label="anchor" href="#inside-a-csv-file"><i class="fas fa-link"></i></a>
+</h4>
+<p>CSV or comma separated value files are used to store tabular data.</p>
+<p>In tabular data, each row of the data represents one record and each column represents a data value.</p>
+<p>A csv encodes this by having each record on a separate line and using commas to separate values with that record. You can see this by opening a csv file in a text editor such as notepad.</p>
+<p>The raw data stores line breaks using <code>\n</code> and indicates new rows by <code>\r</code>. These backslashed indicae that these are <em>escape characters</em> with special meanings, and should not be literally interpreted as the letters n and r.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html">read_file</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"images/102-workflows-naming-files/example.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Name,Number\r\nA,1\r\nB,2\r\nC,3"</span></span></code></pre></div>
+<p>When viewed in a text editor, the example file would look something like this.</p>
+<pre><code>Name,Number 
+A,1
+B,2
+C,3</code></pre>
+</div>
+<div id="inside-a-tsv-file" class="section level4" number="3.3.2.2">
+<h4>
+<span class="header-section-number">3.3.2.2</span> Inside a TSV file<a class="anchor" aria-label="anchor" href="#inside-a-tsv-file"><i class="fas fa-link"></i></a>
+</h4>
+<p>TSV or tab separated value files are also used to store tabular data.</p>
+<p>Like in a csv each record is given on a new line but in a tsv tabs rather than commas are used to separate values with each record. This can also be seen by opening a tsv file in a text editor such as notepad.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_file.html">read_file</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"images/102-workflows-naming-files/example.tsv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Name\tNumber\r\nA\t1\r\nB\t2\r\nC\t3"</span></span></code></pre></div>
+<pre class="tsv"><code>Name    Number 
+A   1
+B   2
+C   3</code></pre>
+<p>One thing to note is that tabs are a separate character and are not just multiple spaces. In plain text these can be impossible to tell apart, so most text editors have an option to display tabs differently from repeated spaces, though this is usually not enabled by default.</p>
+</div>
+<div id="inside-an-excel-file" class="section level4" number="3.3.2.3">
+<h4>
+<span class="header-section-number">3.3.2.3</span> Inside an Excel file<a class="anchor" aria-label="anchor" href="#inside-an-excel-file"><i class="fas fa-link"></i></a>
+</h4>
+<p>When you open an excel file in a text editor, you will immediately see that this is not a human interpretable file format.</p>
+<pre class="xlsx"><code>504b 0304 1400 0600 0800 0000 2100 62ee
+9d68 5e01 0000 9004 0000 1300 0802 5b43
+6f6e 7465 6e74 5f54 7970 6573 5d2e 786d
+6c20 a204 0228 a000 0200 0000 0000 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+.... .... .... .... .... .... .... ....
+0000 0000 0000 0000 ac92 4d4f c330 0c86
+ef48 fc87 c8f7 d5dd 9010 424b 7741 48bb
+2154 7e80 49dc 0fb5 8da3 241b ddbf 271c
+1054 1a83 0347 7fbd 7efc cadb dd3c 8dea
+.... .... .... .... .... .... .... ....</code></pre>
+<p>Each entry here is a four digit hexadecimal number and there are a lot more of them than we have entries in our small table.</p>
+<p>This is because excel files can carry a lot of additional information that a csv or tsv are not able to, for example cell formatting or having multiple tables (called sheets by excel) stored within a single file.</p>
+<p>This means that excel files take up much more memory because they are carrying a lot more information than is strictly contained within the data itself.</p>
+</div>
+<div id="indise-a-json-file" class="section level4" number="3.3.2.4">
+<h4>
+<span class="header-section-number">3.3.2.4</span> Indise a JSON file<a class="anchor" aria-label="anchor" href="#indise-a-json-file"><i class="fas fa-link"></i></a>
+</h4>
+<p>JSON, or Java Script Object Notation, files are an open source format for list-like data. Each record is represented by a collection of <code>key:value</code> pairs. In our example table each entry has two fields, one corresponding to the <code>Name</code> key and one corresponding to the <code>Number</code> key.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb13-1"><a href="workflows-naming.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span><span class="fu">{</span></span>
+<span id="cb13-2"><a href="workflows-naming.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Name"</span><span class="fu">:</span> <span class="st">"A"</span><span class="fu">,</span></span>
+<span id="cb13-3"><a href="workflows-naming.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Number"</span><span class="fu">:</span> <span class="st">"1"</span></span>
+<span id="cb13-4"><a href="workflows-naming.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb13-5"><a href="workflows-naming.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Name"</span><span class="fu">:</span> <span class="st">"B"</span><span class="fu">,</span></span>
+<span id="cb13-6"><a href="workflows-naming.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Number"</span><span class="fu">:</span> <span class="st">"2"</span></span>
+<span id="cb13-7"><a href="workflows-naming.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb13-8"><a href="workflows-naming.html#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Name"</span><span class="fu">:</span> <span class="st">"C"</span><span class="fu">,</span></span>
+<span id="cb13-9"><a href="workflows-naming.html#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Number"</span><span class="fu">:</span> <span class="st">"3"</span></span>
+<span id="cb13-10"><a href="workflows-naming.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span><span class="ot">]</span></span></code></pre></div>
+<p>This list-like structure allows non-tabular data to be stored by using a property called nesting: the value taken by a key can be a single value, a vector of values or another list-like object.</p>
+<p>This ability to create nested data structures has lead to this data format being used widely in a range of applications that require data transfer.</p>
+</div>
+<div id="inside-an-xml-file" class="section level4" number="3.3.2.5">
+<h4>
+<span class="header-section-number">3.3.2.5</span> Inside an XML file<a class="anchor" aria-label="anchor" href="#inside-an-xml-file"><i class="fas fa-link"></i></a>
+</h4>
+<p>XML files are another open source format for list-like data, where each record is represented by a collection of <code>key:value</code> pairs.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="workflows-naming.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?xml</span> version="1.0" encoding="UTF-8"<span class="kw">?&gt;</span></span>
+<span id="cb14-2"><a href="workflows-naming.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;root&gt;</span></span>
+<span id="cb14-3"><a href="workflows-naming.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;row&gt;</span></span>
+<span id="cb14-4"><a href="workflows-naming.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Name&gt;</span>A<span class="kw">&lt;/Name&gt;</span></span>
+<span id="cb14-5"><a href="workflows-naming.html#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Number&gt;</span>1<span class="kw">&lt;/Number&gt;</span></span>
+<span id="cb14-6"><a href="workflows-naming.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/row&gt;</span></span>
+<span id="cb14-7"><a href="workflows-naming.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;row&gt;</span></span>
+<span id="cb14-8"><a href="workflows-naming.html#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Name&gt;</span>B<span class="kw">&lt;/Name&gt;</span></span>
+<span id="cb14-9"><a href="workflows-naming.html#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Number&gt;</span>2<span class="kw">&lt;/Number&gt;</span></span>
+<span id="cb14-10"><a href="workflows-naming.html#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/row&gt;</span></span>
+<span id="cb14-11"><a href="workflows-naming.html#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;row&gt;</span></span>
+<span id="cb14-12"><a href="workflows-naming.html#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Name&gt;</span>C<span class="kw">&lt;/Name&gt;</span></span>
+<span id="cb14-13"><a href="workflows-naming.html#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;Number&gt;</span>3<span class="kw">&lt;/Number&gt;</span></span>
+<span id="cb14-14"><a href="workflows-naming.html#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/row&gt;</span></span>
+<span id="cb14-15"><a href="workflows-naming.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/root&gt;</span></span></code></pre></div>
+<p>The difference from a JSON file is mainly in how those records are formatted within the file. In a JSON file this is designed to look like objects in the Java Script programming language and in XML the formatting is done to look like html, the markup language used to write websites.</p>
+</div>
+</div>
+<div id="a-note-on-notebooks" class="section level3" number="3.3.3">
+<h3>
+<span class="header-section-number">3.3.3</span> A Note on Notebooks<a class="anchor" aria-label="anchor" href="#a-note-on-notebooks"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>Name contains information on content. ( untitled31.R, finalreportV8.docx, temp.txt)</li>
-<li>connects to a concept of a slug from URLs</li>
-<li>Which set of filenames do you want at 3am before a deadline?</li>
+<li><p>There are two and a half notebook formats that you are likely to use to: <br><code>.rmd</code> (alternatively <code>.qmd</code>) and <code>.ipynb</code>.</p></li>
+<li><p>R markdown documents <code>.rmd</code> are plain text files, so are very human friendly.</p></li>
+<li><p><strong><em>JuPy</em></strong>te<strong><em>R</em></strong> notebooks have multi-language support but are not so human friendly (JSON in disguise).</p></li>
+<li><p>Quarto documents offer the best of both worlds and more extensive language support. Not yet as established as a format.</p></li>
 </ul>
-</li>
-<li>
-<p>Default order friendly</p>
+<p>In addition to the files you read and write, the files that you code in will largely determine your workflow.</p>
+<p>There are three main options for the way that you code: first is typing it directly at the command line, second is using a text editor or IDE to write scripts and third is writing a notebook that mixes code. text and output together in a single document.</p>
+<p>We’ll compare these methods of working on the next slide, but first let’s do a quick review of what notebooks are available to you and why you might want to use them.</p>
+<p>As a data scientist, there are two and a half notebook formats that you’re likely to have met before. The first two are Rmarkdown files for those working predominantly in R and interactive python or jupyter notebooks for those working predominantly in python. The final half format are quarto markdown documents, which are relatively new and extend the functionality of Rmarkdown files.</p>
+<p>The main benefit of R markdown documents is that they’re plain text files, so they’re very human friendly. <strong><em>JuPy</em></strong>te<strong><em>R</em></strong> notebooks have the benefit of supporting code written in Julia, Python or R, but are not so human friendly - under the hood these documents are JSON files that should not be edited directly because a misplaced bracket will break them.</p>
+<p>Quarto documents offer the best of both worlds, with plain text formatting and even more extensive language support than jupyter notebooks. Quarto is a recent extension of Rmarkdown, which is rapidly becoming popular in the data science community.</p>
+<p>Each format has its benefits and drawbacks depending on the context in which they are used and all have some shared benefits and limitations by nature of them all being notebook documents.</p>
+</div>
+<div id="file-extensions-and-where-you-code" class="section level3" number="3.3.4">
+<h3>
+<span class="header-section-number">3.3.4</span> File Extensions and Where You Code<a class="anchor" aria-label="anchor" href="#file-extensions-and-where-you-code"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Property</th>
+<th align="center">Notebook</th>
+<th align="center">Script</th>
+<th align="center">Command Line</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>reproducible</td>
+<td align="center">~</td>
+<td align="center">✓</td>
+<td align="center">X</td>
+</tr>
+<tr class="even">
+<td>readable</td>
+<td align="center">~</td>
+<td align="center">✓</td>
+<td align="center">~</td>
+</tr>
+<tr class="odd">
+<td>self-documenting</td>
+<td align="center">✓</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr class="even">
+<td>in production</td>
+<td align="center">X</td>
+<td align="center">✓</td>
+<td align="center">~</td>
+</tr>
+<tr class="odd">
+<td>ordering / automation</td>
+<td align="center">~</td>
+<td align="center">✓</td>
+<td align="center">~</td>
+</tr>
+</tbody>
+</table></div>
+<p>The main benefit of notebook documents is that they are self-documenting, in that they can mix the documentation, code and report all into a single document. Notebooks also they provide a level of interactivity when coding that is not possible when working directly at the command line or using a text editor to write scripts. This second factor is easily overcome by using an integrated development environment when scripting.</p>
+<p>Writing code in .r files is not self-documenting but this separation of code, documentation and outputs has many other benefits. Firstly, the resulting scripts provide a reproducible and automatable workflow, unlike one-off lines of code being run at the command line. Secondly, using an IDE to write these provides you with syntax highlighting and code linting features to help you write readable and accurate code. Finally, the separation of code from documentation and output allows your work to be more easily or even directly put into production.</p>
+<p>In this course we will advocate for a scripting-first approach to data science, though notebooks and command line work definitely have their place.</p>
+<p>Notebooks are great as teaching and rapid development tools but have strong limitations with being put into production. Conversely, coding directly at the command line can leave no trace of your workflow and lead to an analysis that cannot be replicated in the future.</p>
+</div>
+<div id="summary" class="section level3" number="3.3.5">
+<h3>
+<span class="header-section-number">3.3.5</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, let’s wrap things up by summarising what we have learned about naming files.</p>
+<p>Before the dot we want to pick file names that machine readable, human friendly and play nicely with the default orderings provided to us.</p>
+<blockquote>
+<p><strong>Name files so that they are:</strong></p>
 <ul>
-<li>put something numeric first</li>
-<li>use ISO 8601 standard for dates: YYYY-MM-DD</li>
-<li>left pad with zeros to achieve chronological or logical order within each directory</li>
+<li>Machine Readable,</li>
+<li>Human Readable,</li>
+<li>Order Friendly.</li>
 </ul>
-</li>
-<li>
-<p>Summary:</p>
+</blockquote>
+<p>After the dot, we want to pick file types that are widely accessible, easily read by humans and allow for our entire analysis to be reproduced.</p>
+<blockquote>
+<p><strong>Use document types that are:</strong></p>
 <ul>
-<li>Machine readable, human readable, default order friendly</li>
-<li>Brushing teeth analogy: tedious until you get in the habit. Huge long-term rewards</li>
+<li>Widely accessible,</li>
+<li>Easy to read and reproduce,</li>
+<li>Appropriate for the task at hand.</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+</blockquote>
+<p>Above all we want to name our files and pick our file types to best match with the team we are working in and the task that we is at hand.</p>
+
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -159,7 +464,25 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#workflows-naming"><span class="header-section-number">3</span> Naming Files</a></li>
-<li><a class="nav-link" href="#naming-things"><span class="header-section-number">3.1</span> Naming things</a></li>
+<li><a class="nav-link" href="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+<li>
+<a class="nav-link" href="#naming-files"><span class="header-section-number">3.2</span> Naming Files</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-do-we-want-from-our-file-names"><span class="header-section-number">3.2.1</span> What do we want from our file names?</a></li>
+<li><a class="nav-link" href="#machine-readable"><span class="header-section-number">3.2.2</span> Machine Readable</a></li>
+<li><a class="nav-link" href="#order-friendly"><span class="header-section-number">3.2.3</span> Order Friendly</a></li>
+<li><a class="nav-link" href="#human-readable"><span class="header-section-number">3.2.4</span> Human Readable</a></li>
+<li><a class="nav-link" href="#naming-files---summary"><span class="header-section-number">3.2.5</span> Naming Files - Summary</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#file-extensions-and-where-you-work"><span class="header-section-number">3.3</span> File Extensions and Where You Work</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#open-source-vs-proprietary-file-types"><span class="header-section-number">3.3.1</span> Open Source vs Proprietary File Types</a></li>
+<li><a class="nav-link" href="#inside-data-files"><span class="header-section-number">3.3.2</span> Inside Data Files</a></li>
+<li><a class="nav-link" href="#a-note-on-notebooks"><span class="header-section-number">3.3.3</span> A Note on Notebooks</a></li>
+<li><a class="nav-link" href="#file-extensions-and-where-you-code"><span class="header-section-number">3.3.4</span> File Extensions and Where You Code</a></li>
+<li><a class="nav-link" href="#summary"><span class="header-section-number">3.3.5</span> Summary</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">

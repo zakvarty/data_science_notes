@@ -1,3 +1,6 @@
+<!-- Placeholder section to be added for 20223/24 cohort -->
+
+<!-- 
 # Project Management {#workflows-project-management}
 
 ```{r, results='asis', echo=FALSE}
@@ -12,3 +15,4 @@ status("drafting")
   - scoping projects, (rememberer how we said all code for a single project should live in a single directory?)
   - continuous development, agile + jira ?
   - Linking to github (extension)
+-->

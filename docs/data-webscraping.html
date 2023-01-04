@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 Web Scraping | Effective Data Science</title>
+<title>Chapter 6 Web Scraping | Effective Data Science</title>
 <meta name="author" content="Zak Varty">
 <meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
-<meta property="og:title" content="Chapter 7 Web Scraping | Effective Data Science">
+<meta property="og:title" content="Chapter 6 Web Scraping | Effective Data Science">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://eds-book.zakvarty.com/data-webscraping.html">
 <meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 7 Web Scraping | Effective Data Science">
+<meta name="twitter:title" content="Chapter 6 Web Scraping | Effective Data Science">
 <meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,34 +52,33 @@
 <li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
 <li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
 <li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
-<li><a class="" href="workflows-project-management.html"><span class="header-section-number">5</span> Project Management</a></li>
 <li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
 <li class="book-part">Aquiring and Sharing Data</li>
 <li><a class="" href="data-introduction.html">Introduction</a></li>
-<li><a class="" href="data-tabular.html"><span class="header-section-number">6</span> Tabular Data</a></li>
-<li><a class="active" href="data-webscraping.html"><span class="header-section-number">7</span> Web Scraping</a></li>
-<li><a class="" href="data-apis.html"><span class="header-section-number">8</span> APIs</a></li>
-<li><a class="" href="data-sql.html"><span class="header-section-number">9</span> SQL</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></li>
+<li><a class="active" href="data-webscraping.html"><span class="header-section-number">6</span> Web Scraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">7</span> APIs</a></li>
+<li><a class="" href="data-sql.html"><span class="header-section-number">8</span> SQL</a></li>
 <li><a class="" href="data-checklist.html">Checklist</a></li>
 <li class="book-part">Data Exploration and Visualisation</li>
 <li><a class="" href="edav-introduction.html">Introduction</a></li>
-<li><a class="" href="edav-cleaning.html"><span class="header-section-number">11</span> Data Cleaning</a></li>
-<li><a class="" href="edav-analysis.html"><span class="header-section-number">12</span> Exploratory Data Analysis</a></li>
-<li><a class="" href="edav-visualisation.html"><span class="header-section-number">13</span> Data Visualisation</a></li>
+<li><a class="" href="edav-cleaning.html"><span class="header-section-number">10</span> Data Cleaning</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">11</span> Exploratory Data Analysis</a></li>
+<li><a class="" href="edav-visualisation.html"><span class="header-section-number">12</span> Data Visualisation</a></li>
 <li><a class="" href="edav-checklist.html">Checklist</a></li>
 <li class="book-part">Preparing for Production</li>
 <li><a class="" href="production-introduction.html">Introduction</a></li>
-<li><a class="" href="production-reproducibility.html"><span class="header-section-number">14</span> Reproducibility</a></li>
-<li><a class="" href="production-explainability.html"><span class="header-section-number">15</span> Explainability</a></li>
-<li><a class="" href="production-scalability.html"><span class="header-section-number">16</span> Scalability</a></li>
+<li><a class="" href="production-reproducibility.html"><span class="header-section-number">13</span> Reproducibility</a></li>
+<li><a class="" href="production-explainability.html"><span class="header-section-number">14</span> Explainability</a></li>
+<li><a class="" href="production-scalability.html"><span class="header-section-number">15</span> Scalability</a></li>
 <li><a class="" href="production-checklist.html">Checklist</a></li>
 <li class="book-part">Data Science Ethics</li>
 <li><a class="" href="ethics-introduction.html">Introduction</a></li>
-<li><a class="" href="ethics-privacy.html"><span class="header-section-number">18</span> Privacy</a></li>
-<li><a class="" href="ethics-fairness.html"><span class="header-section-number">19</span> Fairness</a></li>
-<li><a class="" href="ethics-conduct.html"><span class="header-section-number">20</span> Codes of Conduct</a></li>
+<li><a class="" href="ethics-privacy.html"><span class="header-section-number">17</span> Privacy</a></li>
+<li><a class="" href="ethics-fairness.html"><span class="header-section-number">18</span> Fairness</a></li>
+<li><a class="" href="ethics-conduct.html"><span class="header-section-number">19</span> Codes of Conduct</a></li>
 <li><a class="" href="ethics-checklist.html">Checklist</a></li>
-<li><a class="" href="reading-list.html"><span class="header-section-number">21</span> Reading List</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">20</span> Reading List</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -88,17 +87,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-webscraping" class="section level1" number="7">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-webscraping" class="section level1" number="6">
 <h1>
-<span class="header-section-number">7</span> Web Scraping<a class="anchor" aria-label="anchor" href="#data-webscraping"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Web Scraping<a class="anchor" aria-label="anchor" href="#data-webscraping"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdnote">
 <p>Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.</p>
 <p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
 </div>
-<div id="scraping-webpage-data-using-rvest" class="section level2" number="7.1">
+<div id="scraping-webpage-data-using-rvest" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">7.1</span> Scraping webpage data using {rvest}<a class="anchor" aria-label="anchor" href="#scraping-webpage-data-using-rvest"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Scraping webpage data using {rvest}<a class="anchor" aria-label="anchor" href="#scraping-webpage-data-using-rvest"><i class="fas fa-link"></i></a>
 </h2>
 <div class="small_right">
 <div class="inline-figure"><img style="border-radius: 10%;" src="images/202-data-webscraping/rvest-logo.png" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."></div>
@@ -108,32 +107,32 @@
 <p>This might be information from a webpage that you gather yourself, or data shared with you by a collaborator using an API.</p>
 <p>In this chapter we will cover the basics of scraping webpages, following the <a href="https://cran.r-project.org/web/packages/rvest/vignettes/rvest.html#fnref3">vignette</a> for the {rvest} package.</p>
 </div>
-<div id="what-is-a-webpage" class="section level2" number="7.2">
+<div id="what-is-a-webpage" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">7.2</span> What is a webpage?<a class="anchor" aria-label="anchor" href="#what-is-a-webpage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> What is a webpage?<a class="anchor" aria-label="anchor" href="#what-is-a-webpage"><i class="fas fa-link"></i></a>
 </h2>
 <p>Before we can even hope to get data from a webpage, we first need to understand <em>what</em> a webpage is.</p>
 <p>Webpages are written in a similar way to LaTeX: the content and styling of webpages are handled separately and are coded using plain text files.</p>
 <p>In fact, websites go one step further than LaTeX. The content and styling of websites are written in different files and in different languages. HTML (HyperText Markup Language) is used to write the content and then CSS (Cascading Style Sheets) are used to control the appearance of that content when it’s displayed to the user.</p>
 </div>
-<div id="html" class="section level2" number="7.3">
+<div id="html" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">7.3</span> HTML<a class="anchor" aria-label="anchor" href="#html"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> HTML<a class="anchor" aria-label="anchor" href="#html"><i class="fas fa-link"></i></a>
 </h2>
 <p>A basic HTML page with no styling applied might look something like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="data-webscraping.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb4-2"><a href="data-webscraping.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb4-3"><a href="data-webscraping.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;title&gt;</span>Page title<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb4-4"><a href="data-webscraping.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
-<span id="cb4-5"><a href="data-webscraping.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb4-6"><a href="data-webscraping.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h1</span> <span class="er">id</span><span class="ot">=</span><span class="st">'first'</span><span class="kw">&gt;</span>A level 1 heading<span class="kw">&lt;/h1&gt;</span></span>
-<span id="cb4-7"><a href="data-webscraping.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Hello World!<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb4-8"><a href="data-webscraping.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Here is some plain text <span class="dv">&amp;amp;</span> <span class="kw">&lt;b&gt;</span>some bold text.<span class="kw">&lt;/b&gt;&lt;/p&gt;</span></span>
-<span id="cb4-9"><a href="data-webscraping.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">'myimg.png'</span> <span class="er">width</span><span class="ot">=</span><span class="st">'100'</span> <span class="er">height</span><span class="ot">=</span><span class="st">'100'</span><span class="kw">&gt;</span></span>
-<span id="cb4-10"><a href="data-webscraping.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
-<div id="html-elements" class="section level3" number="7.3.1">
+<div class="sourceCode" id="cb18"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="data-webscraping.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb18-2"><a href="data-webscraping.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb18-3"><a href="data-webscraping.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;title&gt;</span>Page title<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb18-4"><a href="data-webscraping.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb18-5"><a href="data-webscraping.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb18-6"><a href="data-webscraping.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h1</span> <span class="er">id</span><span class="ot">=</span><span class="st">'first'</span><span class="kw">&gt;</span>A level 1 heading<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb18-7"><a href="data-webscraping.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Hello World!<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb18-8"><a href="data-webscraping.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Here is some plain text <span class="dv">&amp;amp;</span> <span class="kw">&lt;b&gt;</span>some bold text.<span class="kw">&lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb18-9"><a href="data-webscraping.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">'myimg.png'</span> <span class="er">width</span><span class="ot">=</span><span class="st">'100'</span> <span class="er">height</span><span class="ot">=</span><span class="st">'100'</span><span class="kw">&gt;</span></span>
+<span id="cb18-10"><a href="data-webscraping.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
+<div id="html-elements" class="section level3" number="6.3.1">
 <h3>
-<span class="header-section-number">7.3.1</span> HTML elements<a class="anchor" aria-label="anchor" href="#html-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.1</span> HTML elements<a class="anchor" aria-label="anchor" href="#html-elements"><i class="fas fa-link"></i></a>
 </h3>
 <!-- for presentation 
 ```{.html}
@@ -156,9 +155,9 @@
 <p>You can write greater than <code>&amp;gt;</code> and less than as <code>&amp;lt;</code>. You might notice that those escapes use an ampersand (&amp;). This means that if you want a literal ampersand on your webpage, you have to escape too using <code>&amp;amp;</code>.</p>
 <p>There are a wide range of possible HTML tags and escapes. We’ll cover the most common tags in this lecture and you don’t need to worry about escapes too much because <a href="https://rvest.tidyverse.org/">rvest</a> will automatically handle them for you.</p>
 </div>
-<div id="important-html-elements" class="section level3" number="7.3.2">
+<div id="important-html-elements" class="section level3" number="6.3.2">
 <h3>
-<span class="header-section-number">7.3.2</span> Important HTML Elements<a class="anchor" aria-label="anchor" href="#important-html-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2</span> Important HTML Elements<a class="anchor" aria-label="anchor" href="#important-html-elements"><i class="fas fa-link"></i></a>
 </h3>
 <p>In all, there are in excess of 100 HTML elements. The most important ones for you to know about are:</p>
 <ul>
@@ -169,17 +168,17 @@
 <p>When you come across a tag that you’ve never seen before, you can find out what it does with just a little bit of googling. A good resource here is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs</a> which are produced by Mozilla, the company that makes the Firefox web browser. The <a href="https://www.w3schools.com/html/default.asp">W3schools website</a> is another great resource for web development and coding resources more generally.</p>
 </div>
 </div>
-<div id="html-attributes" class="section level2" number="7.4">
+<div id="html-attributes" class="section level2" number="6.4">
 <h2>
-<span class="header-section-number">7.4</span> HTML Attributes<a class="anchor" aria-label="anchor" href="#html-attributes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.4</span> HTML Attributes<a class="anchor" aria-label="anchor" href="#html-attributes"><i class="fas fa-link"></i></a>
 </h2>
 <p>We’ve seen one example of a header with an additional attribute. More generally, all tags can have named attributes. These attributes are contained within the opening tag and look something like:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="data-webscraping.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;tag</span> <span class="er">attribute1</span><span class="ot">=</span><span class="st">'value1'</span> <span class="er">attribute2</span><span class="ot">=</span><span class="st">'value2'</span><span class="kw">&gt;</span>element contents<span class="kw">&lt;/tag&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="data-webscraping.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;tag</span> <span class="er">attribute1</span><span class="ot">=</span><span class="st">'value1'</span> <span class="er">attribute2</span><span class="ot">=</span><span class="st">'value2'</span><span class="kw">&gt;</span>element contents<span class="kw">&lt;/tag&gt;</span></span></code></pre></div>
 <p>Two of the most important attributes are <code>id</code> and <code>class</code>. These attributes are used in conjunction with the CSS file to control the visual appearance of the page. These are often very useful to identify the elements that you are interested in when scraping data off a page.</p>
 </div>
-<div id="css-selectors" class="section level2" number="7.5">
+<div id="css-selectors" class="section level2" number="6.5">
 <h2>
-<span class="header-section-number">7.5</span> CSS Selectors<a class="anchor" aria-label="anchor" href="#css-selectors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> CSS Selectors<a class="anchor" aria-label="anchor" href="#css-selectors"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Cascading Style Sheet is used to describe how your HTML content will be displayed. To do this, CSS has it’s own system for selecting elements of a webpage, called CSS selectors.</p>
 <p>CSS selectors define patterns for locating the HTML elements that a particular style should be applied to. A happy side-effect of this is that they can sometimes be very useful for scraping, because they provide a concise way of describing which elements you want to extract.</p>
@@ -193,9 +192,9 @@
 <p>When you want to select a single element <code>id</code> attributes are particularly useful because that <em>must</em> be unique within a html document. Unfortunately, this is only helpful if the developer added an <code>id</code> attribute to the element(s) you want to scrape!</p>
 <p>If you want to learn more CSS selectors I recommend starting with the fun <a href="https://flukeout.github.io/">CSS dinner tutorial</a> to build a base of knowledge and then using the <a href="https://www.w3schools.com/css/default.asp">W3schools resources</a> as a reference to explore more webpages in the wild.</p>
 </div>
-<div id="which-attributes-and-selectors-do-you-need" class="section level2" number="7.6">
+<div id="which-attributes-and-selectors-do-you-need" class="section level2" number="6.6">
 <h2>
-<span class="header-section-number">7.6</span> Which Attributes and Selectors Do You Need?<a class="anchor" aria-label="anchor" href="#which-attributes-and-selectors-do-you-need"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.6</span> Which Attributes and Selectors Do You Need?<a class="anchor" aria-label="anchor" href="#which-attributes-and-selectors-do-you-need"><i class="fas fa-link"></i></a>
 </h2>
 <p>To scrape data from a webpage, you first have to identify the tag and attribute combinations that you are interested in gathering.</p>
 <p>To find your elements of interest, you have three options. These go from hardest to easiest but also from most to least robust.</p>
@@ -206,19 +205,19 @@
 </ul>
 <p>Inspecting the source of some familiar websites can be a useful way to get your head around these concepts. Beware though that sophisticated webpages can be quite intimidating. A good place to start is with simpler, static websites such as personal websites, rather than the dynamic webpages of online retailers or social media platforms.</p>
 </div>
-<div id="reading-html-with-rvest" class="section level2" number="7.7">
+<div id="reading-html-with-rvest" class="section level2" number="6.7">
 <h2>
-<span class="header-section-number">7.7</span> Reading HTML with <code>{rvest}</code><a class="anchor" aria-label="anchor" href="#reading-html-with-rvest"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7</span> Reading HTML with <code>{rvest}</code><a class="anchor" aria-label="anchor" href="#reading-html-with-rvest"><i class="fas fa-link"></i></a>
 </h2>
 <p>With <a href="https://rvest.tidyverse.org/">rvest</a>, reading a html page can be as simple as loading in tabular data.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu">rvest</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://www.zakvarty.com/professional/teaching.html"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>class</code> of the resulting object is an <code>xml_document</code>. This type of object is from the low-level package <a href="https://xml2.r-lib.org/">xml2</a>, which allows you to read xml files into R.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">html</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "xml_document" "xml_node"</span></span></code></pre></div>
 <p>We can see that this object is split into several components: first is some metadata on the type of document we have scraped, followed by the head and then the body of that html document.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span></span>
 <span><span class="co">#&gt; {html_document}</span></span>
 <span><span class="co">#&gt; &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"&gt;</span></span>
@@ -226,12 +225,12 @@
 <span><span class="co">#&gt; [2] &lt;body class="nav-fixed"&gt;\n\n&lt;div id="quarto-search-results"&gt;&lt;/div&gt;\n   ...</span></span></code></pre></div>
 <p>We have several possible approaches to extracting information from this document.</p>
 </div>
-<div id="extracting-html-elements" class="section level2" number="7.8">
+<div id="extracting-html-elements" class="section level2" number="6.8">
 <h2>
-<span class="header-section-number">7.8</span> Extracting HTML elements<a class="anchor" aria-label="anchor" href="#extracting-html-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.8</span> Extracting HTML elements<a class="anchor" aria-label="anchor" href="#extracting-html-elements"><i class="fas fa-link"></i></a>
 </h2>
 <p>In <a href="https://rvest.tidyverse.org/">rvest</a> you can extract a single element with <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code>, or all matching elements with <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code>. Both functions take a document object and one or more CSS selectors as inputs.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"h1"</span><span class="op">)</span></span>
@@ -246,25 +245,25 @@
 <span><span class="co">#&gt; [1] &lt;p&gt;I am fortunate to have had the opportunity to teach in a variety of ...</span></span>
 <span><span class="co">#&gt; [2] &lt;p&gt;I am an associate fellow of the Higher Education Academy, which you ...</span></span></code></pre></div>
 <p>You can also combine and nest these selectors. For example you might want to extract all links that are within paragraphs <em>and</em> all second level headers.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p a,h2"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (3)}</span></span>
 <span><span class="co">#&gt; [1] &lt;h2 id="toc-title"&gt;On this page&lt;/h2&gt;</span></span>
 <span><span class="co">#&gt; [2] &lt;a href="https://www.advance-he.ac.uk/fellowship/associate-fellowship" ...</span></span>
 <span><span class="co">#&gt; [3] &lt;h2 class="anchored" data-anchor-id="course-history"&gt;Course History&lt;/h2&gt;</span></span></code></pre></div>
 </div>
-<div id="extracting-data-from-html-elements" class="section level2" number="7.9">
+<div id="extracting-data-from-html-elements" class="section level2" number="6.9">
 <h2>
-<span class="header-section-number">7.9</span> Extracting Data From HTML Elements<a class="anchor" aria-label="anchor" href="#extracting-data-from-html-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.9</span> Extracting Data From HTML Elements<a class="anchor" aria-label="anchor" href="#extracting-data-from-html-elements"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we’ve got the elements we care about extracted from the complete document. But how do we get the data we need out of those elements?</p>
 <p>You’ll usually get the data from either the contents of the HTML element or else from one of it’s attributes. If you’re really lucky, the data you need will already be formatted for you as a HTML table or list.</p>
-<div id="extracting-text" class="section level3" number="7.9.1">
+<div id="extracting-text" class="section level3" number="6.9.1">
 <h3>
-<span class="header-section-number">7.9.1</span> Extracting text<a class="anchor" aria-label="anchor" href="#extracting-text"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.9.1</span> Extracting text<a class="anchor" aria-label="anchor" href="#extracting-text"><i class="fas fa-link"></i></a>
 </h3>
 <p>The functions <code><a href="https://rvest.tidyverse.org/reference/html_text.html">rvest::html_text()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_text.html">rvest::html_text2()</a></code> can be used to extract the plain text contents of an HTML element.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"#teaching li"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -275,28 +274,28 @@
 <span><span class="co">#&gt; [5] "developing and lecturing postgraduate modules in statistics and data science."</span></span></code></pre></div>
 <p>The difference between <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> is in how they handle whitespace. In HTML whitespace and line breaks have very little influence over how the code is interpreted by the computer (this is similar to R but very different from Python). <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code> will extract the text as it is in the raw html, while <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> will do its best to extract the text in a way that gives you something similar to what you’d see in the browser.</p>
 </div>
-<div id="extracting-attributes" class="section level3" number="7.9.2">
+<div id="extracting-attributes" class="section level3" number="6.9.2">
 <h3>
-<span class="header-section-number">7.9.2</span> Extracting Attributes<a class="anchor" aria-label="anchor" href="#extracting-attributes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.9.2</span> Extracting Attributes<a class="anchor" aria-label="anchor" href="#extracting-attributes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Attributes are also used to record information that you might like to collect. For example, the destination of links are stored in the <code>href</code> attribute and the source of images is stored in the <code>src</code> attribute.</p>
 <p>As an example of this, consider trying to extract the twitter link from the icon in the page footer. This is quite tricky to locate in the html source, so I used the <a href="https://rvest.tidyverse.org/articles/selectorgadget.html">Selector Gadget</a> to help find the correct combination of elements.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".compact:nth-child(1) .nav-link"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {html_node}</span></span>
 <span><span class="co">#&gt; &lt;a class="nav-link" href="https://www.twitter.com/zakvarty"&gt;</span></span>
 <span><span class="co">#&gt; [1] &lt;i class="bi bi-twitter" role="img"&gt;\n&lt;/i&gt;</span></span></code></pre></div>
 <p>To extract the <code>href</code> attribute from the scraped element, we use the <code><a href="https://rvest.tidyverse.org/reference/html_attr.html">rvest::html_attr()</a></code> function.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">".compact:nth-child(1) .nav-link"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "https://www.twitter.com/zakvarty"</span></span></code></pre></div>
 <p><strong>Note:</strong> <code><a href="https://rvest.tidyverse.org/reference/html_attr.html">rvest::html_attr()</a></code> will always return a character string (or list of character strings). If you are extracting an attribute that describes a quantity, such as the width of an image, you’ll need to convert this from a string to your required data type. For example, of the width is measures in pixels you might use <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>.</p>
 </div>
-<div id="extracting-tables" class="section level3" number="7.9.3">
+<div id="extracting-tables" class="section level3" number="6.9.3">
 <h3>
-<span class="header-section-number">7.9.3</span> Extracting tables<a class="anchor" aria-label="anchor" href="#extracting-tables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.9.3</span> Extracting tables<a class="anchor" aria-label="anchor" href="#extracting-tables"><i class="fas fa-link"></i></a>
 </h3>
 <p>HTML tables are composed in a similar, nested manner to LaTeX tables.</p>
 <p>There are four main elements to know about that make up an HTML table:</p>
@@ -311,7 +310,7 @@
 <code>&lt;td&gt;</code> (table data).</li>
 </ul>
 <p>Here’s our simple example data, formatted as an HTML table:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">  &lt;table&gt;</span></span>
 <span><span class="st">    &lt;tr&gt;</span></span>
@@ -333,7 +332,7 @@
 <span><span class="st">  &lt;/table&gt;</span></span>
 <span><span class="st">  "</span><span class="op">)</span></span></code></pre></div>
 <p>Since tables are a common way to store data, <a href="https://rvest.tidyverse.org/">rvest</a> includes a useful function <code><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table()</a></code> that converts directly from an HTML table into a tibble.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -344,7 +343,7 @@
 <span><span class="co">#&gt; 2 B          2</span></span>
 <span><span class="co">#&gt; 3 C          3</span></span></code></pre></div>
 <p>Applying this to our real scraped data we can easily extract the table of taught courses.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -360,9 +359,9 @@
 <span><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
 </div>
 </div>
-<div id="tip-for-building-tibbles" class="section level2" number="7.10">
+<div id="tip-for-building-tibbles" class="section level2" number="6.10">
 <h2>
-<span class="header-section-number">7.10</span> Tip for Building Tibbles<a class="anchor" aria-label="anchor" href="#tip-for-building-tibbles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10</span> Tip for Building Tibbles<a class="anchor" aria-label="anchor" href="#tip-for-building-tibbles"><i class="fas fa-link"></i></a>
 </h2>
 <p>When scraping data from a webpage, your end-goal is typically going to be constructing a data.frame or a tibble.</p>
 <p>If you are following our description of tidy data, you’ll want each row to correspond some repeated unit on the HTML page. In this case, you should</p>
@@ -372,7 +371,7 @@
 </ol>
 <p>Taking this approach guarantees that you’ll get the same number of values for each variable, because <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> always returns the same number of outputs as inputs. This is vital when you have missing data - when not every observation unit has a value for every variable of interest.</p>
 <p>As an example, consider this extract of text about the <a href="https://dplyr.tidyverse.org/reference/starwars.html#ref-examples">starwars dataset</a>.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">starwars_html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">  &lt;ul&gt;</span></span>
 <span><span class="st">    &lt;li&gt;&lt;b&gt;C-3PO&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class='weight'&gt;167 kg&lt;/span&gt;&lt;/li&gt;</span></span>
@@ -383,7 +382,7 @@
 <span><span class="st">  "</span><span class="op">)</span></span></code></pre></div>
 <p>This is an unordered list where each list item corresponds to one observational unit (one character from the starwars universe). The name of the character is given in bold, the character species is specified in italics and the weight of the character is denoted by the <code>.weight</code> class. However, some characters have only a subset of these variables defined: for example Yoda has no species entry.</p>
 <p>If we try to extract each element directly, our vectors of variable values are of different lengths. We don’t know where the missing values should be, so we can’t line them back up to make a tibble.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">starwars_html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "C-3PO"  "R2-D2"  "Yoda"   "R4-P17"</span></span>
 <span><span class="va">starwars_html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -391,7 +390,7 @@
 <span><span class="va">starwars_html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "167 kg" "96 kg"  "66 kg"</span></span></code></pre></div>
 <p>What we should do instead is start by extracting all of the list item elements using <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code>. Once we have done this, we can then use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> to extract each variable for all characters. This will pad with NAs, so that we can collate them into a tibble.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">starwars_characters</span> <span class="op">&lt;-</span> <span class="va">starwars_html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"li"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">starwars_characters</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -400,7 +399,7 @@
 <span><span class="co">#&gt; [1] "droid" "droid" NA      "droid"</span></span>
 <span><span class="va">starwars_characters</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "167 kg" "96 kg"  "66 kg"  NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  name <span class="op">=</span> <span class="va">starwars_characters</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  species <span class="op">=</span> <span class="va">starwars_characters</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"i"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -417,33 +416,33 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="data-tabular.html"><span class="header-section-number">6</span> Tabular Data</a></div>
-<div class="next"><a href="data-apis.html"><span class="header-section-number">8</span> APIs</a></div>
+<div class="prev"><a href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></div>
+<div class="next"><a href="data-apis.html"><span class="header-section-number">7</span> APIs</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-webscraping"><span class="header-section-number">7</span> Web Scraping</a></li>
-<li><a class="nav-link" href="#scraping-webpage-data-using-rvest"><span class="header-section-number">7.1</span> Scraping webpage data using {rvest}</a></li>
-<li><a class="nav-link" href="#what-is-a-webpage"><span class="header-section-number">7.2</span> What is a webpage?</a></li>
+<li><a class="nav-link" href="#data-webscraping"><span class="header-section-number">6</span> Web Scraping</a></li>
+<li><a class="nav-link" href="#scraping-webpage-data-using-rvest"><span class="header-section-number">6.1</span> Scraping webpage data using {rvest}</a></li>
+<li><a class="nav-link" href="#what-is-a-webpage"><span class="header-section-number">6.2</span> What is a webpage?</a></li>
 <li>
-<a class="nav-link" href="#html"><span class="header-section-number">7.3</span> HTML</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#html-elements"><span class="header-section-number">7.3.1</span> HTML elements</a></li>
-<li><a class="nav-link" href="#important-html-elements"><span class="header-section-number">7.3.2</span> Important HTML Elements</a></li>
+<a class="nav-link" href="#html"><span class="header-section-number">6.3</span> HTML</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#html-elements"><span class="header-section-number">6.3.1</span> HTML elements</a></li>
+<li><a class="nav-link" href="#important-html-elements"><span class="header-section-number">6.3.2</span> Important HTML Elements</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#html-attributes"><span class="header-section-number">7.4</span> HTML Attributes</a></li>
-<li><a class="nav-link" href="#css-selectors"><span class="header-section-number">7.5</span> CSS Selectors</a></li>
-<li><a class="nav-link" href="#which-attributes-and-selectors-do-you-need"><span class="header-section-number">7.6</span> Which Attributes and Selectors Do You Need?</a></li>
-<li><a class="nav-link" href="#reading-html-with-rvest"><span class="header-section-number">7.7</span> Reading HTML with {rvest}</a></li>
-<li><a class="nav-link" href="#extracting-html-elements"><span class="header-section-number">7.8</span> Extracting HTML elements</a></li>
+<li><a class="nav-link" href="#html-attributes"><span class="header-section-number">6.4</span> HTML Attributes</a></li>
+<li><a class="nav-link" href="#css-selectors"><span class="header-section-number">6.5</span> CSS Selectors</a></li>
+<li><a class="nav-link" href="#which-attributes-and-selectors-do-you-need"><span class="header-section-number">6.6</span> Which Attributes and Selectors Do You Need?</a></li>
+<li><a class="nav-link" href="#reading-html-with-rvest"><span class="header-section-number">6.7</span> Reading HTML with {rvest}</a></li>
+<li><a class="nav-link" href="#extracting-html-elements"><span class="header-section-number">6.8</span> Extracting HTML elements</a></li>
 <li>
-<a class="nav-link" href="#extracting-data-from-html-elements"><span class="header-section-number">7.9</span> Extracting Data From HTML Elements</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#extracting-text"><span class="header-section-number">7.9.1</span> Extracting text</a></li>
-<li><a class="nav-link" href="#extracting-attributes"><span class="header-section-number">7.9.2</span> Extracting Attributes</a></li>
-<li><a class="nav-link" href="#extracting-tables"><span class="header-section-number">7.9.3</span> Extracting tables</a></li>
+<a class="nav-link" href="#extracting-data-from-html-elements"><span class="header-section-number">6.9</span> Extracting Data From HTML Elements</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#extracting-text"><span class="header-section-number">6.9.1</span> Extracting text</a></li>
+<li><a class="nav-link" href="#extracting-attributes"><span class="header-section-number">6.9.2</span> Extracting Attributes</a></li>
+<li><a class="nav-link" href="#extracting-tables"><span class="header-section-number">6.9.3</span> Extracting tables</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#tip-for-building-tibbles"><span class="header-section-number">7.10</span> Tip for Building Tibbles</a></li>
+<li><a class="nav-link" href="#tip-for-building-tibbles"><span class="header-section-number">6.10</span> Tip for Building Tibbles</a></li>
 </ul>
 
       <div class="book-extra">

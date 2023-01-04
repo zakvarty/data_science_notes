@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Data Visualisation | Effective Data Science</title>
+<title>Chapter 12 Data Visualisation | Effective Data Science</title>
 <meta name="author" content="Zak Varty">
 <meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Data Visualisation | Effective Data Science">
+<meta property="og:title" content="Chapter 12 Data Visualisation | Effective Data Science">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://eds-book.zakvarty.com/edav-visualisation.html">
 <meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Data Visualisation | Effective Data Science">
+<meta name="twitter:title" content="Chapter 12 Data Visualisation | Effective Data Science">
 <meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
 <meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,34 +52,33 @@
 <li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
 <li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
 <li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
-<li><a class="" href="workflows-project-management.html"><span class="header-section-number">5</span> Project Management</a></li>
 <li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
 <li class="book-part">Aquiring and Sharing Data</li>
 <li><a class="" href="data-introduction.html">Introduction</a></li>
-<li><a class="" href="data-tabular.html"><span class="header-section-number">6</span> Tabular Data</a></li>
-<li><a class="" href="data-webscraping.html"><span class="header-section-number">7</span> Web Scraping</a></li>
-<li><a class="" href="data-apis.html"><span class="header-section-number">8</span> APIs</a></li>
-<li><a class="" href="data-sql.html"><span class="header-section-number">9</span> SQL</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></li>
+<li><a class="" href="data-webscraping.html"><span class="header-section-number">6</span> Web Scraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">7</span> APIs</a></li>
+<li><a class="" href="data-sql.html"><span class="header-section-number">8</span> SQL</a></li>
 <li><a class="" href="data-checklist.html">Checklist</a></li>
 <li class="book-part">Data Exploration and Visualisation</li>
 <li><a class="" href="edav-introduction.html">Introduction</a></li>
-<li><a class="" href="edav-cleaning.html"><span class="header-section-number">11</span> Data Cleaning</a></li>
-<li><a class="" href="edav-analysis.html"><span class="header-section-number">12</span> Exploratory Data Analysis</a></li>
-<li><a class="active" href="edav-visualisation.html"><span class="header-section-number">13</span> Data Visualisation</a></li>
+<li><a class="" href="edav-cleaning.html"><span class="header-section-number">10</span> Data Cleaning</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">11</span> Exploratory Data Analysis</a></li>
+<li><a class="active" href="edav-visualisation.html"><span class="header-section-number">12</span> Data Visualisation</a></li>
 <li><a class="" href="edav-checklist.html">Checklist</a></li>
 <li class="book-part">Preparing for Production</li>
 <li><a class="" href="production-introduction.html">Introduction</a></li>
-<li><a class="" href="production-reproducibility.html"><span class="header-section-number">14</span> Reproducibility</a></li>
-<li><a class="" href="production-explainability.html"><span class="header-section-number">15</span> Explainability</a></li>
-<li><a class="" href="production-scalability.html"><span class="header-section-number">16</span> Scalability</a></li>
+<li><a class="" href="production-reproducibility.html"><span class="header-section-number">13</span> Reproducibility</a></li>
+<li><a class="" href="production-explainability.html"><span class="header-section-number">14</span> Explainability</a></li>
+<li><a class="" href="production-scalability.html"><span class="header-section-number">15</span> Scalability</a></li>
 <li><a class="" href="production-checklist.html">Checklist</a></li>
 <li class="book-part">Data Science Ethics</li>
 <li><a class="" href="ethics-introduction.html">Introduction</a></li>
-<li><a class="" href="ethics-privacy.html"><span class="header-section-number">18</span> Privacy</a></li>
-<li><a class="" href="ethics-fairness.html"><span class="header-section-number">19</span> Fairness</a></li>
-<li><a class="" href="ethics-conduct.html"><span class="header-section-number">20</span> Codes of Conduct</a></li>
+<li><a class="" href="ethics-privacy.html"><span class="header-section-number">17</span> Privacy</a></li>
+<li><a class="" href="ethics-fairness.html"><span class="header-section-number">18</span> Fairness</a></li>
+<li><a class="" href="ethics-conduct.html"><span class="header-section-number">19</span> Codes of Conduct</a></li>
 <li><a class="" href="ethics-checklist.html">Checklist</a></li>
-<li><a class="" href="reading-list.html"><span class="header-section-number">21</span> Reading List</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">20</span> Reading List</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -88,9 +87,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="edav-visualisation" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="edav-visualisation" class="section level1" number="12">
 <h1>
-<span class="header-section-number">13</span> Data Visualisation<a class="anchor" aria-label="anchor" href="#edav-visualisation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Data Visualisation<a class="anchor" aria-label="anchor" href="#edav-visualisation"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdimportant">
 <p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
@@ -99,11 +98,11 @@
 
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="edav-analysis.html"><span class="header-section-number">12</span> Exploratory Data Analysis</a></div>
+<div class="prev"><a href="edav-analysis.html"><span class="header-section-number">11</span> Exploratory Data Analysis</a></div>
 <div class="next"><a href="edav-checklist.html">Checklist</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#edav-visualisation"><span class="header-section-number">13</span> Data Visualisation</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#edav-visualisation"><span class="header-section-number">12</span> Data Visualisation</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

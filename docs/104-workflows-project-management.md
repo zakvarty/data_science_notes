@@ -1,3 +1,4 @@
+<!-- 
 # Project Management {#workflows-project-management}
 
 
@@ -14,3 +15,4 @@ If you would like to contribute to the development of EDS, you may do so at <htt
   - scoping projects, (rememberer how we said all code for a single project should live in a single directory?)
   - continuous development, agile + jira ?
   - Linking to github (extension)
+-->
