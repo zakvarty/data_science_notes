@@ -16,7 +16,7 @@ This reading list is organised by topic, according to each week of the course. T
 - **Materials of Interest:** These will not form a core part of the course, but will give you a deeper understanding or interesting perspective on the weekly topic. There might be some fun other stuff in here too.
 
 
-## Effective Data Science Workflows 
+## Effective Data Science Workflows {#workflows-reading}
 
 ### Core Materials {.unnumbered}
 
@@ -92,7 +92,7 @@ This reading list is organised by topic, according to each week of the course. T
 - [Wickham (2014)](https://vita.had.co.nz/papers/tidy-data.html). Tidy Data. Journal of Statistical Software. The paper that brought tidy data to the mainstream.
 
 
-### Reference Materials 
+### Reference Materials {.unnumbered}
 
 - The {readr} [documentation](https://readr.tidyverse.org/)
 
@@ -104,7 +104,7 @@ This reading list is organised by topic, according to each week of the course. T
 
 - MDN Web Docs on [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) and [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 
 
-### Data - Materials of Interest
+### Materials of Interest {.unnumbered}
 
 - [Introduction to APIs](https://zapier.com/learn/apis/chapter-1-introduction-to-apis/) by Brian Cooksey 
 - [R for Data Science (Second Edition)](https://r4ds.hadley.nz/) Chapters within the [Import](https://r4ds.hadley.nz/import.html) section. 
@@ -112,9 +112,9 @@ This reading list is organised by topic, according to each week of the course. T
 This covers importing data from spreadsheets, databases, using Apache Arrow and importing hierarchical data as well as web scraping.  
 
 
-## Week 3: Data Exploration and Visualisation 
+## Data Exploration and Visualisation 
 
-### Core Materials 
+### Core Materials {.unnumbered}
 
 - [Exploratory Data Analysis with R](https://bookdown.org/rdpeng/exdata/) by Roger Peng.
 

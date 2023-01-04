@@ -52,7 +52,7 @@
 <li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
 <li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
 <li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
-<li><a class="" href="workflows-checklist.html">Workflows: Checklist</a></li>
+<li><a class="" href="workflows-checklist.html">Checklist</a></li>
 <li class="book-part">Aquiring and Sharing Data</li>
 <li><a class="" href="data-introduction.html">Introduction</a></li>
 <li><a class="" href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></li>
@@ -261,7 +261,7 @@
 <ol style="list-style-type: decimal">
 <li>Install and load <code>{geonames}</code> from CRAN</li>
 </ol>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("geonames")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">geonames</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
@@ -278,7 +278,7 @@
 </ol>
 <div class="rmdwarning">
 <p>We could use the following code to tell R our credentials, but we absolutely should not.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>geonamesUsername<span class="op">=</span><span class="st">"example_username"</span><span class="op">)</span></span></code></pre></div>
 <p>This would save our username as an environment variable, but it <em>also</em> puts our API credentials directly into the script. If we share the script with others (internally, externally or publicly) we would be sharing our credentials too. Not good!</p>
 </div>
@@ -289,7 +289,7 @@
 </h3>
 <p>The solution to this problem is to add our credentials as environment variables in our <code>.Rprofile</code> rather than in this script. The <code>.Rprofile</code> is an R script that is run at the start of every session. IT can be created and edited directly, but can also be created and edited from within R.</p>
 <p>To make/open your <code>.Rprofile</code> use the <code><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_profile()</a></code> function from the <a href="https://usethis.r-lib.org">usethis</a> package.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
 <span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_profile</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Within this file, add <code>options(geonamesUsername="example_username")</code> on a new line, remembering to replace <code>example_username</code> with your own GeoNames username.</p>
@@ -302,7 +302,7 @@
 </h3>
 <p>GeoNames has a whole host of <a href="http://www.geonames.org/export/ws-overview.html">different geo-datasets</a> that you can explore.
 As a first example, let’s get all of the geo-tagged wikipedia articles that are within 1km of Imperial College London.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">imperial_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">51.49876</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">0.1749</span><span class="op">)</span></span>
 <span><span class="va">search_radius_km</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span></span>
@@ -314,7 +314,7 @@ As a first example, let’s get all of the geo-tagged wikipedia articles that ar
 <span>  maxRows <span class="op">=</span> <span class="fl">500</span>              <span class="co"># maximum number of results to return </span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Looking at the structure of <code>imperial_neighbours</code> we can see that it is a data frame with one row per geo-tagged wikipedia article.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">imperial_neighbours</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    204 obs. of  13 variables:</span></span>
 <span><span class="co">#&gt;  $ summary     : chr  "The Department of Mechanical Engineering is responsible for teaching and research in mechanical engineering at "| __truncated__ "Imperial College Business School is a global business school located in London. The business school was opened "| __truncated__ "Exhibition Road is a street in South Kensington, London which is home to several major museums and academic est"| __truncated__ "Imperial College School of Medicine (ICSM) is the medical school of Imperial College London in England, and one"| __truncated__ ...</span></span>
@@ -331,7 +331,7 @@ As a first example, let’s get all of the geo-tagged wikipedia articles that ar
 <span><span class="co">#&gt;  $ thumbnailImg: chr  NA NA NA NA ...</span></span>
 <span><span class="co">#&gt;  $ geoNameId   : chr  NA NA NA NA ...</span></span></code></pre></div>
 <p>To confirm we have the correct location we can inspect the title of the first five neighbours.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">imperial_neighbours</span><span class="op">$</span><span class="va">title</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "Department of Mechanical Engineering, Imperial College London"             </span></span>
 <span><span class="co">#&gt; [2] "Imperial College Business School"                                          </span></span>
@@ -348,17 +348,17 @@ As a first example, let’s get all of the geo-tagged wikipedia articles that ar
 <p>If there is not a wrapper function, we can still access APIs fairly easilty using the <a href="https://httr.r-lib.org/">httr</a> package.</p>
 <p>We will look at an example using <a href="http://www.omdbapi.com/">OMDb</a>, which is an open source version of <a href="https://www.imdb.com/">IMDb</a>, to get information about the movie Mean Girls.</p>
 <p>To use the OMDB API you will once again need to <a href="http://www.omdbapi.com/apikey.aspx">request a free API key</a>, follow a verification link and add your API key to your <code>.Rprofile</code>.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Add this to .Rprofile, pasting in your own API key</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>OMDB_API_Key <span class="op">=</span> <span class="st">"PASTE YOUR KEY HERE"</span><span class="op">)</span></span></code></pre></div>
 <p>You can then restart R and safely access your API key from within your R session.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load your API key into the current R session,</span></span>
 <span><span class="va">ombd_api_key</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"OMDB_API_Key"</span><span class="op">)</span></span></code></pre></div>
 <p>Using the documentation for the API, requests have URLs of the following form, where terms in angular brackets should be replaced by you.</p>
 <pre><code>http://www.omdbapi.com/?t=&lt;TITLE&gt;&amp;y=&lt;YEAR&gt;&amp;plot=&lt;LENGTH&gt;&amp;r=&lt;FORMAT&gt;&amp;apikey=&lt;API_KEY&gt;</code></pre>
 <p>With a little bit of effort, we can write a function that composes this type of request URL for us. We will using the <a href="https://github.com/tidyverse/glue">glue</a> package to help us join strings together.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#' Compose search requests for the OMBD API</span></span>
 <span><span class="co">#'</span></span>
@@ -377,7 +377,7 @@ As a first example, let’s get all of the geo-tagged wikipedia articles that ar
 <span>  <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"http://www.omdbapi.com/?t={title}&amp;y={year}&amp;plot={plot}&amp;r={format}&amp;apikey={api_key}"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Running the example we get:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mean_girls_request</span> <span class="op">&lt;-</span> <span class="fu">omdb_url</span><span class="op">(</span></span>
 <span>  title <span class="op">=</span> <span class="st">"mean+girls"</span>,</span>
 <span>  year <span class="op">=</span>  <span class="st">"2004"</span>,</span>
@@ -385,13 +385,13 @@ As a first example, let’s get all of the geo-tagged wikipedia articles that ar
 <span>  format <span class="op">=</span>  <span class="st">"json"</span>,</span>
 <span>  api_key <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"OMDB_API_Key"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>We can then use the <a href="https://httr.r-lib.org/">httr</a> package to construct our request and store the response we get.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">response</span> <span class="op">&lt;-</span> <span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">mean_girls_request</span><span class="op">)</span></span>
 <span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/status_code.html">status_code</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 200</span></span></code></pre></div>
 <p>Thankfully it was a success! If you get a 401 error code here, check that you have clicked the activation link for your API key.</p>
 <p>The full structure of the response is quite complicated, but we can easily extract the requested data using <code>content()</code></p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/content.html">content</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $Title</span></span>
 <span><span class="co">#&gt; [1] "Mean Girls"</span></span>
