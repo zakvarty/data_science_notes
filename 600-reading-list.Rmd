@@ -127,7 +127,7 @@ Chapters 3 and 4 are core reading, respectively introducing [data frame manipula
 
 - The {dplyr} [documentation](https://dplyr.tidyverse.org/)
 
-- [RStudio Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) 
+- [RStudio Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf) 
 
 - [R for Data Science (First Edition)](https://r4ds.had.co.nz/index.html) Chapters on [Data Transformations](https://r4ds.had.co.nz/transform.html), [Exploratory Data Analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) and [Relational Data](https://r4ds.had.co.nz/relational-data.html). 
 
@@ -192,7 +192,7 @@ Limitations and Opportunities](https://fairmlbook.org/) by Solon Barocas, Moritz
 
 - Professional Guidleines on Data Ethics from: 
   - [The American Mathematical Society](http://www.ams.org/about-us/governance/policy-statements/sec-ethics)
-  - [The European Union](http://www.ams.org/about-us/governance/policy-statements/sec-ethics)
+  - [The European Union](https://op.europa.eu/s/sUPP)
   - [UK Government](https://www.gov.uk/guidance/understanding-artificial-intelligence-ethics-and-safety)
   - [Royal Statistical Society](https://rss.org.uk/RSS/media/News-and-publications/Publications/Reports%20and%20guides/A-Guide-for-Ethical-Data-Science-Final-Oct-2019.pdf)
   - [Dutch Government](https://www.government.nl/documents/reports/2021/07/31/impact-assessment-fundamental-rights-and-algorithms)
