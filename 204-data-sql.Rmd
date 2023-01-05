@@ -1,4 +1,5 @@
-# SQL {#data-sql}
+<!-- Aim to include for for 2023/24 course delivery -->
+<!-- # SQL {#data-sql}
 
 ```{r, results='asis', echo=FALSE}
 source("_common.R")
@@ -23,6 +24,7 @@ status("drafting")
   - Data bases as data sources: Basic SQL verbs
   - Learning SQL theory on a small scale: dplyr verbs 
   
+  -->
 
 
 
