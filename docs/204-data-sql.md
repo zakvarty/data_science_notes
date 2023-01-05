@@ -1,4 +1,5 @@
-# SQL {#data-sql}
+<!-- Aim to include for for 2023/24 course delivery -->
+<!-- # SQL {#data-sql}
 
 
 ::: {.rmdimportant} 
@@ -25,6 +26,7 @@ If you would like to contribute to the development of EDS, you may do so at <htt
   - Data bases as data sources: Basic SQL verbs
   - Learning SQL theory on a small scale: dplyr verbs 
   
+  -->
 
 
 

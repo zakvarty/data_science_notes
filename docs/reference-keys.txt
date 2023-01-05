@@ -131,8 +131,6 @@ keep-it-secret-keep-it-safe
 using-geonames
 what-if-there-is-no-wrapper
 wrapping-up-2
-data-sql
-databases-and-sql
 videos-chapters-1
 reading-1
 activities
