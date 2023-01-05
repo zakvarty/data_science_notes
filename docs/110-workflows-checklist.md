@@ -9,14 +9,14 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Videos / Chapters
 
-- [ ] [Organising your work](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=eb93df23-751e-4f79-8397-af72013634d0) (30 min)
-- [ ] [Naming Files](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f676fbc-3de6-490a-ac38-af7200ee1396) (20 min)
-- [ ] [Organising your code](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=572c25c0-4cac-4260-97fe-af7200ee1358) (27 min)
+- [ ] [Organising your work](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=eb93df23-751e-4f79-8397-af72013634d0) (30 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/01-01-organising-your-work/01-01-organising-your-work.pdf)
+- [ ] [Naming Files](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0f676fbc-3de6-490a-ac38-af7200ee1396) (20 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/01-02-naming-files/01-02-naming-files.pdf)
+- [ ] [Organising your code](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=572c25c0-4cac-4260-97fe-af7200ee1358) (27 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/01-03-organising-your-code/01-03-organising-your-code.pdf)
 <!-- - [ ] Project Management (AY 2023/24 onward) -->
 
 ## Reading 
 
-Use the [workflows section](#workflows-reading) of the reading list to support and guide your exploration of this week's materials.  
+Use the [workflows section](#workflows-reading) of the reading list to support and guide your exploration of this week's materials. Note that these texts are divided into core reading, reference materials and materials of interest.  
 
 
 ## Tasks 
