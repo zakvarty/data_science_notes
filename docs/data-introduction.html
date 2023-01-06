@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Introduction | Effective Data Science</title>
 <meta name="author" content="Zak Varty">
-<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Introduction | Effective Data Science">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://eds-book.zakvarty.com/data-introduction.html">
 <meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
-<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Introduction | Effective Data Science">
-<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -89,11 +89,14 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-introduction" class="section level1 unnumbered">
 <h1>Introduction<a class="anchor" aria-label="anchor" href="#data-introduction"><i class="fas fa-link"></i></a>
 </h1>
-<div class="rmdimportant">
-<p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
+<div class="rmdnote">
+<p>Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.</p>
 <p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
 </div>
 <p><em>Data can be difficult to acquire and gnarly when you get it.</em></p>
+<p>The raw material that you work with as a data scientist is, unsurprisingly, data. In this part of the course we will focus on the different ways in which data can be stored, distributed and obtained.</p>
+<p>Being able to obtain and read a dataset is often a surprisingly large hurdle in getting a new data science project off the ground. The skill of being able to source and read data from many locations is usually sanitised during a statistics programme: you’re given a ready-to-go, cleaned CSV file and all focus is placed on modelling. This week aims to remedy that by equipping you with the skills to acquire and manage your own data.</p>
+<p>We will begin this week by explore different file types. This dictates what type of information you can store, who can access that information and how they read that it into R. We will then turn our attention to the case when data are not given to you directly. We will learn how to obtain data from a raw webpage and how to request data that via a service known as an API.</p>
 
 </div>
   <div class="chapter-nav">
@@ -118,7 +121,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-01-05.</p>
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-01-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
