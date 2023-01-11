@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Data Wrangling | Effective Data Science</title>
+<meta name="author" content="Zak Varty">
+<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Data Wrangling | Effective Data Science">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://eds-book.zakvarty.com/edav-wrangling.html">
+<meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
+<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Data Wrangling | Effective Data Science">
+<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Effective Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">About this Course</a></li>
+<li class="book-part">Effective Data Science Workflows</li>
+<li><a class="" href="workflows-introduction.html">Introduction</a></li>
+<li><a class="" href="workflows-organising-your-work.html"><span class="header-section-number">2</span> Organising your work</a></li>
+<li><a class="" href="workflows-naming.html"><span class="header-section-number">3</span> Naming Files</a></li>
+<li><a class="" href="workflows-code.html"><span class="header-section-number">4</span> Code</a></li>
+<li><a class="" href="workflows-checklist.html">Checklist</a></li>
+<li class="book-part">Acquiring and Sharing Data</li>
+<li><a class="" href="data-introduction.html">Introduction</a></li>
+<li><a class="" href="data-tabular.html"><span class="header-section-number">5</span> Tabular Data</a></li>
+<li><a class="" href="data-webscraping.html"><span class="header-section-number">6</span> Web Scraping</a></li>
+<li><a class="" href="data-apis.html"><span class="header-section-number">7</span> APIs</a></li>
+<li><a class="" href="data-checklist.html">Checklist</a></li>
+<li class="book-part">Data Exploration and Visualisation</li>
+<li><a class="" href="edav-introduction.html">Introduction</a></li>
+<li><a class="active" href="edav-wrangling.html"><span class="header-section-number">9</span> Data Wrangling</a></li>
+<li><a class="" href="edav-analysis.html"><span class="header-section-number">10</span> Exploratory Data Analysis</a></li>
+<li><a class="" href="edav-visualisation.html"><span class="header-section-number">11</span> Data Visualisation</a></li>
+<li><a class="" href="edav-checklist.html">Checklist</a></li>
+<li class="book-part">Preparing for Production</li>
+<li><a class="" href="production-introduction.html">Introduction</a></li>
+<li><a class="" href="production-reproducibility.html"><span class="header-section-number">12</span> Reproducibility</a></li>
+<li><a class="" href="production-explainability.html"><span class="header-section-number">13</span> Explainability</a></li>
+<li><a class="" href="production-scalability.html"><span class="header-section-number">14</span> Scalability</a></li>
+<li><a class="" href="production-checklist.html">Checklist</a></li>
+<li class="book-part">Data Science Ethics</li>
+<li><a class="" href="ethics-introduction.html">Introduction</a></li>
+<li><a class="" href="ethics-privacy.html"><span class="header-section-number">16</span> Privacy</a></li>
+<li><a class="" href="ethics-fairness.html"><span class="header-section-number">17</span> Fairness</a></li>
+<li><a class="" href="ethics-conduct.html"><span class="header-section-number">18</span> Codes of Conduct</a></li>
+<li><a class="" href="ethics-checklist.html">Checklist</a></li>
+<li><a class="" href="reading-list.html"><span class="header-section-number">19</span> Reading List</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/zakvarty/data_science_notes/">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="edav-wrangling" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#edav-wrangling"><i class="fas fa-link"></i></a>
+</h1>
+<div class="rmdimportant">
+<p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
+<p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
+</div>
+<div id="what-is-data-wrangling" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> What is Data Wrangling?<a class="anchor" aria-label="anchor" href="#what-is-data-wrangling"><i class="fas fa-link"></i></a>
+</h2>
+<div class="medium_right">
+<div class="inline-figure"><img style="border-radius: 10%;" src="images/301-edav-wrangling/horst-wrangle-monsters.jpg" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labelled “TIDY.”"></div>
+</div>
+<p>Okay, so you’ve got some data. That’s a great start!</p>
+<p>You might have had it handed to you by a collaborator, <a href="data-apis.html#data-apis">requested it via an API</a> or <a href="data-webscraping.html#data-webscraping">scraped it from the raw html of a webpage</a>. In the worst case scenario, you’re an <em>actual</em> scientist (not just a <em>data</em> one) and you spent the last several months of your life painstakingly measuring flower petals or car parts. Now we really want to do something useful with that data.</p>
+<p>We’ve seen already how you can load the data into R and pivot between wider and longer formats, but that probably isn’t enough to satisfy your curiosity. You want to be able to view your data, manipulate and subset it, create new variables from existing ones and cross-reference your dataset with others. All of these are things possible in R and are known under various collective names including data manipulation, data munging and data wrangling.</p>
+<p>I’ve decided to use the term data wrangling here. That’s because data manipulation sounds boring as heck and data munging is both unpleasant to say and makes me imagine we are squelching through some sort of information swamp.</p>
+<p>In what follows, I’ll give a fly-by tour of tools for data wrangling in R, showing some examples along the way. I’ll focus on some of the most common and useful operations and link out to some more extensive guides for wrangling your data in R, that you can refer back to as you need them.</p>
+</div>
+<div id="example-data-sets" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Example Data Sets<a class="anchor" aria-label="anchor" href="#example-data-sets"><i class="fas fa-link"></i></a>
+</h2>
+<div class="medium_left">
+<div class="inline-figure"><img style="border-radius: 10%;" src="images/301-edav-wrangling/palmer-penguins.png" alt="Palmer penguins R package hex sticker. Three cartoon penguins on a light blue hexagonal logo.”"></div>
+</div>
+<p>To demonstrate some standard skills we will use two datasets. The <code>mtcars</code> data comes built into any R installation. The second data set we will look at is the <code>penguins</code> data from <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a>.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span><span class="va">pengins</span> <span class="op">&lt;-</span> <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span></span>
+<span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html">mtcars</a></span></span></code></pre></div>
+</div>
+<div id="viewing-your-data" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Viewing Your Data<a class="anchor" aria-label="anchor" href="#viewing-your-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="view" class="section level3" number="9.3.1">
+<h3>
+<span class="header-section-number">9.3.1</span> <code>View()</code><a class="anchor" aria-label="anchor" href="#view"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> function can be used to create a spreadsheet-like view of your data. In RStudio this will open as a new tab.</p>
+<p><code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> will work for any “matrix-like” R object, such as a tibble, data frame, vector or matrix. Note the capital letter - the function is called <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>, not <code>view()</code>.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="images/301-edav-wrangling/view-penguins-screenshot.png" style="width:60.0%" alt=""><p class="caption">Screenshot of RStduio files pane, containg a spreadsheet view of the palmer penguins data set.</p>
+</div>
+</div>
+<div id="head" class="section level3" number="9.3.2">
+<h3>
+<span class="header-section-number">9.3.2</span> <code>head()</code><a class="anchor" aria-label="anchor" href="#head"><i class="fas fa-link"></i></a>
+</h3>
+<p>For large data sets, you might not want (or be able to) view it all at once. You can then use <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> to view the first few rows. The integer argument <code>n</code> specifies the number of rows you would like to return.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pengins</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 8</span></span>
+<span><span class="co">#&gt;   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007</span></span>
+<span><span class="co">#&gt; 2 Adelie  Torgersen           39.5          17.4      186    3800 fema…  2007</span></span>
+<span><span class="co">#&gt; 3 Adelie  Torgersen           40.3          18        195    3250 fema…  2007</span></span>
+<span><span class="co">#&gt; # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</span></span></code></pre></div>
+</div>
+<div id="str" class="section level3" number="9.3.3">
+<h3>
+<span class="header-section-number">9.3.3</span> <code>str()</code><a class="anchor" aria-label="anchor" href="#str"><i class="fas fa-link"></i></a>
+</h3>
+<p>An alternative way to view the a large data set, or one with a complicated format is to examine its structure with <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>. This is a useful way to inspect the structure of list-like objects, particularly when they’ve got a nested structure.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [344 × 8] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span>
+<span><span class="co">#&gt;  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...</span></span>
+<span><span class="co">#&gt;  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...</span></span>
+<span><span class="co">#&gt;  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...</span></span>
+<span><span class="co">#&gt;  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...</span></span>
+<span><span class="co">#&gt;  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...</span></span>
+<span><span class="co">#&gt;  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</span></span></code></pre></div>
+</div>
+<div id="names" class="section level3" number="9.3.4">
+<h3>
+<span class="header-section-number">9.3.4</span> <code>names()</code><a class="anchor" aria-label="anchor" href="#names"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, if you just want to access the variable names you can do so with the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function from base R.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "species"           "island"            "bill_length_mm"   </span></span>
+<span><span class="co">#&gt; [4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      </span></span>
+<span><span class="co">#&gt; [7] "sex"               "year"</span></span></code></pre></div>
+<p>Similarly, you can explicitly access the row and column names of a data frame or tibble using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> or <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code>.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"</span></span>
+<span><span class="co">#&gt; [11] "carb"</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         </span></span>
+<span><span class="co">#&gt;  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            </span></span>
+<span><span class="co">#&gt;  [7] "Duster 360"          "Merc 240D"           "Merc 230"           </span></span>
+<span><span class="co">#&gt; [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         </span></span>
+<span><span class="co">#&gt; [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" </span></span>
+<span><span class="co">#&gt; [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           </span></span>
+<span><span class="co">#&gt; [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      </span></span>
+<span><span class="co">#&gt; [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         </span></span>
+<span><span class="co">#&gt; [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      </span></span>
+<span><span class="co">#&gt; [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       </span></span>
+<span><span class="co">#&gt; [31] "Maserati Bora"       "Volvo 142E"</span></span></code></pre></div>
+<p>In the <code>cars</code> data, the car model are stored as the row names. This doesn’t really jive with our idea of tidy data - we’ll see how to fix that shortly.</p>
+</div>
+</div>
+<div id="renaming-variables" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Renaming Variables<a class="anchor" aria-label="anchor" href="#renaming-variables"><i class="fas fa-link"></i></a>
+</h2>
+<div id="colnames" class="section level3" number="9.4.1">
+<h3>
+<span class="header-section-number">9.4.1</span> <code>colnames()</code><a class="anchor" aria-label="anchor" href="#colnames"><i class="fas fa-link"></i></a>
+</h3>
+<p>The function <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> can be used to set, as well as to retrieve, column names.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="va">cars</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"miles_per_gallon"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "miles_per_gallon" "cyl"              "disp"            </span></span>
+<span><span class="co">#&gt;  [4] "hp"               "drat"             "wt"              </span></span>
+<span><span class="co">#&gt;  [7] "qsec"             "vs"               "am"              </span></span>
+<span><span class="co">#&gt; [10] "gear"             "carb"</span></span></code></pre></div>
+</div>
+<div id="dplyrrename" class="section level3" number="9.4.2">
+<h3>
+<span class="header-section-number">9.4.2</span> <code>dplyr::rename()</code><a class="anchor" aria-label="anchor" href="#dplyrrename"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can also use functions from <a href="https://dplyr.tidyverse.org">dplyr</a> to rename columns. Let’s alter the second column name.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">cars_renamed</span>, cylinders <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "miles_per_gallon" "cylinders"        "disp"            </span></span>
+<span><span class="co">#&gt;  [4] "hp"               "drat"             "wt"              </span></span>
+<span><span class="co">#&gt;  [7] "qsec"             "vs"               "am"              </span></span>
+<span><span class="co">#&gt; [10] "gear"             "carb"</span></span></code></pre></div>
+<p>This could be done as part of a pipe, if we were making many alterations.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="va">cars_renamed</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>displacement <span class="op">=</span> <span class="va">disp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>horse_power <span class="op">=</span> <span class="va">hp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>rear_axel_ratio <span class="op">=</span> <span class="va">drat</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "miles_per_gallon" "cylinders"        "displacement"    </span></span>
+<span><span class="co">#&gt;  [4] "horse_power"      "rear_axel_ratio"  "wt"              </span></span>
+<span><span class="co">#&gt;  [7] "qsec"             "vs"               "am"              </span></span>
+<span><span class="co">#&gt; [10] "gear"             "carb"</span></span></code></pre></div>
+<p>When using the dplyr function you have to remember the format <code>new_name = old_name</code>. This matches the format used to create a data frame or tibble, but is the opposite order to the python function of the same name and often catches people out.</p>
+<p>In the section on <a href="edav-wrangling.html#creating-new-variables">creating new variables</a>, we will see an alternative way of doing this by copying the column and then deleting the original.</p>
+</div>
+</div>
+<div id="subsetting-1" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="base-r-1" class="section level3" number="9.5.1">
+<h3>
+<span class="header-section-number">9.5.1</span> Base R<a class="anchor" aria-label="anchor" href="#base-r-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>In base R you can extract rows, columns and combinations thereof using index notation.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># First row</span></span>
+<span><span class="va">penguins</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
+<span><span class="co">#&gt;   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007</span></span>
+<span><span class="co">#&gt; # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</span></span>
+<span></span>
+<span><span class="co"># First Column </span></span>
+<span><span class="va">penguins</span><span class="op">[</span> , <span class="fl">1</span><span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 344 × 1</span></span>
+<span><span class="co">#&gt;   species</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;  </span></span>
+<span><span class="co">#&gt; 1 Adelie </span></span>
+<span><span class="co">#&gt; 2 Adelie </span></span>
+<span><span class="co">#&gt; 3 Adelie </span></span>
+<span><span class="co">#&gt; 4 Adelie </span></span>
+<span><span class="co">#&gt; 5 Adelie </span></span>
+<span><span class="co">#&gt; 6 Adelie </span></span>
+<span><span class="co">#&gt; # … with 338 more rows</span></span>
+<span></span>
+<span><span class="co"># Rows 2-3 of columns 1, 2 and 4</span></span>
+<span><span class="va">penguins</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   species island    bill_depth_mm</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen          17.4</span></span>
+<span><span class="co">#&gt; 2 Adelie  Torgersen          18</span></span></code></pre></div>
+<p>Using negative indexing you can remove rows or columns</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Drop all but first row</span></span>
+<span><span class="va">penguins</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">344</span><span class="op">)</span>, <span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
+<span><span class="co">#&gt;   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007</span></span>
+<span><span class="co">#&gt; # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Drop all but first column </span></span>
+<span><span class="va">penguins</span><span class="op">[</span> , <span class="op">-</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 344 × 1</span></span>
+<span><span class="co">#&gt;   species</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;  </span></span>
+<span><span class="co">#&gt; 1 Adelie </span></span>
+<span><span class="co">#&gt; 2 Adelie </span></span>
+<span><span class="co">#&gt; 3 Adelie </span></span>
+<span><span class="co">#&gt; 4 Adelie </span></span>
+<span><span class="co">#&gt; 5 Adelie </span></span>
+<span><span class="co">#&gt; 6 Adelie </span></span>
+<span><span class="co">#&gt; # … with 338 more rows</span></span></code></pre></div>
+<p>You can also select rows or columns by their names. This can be done using the bracket syntax (<code>[ ]</code>) or the dollar syntax (<code>$</code>).</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pengins</span><span class="op">[</span> , <span class="st">"species"</span><span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 344 × 1</span></span>
+<span><span class="co">#&gt;   species</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;  </span></span>
+<span><span class="co">#&gt; 1 Adelie </span></span>
+<span><span class="co">#&gt; 2 Adelie </span></span>
+<span><span class="co">#&gt; 3 Adelie </span></span>
+<span><span class="co">#&gt; 4 Adelie </span></span>
+<span><span class="co">#&gt; 5 Adelie </span></span>
+<span><span class="co">#&gt; 6 Adelie </span></span>
+<span><span class="co">#&gt; # … with 338 more rows</span></span>
+<span><span class="va">penguins</span><span class="op">$</span><span class="va">species</span></span>
+<span><span class="co">#&gt;   [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;   [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt;  [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   </span></span>
+<span><span class="co">#&gt; [148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   </span></span>
+<span><span class="co">#&gt; [274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap</span></span>
+<span><span class="co">#&gt; [344] Chinstrap</span></span>
+<span><span class="co">#&gt; Levels: Adelie Chinstrap Gentoo</span></span></code></pre></div>
+<p>Since <code>penguins</code> is a tibble, these return different types of object. Subsetting a tibble with bracket syntax will return a tibble, while extracting a column using the dollar syntax returns a vector of values.</p>
+</div>
+<div id="filter-and-select" class="section level3" number="9.5.2">
+<h3>
+<span class="header-section-number">9.5.2</span> <code>filter()</code> and <code>select()</code><a class="anchor" aria-label="anchor" href="#filter-and-select"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://dplyr.tidyverse.org">dplyr</a> has two functions for subsetting, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> subsets by rows and <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> subsets by column.</p>
+<p>In both functions you list what you would like to retain. Filter and select calls can be piped together to subset based on row and column values.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span>, <span class="va">body_mass_g</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 344 × 3</span></span>
+<span><span class="co">#&gt;   species island    body_mass_g</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen        3750</span></span>
+<span><span class="co">#&gt; 2 Adelie  Torgersen        3800</span></span>
+<span><span class="co">#&gt; 3 Adelie  Torgersen        3250</span></span>
+<span><span class="co">#&gt; 4 Adelie  Torgersen          NA</span></span>
+<span><span class="co">#&gt; 5 Adelie  Torgersen        3450</span></span>
+<span><span class="co">#&gt; 6 Adelie  Torgersen        3650</span></span>
+<span><span class="co">#&gt; # … with 338 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span>, <span class="va">body_mass_g</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">&gt;</span> <span class="fl">6000</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   species island body_mass_g</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;        &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Gentoo  Biscoe        6300</span></span>
+<span><span class="co">#&gt; 2 Gentoo  Biscoe        6050</span></span></code></pre></div>
+<p>Subsetting rows can be inverted by negating the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> statement</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span>, <span class="va">body_mass_g</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">&gt;</span> <span class="fl">6000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 340 × 3</span></span>
+<span><span class="co">#&gt;   species island    body_mass_g</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie  Torgersen        3750</span></span>
+<span><span class="co">#&gt; 2 Adelie  Torgersen        3800</span></span>
+<span><span class="co">#&gt; 3 Adelie  Torgersen        3250</span></span>
+<span><span class="co">#&gt; 4 Adelie  Torgersen        3450</span></span>
+<span><span class="co">#&gt; 5 Adelie  Torgersen        3650</span></span>
+<span><span class="co">#&gt; 6 Adelie  Torgersen        3625</span></span>
+<span><span class="co">#&gt; # … with 334 more rows</span></span></code></pre></div>
+<p>and dropping columns can done by selecting all columns except the one(s) you want to drop.</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span>, <span class="va">body_mass_g</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">&gt;</span> <span class="fl">6000</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 340 × 1</span></span>
+<span><span class="co">#&gt;   body_mass_g</span></span>
+<span><span class="co">#&gt;         &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1        3750</span></span>
+<span><span class="co">#&gt; 2        3800</span></span>
+<span><span class="co">#&gt; 3        3250</span></span>
+<span><span class="co">#&gt; 4        3450</span></span>
+<span><span class="co">#&gt; 5        3650</span></span>
+<span><span class="co">#&gt; 6        3625</span></span>
+<span><span class="co">#&gt; # … with 334 more rows</span></span></code></pre></div>
+</div>
+</div>
+<div id="creating-new-variables" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Creating New Variables<a class="anchor" aria-label="anchor" href="#creating-new-variables"><i class="fas fa-link"></i></a>
+</h2>
+<div id="base-r-2" class="section level3" number="9.6.1">
+<h3>
+<span class="header-section-number">9.6.1</span> Base R<a class="anchor" aria-label="anchor" href="#base-r-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can create new variables in base R by assigning a vector of the correct length to a new column name.</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span><span class="op">$</span><span class="va">weight</span> <span class="op">&lt;-</span> <span class="va">cars_renamed</span><span class="op">$</span><span class="va">wt</span></span></code></pre></div>
+<p>If we then drop the original column from the data frame, this gives us an alternative way of renaming columns.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="va">cars_renamed</span><span class="op">[</span> ,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span> <span class="op">==</span> <span class="st">"wt"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars_renamed</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                   miles_per_gallon cylinders displacement horse_power</span></span>
+<span><span class="co">#&gt; Mazda RX4                     21.0         6          160         110</span></span>
+<span><span class="co">#&gt; Mazda RX4 Wag                 21.0         6          160         110</span></span>
+<span><span class="co">#&gt; Datsun 710                    22.8         4          108          93</span></span>
+<span><span class="co">#&gt; Hornet 4 Drive                21.4         6          258         110</span></span>
+<span><span class="co">#&gt; Hornet Sportabout             18.7         8          360         175</span></span>
+<span><span class="co">#&gt;                   rear_axel_ratio  qsec vs am gear carb weight</span></span>
+<span><span class="co">#&gt; Mazda RX4                    3.90 16.46  0  1    4    4  2.620</span></span>
+<span><span class="co">#&gt; Mazda RX4 Wag                3.90 17.02  0  1    4    4  2.875</span></span>
+<span><span class="co">#&gt; Datsun 710                   3.85 18.61  1  1    4    1  2.320</span></span>
+<span><span class="co">#&gt; Hornet 4 Drive               3.08 19.44  1  0    3    1  3.215</span></span>
+<span><span class="co">#&gt; Hornet Sportabout            3.15 17.02  0  0    3    2  3.440</span></span></code></pre></div>
+<p>One thing to be aware of is that this operation does not preserve column ordering.</p>
+<p>Generally speaking, code that relies on columns being in a specific order is fragile - it breaks easily. If possible, you should try to write your code in another way that’s robust to column reordering. I’ve done that here when removing the <code>wt</code> column by looking up the column index as part of my code, rather than assuming it will always be the fourth column.</p>
+</div>
+<div id="dplyrmutate" class="section level3" number="9.6.2">
+<h3>
+<span class="header-section-number">9.6.2</span> <code>dplyr::mutate()</code><a class="anchor" aria-label="anchor" href="#dplyrmutate"><i class="fas fa-link"></i></a>
+</h3>
+<p>The function from <a href="https://dplyr.tidyverse.org">dplyr</a> to create new columns is <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Let’s create another column that has the car’s weight in kilogrammes rather than tonnes.</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="va">cars_renamed</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weight_kg <span class="op">=</span> <span class="va">weight</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cars_renamed</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">miles_per_gallon</span>, <span class="va">cylinders</span>, <span class="va">displacement</span>, <span class="va">weight</span>, <span class="va">weight_kg</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                   miles_per_gallon cylinders displacement weight weight_kg</span></span>
+<span><span class="co">#&gt; Mazda RX4                     21.0         6          160  2.620      2620</span></span>
+<span><span class="co">#&gt; Mazda RX4 Wag                 21.0         6          160  2.875      2875</span></span>
+<span><span class="co">#&gt; Datsun 710                    22.8         4          108  2.320      2320</span></span>
+<span><span class="co">#&gt; Hornet 4 Drive                21.4         6          258  3.215      3215</span></span>
+<span><span class="co">#&gt; Hornet Sportabout             18.7         8          360  3.440      3440</span></span></code></pre></div>
+<p>You can also create new columns that are functions of multiple other columns.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars_renamed</span> <span class="op">&lt;-</span> <span class="va">cars_renamed</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cylinder_adjusted_mpg <span class="op">=</span> <span class="va">miles_per_gallon</span> <span class="op">/</span> <span class="va">cylinders</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="rownames_to_column" class="section level3" number="9.6.3">
+<h3>
+<span class="header-section-number">9.6.3</span> <code>rownames_to_column()</code><a class="anchor" aria-label="anchor" href="#rownames_to_column"><i class="fas fa-link"></i></a>
+</h3>
+<p>One useful example of adding an additional row to a data frame is to convert its row names to a column of the data fame.</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">cars_renamed</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">cyl</span>, <span class="va">model</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                    mpg cyl             model</span></span>
+<span><span class="co">#&gt; Mazda RX4         21.0   6         Mazda RX4</span></span>
+<span><span class="co">#&gt; Mazda RX4 Wag     21.0   6     Mazda RX4 Wag</span></span>
+<span><span class="co">#&gt; Datsun 710        22.8   4        Datsun 710</span></span>
+<span><span class="co">#&gt; Hornet 4 Drive    21.4   6    Hornet 4 Drive</span></span>
+<span><span class="co">#&gt; Hornet Sportabout 18.7   8 Hornet Sportabout</span></span></code></pre></div>
+<p>There’s a neat function called <code>rownames_to_column()</code> in <a href="https://tibble.tidyverse.org/">tibble</a> which will add this as the first column and remove the row names all in one step.</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"model"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span><span class="co">#&gt; 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span><span class="co">#&gt; 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span><span class="co">#&gt; 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></span>
+<span><span class="co">#&gt; 4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span><span class="co">#&gt; 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span></code></pre></div>
+</div>
+<div id="rowids_to_column" class="section level3" number="9.6.4">
+<h3>
+<span class="header-section-number">9.6.4</span> <code>rowids_to_column()</code><a class="anchor" aria-label="anchor" href="#rowids_to_column"><i class="fas fa-link"></i></a>
+</h3>
+<p>Another function from <a href="https://tibble.tidyverse.org/">tibble</a> adds the row id of each observation as a new column. This is often useful when ordering or combining tables.</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rowid_to_column</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"row_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   row_id  mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span><span class="co">#&gt; 1      1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span><span class="co">#&gt; 2      2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span><span class="co">#&gt; 3      3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></span>
+<span><span class="co">#&gt; 4      4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span><span class="co">#&gt; 5      5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span></code></pre></div>
+</div>
+</div>
+<div id="summaries" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Summaries<a class="anchor" aria-label="anchor" href="#summaries"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> function allows you to collapse a data frame into a single row, which using a summary statistic of your choosing.</p>
+<p>We can calculate the average bill length of all penguins in a single <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> function call.</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">penguins</span>, average_bill_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 1</span></span>
+<span><span class="co">#&gt;   average_bill_length_mm</span></span>
+<span><span class="co">#&gt;                    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1                     NA</span></span></code></pre></div>
+<p>Since we have missing values, we might instead want to calculate the mean of the recorded values.</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">penguins</span>, average_bill_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 1</span></span>
+<span><span class="co">#&gt;   average_bill_length_mm</span></span>
+<span><span class="co">#&gt;                    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1                   43.9</span></span></code></pre></div>
+<p>We can also use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to gather multiple summaries in a single data frame.</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bill_length_mm_summary</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bill_length_mm_summary</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
+<span><span class="co">#&gt;    mean median   min   q_0   q_1   q_2   q_3   q_4</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  43.9   44.4  59.6  32.1  39.2  44.4  39.2  59.6</span></span></code></pre></div>
+<p>In all, this isn’t overly exciting. You might, rightly, wonder why you’d want to use these <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> calls when we could just use the simpler base R calls directly.</p>
+<p>One benefit is that the summarise calls ensure consistent output. However, the main advantage comes when you want to apply these summaries to distinct subgroups of the data.</p>
+</div>
+<div id="grouped-operations" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> Grouped Operations<a class="anchor" aria-label="anchor" href="#grouped-operations"><i class="fas fa-link"></i></a>
+</h2>
+<p>The real benefit of <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> comes from its combination with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>. This allows to you calculate the same summary statistics for each level of a factor with only one additional line of code. Here we’re re-calculating the same set of summary statistics we just found for all penguins, but for each individual species.</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 9</span></span>
+<span><span class="co">#&gt;   species    mean median   min   q_0   q_1   q_2   q_3   q_4</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie     38.8   38.8  46    32.1  36.8  38.8  36.8  46  </span></span>
+<span><span class="co">#&gt; 2 Chinstrap  48.8   49.6  58    40.9  46.3  49.6  46.3  58  </span></span>
+<span><span class="co">#&gt; 3 Gentoo     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</span></span></code></pre></div>
+<p>You can group by multiple factors to calculate summaries for each distinct combination of levels within your data set. Here we group by combinations of species and the island to which they belong.</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguin_summary_stats</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">island</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, prob <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    q_4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `summarise()` has grouped output by 'species'. You can override using the</span></span>
+<span><span class="co">#&gt; `.groups` argument.</span></span>
+<span></span>
+<span><span class="va">penguin_summary_stats</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 10</span></span>
+<span><span class="co">#&gt; # Groups:   species [3]</span></span>
+<span><span class="co">#&gt;   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6</span></span>
+<span><span class="co">#&gt; 2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1</span></span>
+<span><span class="co">#&gt; 3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  </span></span>
+<span><span class="co">#&gt; 4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  </span></span>
+<span><span class="co">#&gt; 5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</span></span></code></pre></div>
+<div id="ungrouping" class="section level3" number="9.8.1">
+<h3>
+<span class="header-section-number">9.8.1</span> Ungrouping<a class="anchor" aria-label="anchor" href="#ungrouping"><i class="fas fa-link"></i></a>
+</h3>
+<p>By default, each call to <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> will undo one level of grouping. This means that our previous result was still grouped by species.</p>
+<p>(We can see this in the tibble output above, and also by examining the structure of the returned data frame. This tells us that this is an S3 object of class “grouped_df”, which inherits its properties from a “tbl_df”, “tbl”, and “data.frame” objects.)</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">penguin_summary_stats</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
+<p>Since we have grouped by two variables, R expects us to use two summaries before returning a data frame (or tibble) that is not grouped. One way to satisfy this is to use apply a second summary at the species level of grouping.</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguin_summary_stats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 10</span></span>
+<span><span class="co">#&gt;   species   island  mean median   min   q_0   q_1   q_2   q_3   q_4</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie        NA  38.8   38.7  45.2  33.4  37.0  38.7  37.0  45.2</span></span>
+<span><span class="co">#&gt; 2 Chinstrap     NA  48.8   49.6  58    40.9  46.3  49.6  46.3  58  </span></span>
+<span><span class="co">#&gt; 3 Gentoo        NA  47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</span></span></code></pre></div>
+<p>However, we won’t always want to do apply another summary. In that case, we can undo the grouping using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code>. Remembering to ungroup is a common gotcha and cause of confusion when working with multiple-group summaries.</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="va">penguin_summary_stats</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 10</span></span>
+<span><span class="co">#&gt;   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6</span></span>
+<span><span class="co">#&gt; 2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1</span></span>
+<span><span class="co">#&gt; 3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  </span></span>
+<span><span class="co">#&gt; 4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  </span></span>
+<span><span class="co">#&gt; 5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</span></span></code></pre></div>
+<p>There’s an alternative method to achieve the same thing in a single step when using <a href="https://dplyr.tidyverse.org">dplyr</a> versions 1.0.0 and above. This is to to set the <code>.groups</code> parameter of the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> function call, which determines the grouping of the returned data frame.</p>
+<p>The <code>.groups</code> parameter and can take 4 possible values:</p>
+<ul>
+<li><p>“drop_last”: dropping the last level of grouping (The only option before v1.0.0);</p></li>
+<li><p>“drop”: All levels of grouping are dropped;</p></li>
+<li><p>“keep”: Same grouping structure as <code>.data</code>;</p></li>
+<li><p>“rowwise”: Each row is its own group.</p></li>
+</ul>
+<p>By default, “drop_last” is used if all the results have 1 row and “keep” is used otherwise.</p>
+</div>
+</div>
+<div id="reordering-factors" class="section level2" number="9.9">
+<h2>
+<span class="header-section-number">9.9</span> Reordering Factors<a class="anchor" aria-label="anchor" href="#reordering-factors"><i class="fas fa-link"></i></a>
+</h2>
+<p>R stored factors as integer values, which it then maps to a set of labels. Only factor levels that appear in your data will be assigned a coded integer value and the mapping between factor levels and integers will depend on the order that the labels appear in your data.</p>
+<p>This can be annoying, particularly when your factor levels relate to properties that aren’t numerical but do have an inherent ordering to them. In the example below, we have the t-shirt size of twelve people.</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tshirts</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, </span>
+<span>  size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"L"</span>, <span class="cn">NA</span>, <span class="st">"M"</span>, <span class="st">"S"</span>, <span class="st">"XS"</span>, <span class="st">"M"</span>, <span class="st">"XXL"</span>, <span class="st">"L"</span>, <span class="st">"XS"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"S"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">tshirts</span><span class="op">$</span><span class="va">size</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "L"   "M"   "S"   "XS"  "XXL"</span></span></code></pre></div>
+<p>Irritatingly, the sizes aren’t in order and extra large isn’t included because it’s not included in this particular sample. This leads to awkward looking summary tables and plots.</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tshirts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">size</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span><span class="co">#&gt;   size  count</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 L         3</span></span>
+<span><span class="co">#&gt; 2 M         3</span></span>
+<span><span class="co">#&gt; 3 S         2</span></span>
+<span><span class="co">#&gt; 4 XS        2</span></span>
+<span><span class="co">#&gt; 5 XXL       1</span></span>
+<span><span class="co">#&gt; 6 &lt;NA&gt;      1</span></span></code></pre></div>
+<p>We can fix this by creating a new variable with the factors explicitly coded in the correct order. We also need to specify that we should not drop empty groups as part of <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tidy_tshirt_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"XS"</span>, <span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>, <span class="st">"XXL"</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tshirts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>size_tidy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">size</span>, levels <span class="op">=</span> <span class="va">tidy_tshirt_levels</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">size_tidy</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span><span class="co">#&gt;   size_tidy count</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 XS            2</span></span>
+<span><span class="co">#&gt; 2 S             2</span></span>
+<span><span class="co">#&gt; 3 M             3</span></span>
+<span><span class="co">#&gt; 4 L             3</span></span>
+<span><span class="co">#&gt; 5 XL            0</span></span>
+<span><span class="co">#&gt; 6 XXL           1</span></span>
+<span><span class="co">#&gt; # … with 1 more row</span></span></code></pre></div>
+</div>
+<div id="be-aware-factors" class="section level2" number="9.10">
+<h2>
+<span class="header-section-number">9.10</span> Be Aware: Factors<a class="anchor" aria-label="anchor" href="#be-aware-factors"><i class="fas fa-link"></i></a>
+</h2>
+<p>As we have seen a little already, categorical variables can cause issues when wrangling and presenting data in R. All of these problems are solvable using base R techniques but the <a href="https://forcats.tidyverse.org/">forcats</a> package provides tools for the most common of these problems. This includes functions for changing the order of factor levels or the values with which they are associated.</p>
+<p>Some examples functions from the package include:</p>
+<ul>
+<li>
+<code>fct_reorder()</code>: Reordering a factor by another variable.</li>
+<li>
+<code>fct_infreq()</code>: Reordering a factor by the frequency of values.</li>
+<li>
+<code>fct_relevel()</code>: Changing the order of a factor by hand.</li>
+<li>
+<code>fct_lump()</code>: Collapsing the least/most frequent values of a factor into “other”.</li>
+</ul>
+<p>Examples of each of these can be found in the <a href="https://forcats.tidyverse.org/articles/forcats.html">forcats vignette</a> or the <a href="(https://r4ds.had.co.nz/factors.html)">factors chapter</a> of R for data science.</p>
+</div>
+<div id="be-aware-strings" class="section level2" number="9.11">
+<h2>
+<span class="header-section-number">9.11</span> Be Aware: Strings<a class="anchor" aria-label="anchor" href="#be-aware-strings"><i class="fas fa-link"></i></a>
+</h2>
+<p>Working with and analysing text data is a skill unto itself. However, it is useful to be able to do some basic manipulation of character strings programatically.</p>
+<p>Because R was developed as a statistical programming language, it is well suited to the computational and modelling aspects of working with text data but the base R string manipulation functions can be a bit unwieldy at times.</p>
+<p>The <a href="https://stringr.tidyverse.org">stringr</a> package aims to combat this by providing useful helper functions for a range of text management problems. Even when not analysing text data these can be useful, for example to remove prefixes on a lot of column names.</p>
+<pre><code>#&gt; Warning: `as_data_frame()` was deprecated in tibble 2.0.0.
+#&gt; ℹ Please use `as_tibble()` instead.
+#&gt; ℹ The signature and semantics have changed, see `?as_tibble`.
+#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+#&gt; `.name_repair` is omitted as of tibble 2.0.0.
+#&gt; ℹ Using compatibility `.name_repair`.
+#&gt; ℹ The deprecated feature was likely used in the tibble package.
+#&gt;   Please report the issue at &lt; ]8;;https://github.com/tidyverse/tibble/issueshttps://github.com/tidyverse/tibble/issues ]8;;&gt;.</code></pre>
+<p>Suppose we wanted to keep only the text following an underscore in these column names. We could do that by using a regular expression to extract lower-case or upper-case letters which follow an underscore.</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">poorly_named_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 11</span></span>
+<span><span class="co">#&gt;   observat…¹   V1_A   V2_B   V3_C   V4_D   V5_E   V6_F   V7_G    V8_H    V9_I</span></span>
+<span><span class="co">#&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1          1  0.680 -2.09  -0.533 -0.703  0.879  0.297  0.354  0.580   0.470 </span></span>
+<span><span class="co">#&gt; 2          2  0.409  1.25  -1.85   0.652  0.675  1.13  -1.58  -0.0723  1.39  </span></span>
+<span><span class="co">#&gt; 3          3 -0.332 -0.956  1.35  -0.441 -0.113 -0.370 -1.87   0.260   1.34  </span></span>
+<span><span class="co">#&gt; 4          4 -1.14  -1.29   0.636  0.290 -0.933  0.883  0.164 -0.869   0.751 </span></span>
+<span><span class="co">#&gt; 5          5  0.284  0.947 -0.530 -0.869  0.182 -0.444  0.723 -0.676   0.0731</span></span>
+<span><span class="co">#&gt; 6          6 -1.23  -3.20  -1.08   1.73  -0.848 -0.747 -0.659  0.640  -0.751 </span></span>
+<span><span class="co">#&gt; # … with 1 more variable: V10_J &lt;dbl&gt;, and abbreviated variable name</span></span>
+<span><span class="co">#&gt; #   ¹​observation_id</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">poorly_named_df</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"(?&lt;=_)([a-zA-Z]+)"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J"</span></span></code></pre></div>
+<p>Alternatively, can avoid using regular expressions. We can split each column name at the underscore and keep only the second part of each string.</p>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># split column names at underscores and inspect structure of resuting object</span></span>
+<span><span class="va">split_strings</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">poorly_named_df</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">split_strings</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 11</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "observation" "id"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V1" "A"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V2" "B"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V3" "C"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V4" "D"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V5" "E"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V6" "F"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V7" "G"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V8" "H"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V9" "I"</span></span>
+<span><span class="co">#&gt;  $ : chr [1:2] "V10" "J"</span></span>
+<span></span>
+<span><span class="co"># keep only the second element of each character vector in the list</span></span>
+<span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">split_strings</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J"</span></span></code></pre></div>
+<p>Again, unless you plan to work extensively with text data, I would recommend that you look up such string manipulations as you need them. The <a href="https://r4ds.had.co.nz/strings.html#strings">strings</a> section of R for Data Science is a useful starting point.</p>
+</div>
+<div id="be-aware-date-times" class="section level2" number="9.12">
+<h2>
+<span class="header-section-number">9.12</span> Be Aware: Date-Times<a class="anchor" aria-label="anchor" href="#be-aware-date-times"><i class="fas fa-link"></i></a>
+</h2>
+<p>Remember all the fuss we made about storing dates in the ISO standard format? That was because dates and times are complicated enough to work with before adding extra ambiguity.</p>
+<p><span class="math display">\[ \text{YYYY} - \text{MM} - \text{DD}\]</span>
+Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the Sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.</p>
+<p>Moving from larger to smaller time spans: leap years alter the number of days in a year, months are of variable length (with February’s length changing from year to year). If your data are measured in a place that uses daylight saving, then one day a year will be 23 hours long and another will be 25 hours long. To make things worse, the dates and the hour at which the clocks change are not uniform across countries, which might be in distinct time zones that themselves change over time.</p>
+<p>Even at the level of minutes and seconds we aren’t safe - since the Earth’s orbit is gradually slowing down a leap second is added approximately every 21 months. Nor are things any better when looking at longer time scales or across cultures, where we might have to account for different calendars: months are added removed and altered over time, other calendar systems still take different approaches to measuring time and using different units and origin points.</p>
+<p>With all of these issues you have to be very careful when working with date and time data. Functions to help you with this can be found in the <a href="https://lubridate.tidyverse.org">lubridate</a> package, with examples in the <a href="https://r4ds.had.co.nz/dates-and-times.html#dates-and-times">dates and times</a> chapter of R for data science.</p>
+</div>
+<div id="be-aware-relational-data" class="section level2" number="9.13">
+<h2>
+<span class="header-section-number">9.13</span> Be Aware: Relational Data<a class="anchor" aria-label="anchor" href="#be-aware-relational-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>When the data you need are stored across two or more data frames you need to be able to cross-reference those and match up values for observational unit. This sort of data is know as relational data, and is used extensively in data science.</p>
+<p>The variables you use to match observational units across data frames are known as <em>keys</em>. The primary key belongs to the first table and the foreign key belongs to the secondary table. There are various ways to join these data frames, depending on if you want to retain.</p>
+<div id="join-types" class="section level4" number="9.13.0.1">
+<h4>
+<span class="header-section-number">9.13.0.1</span> Join types<a class="anchor" aria-label="anchor" href="#join-types"><i class="fas fa-link"></i></a>
+</h4>
+<p>You might want to keep only observational units that have key variables values in both data frames, this is known as an inner join.</p>
+<div class="figure">
+<img src="images/301-edav-wrangling/join-inner.png" alt=""><p class="caption">Inner join diagram. Source: R for Data Science</p>
+</div>
+<p>You might instead want to keep all units from the primary table but pad with NAs where there is not a corresponding foreign key in the second table. This results in an <strong>(outer) left-join</strong>.</p>
+<div class="figure">
+<img src="images/301-edav-wrangling/join-left-right-full.png" alt=""><p class="caption">Diagram for left, right and outer joins. Source: R for Data Science</p>
+</div>
+<p>Conversely, you might keep all units from the second table but pad with NAs where there is not a corresponding foreign key in the primary table. This is imaginatively named an <strong>(outer) right-join</strong>.</p>
+<p>The final common join type is a full outer join, in which all observational units from either table are retained and all missing values are padded with NAs. This is known as an <strong>(outer) full join</strong>.</p>
+<p>Things get more complicated when keys do not uniquely identify observational units in one or both tables. I’d recommend you start exploring these ideas with the <a href="">relational data</a> chapter of R for Data Science.</p>
+</div>
+<div id="why-and-where-to-learn-more" class="section level4" number="9.13.0.2">
+<h4>
+<span class="header-section-number">9.13.0.2</span> Why and where to learn more<a class="anchor" aria-label="anchor" href="#why-and-where-to-learn-more"><i class="fas fa-link"></i></a>
+</h4>
+<p>Working with relational data is essential to getting any data science up and running out in the wilds of reality. This is because businesses and companies don’t store all of their data in a huge single csv file. For one this isn’t very efficient, because most cells would be empty. Secondly, it’s not a very secure approach, since you can’t grant partial access to the data. That’s why information is usually stored in many data frames (more generically known as tables) within one or more databases.</p>
+<p>These data silos are created, maintained, accessed and destroyed using a relational data base management system. These management systems use code to manage and access the stored data, just like we have seen in the dplyr commands above. You might well have heard of the SQL programming language (and its many variants), which is a popular language for data base management and is the inspiration for the dplyr package and verbs.</p>
+<p>If you’d like to learn more then there are many excellent introductory SQL books and courses, I’d recommend picking one that focuses on data analysis or data science unless you really want to dig into efficient storage and querying of databases.</p>
+</div>
+</div>
+<div id="wrapping-up-3" class="section level2" number="9.14">
+<h2>
+<span class="header-section-number">9.14</span> Wrapping up<a class="anchor" aria-label="anchor" href="#wrapping-up-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>We have:</p>
+<ul>
+<li><p>Learned how to wrangle tabular data in R with <a href="https://dplyr.tidyverse.org">dplyr</a></p></li>
+<li><p>Met the idea of relational data and <a href="https://dplyr.tidyverse.org">dplyr</a>’s relationship to SQL</p></li>
+<li><p>Become aware of some tricky data types and packages that can help.</p></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="edav-introduction.html">Introduction</a></div>
+<div class="next"><a href="edav-analysis.html"><span class="header-section-number">10</span> Exploratory Data Analysis</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#edav-wrangling"><span class="header-section-number">9</span> Data Wrangling</a></li>
+<li><a class="nav-link" href="#what-is-data-wrangling"><span class="header-section-number">9.1</span> What is Data Wrangling?</a></li>
+<li><a class="nav-link" href="#example-data-sets"><span class="header-section-number">9.2</span> Example Data Sets</a></li>
+<li>
+<a class="nav-link" href="#viewing-your-data"><span class="header-section-number">9.3</span> Viewing Your Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#view"><span class="header-section-number">9.3.1</span> View()</a></li>
+<li><a class="nav-link" href="#head"><span class="header-section-number">9.3.2</span> head()</a></li>
+<li><a class="nav-link" href="#str"><span class="header-section-number">9.3.3</span> str()</a></li>
+<li><a class="nav-link" href="#names"><span class="header-section-number">9.3.4</span> names()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#renaming-variables"><span class="header-section-number">9.4</span> Renaming Variables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#colnames"><span class="header-section-number">9.4.1</span> colnames()</a></li>
+<li><a class="nav-link" href="#dplyrrename"><span class="header-section-number">9.4.2</span> dplyr::rename()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#subsetting-1"><span class="header-section-number">9.5</span> Subsetting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#base-r-1"><span class="header-section-number">9.5.1</span> Base R</a></li>
+<li><a class="nav-link" href="#filter-and-select"><span class="header-section-number">9.5.2</span> filter() and select()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#creating-new-variables"><span class="header-section-number">9.6</span> Creating New Variables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#base-r-2"><span class="header-section-number">9.6.1</span> Base R</a></li>
+<li><a class="nav-link" href="#dplyrmutate"><span class="header-section-number">9.6.2</span> dplyr::mutate()</a></li>
+<li><a class="nav-link" href="#rownames_to_column"><span class="header-section-number">9.6.3</span> rownames_to_column()</a></li>
+<li><a class="nav-link" href="#rowids_to_column"><span class="header-section-number">9.6.4</span> rowids_to_column()</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#summaries"><span class="header-section-number">9.7</span> Summaries</a></li>
+<li>
+<a class="nav-link" href="#grouped-operations"><span class="header-section-number">9.8</span> Grouped Operations</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#ungrouping"><span class="header-section-number">9.8.1</span> Ungrouping</a></li></ul>
+</li>
+<li><a class="nav-link" href="#reordering-factors"><span class="header-section-number">9.9</span> Reordering Factors</a></li>
+<li><a class="nav-link" href="#be-aware-factors"><span class="header-section-number">9.10</span> Be Aware: Factors</a></li>
+<li><a class="nav-link" href="#be-aware-strings"><span class="header-section-number">9.11</span> Be Aware: Strings</a></li>
+<li><a class="nav-link" href="#be-aware-date-times"><span class="header-section-number">9.12</span> Be Aware: Date-Times</a></li>
+<li><a class="nav-link" href="#be-aware-relational-data"><span class="header-section-number">9.13</span> Be Aware: Relational Data</a></li>
+<li><a class="nav-link" href="#wrapping-up-3"><span class="header-section-number">9.14</span> Wrapping up</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/zakvarty/data_science_notes//blob/master/301-edav-wrangling.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/zakvarty/data_science_notes//edit/master/301-edav-wrangling.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-01-09.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

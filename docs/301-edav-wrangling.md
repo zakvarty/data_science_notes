@@ -1,9 +1,11 @@
 # Data Wrangling {#edav-wrangling}
 
-```{r, results='asis', echo=FALSE}
-source("_common.R")
-status("drafting")
-```
+
+::: {.rmdimportant} 
+Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+
+If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
+:::
 
 
 ## What is Data Wrangling?
@@ -31,7 +33,8 @@ In what follows, I'll give a fly-by tour of tools for data wrangling in R, showi
 
 To demonstrate some standard skills we will use two datasets. The `mtcars` data comes built into any R installation. The second data set we will look at is the `penguins` data from `{palmerpenguins}`. 
 
-```{r}
+
+```r
 library(palmerpenguins)
 pengins <- palmerpenguins::penguins
 cars <- datasets::mtcars
@@ -44,7 +47,8 @@ The `View()` function can be used to create a spreadsheet-like view of your data
 
 `View()` will work for any "matrix-like" R object, such as a tibble, data frame, vector or matrix. Note the capital letter - the function is called `View()`, not `view()`.
 
-```{r eval=FALSE}
+
+```r
 View(penguins)
 ```
 
@@ -54,8 +58,16 @@ View(penguins)
 
 For large data sets, you might not want (or be able to) view it all at once. You can then use `head()` to view the first few rows. The integer argument `n` specifies the number of rows you would like to return. 
 
-```{r}
+
+```r
 head(x = pengins, n = 3)
+#> # A tibble: 3 × 8
+#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
+#> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
+#> 2 Adelie  Torgersen           39.5          17.4      186    3800 fema…  2007
+#> 3 Adelie  Torgersen           40.3          18        195    3250 fema…  2007
+#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
 ```
 
 
@@ -63,25 +75,54 @@ head(x = pengins, n = 3)
 
 An alternative way to view the a large data set, or one with a complicated format is to examine its structure with `str()`. This is a useful way to inspect the structure of list-like objects, particularly when they've got a nested structure.
 
-```{r}
+
+```r
 str(penguins)
+#> tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+#>  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+#>  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+#>  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+#>  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+#>  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+#>  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+#>  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+#>  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
 ### `names()`
 Finally, if you just want to access the variable names you can do so with the `names()` function from base R. 
 
-```{r}
+
+```r
 names(penguins)
+#> [1] "species"           "island"            "bill_length_mm"   
+#> [4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+#> [7] "sex"               "year"
 ```
 
 Similarly, you can explicitly access the row and column names of a data frame or tibble using `colnames()` or `rownames()`.
 
-```{r}
+
+```r
 colnames(cars)
+#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+#> [11] "carb"
 ```
 
-```{r}
+
+```r
 rownames(cars)
+#>  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+#>  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+#>  [7] "Duster 360"          "Merc 240D"           "Merc 230"           
+#> [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
+#> [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
+#> [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+#> [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+#> [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+#> [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+#> [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+#> [31] "Maserati Bora"       "Volvo 142E"
 ```
 
 In the `cars` data, the car model are stored as the row names. This doesn't really jive with our idea of tidy data - we'll see how to fix that shortly. 
@@ -92,31 +133,54 @@ In the `cars` data, the car model are stored as the row names. This doesn't real
 
 The function `colnames()` can be used to set, as well as to retrieve, column names.
 
-```{r}
+
+```r
 cars_renamed <- cars 
 colnames(cars_renamed)[1] <- "miles_per_gallon"
 colnames(cars_renamed)
+#>  [1] "miles_per_gallon" "cyl"              "disp"            
+#>  [4] "hp"               "drat"             "wt"              
+#>  [7] "qsec"             "vs"               "am"              
+#> [10] "gear"             "carb"
 ```
 
 ### `dplyr::rename()`
 
 We can also use functions from `{dplyr}` to rename columns. Let's alter the second column name.
 
-```{r, warning=FALSE}
+
+```r
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 cars_renamed <- rename(.data = cars_renamed, cylinders = cyl)
 colnames(cars_renamed)
+#>  [1] "miles_per_gallon" "cylinders"        "disp"            
+#>  [4] "hp"               "drat"             "wt"              
+#>  [7] "qsec"             "vs"               "am"              
+#> [10] "gear"             "carb"
 ```
 
 This could be done as part of a pipe, if we were making many alterations. 
 
-```{r}
+
+```r
 cars_renamed <- cars_renamed %>% 
   rename(displacement = disp) %>% 
   rename(horse_power = hp) %>% 
   rename(rear_axel_ratio = drat)
 
 colnames(cars_renamed)
+#>  [1] "miles_per_gallon" "cylinders"        "displacement"    
+#>  [4] "horse_power"      "rear_axel_ratio"  "wt"              
+#>  [7] "qsec"             "vs"               "am"              
+#> [10] "gear"             "carb"
 ```
 
 When using the dplyr function you have to remember the format `new_name = old_name`. This matches the format used to create a data frame or tibble, but is the opposite order to the python function of the same name and often catches people out. 
@@ -129,34 +193,134 @@ In the section on [creating new variables](#creating-new-variables), we will see
 
 In base R you can extract rows, columns and combinations thereof using index notation. 
 
-```{r}
+
+```r
 # First row
 penguins[1, ]
+#> # A tibble: 1 × 8
+#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
+#> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
+#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
 
 # First Column 
 penguins[ , 1]
+#> # A tibble: 344 × 1
+#>   species
+#>   <fct>  
+#> 1 Adelie 
+#> 2 Adelie 
+#> 3 Adelie 
+#> 4 Adelie 
+#> 5 Adelie 
+#> 6 Adelie 
+#> # … with 338 more rows
 
 # Rows 2-3 of columns 1, 2 and 4
 penguins[2:3, c(1, 2, 4)]
+#> # A tibble: 2 × 3
+#>   species island    bill_depth_mm
+#>   <fct>   <fct>             <dbl>
+#> 1 Adelie  Torgersen          17.4
+#> 2 Adelie  Torgersen          18
 ```
 
 Using negative indexing you can remove rows or columns 
 
-```{r}
+
+```r
 # Drop all but first row
 penguins[-(2:344), ]
+#> # A tibble: 1 × 8
+#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
+#> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
+#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
 ```
 
-```{r}
+
+```r
 # Drop all but first column 
 penguins[ , -(2:8)]
+#> # A tibble: 344 × 1
+#>   species
+#>   <fct>  
+#> 1 Adelie 
+#> 2 Adelie 
+#> 3 Adelie 
+#> 4 Adelie 
+#> 5 Adelie 
+#> 6 Adelie 
+#> # … with 338 more rows
 ```
 
 You can also select rows or columns by their names. This can be done using the bracket syntax (`[ ]`) or the dollar syntax (`$`). 
 
-```{r}
+
+```r
 pengins[ , "species"]
+#> # A tibble: 344 × 1
+#>   species
+#>   <fct>  
+#> 1 Adelie 
+#> 2 Adelie 
+#> 3 Adelie 
+#> 4 Adelie 
+#> 5 Adelie 
+#> 6 Adelie 
+#> # … with 338 more rows
 penguins$species
+#>   [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>   [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#>  [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+#> [148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   
+#> [155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+#> [274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap
+#> [281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+#> [344] Chinstrap
+#> Levels: Adelie Chinstrap Gentoo
 ```
 
 
@@ -168,32 +332,71 @@ Since `penguins` is a tibble, these return different types of object. Subsetting
 
 In both functions you list what you would like to retain. Filter and select calls can be piped together to subset based on row and column values. 
 
-```{r}
+
+```r
 penguins %>% 
   select(species, island, body_mass_g)
+#> # A tibble: 344 × 3
+#>   species island    body_mass_g
+#>   <fct>   <fct>           <int>
+#> 1 Adelie  Torgersen        3750
+#> 2 Adelie  Torgersen        3800
+#> 3 Adelie  Torgersen        3250
+#> 4 Adelie  Torgersen          NA
+#> 5 Adelie  Torgersen        3450
+#> 6 Adelie  Torgersen        3650
+#> # … with 338 more rows
 ```
 
-```{r}
+
+```r
 penguins %>% 
   select(species, island, body_mass_g) %>% 
   filter(body_mass_g > 6000)
+#> # A tibble: 2 × 3
+#>   species island body_mass_g
+#>   <fct>   <fct>        <int>
+#> 1 Gentoo  Biscoe        6300
+#> 2 Gentoo  Biscoe        6050
 ```
 
 Subsetting rows can be inverted by negating the `filter()` statement
 
-```{r}
+
+```r
 penguins %>% 
   select(species, island, body_mass_g) %>% 
   filter(!(body_mass_g > 6000))
+#> # A tibble: 340 × 3
+#>   species island    body_mass_g
+#>   <fct>   <fct>           <int>
+#> 1 Adelie  Torgersen        3750
+#> 2 Adelie  Torgersen        3800
+#> 3 Adelie  Torgersen        3250
+#> 4 Adelie  Torgersen        3450
+#> 5 Adelie  Torgersen        3650
+#> 6 Adelie  Torgersen        3625
+#> # … with 334 more rows
 ```
 
 and dropping columns can done by selecting all columns except the one(s) you want to drop.
 
-```{r}
+
+```r
 penguins %>% 
   select(species, island, body_mass_g) %>% 
   filter(!(body_mass_g > 6000)) %>% 
   select(!c(species, island))
+#> # A tibble: 340 × 1
+#>   body_mass_g
+#>         <int>
+#> 1        3750
+#> 2        3800
+#> 3        3250
+#> 4        3450
+#> 5        3650
+#> 6        3625
+#> # … with 334 more rows
 ```
 
 ## Creating New Variables {#creating-new-variables}
@@ -202,15 +405,29 @@ penguins %>%
 
 We can create new variables in base R by assigning a vector of the correct length to a new column name.
 
-```{r}
+
+```r
 cars_renamed$weight <- cars_renamed$wt
 ```
 
 If we then drop the original column from the data frame, this gives us an alternative way of renaming columns. 
 
-```{r}
+
+```r
 cars_renamed <- cars_renamed[ ,-which(names(cars_renamed) == "wt")]
 head(cars_renamed, n = 5)
+#>                   miles_per_gallon cylinders displacement horse_power
+#> Mazda RX4                     21.0         6          160         110
+#> Mazda RX4 Wag                 21.0         6          160         110
+#> Datsun 710                    22.8         4          108          93
+#> Hornet 4 Drive                21.4         6          258         110
+#> Hornet Sportabout             18.7         8          360         175
+#>                   rear_axel_ratio  qsec vs am gear carb weight
+#> Mazda RX4                    3.90 16.46  0  1    4    4  2.620
+#> Mazda RX4 Wag                3.90 17.02  0  1    4    4  2.875
+#> Datsun 710                   3.85 18.61  1  1    4    1  2.320
+#> Hornet 4 Drive               3.08 19.44  1  0    3    1  3.215
+#> Hornet Sportabout            3.15 17.02  0  0    3    2  3.440
 ```
 
 One thing to be aware of is that this operation does not preserve column ordering. 
@@ -221,18 +438,26 @@ Generally speaking, code that relies on columns being in a specific order is fra
 
 The function from `{dplyr}` to create new columns is `mutate()`. Let's create another column that has the car's weight in kilogrammes rather than tonnes. 
 
-```{r}
+
+```r
 cars_renamed <- cars_renamed %>% 
   mutate(weight_kg = weight * 1000)
 
 cars_renamed %>% 
   select(miles_per_gallon, cylinders, displacement, weight, weight_kg) %>% 
   head(n = 5)
+#>                   miles_per_gallon cylinders displacement weight weight_kg
+#> Mazda RX4                     21.0         6          160  2.620      2620
+#> Mazda RX4 Wag                 21.0         6          160  2.875      2875
+#> Datsun 710                    22.8         4          108  2.320      2320
+#> Hornet 4 Drive                21.4         6          258  3.215      3215
+#> Hornet Sportabout             18.7         8          360  3.440      3440
 ```
 
 You can also create new columns that are functions of multiple other columns.
 
-```{r}
+
+```r
 cars_renamed <- cars_renamed %>% 
   mutate(cylinder_adjusted_mpg = miles_per_gallon / cylinders)
 ```
@@ -243,29 +468,50 @@ cars_renamed <- cars_renamed %>%
 One useful example of adding an additional row to a data frame is to convert its row names to a column of the data fame. 
 
 
-```{r}
+
+```r
 cars %>% 
   mutate(model = rownames(cars_renamed)) %>% 
   select(mpg, cyl, model) %>% 
   head(n = 5)
+#>                    mpg cyl             model
+#> Mazda RX4         21.0   6         Mazda RX4
+#> Mazda RX4 Wag     21.0   6     Mazda RX4 Wag
+#> Datsun 710        22.8   4        Datsun 710
+#> Hornet 4 Drive    21.4   6    Hornet 4 Drive
+#> Hornet Sportabout 18.7   8 Hornet Sportabout
 ```
 
 There's a neat function called `rownames_to_column()` in `{tibble}` which will add this as the first column and remove the row names all in one step. 
 
-```{r}
+
+```r
 cars %>% 
   tibble::rownames_to_column(var = "model") %>% 
   head(n = 5)
+#>               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#> 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#> 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#> 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#> 4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#> 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ```
 
 ### `rowids_to_column()`
 
 Another function from `{tibble}` adds the row id of each observation as a new column. This is often useful when ordering or combining tables.
 
-```{r}
+
+```r
 cars %>% 
   tibble::rowid_to_column(var = "row_id") %>% 
   head(n = 5)
+#>   row_id  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#> 1      1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#> 2      2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#> 3      3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#> 4      4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#> 5      5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ```
 
 ## Summaries 
@@ -274,19 +520,30 @@ The `summarise()` function allows you to collapse a data frame into a single row
 
 We can calculate the average bill length of all penguins in a single `summarise()` function call. 
 
-```{r}
+
+```r
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm))
+#> # A tibble: 1 × 1
+#>   average_bill_length_mm
+#>                    <dbl>
+#> 1                     NA
 ```
 
 Since we have missing values, we might instead want to calculate the mean of the recorded values. 
 
-```{r}
+
+```r
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm, na.rm = TRUE))
+#> # A tibble: 1 × 1
+#>   average_bill_length_mm
+#>                    <dbl>
+#> 1                   43.9
 ```
 
 We can also use `summarise()` to gather multiple summaries in a single data frame.
 
-```{r}
+
+```r
 bill_length_mm_summary <- penguins %>% 
   summarise(
     mean = mean(bill_length_mm, na.rm = TRUE),
@@ -299,6 +556,10 @@ bill_length_mm_summary <- penguins %>%
     q_4 = max(bill_length_mm, na.rm = TRUE))
 
 bill_length_mm_summary
+#> # A tibble: 1 × 8
+#>    mean median   min   q_0   q_1   q_2   q_3   q_4
+#>   <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1  43.9   44.4  59.6  32.1  39.2  44.4  39.2  59.6
 ```
 
 In all, this isn't overly exciting. You might, rightly, wonder why you'd want to use these `summarise()` calls when we could just use the simpler base R calls directly. 
@@ -309,7 +570,8 @@ One benefit is that the summarise calls ensure consistent output. However, the m
 
 The real benefit of `summarise()` comes from its combination with `group_by()`. This allows to you calculate the same summary statistics for each level of a factor with only one additional line of code. Here we're re-calculating the same set of summary statistics we just found for all penguins, but for each individual species. 
 
-```{r}
+
+```r
 penguins %>% 
   group_by(species) %>%
   summarise(
@@ -321,11 +583,18 @@ penguins %>%
     q_2 = median(bill_length_mm, na.rm = TRUE),
     q_3 = quantile(bill_length_mm, prob = 0.25, na.rm = TRUE),
     q_4 = max(bill_length_mm, na.rm = TRUE))
+#> # A tibble: 3 × 9
+#>   species    mean median   min   q_0   q_1   q_2   q_3   q_4
+#>   <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Adelie     38.8   38.8  46    32.1  36.8  38.8  36.8  46  
+#> 2 Chinstrap  48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+#> 3 Gentoo     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6
 ```
 
 You can group by multiple factors to calculate summaries for each distinct combination of levels within your data set. Here we group by combinations of species and the island to which they belong. 
 
-```{r}
+
+```r
 penguin_summary_stats <- penguins %>% 
   group_by(species, island) %>%
   summarise(
@@ -337,8 +606,19 @@ penguin_summary_stats <- penguins %>%
     q_2 = median(bill_length_mm, na.rm = TRUE),
     q_3 = quantile(bill_length_mm, prob = 0.25, na.rm = TRUE),
     q_4 = max(bill_length_mm, na.rm = TRUE))
+#> `summarise()` has grouped output by 'species'. You can override using the
+#> `.groups` argument.
 
 penguin_summary_stats
+#> # A tibble: 5 × 10
+#> # Groups:   species [3]
+#>   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
+#>   <fct>     <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6
+#> 2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1
+#> 3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  
+#> 4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+#> 5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6
 ```
 ### Ungrouping 
 
@@ -346,21 +626,39 @@ By default, each call to `summarise()` will undo one level of grouping. This mea
 
 (We can see this in the tibble output above, and also by examining the structure of the returned data frame. This tells us that this is an S3 object of class "grouped_df", which inherits its properties from a "tbl_df", "tbl", and "data.frame" objects.)
 
-```{r}
+
+```r
 class(penguin_summary_stats)
+#> [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"
 ```
 
 Since we have grouped by two variables, R expects us to use two summaries before returning a data frame (or tibble) that is not grouped. One way to satisfy this is to use apply a second summary at the species level of grouping. 
 
-```{r, warning=FALSE}
+
+```r
 penguin_summary_stats %>% 
   summarise_all(mean, na.rm = TRUE)
+#> # A tibble: 3 × 10
+#>   species   island  mean median   min   q_0   q_1   q_2   q_3   q_4
+#>   <fct>      <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Adelie        NA  38.8   38.7  45.2  33.4  37.0  38.7  37.0  45.2
+#> 2 Chinstrap     NA  48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+#> 3 Gentoo        NA  47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6
 ```
 
 However, we won't always want to do apply another summary. In that case, we can undo the grouping using `ungroup()`. Remembering to ungroup is a common gotcha and cause of confusion when working with multiple-group summaries. 
 
-```{r}
+
+```r
 ungroup(penguin_summary_stats)
+#> # A tibble: 5 × 10
+#>   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
+#>   <fct>     <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6
+#> 2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1
+#> 3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  
+#> 4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+#> 5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6
 ```
 
 There's an alternative method to achieve the same thing in a single step when using `{dplyr}` versions 1.0.0 and above. This is to to set the `.groups` parameter of the `summarise()` function call, which determines the grouping of the returned data frame.
@@ -383,30 +681,53 @@ R stored factors as integer values, which it then maps to a set of labels. Only 
 
 This can be annoying, particularly when your factor levels relate to properties that aren't numerical but do have an inherent ordering to them. In the example below, we have the t-shirt size of twelve people.   
 
-```{r}
+
+```r
 tshirts <- tibble::tibble(
   id = 1:12, 
   size = as.factor(c("L", NA, "M", "S", "XS", "M", "XXL", "L", "XS", "M", "L", "S"))
 )
 
 levels(tshirts$size)
+#> [1] "L"   "M"   "S"   "XS"  "XXL"
 ```
 
 Irritatingly, the sizes aren't in order and extra large isn't included because it's not included in this particular sample. This leads to awkward looking summary tables and plots. 
 
-```{r}
+
+```r
 tshirts %>% group_by(size) %>% summarise(count = n())
+#> # A tibble: 6 × 2
+#>   size  count
+#>   <fct> <int>
+#> 1 L         3
+#> 2 M         3
+#> 3 S         2
+#> 4 XS        2
+#> 5 XXL       1
+#> 6 <NA>      1
 ```
 
 We can fix this by creating a new variable with the factors explicitly coded in the correct order. We also need to specify that we should not drop empty groups as part of `group_by()`. 
 
-```{r}
+
+```r
 tidy_tshirt_levels <- c("XS", "S", "M", "L", "XL", "XXL", NA)
 
 tshirts %>% 
   mutate(size_tidy = factor(size, levels = tidy_tshirt_levels)) %>% 
   group_by(size_tidy, .drop = FALSE ) %>% 
   summarise(count = n())
+#> # A tibble: 7 × 2
+#>   size_tidy count
+#>   <fct>     <int>
+#> 1 XS            2
+#> 2 S             2
+#> 3 M             3
+#> 4 L             3
+#> 5 XL            0
+#> 6 XXL           1
+#> # … with 1 more row
 ```
 
 
@@ -431,32 +752,64 @@ Because R was developed as a statistical programming language, it is well suited
 
 The `{stringr}` package aims to combat this by providing useful helper functions for a range of text management problems. Even when not analysing text data these can be useful, for example to remove prefixes on a lot of column names. 
 
-```{r, echo=FALSE, eval=TRUE}
-dat <- matrix(rnorm(100), nrow = 10, ncol = 10)
-poorly_named_df <- as_data_frame(dat)
-colnames(poorly_named_df) <- stringr::str_c("V",1:10,"_",LETTERS[1:10])
-poorly_named_df <- poorly_named_df %>%
-  tibble::rowid_to_column(var = "observation_id")
+
+```
+#> Warning: `as_data_frame()` was deprecated in tibble 2.0.0.
+#> ℹ Please use `as_tibble()` instead.
+#> ℹ The signature and semantics have changed, see `?as_tibble`.
+#> Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+#> `.name_repair` is omitted as of tibble 2.0.0.
+#> ℹ Using compatibility `.name_repair`.
+#> ℹ The deprecated feature was likely used in the tibble package.
+#>   Please report the issue at <]8;;https://github.com/tidyverse/tibble/issueshttps://github.com/tidyverse/tibble/issues]8;;>.
 ```
 
 Suppose we wanted to keep only the text following an underscore in these column names. We could do that by using a regular expression to extract lower-case or upper-case letters which follow an underscore.
 
-```{r}
+
+```r
 head(poorly_named_df)
+#> # A tibble: 6 × 11
+#>   observat…¹   V1_A   V2_B   V3_C   V4_D   V5_E   V6_F   V7_G    V8_H    V9_I
+#>        <int>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>   <dbl>   <dbl>
+#> 1          1  0.680 -2.09  -0.533 -0.703  0.879  0.297  0.354  0.580   0.470 
+#> 2          2  0.409  1.25  -1.85   0.652  0.675  1.13  -1.58  -0.0723  1.39  
+#> 3          3 -0.332 -0.956  1.35  -0.441 -0.113 -0.370 -1.87   0.260   1.34  
+#> 4          4 -1.14  -1.29   0.636  0.290 -0.933  0.883  0.164 -0.869   0.751 
+#> 5          5  0.284  0.947 -0.530 -0.869  0.182 -0.444  0.723 -0.676   0.0731
+#> 6          6 -1.23  -3.20  -1.08   1.73  -0.848 -0.747 -0.659  0.640  -0.751 
+#> # … with 1 more variable: V10_J <dbl>, and abbreviated variable name
+#> #   ¹​observation_id
 ```
-```{r}
+
+```r
 stringr::str_extract(names(poorly_named_df), pattern = "(?<=_)([a-zA-Z]+)")
+#>  [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J"
 ```
 
 Alternatively, can avoid using regular expressions. We can split each column name at the underscore and keep only the second part of each string. 
 
-```{r}
+
+```r
 # split column names at underscores and inspect structure of resuting object
 split_strings <- stringr::str_split(names(poorly_named_df), pattern = "_")
 str(split_strings)
+#> List of 11
+#>  $ : chr [1:2] "observation" "id"
+#>  $ : chr [1:2] "V1" "A"
+#>  $ : chr [1:2] "V2" "B"
+#>  $ : chr [1:2] "V3" "C"
+#>  $ : chr [1:2] "V4" "D"
+#>  $ : chr [1:2] "V5" "E"
+#>  $ : chr [1:2] "V6" "F"
+#>  $ : chr [1:2] "V7" "G"
+#>  $ : chr [1:2] "V8" "H"
+#>  $ : chr [1:2] "V9" "I"
+#>  $ : chr [1:2] "V10" "J"
 
 # keep only the second element of each character vector in the list
 purrr::map_chr(split_strings, function(x){x[2]})
+#>  [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J"
 ```
 
 Again, unless you plan to work extensively with text data, I would recommend that you look up such string manipulations as you need them. The [strings](https://r4ds.had.co.nz/strings.html#strings) section of R for Data Science is a useful starting point. 
@@ -492,9 +845,10 @@ You might instead want to keep all units from the primary table but pad with NAs
 
 Conversely, you might keep all units from the second table but pad with NAs where there is not a corresponding foreign key in the primary table. This is imaginatively named an __(outer) right-join__. 
 
-In the __(outer) full join__, all observational units from either table are retained and all missing values are padded with NAs.
+The final common join type is a full outer join, in which all observational units from either table are retained and all missing values are padded with NAs. This is known as an __(outer) full join__.
 
-Things get more complicated when keys don't uniquely identify observational units in either one or both of the tables. I'd recommend you start exploring these ideas with the [relational data](https://r4ds.had.co.nz/relational-data.html) chapter of R for Data Science. 
+
+Things get more complicated when keys do not uniquely identify observational units in one or both tables. I'd recommend you start exploring these ideas with the [relational data]() chapter of R for Data Science. 
 
 #### Why and where to learn more
 
