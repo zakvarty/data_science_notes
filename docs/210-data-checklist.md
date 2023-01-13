@@ -9,11 +9,11 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Videos / Chapters {.unnumbered}
 
-- [ ] [Tabular Data](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d80e9045-22e7-4a0e-a0fc-af8100d3e727) (27 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf)
+- [ ] [Tabular Data](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d80e9045-22e7-4a0e-a0fc-af8100d3e727) (27 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf) [[https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf]](slides)
 
-- [ ] [Web Scraping](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=239ba39e-8a06-4e7b-a6c1-af7200f91d2b) (22 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf)
+- [ ] [Web Scraping](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=239ba39e-8a06-4e7b-a6c1-af7200f91d2b) (22 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf)
  
-- [ ] [APIs](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e1ed8e4f-cbaa-40c2-8c44-af7200ee2e9f) (25 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf)
+- [ ] [APIs](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e1ed8e4f-cbaa-40c2-8c44-af7200ee2e9f) (25 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf)
 
 ## Reading {.unnumbered}
 Use the [Acquiring and Sharing Data section](#data-reading) of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest. 
