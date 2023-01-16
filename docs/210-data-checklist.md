@@ -23,11 +23,8 @@ Use the [Acquiring and Sharing Data section](#data-reading) of the reading list 
 _Core:_ 
 
 -
-
 -
-
 -
-
 ## Live Session {.unnumbered}
 
 In the live session we will...
