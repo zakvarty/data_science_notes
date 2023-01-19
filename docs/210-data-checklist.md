@@ -22,9 +22,42 @@ Use the [Acquiring and Sharing Data section](#data-reading) of the reading list 
 
 _Core:_ 
 
--
--
--
+- Revisit the Projects that you explored on Github last week. This time look for any data or documentation files.    
+  - Are there any file types that are new to you?
+  - If so, are there packages or helper function that would let you read this data into R?
+  - Why might you not find many data files on Github?
+  
+- Play [flukeout]() to familiarise yourself with some CSS selectors. 
+
+- Identify 3 APIs that give access to data on topics that interest you. Write a post on the discussion forum describing the APIs and use one of them to load some data into R.
+
+- Scraping Book Reviews:
+  - Visit the Amazon page for R for Data Science. Write code to scrape the percentage of customers giving each "star" rating (5⭐, ..., 1⭐).
+  - Turn your code into a function that will return a tibble of the form: 
+  
+
+|product      | n_reviews| percent_5_star| percent_4_star| percent_3_star| percent_2_star| percent_1_star|url             |
+|:------------|---------:|--------------:|--------------:|--------------:|--------------:|--------------:|:---------------|
+|example_name |      1000|             20|             20|             20|             20|             20|www.example.com |
+
+  - Generalise your function to work for other Amazon products, where the function takes as input a vector of product names and an associated vector of URLs.
+  
+  - Use your function to compare the reviews of the following three books: [R for Data Science](https://www.amazon.com/Data-Science-Transform-Visualize-Model/dp/1491910399/ref=sr_1_1?keywords=r+for+data+science&qid=1674145765&s=books&sprefix=R+for+data+%2Cstripbooks-intl-ship%2C157&sr=1-1), [R packages](https://www.amazon.com/Packages-Organize-Test-Document-Share/dp/1491910593/ref=sr_1_1?crid=XWR8O7WPKZS9&keywords=R+packages&qid=1674145743&s=books&sprefix=r+package%2Cstripbooks-intl-ship%2C158&sr=1-1) and [ggplot2](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/331924275X/ref=sr_1_1?crid=24WRUZ93PL2E6&keywords=ggplot2&qid=1674145703&s=books&sprefix=ggplot2%2Cstripbooks-intl-ship%2C190&sr=1-1). 
+  
+_Bonus:_
+
+- Add this function to the R package you made last week, remembering to add tests and documentation.
+  
 ## Live Session {.unnumbered}
 
-In the live session we will...
+In the live session we will begin with a discussion of this week's tasks. We will then work through some examples of how to read data from non-standard sources. 
+
+
+Please come to the live session prepared to discuss the following points: 
+
+- Roger Peng states that files can be imported and exported using `readRDS()` and `saveRDS()` for fast and space efficient data storage. What is the downside to doing so?
+
+- What data types have you come across (that we have not discussed already) and in what context are they used?
+
+- What do you have to give greater consideration to when scraping data than when using an API?
+ 
