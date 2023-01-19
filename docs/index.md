@@ -81,7 +81,7 @@ On successful completion of this module students should be able to:
 
 **Lab / Practical:** 5 hours  (1 hour per week)
 
-**Independent Study:** 105 hours (17 hours per week + 20 hours coursework)
+**Independent Study:** 105 hours (15 hours per week + 30 hours coursework)
 
 ## Assessment Structure {-}
 

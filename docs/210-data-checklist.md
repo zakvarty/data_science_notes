@@ -1,19 +1,19 @@
 # Checklist {#data-checklist .unnumbered}
 
 
-::: {.rmdimportant} 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
 
 If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
 :::
 
 ## Videos / Chapters {.unnumbered}
 
-- [ ] [Tabular Data](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d80e9045-22e7-4a0e-a0fc-af8100d3e727) (27 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf) [[https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf]](slides)
+- [ ] [Tabular Data](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d80e9045-22e7-4a0e-a0fc-af8100d3e727) (27 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-01-tabular-data-and-csvs/02-01-tabular-data.pdf)
 
-- [ ] [Web Scraping](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=239ba39e-8a06-4e7b-a6c1-af7200f91d2b) (22 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf)
+- [ ] [Web Scraping](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=239ba39e-8a06-4e7b-a6c1-af7200f91d2b) (22 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-02-webscraping/02-02-web-scraping.pdf)
  
-- [ ] [APIs](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e1ed8e4f-cbaa-40c2-8c44-af7200ee2e9f) (25 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf)
+- [ ] [APIs](https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e1ed8e4f-cbaa-40c2-8c44-af7200ee2e9f) (25 min) [[slides]](https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/02-03-apis/02-03-apis.pdf)
 
 ## Reading {.unnumbered}
 Use the [Acquiring and Sharing Data section](#data-reading) of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest. 
@@ -27,7 +27,7 @@ _Core:_
   - If so, are there packages or helper function that would let you read this data into R?
   - Why might you not find many data files on Github?
   
-- Play [flukeout]() to familiarise yourself with some CSS selectors. 
+- Play [CSS Diner](https://flukeout.github.io/) to familiarise yourself with some CSS selectors. 
 
 - Identify 3 APIs that give access to data on topics that interest you. Write a post on the discussion forum describing the APIs and use one of them to load some data into R.
 
