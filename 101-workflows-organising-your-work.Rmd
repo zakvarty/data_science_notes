@@ -236,7 +236,7 @@ image_path <- "images/101-workflows-organising-your-work/directory-structure-dra
 knitr::include_graphics(path = image_path)
 ``` 
 
-In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've aquired for ourselves through web scraping, using a script within the project. 
+In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've acquired for ourselves through web scraping, using a script within the project. 
 
 ### src
 

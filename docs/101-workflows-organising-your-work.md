@@ -214,7 +214,7 @@ The raw data likely isn't going to be in a form that's amenable to analyzing str
 
 <img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12.png" width="80%" />
 
-In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've aquired for ourselves through web scraping, using a script within the project. 
+In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've acquired for ourselves through web scraping, using a script within the project. 
 
 ### src
 
