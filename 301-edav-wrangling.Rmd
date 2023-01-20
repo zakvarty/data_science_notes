@@ -431,7 +431,7 @@ Because R was developed as a statistical programming language, it is well suited
 
 The `{stringr}` package aims to combat this by providing useful helper functions for a range of text management problems. Even when not analysing text data these can be useful, for example to remove prefixes on a lot of column names. 
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, warning=FALSE}
 dat <- matrix(rnorm(100), nrow = 10, ncol = 10)
 poorly_named_df <- as_data_frame(dat)
 colnames(poorly_named_df) <- stringr::str_c("V",1:10,"_",LETTERS[1:10])
