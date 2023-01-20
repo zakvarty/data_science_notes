@@ -3,7 +3,7 @@
 ```{r, results='asis', echo=FALSE}
 CACHE_API_CHAPTER = TRUE
 source("_common.R")
-status("drafting")
+status("complete")
 ```
 
 ## Aquiring Data Via an API
