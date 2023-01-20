@@ -58,7 +58,7 @@ As the course is scheduled to take place over five weeks, the suggested schedule
 -   4th week: preparing for production;
 -   5th week: ethics and context of data science.
 
-<1- A pdf version of these notes may be downloaded [here](./data_science_notes.pdf). Please be aware that these are very rough and will be updated less frequently than the course webpage. -->
+A pdf version of these notes may be downloaded [here](./data_science_notes.pdf). Please be aware that these are very rough and will be updated less frequently than the course webpage.
 
 
 ## Learning outcomes {-}
