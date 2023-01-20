@@ -1,8 +1,8 @@
 # APIs {#data-apis}
 
 
-::: {.rmdimportant} 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
 
 If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
 :::
@@ -426,7 +426,7 @@ httr::content(response)
 #> [1] "7.1"
 #> 
 #> $imdbVotes
-#> [1] "385,107"
+#> [1] "387,337"
 #> 
 #> $imdbID
 #> [1] "tt0377092"

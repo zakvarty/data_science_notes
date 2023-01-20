@@ -1,7 +1,7 @@
 ---
 title: "Effective Data Science"
 author: "Zak Varty"
-date: "2023-01-19"
+date: "2023-01-20"
 site: bookdown::bookdown_site
 documentclass: book
 classoptions: twosides, a4paper
@@ -60,7 +60,7 @@ As the course is scheduled to take place over five weeks, the suggested schedule
 -   4th week: preparing for production;
 -   5th week: ethics and context of data science.
 
-<!-- A pdf version of these notes may be downloaded [here](./data_science_notes.pdf). -->
+<1- A pdf version of these notes may be downloaded [here](./data_science_notes.pdf). Please be aware that these are very rough and will be updated less frequently than the course webpage. -->
 
 
 ## Learning outcomes {-}

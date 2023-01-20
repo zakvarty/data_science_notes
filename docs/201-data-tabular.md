@@ -284,7 +284,7 @@ tidyr::pivot_wider()
 
 ### Tidy What? 
 
-![[Image: R4DS - Chapter 12]](images/tidy-1.png) 
+![[Image: R4DS - Chapter 12]](images/201-tabular-data/tidy-1.png) 
 
 _Tidy Data_ is an opinionated way to store tabular data. 
 

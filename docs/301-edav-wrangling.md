@@ -753,16 +753,6 @@ Because R was developed as a statistical programming language, it is well suited
 The `{stringr}` package aims to combat this by providing useful helper functions for a range of text management problems. Even when not analysing text data these can be useful, for example to remove prefixes on a lot of column names. 
 
 
-```
-#> Warning: `as_data_frame()` was deprecated in tibble 2.0.0.
-#> ℹ Please use `as_tibble()` instead.
-#> ℹ The signature and semantics have changed, see `?as_tibble`.
-#> Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
-#> `.name_repair` is omitted as of tibble 2.0.0.
-#> ℹ Using compatibility `.name_repair`.
-#> ℹ The deprecated feature was likely used in the tibble package.
-#>   Please report the issue at <]8;;https://github.com/tidyverse/tibble/issueshttps://github.com/tidyverse/tibble/issues]8;;>.
-```
 
 Suppose we wanted to keep only the text following an underscore in these column names. We could do that by using a regular expression to extract lower-case or upper-case letters which follow an underscore.
 
@@ -770,14 +760,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 ```r
 head(poorly_named_df)
 #> # A tibble: 6 × 11
-#>   observat…¹   V1_A   V2_B   V3_C   V4_D   V5_E    V6_F   V7_G    V8_H   V9_I
-#>        <int>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>   <dbl>  <dbl>   <dbl>  <dbl>
-#> 1          1  0.251 -1.84  -0.818  2.14   0.320 -0.0437  1.13   1.56    0.458
-#> 2          2  1.31  -0.511 -0.224 -0.936  2.44   0.744  -0.267 -1.03    2.34 
-#> 3          3  0.138 -0.440  0.596 -0.775 -0.811 -0.852   0.576 -0.803  -0.136
-#> 4          4 -0.384 -2.05   0.940  0.329  1.06   0.205  -1.80  -0.0955 -0.508
-#> 5          5 -0.655 -0.578 -1.93   0.156  1.44  -0.264   0.312  1.67   -0.396
-#> 6          6  1.84  -3.16  -0.901  0.282 -1.43   1.70    1.29   1.02   -1.24 
+#>   observ…¹   V1_A   V2_B   V3_C    V4_D     V5_E   V6_F   V7_G   V8_H    V9_I
+#>      <int>  <dbl>  <dbl>  <dbl>   <dbl>    <dbl>  <dbl>  <dbl>  <dbl>   <dbl>
+#> 1        1  1.80   0.935 -1.67   0.0798  0.0391   0.790 -0.289  0.879 -0.239 
+#> 2        2  0.303 -0.843  0.242  0.479   0.885    1.15   0.727  0.994 -0.624 
+#> 3        3 -1.00  -1.07  -0.554  0.371  -0.971   -1.01  -0.879 -0.407  0.645 
+#> 4        4  0.449  0.765  0.895 -1.21    0.00656  1.19  -0.397  1.34   0.0996
+#> 5        5 -1.91   1.06   1.67   0.318  -0.498   -1.66  -2.10  -1.09  -0.382 
+#> 6        6 -0.189  0.240  2.52  -1.39    1.79     1.62  -0.851 -1.34  -1.04  
 #> # … with 1 more variable: V10_J <dbl>, and abbreviated variable name
 #> #   ¹​observation_id
 ```
