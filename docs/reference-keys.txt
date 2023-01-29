@@ -231,6 +231,6 @@ live-session-4
 reading-list
 workflows-reading
 data-reading
-data-exploration-and-visualisation
+edav-reading
 preparing-for-production
 data-science-ethics

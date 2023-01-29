@@ -2,15 +2,15 @@
 
 ```{r, results='asis', echo=FALSE}
 source("_common.R")
-status("drafting")
+status("complete")
 ```
 
 
 ## Introduction 
 
-Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progessing the project and flagging any areas of concern. 
+Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progressing the project and flagging any areas of concern. 
 
-In this chapter we will look at three different perspectives on exploartory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
+In this chapter we will look at three different perspectives on exploratory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
 
 ## Get to know your data
 

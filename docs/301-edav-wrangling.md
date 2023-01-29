@@ -1,8 +1,8 @@
 # Data Wrangling {#edav-wrangling}
 
 
-::: {.rmdimportant} 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
 
 If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
 :::
@@ -760,14 +760,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 ```r
 head(poorly_named_df)
 #> # A tibble: 6 × 11
-#>   observ…¹    V1_A   V2_B   V3_C   V4_D    V5_E   V6_F    V7_G    V8_H   V9_I
-#>      <int>   <dbl>  <dbl>  <dbl>  <dbl>   <dbl>  <dbl>   <dbl>   <dbl>  <dbl>
-#> 1        1 -1.06   -2.89  -0.408 -0.438  0.813  -0.716  0.0124  0.0390 -0.308
-#> 2        2  1.06    0.509  0.366 -1.76   0.450   0.309  1.36   -1.59   -1.76 
-#> 3        3 -0.208   1.68   1.03  -1.10  -0.0847  0.328 -0.276  -1.72    0.439
-#> 4        4 -0.804   0.772  1.18  -0.670  0.691  -0.866 -0.0472  1.23   -0.825
-#> 5        5  0.0465 -0.133  0.805 -0.725 -0.844   1.08   0.683  -0.634   0.452
-#> 6        6  0.393  -1.08  -0.221 -0.516 -0.239  -0.315 -0.518  -0.180   0.658
+#>   observati…¹    V1_A   V2_B   V3_C   V4_D   V5_E   V6_F   V7_G   V8_H   V9_I
+#>         <int>   <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+#> 1           1  1.28   -0.818  0.792  0.378 -1.18   0.130 -2.07   0.291  0.220
+#> 2           2  0.0545  1.79   0.434  0.940 -0.900  1.34  -0.541  1.45   0.689
+#> 3           3 -1.97    1.19   1.52   1.02   0.822  0.645 -0.412  0.203  1.26 
+#> 4           4  0.669  -1.69  -0.830 -1.72   0.316 -0.771 -1.44  -0.318 -2.06 
+#> 5           5  0.359   0.854  0.800  0.549  1.67   3.05  -0.241 -0.857 -0.266
+#> 6           6  0.373   1.57   0.457 -1.77  -0.603 -1.41   1.15  -0.151 -1.54 
 #> # … with 1 more variable: V10_J <dbl>, and abbreviated variable name
 #> #   ¹​observation_id
 ```

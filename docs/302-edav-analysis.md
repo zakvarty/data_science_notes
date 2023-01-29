@@ -1,8 +1,8 @@
 # Exploratory Data Analysis {#edav-analysis}
 
 
-::: {.rmdimportant} 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
 
 If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
 :::
@@ -10,9 +10,9 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Introduction 
 
-Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progessing the project and flagging any areas of concern. 
+Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progressing the project and flagging any areas of concern. 
 
-In this chapter we will look at three different perspectives on exploartory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
+In this chapter we will look at three different perspectives on exploratory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
 
 ## Get to know your data
 

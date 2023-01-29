@@ -110,7 +110,7 @@ This reading list is organised by topic, according to each week of the course. T
 This covers importing data from spreadsheets, databases, using Apache Arrow and importing hierarchical data as well as web scraping.  
 
 
-## Data Exploration and Visualisation 
+## Data Exploration and Visualisation {#edav-reading}
 
 ### Core Materials {.unnumbered}
 
