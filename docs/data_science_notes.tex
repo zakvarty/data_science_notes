@@ -121,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2023-01-28}
+\date{2023-01-29}
 
 \begin{document}
 \maketitle
@@ -3334,10 +3334,16 @@ Effective Data Science is still a work-in-progress. This chapter is currently a 
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
+Now that we have read our raw data into R we can start getting our data science project moving and being to see some initial returns on the time and effort that we have invested so far.
+
+In this section we will explore how to wrangle, explore and visualise the data that forms the basis of our projects. These skills are often overlooked by folks coming into data science as being ``soft skills'' compared to modelling. However, I would argue that this is not the case because each of these tasks requires its own specialist knowledge and tools.
+
+Additionally, these task make up the majority of data scientist's work and are often where we can add the most value to an organisation. At this stage in a project we turn useless, messy data into a form that can be used; we derive initial insights from this data while making minimal assumptions; and we communicate all of this in an accurate and engaging way, to drive decision making both within and outwith the organisation.
+
 \hypertarget{edav-wrangling}{%
 \chapter{Data Wrangling}\label{edav-wrangling}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
@@ -4154,16 +4160,16 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   observation\textasciitilde{}1    V1\_A   V2\_B    V3\_C     V4\_D     V5\_E    V6\_F  V7\_G   V8\_H}
-\CommentTok{\#\textgreater{}           \textless{}int\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1             1  2.85    1.81   0.316  {-}8.22e{-}4 {-}1.19     0.743  2.00  {-}0.522}
-\CommentTok{\#\textgreater{} 2             2 {-}0.984   0.803  0.902  {-}4.37e{-}1  0.516   {-}0.0392 0.837  1.38 }
-\CommentTok{\#\textgreater{} 3             3  2.12   {-}0.206 {-}0.476   1.36e+0 {-}1.55     0.228  0.614 {-}0.217}
-\CommentTok{\#\textgreater{} 4             4  0.568   0.119  0.0821  1.33e+0 {-}0.0718  {-}0.760  0.510 {-}0.443}
-\CommentTok{\#\textgreater{} 5             5  0.427  {-}0.258 {-}0.186   5.62e{-}1 {-}0.612    2.05   0.483 {-}0.767}
-\CommentTok{\#\textgreater{} 6             6 {-}0.0347  0.226 {-}0.0909 {-}2.41e+0  0.00467 {-}1.85   0.131  1.92 }
-\CommentTok{\#\textgreater{} \# ... with 2 more variables: V9\_I \textless{}dbl\textgreater{}, V10\_J \textless{}dbl\textgreater{}, and abbreviated}
-\CommentTok{\#\textgreater{} \#   variable name 1: observation\_id}
+\CommentTok{\#\textgreater{}   observ\textasciitilde{}1   V1\_A   V2\_B   V3\_C    V4\_D    V5\_E   V6\_F    V7\_G    V8\_H   V9\_I}
+\CommentTok{\#\textgreater{}      \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1        1 {-}1.01  {-}0.397  1.31  {-}0.0891 {-}0.0314  1.30  {-}0.0544  1.04    0.835}
+\CommentTok{\#\textgreater{} 2        2  0.444  0.294  0.961  0.659  {-}1.31   {-}1.43  {-}0.313  {-}0.0349 {-}0.704}
+\CommentTok{\#\textgreater{} 3        3 {-}1.23  {-}0.995 {-}0.222 {-}0.143  {-}0.806   1.15  {-}0.131   0.533   0.199}
+\CommentTok{\#\textgreater{} 4        4  0.768  0.871 {-}0.530 {-}0.319  {-}1.68   {-}0.200 {-}1.24    0.279   1.46 }
+\CommentTok{\#\textgreater{} 5        5  1.65   0.958 {-}1.61  {-}0.713   0.272  {-}0.640  0.307  {-}0.620  {-}0.758}
+\CommentTok{\#\textgreater{} 6        6  0.234  2.01   0.445  2.02    0.0356 {-}0.151 {-}0.460   0.165  {-}1.94 }
+\CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
+\CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4274,16 +4280,16 @@ We have:
 \hypertarget{edav-analysis}{%
 \chapter{Exploratory Data Analysis}\label{edav-analysis}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
 \hypertarget{introduction-2}{%
 \section{Introduction}\label{introduction-2}}
 
-Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progessing the project and flagging any areas of concern.
+Exploratory data analysis is an essential stage in any data science project. It allows you to become familiar with the data you are working with while also to identify potential strategies for progressing the project and flagging any areas of concern.
 
-In this chapter we will look at three different perspectives on exploartory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
+In this chapter we will look at three different perspectives on exploratory data analysis: its purpose for you as a data scientist, its purpose for the broader team working on the project and finally its purpose for the project itself.
 
 \hypertarget{get-to-know-your-data}{%
 \section{Get to know your data}\label{get-to-know-your-data}}
@@ -4292,19 +4298,17 @@ Let's first focus on an exploratory data analysis from our own point of view, as
 
 Exploratory data analysis (or EDA) is a process of examining a data set to understand its overall structure, contents, and the relationships between the variables it contains. EDA is an iterative process that's often done before building a model or making other data-driven decisions within a data science project.
 
-One key aspect of EDA is generating quick and simple summaries and plots of the data. These plots and summary statistics can help to quickly understand the distribution of and relationships between the recorded variables. Additionally, during an exploratory analysis will familiarise yourself with the structure of the data you're working with and how that data was collected.
+\begin{quote}
+Exploratory Data Analysis: quick and simple exerpts, summaries and plots to better understand a data set.
+\end{quote}
 
-\begin{verbatim}
-#> Registered S3 method overwritten by 'GGally':
-#>   method from   
-#>   +.gg   ggplot2
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-\end{verbatim}
+One key aspect of EDA is generating quick and simple summaries and plots of the data. These plots and summary statistics can help to quickly understand the distribution of and relationships between the recorded variables. Additionally, during an exploratory analysis you will familiarise yourself with the structure of the data you're working with and how that data was collected.
 
+\begin{figure}
+\centering
 \includegraphics{302-edav-analysis_files/figure-latex/unnamed-chunk-2-1.pdf}
+\caption{\label{fig:unnamed-chunk-2}Investigating marginal and pairwise relationships in the Iris dataset.}
+\end{figure}
 
 Since EDA is an initial and iterative process, it's rare that any component of the analysis will be put into production. Instead, the goal is to get a general understanding of the data that can inform the next steps of the analysis.
 
@@ -4312,6 +4316,10 @@ In terms of workflow, this means that using one or more notebooks is often an ef
 
 \hypertarget{start-a-conversation}{%
 \section{Start a conversation}\label{start-a-conversation}}
+
+\begin{quote}
+An effective EDA sets a precedent for open communication with the stakeholder and project manager.
+\end{quote}
 
 We've seen the benefits of an EDA for you as a data scientist, but this isn't the only perspective.
 
@@ -4332,14 +4340,22 @@ An EDA can sometimes allow us to identify cases where the strength of signal wit
 \hypertarget{scope-your-project}{%
 \section{Scope Your Project}\label{scope-your-project}}
 
+\begin{quote}
+EDA is an initial assessment of whether the available data measure the correct values, in sufficient quality and quantity, to answer a particular question.
+\end{quote}
+
 A third view on EDA is as an initial assessment of whether the available data measure the correct values, with sufficient quality and quantity, to answer a particular question. In order for EDA to be successful, it's important to take a few key steps.
 
 First, it's important to formulate a specific question of interest or line of investigation and agree on it with the stakeholder. By having a clear question in mind, it will be easier to focus the analysis and identify whether the data at hand can answer it.
 
-Next, it's important to make a record (if one doesn't already exist) of how the data were collected, by whom it was collected, what each recorded variable represents and the units in which they are recorded. This meta-data is often known as a data sheet. Having this information in written form is crucial when adding a new collaborator to a project, so that they can understanding the data generating and measurement processes, and are aware of the quality and accuracy of the recorded values.
+Next, it's important to make a record (if one doesn't already exist) of how the data were collected, by whom it was collected, what each recorded variable represents and the units in which they are recorded. This meta-data is often known as a data sheet. Having this information in written form is crucial when adding a new collaborator to a project, so that they can understand the data generating and measurement processes, and are aware of the quality and accuracy of the recorded values.
 
 \hypertarget{investigate-your-data}{%
 \section{Investigate Your Data}\label{investigate-your-data}}
+
+\begin{quote}
+EDA is an opportunitiy to quantify data completeness and investigate the possibility of informative missingness.
+\end{quote}
 
 In addition, it's essential to investigate and document the structure, precision, completeness and quantity of data available. This includes assessing the degree of measurement noise or misclassification in the data, looking for clear linear or non-linear dependencies between any of the variables, and identifying if any data are missing or if there's any structure to this missingness. Other data features to be aware of are the presence of any censoring or whether some values tend to be missing together.
 
@@ -4348,9 +4364,32 @@ Furthermore, a more advanced EDA might include a simulation study to estimate th
 \hypertarget{what-is-not-eda}{%
 \section{What is not EDA?}\label{what-is-not-eda}}
 
-It's important to understand that an exploratory data analysis is not the same thing as modelling. In particular is it the construction of your baseline model, which is sometimes called initial data analysis.
+It's important to understand that an exploratory data analysis is not the same thing as modelling. In particular is \emph{not} the construction of your baseline model, which is sometimes called initial data analysis.
 
-Though it might inform the choice of baseline model, EDA is usually not model based. Simple plots and summaries are used to identify patterns in the data that inform how you approach the rest of the project. Some degree of statistical rigour can be added through the use of non-parametric techniques; methods like rolling averages, smoothing or partitioning can to help identify trends or patterns while making minimal assumptions about the data generating process.
+Though it might inform the choice of baseline model, EDA is usually not model based. Simple plots and summaries are used to identify patterns in the data that inform how you approach the rest of the project.
+
+Some degree of statistical rigour can be added through the use of non-parametric techniques; methods like rolling averages, smoothing or partitioning can to help identify trends or patterns while making minimal assumptions about the data generating process.
+
+\begin{figure}
+\centering
+\includegraphics{302-edav-analysis_files/figure-latex/unnamed-chunk-3-1.pdf}
+\caption{\label{fig:unnamed-chunk-3}Daily change in Dow Jones Index with smoothed estimate of mean and 95\% confidence interval.}
+\end{figure}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-4}Mean and standard deviation of daily change in Dow Jones Index, before and after 1st of June 1998.}
+\centering
+\begin{tabular}[t]{l|r|r}
+\hline
+after\_june\_98 & mean & sd\\
+\hline
+FALSE & 5.916798 & 65.19093\\
+\hline
+TRUE & 3.972929 & 119.56067\\
+\hline
+\end{tabular}
+\end{table}
 
 Though the assumptions in an EDA are often minimal it can help to make them explicit. For example, in this plot a moving averages is shown with a confidence band, but the construction of this band makes the implicit assumption that, at least locally, our observations have the same distribution and so are exchangeable.
 
@@ -4363,52 +4402,402 @@ Now that we have a better idea of what is and what is not EDA, let's talk about 
 
 In any data science project you have a sequence of very many decisions that you must make, each with many potential options and is difficult to decide upon \emph{a priori}.
 
+\includegraphics{images/302-data-exploration/forking-paths.jpg}
+
 Focusing in on only one small part of the process, we might consider picking a null or baseline model, which we will then try and improve on. Should that null model make constant predictions, incorporate a simple linear trend or is something more flexible obviously needed? Do you have the option to try all of these or are you working under time constraints? Are there contextual clues that rule some of these null models out on contextual grounds?
-An EDA lets you narrow down your options by looking at your data and decide on reasonable modelling approaches.
 
-The problem that sneaks in here is data leakage. Formally where training data is included in test set, but this happens informally too. Usually this is because you've seen the data you're trying to model or predict and then selected your modelling approach based on that information.
+An EDA lets you narrow down your options by looking at your data and helps you to decide what might be reasonable modelling approaches.
 
-Frequentist statistical methods for estimation and testing assume no suck ``peeking'' has occurred. By using these methods without acknowledging that we have already observed our data will artificially inflate the significance of our findings. For example, we might be testing a linear trend vs constant prediction, but this test was only performed because we had already having examined at the data and noticed what might be a trend.
+\includegraphics{images/302-data-exploration/supervise_learning_schematic.png}
 
-Similar issues arise in Bayesian approaches when doing eliciting prior distributions. One nice thing that we can do here is to simulating data from the prior predictive distribution and check that an expert agrees they seem reasonable. However, if the expert is also the person who collected the data we will be modelling it is very difficult for them to ignore what they have seen, leading to similar leakage problems.
+The problem that sneaks in here is data leakage. Formally this is where training data is included in test set, but this sort of information leak can happen informally too. Usually this is because you've seen the data you're trying to model or predict and then selected your modelling approach based on that information.
+
+Standard, frequentist statistical methods for estimation and testing assume no ``peeking'' of this type has occurred. If we use these methods without acknowledging that we have already observed our data then we will artificially inflate the significance of our findings. For example, we might be comparing two models: the first of which makes constant predictions with regard to a predictor, while the second includes a linear trend. We will of course use a statistical test to confirm that what we are seeing is unlikely by chance. However, we must be aware this test was only performed because we had previously examined at the data and noticed what looked to be a trend.
+
+Similar issues arise in Bayesian approaches, particularly when constructing or eliciting prior distributions for our model parameters. One nice thing that we can do in the Bayesian setting is to simulating data from the prior predictive distribution and then get an expert to check that these datasets seem seem reasonable. However, it is often the case this expert is also the person who collected the data we will soon be modelling. It's very difficult for them to ignore what they have seen, which leads to similar, subtle leakage problems.
+
+\hypertarget{correction-methods}{%
+\section{Correction Methods}\label{correction-methods}}
 
 There are various methods or corrections that we can apply during our testing and estimation procedures to ensure that our error rates or confidence intervals account for our previous ``peeking'' during EDA.
 
-Examples of these corrections have been developed across many fields of statistics. In medical statistics we have approaches like the Bonferroni correction, to account for carrying out multiple hypothesis tests. In the changepoint literature there are techniques for estimating a change location given that a change has been detected somewhere in a time series. While in the extreme value literature there are methods to estimating the required height of flood defences, given that the analysis was triggered by the current defences being compromised.
+Examples of these corrections have been developed across many fields of statistics. In medical statistics we have approaches like the Bonferroni correction, to account for carrying out multiple hypothesis tests. In the change-point literature there are techniques for estimating a change location given that a change has been detected somewhere in a time series. While in the extreme value literature there are methods to estimate the required level of protection against rare events, given that the analysis was triggered by the current protections having been compromised.
 
-All of these corrections require us to make assumptions about the nature of the peeking. They are either very sepecific about the process that has occurred, or else are very pessimistic about how much information has been leaked. Developing such corrections to account for EDA isn't really possible, given its adaptive and non-prescriptive nature.
+\includegraphics{302-edav-analysis_files/figure-latex/unnamed-chunk-5-1.pdf}
+:::
+::::
 
-In addition to being either highly specific or pessimistic, these corrections can also be hard to derive and complicated to implement. This is why in settings where the power of tests or level of estimation is critically important, the entire analysis is pre-registered. In clinical trials, for example, every step of the analysis is specified before any data are collected. In data science this rigorous approach is rarely taken. As statistically trained data scientists it is important for us to remain humble about our potential findings and to suggest follow up studies to confirm the presence of any relationships we do find.
+All of these corrections require us to make assumptions about the nature of the peeking. They are either very specific about the process that has occurred, or else are very pessimistic about how much information has been leaked. Developing such corrections to account for EDA isn't really possible, given its adaptive and non-prescriptive nature.
+
+In addition to being either highly specific or pessimistic, these corrections can also be hard to derive and complicated to implement. This is why in settings where the power of tests or level of estimation is critically important, the entire analysis is pre-registered. In clinical trials, for example, every step of the analysis is specified before any data are collected. In data science this rigorous approach is rarely taken.
+
+As statistically trained data scientists, it is important for us to remain humble about our potential findings and to suggest follow up studies to confirm the presence of any relationships we do find.
 
 \hypertarget{learning-more}{%
 \section{Learning More}\label{learning-more}}
 
-We've acknowledged that exploratory analyses are an important part of the data science workflow, not only for us as data scientists but also for the other people who are involved with our projects.
+In this chapter we have acknowledged that exploratory analyses are an important part of the data science workflow; this is true not only for us as data scientists, but also for the other people who are involved with our projects.
 
 We've also seen that an exploratory analysis can help to guide the progression of our projects, but that in doing so we must take care to prevent and acknowledge the risk of data leakage.
 
-If you want to explore this topic further, it can be quite challenging. This is because examples of good, exploratory data analyses can be difficult to come by. This is because they are not often made publicly available in the same way that papers and technical reports are. Additionally, they are often kept out of public repositories because they are not as ``polished'' as the rest of the project. Personally, I think this is a shame and the culture on this is slowly changing.
+If you want to explore this topic further, it can be quite challenging: examples of good, exploratory data analyses can be difficult to come by. This is because they are not often made publicly available in the same way that papers and technical reports are. Additionally, they are often kept out of public repositories because they are not as ``polished'' as the rest of the project. Personally, I think this is a shame and the culture on this is slowly changing.
 
 For now, your best approach to learning about what makes a good exploratory analysis is to do lots of your own and to talk to you colleagues about their approaches.
 
 There are lots of list-articles out there claiming to give you a comprehensive list of steps for any exploratory analysis. These can be good for inspiration, but I strongly suggest you don't treat these as gospel.
 
-Where else can you turn if you want to learn more?
-
-Despite the name of the chapter, Roger Peng's EDA check-list gives an excellent worked example of an exploratory analysis in R. The the discussion article ``Exploratory Data Analysis for Complex Models'', Andrew Gelman makes a more abstract discussion of both exploratory analyses, which happen before modelling and confirmatory analyses, which happen afterwards.
+Despite the name of the chapter, \href{https://bookdown.org/rdpeng/exdata/exploratory-data-analysis-checklist.html\#follow-up-questions}{Roger Peng's EDA check-list} gives an excellent worked example of an exploratory analysis in R. The the discussion article ``\href{http://www.stat.columbia.edu/~gelman/research/published/p755.pdf}{Exploratory Data Analysis for Complex Models}'', Andrew Gelman makes a more abstract discussion of both exploratory analyses (which happen before modelling) and confirmatory analyses (which happen afterwards).
 
 \hypertarget{edav-visualisation}{%
 \chapter{Data Visualisation}\label{edav-visualisation}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
+
+\hypertarget{introduction-3}{%
+\section{Introduction}\label{introduction-3}}
+
+\hypertarget{more-than-a-pretty-picture}{%
+\subsection{More than a pretty picture}\label{more-than-a-pretty-picture}}
+
+Data visualisation is an integral part of your work as a data scientist.
+
+\begin{figure}
+\centering
+\includegraphics{images/303-data-visualisation/the-climate-book-jacket.jpg}
+\caption{Warming stripes graphic on the cover of ``The Climate Book''}
+\end{figure}
+
+You'll use visualisations to rapidly explore new data sets, to understand their structure and to establish which types of model might be suitable for the task at hand. Visualisation is also vital during model evaluation and when check the validity of the assumptions on which that model is based. These are relatively technical uses of visualisation, but graphics have a much broader role within your work of an effective data scientist.
+
+When well designed, plots, tables and animations can tell compelling stories that were once trapped within your data. They can also intuitively communicate the strength of evidence for your findings and draw attention to the most salient parts your argument.
+
+Data visualisation is an amalgamation of science, statistics, graphic design and storytelling. It's multi-disciplinary nature means that we have to draw on all of our skills to ensure success. While there are certainly many ways to go wrong when visualising data, there are many more ways to get it right.
+
+This chapter won't be a a step-by-step tutorial of how to visualise any type of data. Nor will it be a line-up of visualisations gone wrong. Instead, I hope to pose some questions that'll get you thinking critically about exactly what you want from each graphic that you produce.
+
+There are five things that you should think about when producing any sort of data visualisation. We will consider each of these in turn.
+
+\hypertarget{your-tools}{%
+\section{Your Tools 🔨}\label{your-tools}}
+
+\hypertarget{picking-the-right-tool-for-the-job}{%
+\subsection{Picking the right tool for the job}\label{picking-the-right-tool-for-the-job}}
+
+When you think of data visualisation, you might immediately think of impressive animations or complex, interactive dashboards that allow users to explore relationships within the data for themselves.
+
+Such tools are no doubt impressive but they are by no means necessary for an effective data visualisation. In many cases there is no technology is needed at all. The history of data visualisation vastly pre-dates that of computers and some of the most effective visualisations remain analogue creations.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/coffee-2} \caption{Coffee consumption, visualised. Jaime Serra Palou.}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+This visualisation of a year's coffee consumption is an ideal example. Displaying the number of cups of coffee in a bar chart or line graph would have been a more accurate way to collect and display this data, but that wouldn't have the same resonance or impact and it certainly wouldn't have been as memorable.
+
+\hypertarget{analogue-or-digital}{%
+\subsection{Analogue or Digital}\label{analogue-or-digital}}
+
+\hypertarget{analogue-data-viz}{%
+\subsubsection{Analogue Data Viz}\label{analogue-data-viz}}
+
+Here we have another example of an analogue data visualisation that is created as part of data collection. Each member of the department is invited to place a Lego brick on a grid to indicate how much caffeine they have consumed and how much sleep they have had. The beauty of using Lego bricks here is that they are stackable and so create a bar plot over two dimensions.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/lego-coffee} \caption{Caffeination vs sleep, shown in lego. Elsie Lee-Robbins}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+A third example can be found next to the tills in many supermarkets. Each customer is given a token as they pay for their goods. They can then drop this token into one of three large perspex containers as they leave the shop, each representing a different charity. At the end of the month £10,000 is split between the charities in proportion to the number of tokens. Because the containers are made from a transparent material you can see how the tokens are distributed, giving a visualisation of the level of support for each of the charities.
+
+There are many other way of constructing a physical, analogue visualisation of your data and this doesn't need to be done as part of the data collection process. The simplest and perhaps most obvious most obvious is to create a plot of tabular data using a pen and paper.
+
+\hypertarget{digital-data-viz}{%
+\subsubsection{Digital Data Viz}\label{digital-data-viz}}
+
+When it comes to digital tools for data visualisation you have a plethora of options. The most similar to pen-and-paper plotting is to draw your visualisations using a Photoshop, or an open source equivalent like Inkscape. The benefit here is that if you misplace a line or dot you can correct this small error without having to start all over again.
+
+There are then more data-focused tools that have point-and-click interfaces. These are things like Excel's chart tools, or specialist visualisation software like Tableau. These are great because they scale with the quantity of data, so that you can plot larger amounts of raw data values that you wouldn't have the time or patience to do by hand - whether that's in an analogue or digital format.
+
+Analogue and point-and-click approaches to visualisation have the shared limitation of not being reproducible, at least not without extensive documentation explaining how the graphic was created.
+
+Using code to create your visualisations can resolve this reproducibility issue, and includes visualisation as a part of your larger, reproducible workflow for data science. Scripted visualisations also scale easily to large data sets and are easy to alter if any changes are required. The downside here is that there is a relatively steep learning curve to creating such visualisations, which is exactly what point-and-click methods are trying to avoid.
+
+No matter how you produce your visualisations, the time cost of developing your skills in that medium is what buys you the ability to control and customise what you create. This upfront time investment will also often make you faster at producing future graphics in that medium.
+
+Whenever you approach a new visualisation problem, you should pick your tools and medium judiciously. You have to balance your immediate needs for speed, accuracy and reproducibility against your current skill level and improving those skills in the medium to long term. Unfortunately, the only way to make good visualisations is to make lots of bad ones and even more mediocre ones first.
+
+\hypertarget{ggplot2}{%
+\subsection{ggplot2}\label{ggplot2}}
+
+If your aim is to produce a wide range of high quality data visualisation using R, then the \texttt{\{ggplot2\}} package is one of the most versatile and well documented tools available to you.
+
+The g's at the start of the package name stand for grammar of graphics. This is an opinionated, abstract approach to constructing data visualisations programmatically, by building them up slowly and adding additional plot elements one layer at a time.
+
+\includegraphics{images/303-data-visualisation/grammar-of-graphics-abstract.png}
+
+This idea of a ``grammar of Graphics'' was originally introduced by Leland Wilkinson. The paper shown by Hadley Wickham, and the associated \texttt{\{ggplot2\}} package popularised this approach within the R community. Like many of the tidyverse collection of packages, \texttt{\{ggplot2\}} provides simple but specialised modular functions that can be composed to create complex visualisations.
+
+If you'd like to learn how to use \texttt{\{ggplot2\}}, I wouldn't recommend starting with the paper nor would I recommend trying to get started with the docs alone. Instead, I would suggest you work through an introductory tutorial, or one of the resources linked within the package documentation. Once you have a grasp of the basic principles the best way to improve is to try making your own plots, using reference texts and other people's work as a guide. A great source of inspiration here is the Tidy Tuesday data visualisation challenge. You can search for the challenge on Github to inspect both the plots made by other people and the code that was used to make them.
+
+\textbf{Learning \texttt{ggplot2}:}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://ggplot2.tidyverse.org/\#learning-ggplot2}{Resources}
+\item
+  \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{Tutorial}
+\item
+  \href{https://github.com/search?p=1\&q=tidy+tuesday\&type=Repositories}{Tidy Tuesday Github}
+\end{itemize}
+
+\hypertarget{your-medium}{%
+\section{Your Medium 📽}\label{your-medium}}
+
+\hypertarget{where-is-your-visualisation-going}{%
+\subsection{Where is your visualisation going?}\label{where-is-your-visualisation-going}}
+
+The second aspect that I recommend you think about before starting a data visualisation is where that graphic is going to be used. The intended location for your visualisation will influence both the composition of your graphic and also the amount of effort that you dedicate to it.
+
+\includegraphics{images/303-data-visualisation/visualisation-purposes.png}
+
+For example, consider making an exploratory plot at the start of a project to improve your own understanding of the structure within your data. In this case you do not need to spend much time worrying about refining axis labels, colour schemes or which in file format to save your work.
+
+When working on figure that will be included in a daily stand-up meeting with your team, then you should take a little more care to ensure that your work can be clearly understood by others, for example that the legend and axis labels are both large and sufficiently informative.
+
+Further refinement again will be required of this is for an external presentation. Is the message of the visualisation immediately clear? Will the graphic it still be clear when displayed in a boardroom or conference hall, or will it pixellate? Finally, how long will the audience have to interpret the visualisation while you are speaking? Even if slide decks are made available, very few audience members will actually refer to them before or after the presentation.
+
+The opposing consideration has to be made when preparing a visualisation for a report or scientific paper. In this case plots and tables can be very small, particularly in two-column or grid layouts. You have to be wary about the legibility of your smallest text (think values on axes) and your visualisation can be clearly understood, whether the document is being read zoomed-in on a computer screen or printed out in black and white.
+
+\hypertarget{file-types}{%
+\subsection{File Types}\label{file-types}}
+
+\begin{figure}
+\centering
+\includegraphics{images/303-data-visualisation/dalle-pixellated-image.png}
+\caption{A low resoloution bitmap image.}
+\end{figure}
+
+To ensure that your graphics are suitable for the intended medium it is helpful to know a little bit about image file types.
+
+There are two dominant types of image file: vector graphics and bitmap graphics.
+
+\textbf{Bitmap graphics} store images as a grid of little squares and each of these pixels takes a single, solid colour. If you make a bitmap image large enough, either by zooming in or by using a really big screen, then these individual pixels become visible. Usually this isn't going to be your intention, so you need to ensure that the resolution of your graphic (its dimensions counted in pixels) is sufficiently large.
+
+\textbf{Vector graphics} create images using continuous paths and then filling the areas that they enclose with flat colour. These vector images can be enlarged as much as you like without image quality becoming compromised. This is great for simple simple designs like logos, which have to be clear when used on both letterhead and billboards.
+
+However, these vector graphics are more memory intensive than bitmap images, particularly when there are many distinct colours or objects within the image. This can be a particular problem in data science, for example when creating a scatter plot with many thousands of data points.
+
+It can often be useful to save both a bitmap and vector version of your graphics. This way you can use bitmap when you need small files that load quickly (like when loading a webpage) and vector graphics when you need your visualisation to stay sharp when enlarged (like when creating a poster or giving a presentation in an auditorium).
+
+\hypertarget{your-audience}{%
+\section{Your Audience 👥}\label{your-audience}}
+
+\hypertarget{know-your-audience}{%
+\subsection{Know Your Audience}\label{know-your-audience}}
+
+Data visualisations are a tool for communicating information. To make this communication as effective as possible, you have to target your delivery to the intended audience.
+
+\begin{itemize}
+\item
+  Who is the intended audience for your visualisation?
+\item
+  What knowledge do they bring with them?
+\item
+  What assumptions and biases do they hold?
+\end{itemize}
+
+Creating \emph{personas} for distinct user groups can be a helpful way to answer these questions, particularly when the user population are heterogeneous.
+
+\includegraphics{images/303-data-visualisation/user-groups.png}
+
+To know \emph{how} to target your delivery to a particular audience, you fist have to identify exactly who that is.
+
+To make a compelling data visualisation you have to have some idea of the background knowledge that the viewer brings. Are they a specialist in statistics or data science, or does their expertise lie in area application? Are the findings that you're presenting going to come as a surprise to them, or act confirmation of their pre-existing body of knowledge.
+
+It's worth considering these prior beliefs and how strongly they are held when constructing your visualisation. Take the time to consider how this existing knowledge could alter or influence their interpretation of what you're showing to them. On the flip-side, you might be presenting information on a topic that the viewer is the best case ambivalent about or in the worst case is actively bored by. In that case, you can take special care to compose engaging visualisations to capture and hold the attention of the audience.
+
+\hypertarget{preattentive-attributes}{%
+\subsection{Preattentive Attributes}\label{preattentive-attributes}}
+
+When crafting a visualisation we want to require as little work as possible from the viewer.
+To do this, we can use pre-attentive attributes, such as colour, shape size and position to encode our data values.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/preattentive-attributes} \caption{Examples of preattentive attributes}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+These preattentive attributes are properties of lines and shapes that provide immediate visual contrast without requiring active thought from the viewer. As we will see, care needs to be taken here to ensure that we are don't mislead the viewer with how we use these attributes.
+
+\hypertarget{example-first-impressions-count}{%
+\subsection{Example: First Impressions Count}\label{example-first-impressions-count}}
+
+\begin{figure}
+\centering
+\includegraphics{images/303-data-visualisation/average-male-height.jpg}
+\caption{Issues with scales, area and perspective}
+\end{figure}
+
+This figure presents a bar chart of the mean height of males in several countries, but has swapped out the bars for human outlines. While the visualisation has an attractive, minimal design and a pleasant colour scheme, it doesn't do a good job of immediately conveying the relevant information to the viewer.
+
+The three main issues with this plot are all caused by swapping the bars of this plot for male silhouettes, and are linked to the difference in how lengths and areas are perceived by humans. Typically, we make immediate pre-attentive comparisons based on area but draw more accurate, considered comparisons when comparing lengths.
+
+By replacing bars with human outlines and not starting the height scale at zero, this plot breaks the proportionality of length and area that is inherent in a bar plot. This causes dissonance between immediate and considered interpretation of this plot. An additional issue is that the silhouettes overlap, creating a forced perspective that makes it seem like the outlines are also further back and therefore even larger if this perspective is taken into account.
+
+These three issues are important to consider when constructing your own visualisations. Are you showing all the values that the data could take, or focusing on a smaller interval to provide better contrast? If you are using the size of a circle to represent a value, are you changing the diameter or area in proportion to the data value? And finally, if you are making a plot that appears three-dimensional, have you done so on purpose and, if so, can one of those dimensions be better represented by an attribute that isn't position?
+
+\hypertarget{visual-perception}{%
+\subsection{Visual Perception}\label{visual-perception}}
+
+When reducing the dimensionality of your plot you may wish to represent a data value using colour rather than position. When deciding on how to use colour, you should keep your audience in mind.
+
+Is your aim to two or more categories? In that case, you'll need to select your finite set of colours and ensure that these can be distinguished.
+
+Are you are representing a data value that is continuous or has an associated ordering? Then you will again have to select your palette to provide sufficient contrast to all viewers of your work.
+
+If you are representing a measurement that has a \emph{reference value} (for example 0 for temperature in centigrade) then a diverging colour palette can be used to represent data that are above or below this reference point. This requires some cultural understanding of how the colours will be interpreted, for example you are likely to cause confusion if you an encoding of red for cold and blue for hot.
+
+For colour scales without such a reference point then a gradient in a single colour is likely the best option. In either case, it is important to check that a unit change in data value represents a consistent change in colour across all values. This is not the case for the rainbow palette here (which is neither a single gradient or diverging).
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/saturated-colour-scales} \caption{Some default colour scales in R}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+To ensure accessibility of your designs, I would recommend one of the many on-line tools to simulate colour vision deficiency or using a pre-made palette where this has been considered for you. A good, low-tech rule of thumb is to design your visualisations so that they're still easily understood when printed in grey-scale. This can mean picking appropriate colours or additionally varying the point shape, line width or line types used.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/desaturated-colour-scales} \caption{Desatureated colour scales in R}\label{fig:unnamed-chunk-6}
+\end{figure}
+
+For a practical guide on setting colours see this \href{https://bookdown.org/rdpeng/exdata/plotting-and-color-in-r.html}{chapter} of exploratory data analysis by Roger Peng.
+
+\hypertarget{alt-text-titles-and-captions}{%
+\subsection{Alt-text, Titles and Captions}\label{alt-text-titles-and-captions}}
+
+\begin{quote}
+\textbf{Captions} describe a figure or table so that it may be identified in a list of figures and (where appropriate).
+
+\textbf{Alternative text} describes the content of an image for a person who cannot view it. (\href{https://myaccessible.website/infographic/images/images-accessibility-alt-text}{Guide to writing alt-text})
+
+\textbf{Titles} give additional context or identify key findings. Active titles are preferable.
+\end{quote}
+
+When visualisations are included in a report, article or website, they are often accompanied by three pieces of text. The title, the caption and the alt-text all help the audience to understand a visualisation but each serves a distinct purpose.
+
+\hypertarget{captions}{%
+\subsubsection{Captions}\label{captions}}
+
+A caption is short description of a visualisation. Captions usually displayed directly above or below the figure or table that they describe. These captions serve two purposes: in a report, the caption can be used to look up the visualisation from a list of figures or tables. The second purpose of a caption is to add additional detail that you don't want to add to the plot directly. For example caption might be ``Time series of GDP in the United States of America, 2017-2022. Lines show daily (solid), monthly (dashed) and five-year (dotted) mean values.''
+
+\hypertarget{alt-text}{%
+\subsubsection{Alt-text}\label{alt-text}}
+
+Alt text or alternative text is used to describe the content of an image to a person who can't view it. This text is helpful for people with a visual impairment, particularly those who uses a screen reader. Screen reading software reads digital text out loud but can't interpret images. Such software replaces the image with the provided alternative text. Alt text is also valuable in cases when the image can't be found or loaded, for example because of an incorrect file path or a slow internet connection, because it'll be displayed in place of the image.
+
+The purpose of alt-text is different from a caption. It's designed as a replacement for the image, not just a shorthand or to provide additional information. If there is an important trend or conclusion to be drawn from the visualisation (that is not already mentioned in the main text) this should be identified in the alt-text. This sort of interpretation is a key aspect of alt-text that shouldn't be included in a caption.
+
+\hypertarget{titles}{%
+\subsubsection{Titles}\label{titles}}
+
+Titles give additional context that is not conveyed by the axis labels or chart annotations. Alternatively the title can be used like a newspaper headline to deliver the key findings of the visualisation. One example of this might be when looking at a visualisation that is composed of many smaller plots, each showing the GDP for a US state over the last five years. Title for each smaller plot would identify the state it is describing, while the overall title might be something like ``All US states have increased GDP in the period 2017-2022''.
+
+If you are including this type of interpretive title, make sure that the same interpretation is clear in the alt-text.
+
+\hypertarget{your-story}{%
+\section{Your Story 📖}\label{your-story}}
+
+The fourth aspect of a successful data visualisation is that it must tell a story. This story doesn't need to be a multi-generational novel or even a captivating novella. If a picture speaks a thousand words, really what your aiming for is an engaging anecdote.
+
+Your visualisation should be something the grabs viewers attention and through its through its composition or content alters their knowledge or view of world in some way.
+
+Telling effective stories requires planning. How you construct your narrative depends on what effect you want to have on your audience. I'd encourage you to think like a data journalist and go into your work with the intended effect clear in your mind. Is your purpose to inform them of a fact, to persuade them to use a different methodology or entertain them by presenting dull or commonplace data in a fresh and engaging way?
+
+\begin{figure}
+\centering
+\includegraphics{images/303-data-visualisation/entertain-persuade-inform.png}
+\caption{Three goals of data visualisation: to entertain, persuade and perform}
+\end{figure}
+
+In reality your goal will be some mixture of these, at an interior point of this triangle. Clearly identifying this point will help you to present your visual story in a way that works towards your aims, rather than against them.
+
+On the point of presentation, it is important to realise that there is no neutral way to present information. In creating a visualisation you're choosing which aspects of the data to emphasise, what gets summarised and what is not presented at all. This is how you construct a plot that tells a clear and coherent story. However, there is more than one story that you could tell from a single dataset.
+
+As an example of this, let's consider a time-series showing the price of two stocks and in particular the choice of scale on the y-axis. Suppose the two stock have values fluctuating around \$100 per share. Choosing a scale that goes from \$90 to \$110 would emphasise the differences between the two stocks. Setting the lower limit to \$0 would instead emphasise that these variations are small relative to the overall value of the stocks. Both are valid approaches but tell different stories. Be clear and be open about which of these you are telling and why you have chosen that over the alternative.
+
+A final cross-over from data journalism is that your visualisations will be competing for your viewers attention. You have to compete against everything else that is going on in their lives. Establish a clear ``hook'' within your visualisation to attract your viewer's attention and immediately deliver the core message. This might be done with a contrasting trend-line or an intriguing title. Lead their attention first to the key message and then the supporting evidence.
+
+\hypertarget{your-guidelines}{%
+\section{Your Guidelines 📝}\label{your-guidelines}}
+
+\hypertarget{standardise-and-document}{%
+\subsection{Standardise and Document}\label{standardise-and-document}}
+
+The final consideration when creating visualisations is to reduce the number of considerations that you have to make in the future. This is done by thinking carefully about each of the decisions that you make and writing guidelines so that you make these choices consistently.
+
+The choices that go into making an effective data visualisation are important and deserve careful consideration. However, this consideration comes at a cost. To the employer this is the literal, financial cost of paying for your time. More broadly this is the opportunity cost of all the other things that you could have been doing instead.
+
+To be efficient in our visualisation design, we should extend our DRY coding principles the design processes. Make choices carefully and document your decisions to externalise the cognitive work required of you in the future.
+
+Many companies aware of these financial and opportunity costs and provide style guides for visualisations in a similar manner to a coding or writing style guide. This not only externalises and formalises many decisions, but it also leads to a more uniform style across visualisations and the data scientists producing them. This leads to a unified, house-style for graphic design and a visual brand that is easily identifiable. This is beneficial for large companies or personal projects alike.
+
+\hypertarget{example-style-guides}{%
+\subsection{Example Style Guides}\label{example-style-guides}}
+
+I'd highly recommend exploring some visualisation guides to get an idea of how these are constructed and how you might develop your own.
+
+Unsurprisingly some of the best guides come from media outlets and government agencies. These businesses are used to writing style guides for text to create and maintain a distinctive style across all of their writers.
+
+\begin{itemize}
+\item
+  BBC
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.bbc.co.uk/gel/features/how-to-design-infographics}{Infographics Guidelines}
+  \item
+    \href{https://bbc.github.io/rcookbook/}{R Cookbook}
+  \item
+    \href{https://github.com/bbc/bbplot}{\texttt{\{bbplot\}}}
+  \end{itemize}
+\item
+  \href{https://design-system.economist.com/documents/CHARTstyleguide_20170505.pdf}{The Economist}
+\item
+  \href{https://style.ons.gov.uk/category/data-visualisation/}{The Office for National Statistics}
+\item
+  \href{https://ec.europa.eu/eurostat/web/products-eurostat-news/-/STYLE-GUIDE_2016}{Eurostat}
+\item
+  \href{https://urbaninstitute.github.io/graphics-styleguide/}{Urban Institute}
+\item
+  \href{https://pudding.cool/resources/}{The Pudding} (learning resources)
+\end{itemize}
+
+The level of detail and technicality varies wildly between these examples. For instance, the BBC do not provide strong guidelines on the details of the final visualisation but do provide a lot of technical tools and advice on how to construct those in a consistent way across the corporation. They've even gone so far as to write their own theme for ggplot and to publish this as an R package!
+
+\hypertarget{wrapping-up-4}{%
+\section{Wrapping Up}\label{wrapping-up-4}}
+
+🔨 Think about your \emph{tools}.
+
+📽 Think about your \emph{medium}.
+
+👥 Think about your \emph{audience}.
+
+📖 Think about your \emph{story}.
+
+📝 Think about your \emph{guidelines}.
+
+Data visualisation might seem like a soft skill in comparison to data acquisition, wrangling or modelling. However, it is often effective visualisations that have the greatest real world impact.
+
+It is regularly the highly effective figures within reports and presentations that determine which projects are funded or renewed. Similarly, visualisations in press releases can determine whether the result of your study are trusted, correctly interpreted, and remembered by the wider public.
+
+When constructing visualisations it is important to consider whether there are existing guidelines that provide helpful constraints to your work. From there, determine the story that you wish to tell and exactly who it is that your are telling that story to. Once this is decided you can select the medium and the tools that you use to craft your visualisation so that you have the greatest chance of achieving your intended effect.
 
 \hypertarget{edav-checklist}{%
 \chapter*{Checklist}\label{edav-checklist}}
 \addcontentsline{toc}{chapter}{Checklist}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
@@ -4416,22 +4805,68 @@ If you would like to contribute to the development of EDS, you may do so at \url
 \section{Videos / Chapters}\label{videos-chapters-2}}
 
 \begin{itemize}
-\item
-  {[} {]}
-\item
-  {[} {]}
-\item
-  {[} {]}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b25a6d35-1e91-4090-b4f8-af9600b39086}{Data Wrangling} (20 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/03-01-data-wrangling/03-01-data-wrangling.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a986f50c-90fe-4379-b4a1-af9600ba22fd}{Data Exploration} (25 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/03-02-eda/03-02-data-exploration.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2ebbfa94-0b5d-45e9-b708-af8100d9664a}{Data Visualisation} (27 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/03-03-data-visualisation/03-03-data-visualisation.pdf}{{[}slides{]}}
 \end{itemize}
 
 \hypertarget{reading-2}{%
 \section{Reading}\label{reading-2}}
 
+Use the \protect\hyperlink{edav-reading}{Data Exploration and Visualisation} section of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest.
+
 \hypertarget{activities}{%
 \section{Activities}\label{activities}}
 
+\emph{Core:}
+
+\begin{itemize}
+\item[$\square$]
+  \href{https://normconf.com/}{NormConf} is a conference dedicated to the unglamorous but essential aspects of working in the data sciences. The in December 2022 conference talks are available as a \href{https://www.youtube.com/@normconf/videos}{Youtube Playlist}. Find a talk that interests you and watch it, then post a short summary to EdStem, which includes what you learned from the talk and one thing that you still do not understand.
+\item[$\square$]
+  Work through this ggplot2 tutorial for \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/\#text}{beautiful plotting in R} by Cédric Scherer, recreating the examples for yourself.
+\item[$\square$]
+  Using your \texttt{rolling\_mean()} function as inspiration, write a \texttt{rolling\_sd()} function that calculates the rolling standard deviation of a numeric vector.
+
+  \begin{itemize}
+  \item[$\square$]
+    Extend your \texttt{rolling\_sd()} function to optionally return approximate point-wise confidence bands for your rolling standard deviations. These should be \(\pm2\) standard errors by default and may be computed using analytical or re-sampling methods.
+  \item[$\square$]
+    Create a visualisation using your extended \texttt{rolling\_sd()} function to assess whether the variability in the daily change in Dow Jones Index is changing over time. \href{data/dowjones.csv}{{[}data{]}}
+  \end{itemize}
+\end{itemize}
+
+\emph{Bonus:}
+
+\begin{itemize}
+\item[$\square$]
+  Add your \texttt{rolling\_sd()} function to your R package, adding documentation and tests.
+\item[$\square$]
+  During an exploratory analysis, we often need to assess the validity of an assumed distribution based on a sample of data. Write your own versions of \texttt{qqnorm()} and \texttt{qqplot()}, which add point-wise tolerance intervals to assess whether deviation from the line \(y=x\) are larger than expected.
+\item[$\square$]
+  Add your own versions of \texttt{qqnorm()} and \texttt{qqplot()} to your R package, along with documentation and tests.
+\end{itemize}
+
 \hypertarget{live-session-2}{%
 \section{Live Session}\label{live-session-2}}
+
+In the live session we will begin with a discussion of this week's tasks. We will then break into small groups for two data visualisation exercises.
+
+(\textbf{Note:} For one of these exercises, it would be helpful to bring a small selection of coloured pens or pencils, of you have access to some. If not, please don't worry - inventive use of black, blue and shading are perfectly acceptable alternatives!)
+
+Please come to the live session prepared to discuss the following points:
+
+\begin{itemize}
+\item
+  Which NormConf video did you watch and what did you learn from it?
+\item
+  Other than \texttt{\{ggplot2\}}, what else have you used to create data visualisations? What are their relative strengths and weaknesses?
+\item
+  How did you implement your \texttt{rolling\_sd()} function and what conclusions did you draw when applying it to the Dow Jones data?
+\end{itemize}
 
 \hypertarget{part-preparing-for-production}{%
 \part{Preparing for Production}\label{part-preparing-for-production}}
@@ -4770,8 +5205,8 @@ This reading list is organised by topic, according to each week of the course. T
 
 This covers importing data from spreadsheets, databases, using Apache Arrow and importing hierarchical data as well as web scraping.
 
-\hypertarget{data-exploration-and-visualisation}{%
-\section{Data Exploration and Visualisation}\label{data-exploration-and-visualisation}}
+\hypertarget{edav-reading}{%
+\section{Data Exploration and Visualisation}\label{edav-reading}}
 
 \hypertarget{core-materials-2}{%
 \subsection*{Core Materials}\label{core-materials-2}}
