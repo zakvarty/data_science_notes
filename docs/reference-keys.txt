@@ -4,6 +4,9 @@ tab:unnamed-chunk-4
 fig:unnamed-chunk-5
 fig:unnamed-chunk-4
 fig:unnamed-chunk-6
+fig:unnamed-chunk-9
+fig:unnamed-chunk-10
+fig:unnamed-chunk-11
 part-effective-data-science-workflows
 workflows-organising-your-work
 what-are-we-trying-to-do
@@ -225,7 +228,16 @@ pseudo-random-numbers
 beware
 wrapping-up-5
 production-explainability
-explainability--
+what-are-we-explaining-and-to-whom
+explaining-a-decision-tree
+explaining-regression-models
+example-cherrywood-regression
+simpsons-paradox
+what-hope-do-we-have
+permutation-testing
+meta-modelling
+aggregating-meta-models
+wrapping-up-6
 production-scalability
 scalability
 videos-chapters-3

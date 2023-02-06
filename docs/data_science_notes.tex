@@ -4160,14 +4160,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   observation\textasciitilde{}1   V1\_A   V2\_B   V3\_C   V4\_D   V5\_E   V6\_F  V7\_G   V8\_H   V9\_I}
-\CommentTok{\#\textgreater{}           \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1             1  0.318  0.223 {-}0.537 {-}0.883  1.12  {-}0.946 0.406 {-}0.385  0.469}
-\CommentTok{\#\textgreater{} 2             2  0.504 {-}0.647 {-}0.294  0.656  1.08   1.54  2.28  {-}1.27  {-}0.487}
-\CommentTok{\#\textgreater{} 3             3  1.30   1.11  {-}0.311 {-}1.19   0.346 {-}1.24  0.485 {-}0.607 {-}0.603}
-\CommentTok{\#\textgreater{} 4             4  0.361 {-}0.872 {-}0.186  1.38  {-}0.935  1.03  1.13  {-}0.310 {-}2.29 }
-\CommentTok{\#\textgreater{} 5             5 {-}0.738 {-}0.510 {-}0.121 {-}1.45   0.148  0.661 2.48  {-}0.628 {-}0.611}
-\CommentTok{\#\textgreater{} 6             6 {-}1.37   0.891 {-}0.698  0.564 {-}1.86  {-}0.869 0.397 {-}2.96  {-}0.172}
+\CommentTok{\#\textgreater{}   obser\textasciitilde{}1    V1\_A    V2\_B   V3\_C   V4\_D   V5\_E    V6\_F    V7\_G    V8\_H   V9\_I}
+\CommentTok{\#\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1       1 {-}0.0923  1.33    0.136 {-}0.976  0.625 {-}0.717  {-}0.987  {-}0.430  {-}1.79 }
+\CommentTok{\#\textgreater{} 2       2  2.72    0.808  {-}0.528 {-}2.58   0.818  0.596  {-}0.0533 {-}1.45   {-}0.566}
+\CommentTok{\#\textgreater{} 3       3  0.282   0.0861 {-}2.84   1.08  {-}0.900 {-}2.08    0.699   0.0331 {-}0.925}
+\CommentTok{\#\textgreater{} 4       4  0.563   0.407   0.763 {-}0.256  0.558 {-}0.251   1.69    0.865  {-}0.777}
+\CommentTok{\#\textgreater{} 5       5 {-}0.222  {-}0.962  {-}0.169 {-}0.901 {-}1.72   0.0686 {-}0.486  {-}1.11    2.14 }
+\CommentTok{\#\textgreater{} 6       6  1.29    0.691  {-}1.31  {-}1.15  {-}0.382  0.455   0.203  {-}0.170  {-}2.02 }
 \CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
 \CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
@@ -4882,7 +4882,7 @@ If you would like to contribute to the development of EDS, you may do so at \url
 \hypertarget{production-reproducibility}{%
 \chapter{Reproducibility}\label{production-reproducibility}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
@@ -5094,9 +5094,9 @@ This is especially useful for simulations that involve random variables, as it a
 \begin{Highlighting}[]
 \CommentTok{\# different values}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  0.9729283 {-}1.3820365  0.4094758 {-}0.2110222}
+\CommentTok{\#\textgreater{} [1]  0.0931039 {-}1.1002910 {-}0.4368046 {-}1.3852128}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}0.49005597 {-}0.07084325  0.05542863 {-}0.07244986}
+\CommentTok{\#\textgreater{} [1]  1.2776530  1.0750664 {-}0.5366750 {-}0.1021981}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5147,12 +5147,310 @@ With these ideas you can now use good data to do good science.
 \hypertarget{production-explainability}{%
 \chapter{Explainability}\label{production-explainability}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
-\hypertarget{explainability--}{%
-\section{Explainability -------------------------------------------------}\label{explainability--}}
+\hypertarget{what-are-we-explaining-and-to-whom}{%
+\section{What are we explaining and to whom?}\label{what-are-we-explaining-and-to-whom}}
+
+There are many reasons you might need to explain the behaviour of your model before it can be put into production. As an example, we can consider a credit scoring system that determines whether or not customers should be given a line of credit.
+
+\begin{itemize}
+\tightlist
+\item
+  Regulatory or legal requirements to describe how your model works (e.g.~ban on ``black-box'' modelling).
+\item
+  Understanding how your model works to improve it.
+\item
+  Explaining to individual load decisions to customers.
+\end{itemize}
+
+In each of these cases, what exactly do we mean by an explanation? It's likely not the same thing in each example.
+
+\begin{itemize}
+\item
+  Data scientists we might be interested to know exactly what types of mapping between covariates and responses can be represented by the neural network architecture underlying the credit scoring system.
+\item
+  Stakeholders within the company or regulators are likely indifferent to this and are more concerned about understanding the general behaviour of the model across large numbers of loan applications.
+\item
+  Finally, individual customers might have some investment in the overall behaviour of the scoring model but would also like to know what actions they can take to increase their chance of securing a loan.
+\end{itemize}
+
+Between each of these examples, the level of technical detail differs but more importantly the fundamental nature of the explanations are different.
+
+\hypertarget{explaining-a-decision-tree}{%
+\section{Explaining a Decision Tree}\label{explaining-a-decision-tree}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/ambulance-triage} 
+
+}
+
+\caption{An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible.}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+With some models giving an explanation is relatively straightforward. Decision trees are perhaps the easiest model to explain because they mimic human decision making and can be represented like flow-charts that make sequential, linear partitions of the predictor space.
+
+These models use the same sort of logic that is used for medical triage when you call an ambulance, to determine the urgency of the call. The binary decisions used in this type of triage are optimised to identify critical calls as soon as possible, but this is just one form of loss function we could use. We might instead pick these partitions to get the most accurate overall classification of calls to urgency categories. This might not be an appropriate loss function for ambulance calls but might be when deciding which loan applicants to grant credit to.
+
+The issue is that these decision trees are limited in the relationships they can represent (linear relationships approximated by step function) and are sensitive to small changes in the training data. To overcome these deficiencies we can use a bootstrap aggregation or a random forest model to make predictions based on a collection of these trees. This leads to models that are more stable and flexible but also removes any chance of a simple and human-friendly explanation.
+
+\hypertarget{explaining-regression-models}{%
+\section{Explaining Regression Models}\label{explaining-regression-models}}
+
+Another model that is relatively straightforward to interpret is a linear regression. We can interpret this model using the estimated regression coefficients, which describe how the predicted outcome changes with a unit change in each covariate while the values of all other covariates are held constant.
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/interpreting-linear-regression} 
+
+}
+
+\caption{Linear models have global, conditional explanations, provided by the estimated regression coefficients.}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+This is a global and a conditional explanation.
+
+It is \textbf{global} because the effect of increasing a covariate by one unit is the same no matter what the starting value of that covariate. The explanation is the same in all parts of the covariate space.
+
+The explanation is \textbf{conditional} because it assumes that all other values are held constant. This can lead to some odd behaviour in our explanations, they are dependent on what other terms are included (or left out of) our model.
+
+This can be contrasted against non-linear regression, where covariate effects are still interpreted conditional on the value of other covariates but the size or direction of that effect might vary depending on the value of the covariate.
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/interpreting-nonlinear-regression} 
+
+}
+
+\caption{Non-linear models have local, conditional explanations, provided by the estimated regression coefficients.}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+Here we have an example where a unit increase in the covariate is associated with a large change in the model response at low values of the covariate, but a much smaller change at large values of the covariate.
+
+\hypertarget{example-cherrywood-regression}{%
+\section{Example: Cherrywood regression}\label{example-cherrywood-regression}}
+
+As an example of this we can look at the height, girth and volume of some cherry trees.
+
+If we are wanting to use a lathe to produce pretty, cherry wood ornaments we might be interested in understanding how the girth of the trees varies with their height and total volume. Using a linear model, we see that both have a positive linear association with girth.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggtext)}
+
+\NormalTok{lm\_height }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Girth }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Height, }\AttributeTok{data =}\NormalTok{ trees)}
+\NormalTok{lm\_volume  }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Girth }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Volume, }\AttributeTok{data =}\NormalTok{ trees)}
+
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ trees, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Height, }\AttributeTok{y =}\NormalTok{ Girth)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Height"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Girth"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{22}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Cherry Tree Dimensions"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ trees, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Volume, }\AttributeTok{y =}\NormalTok{ Girth)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Volume"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Girth"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{22}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p1, p2, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-production-explainability_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(Girth }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Height, }\AttributeTok{data =}\NormalTok{ trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Girth \textasciitilde{} 1 + Height, data = trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{} (Intercept)       Height  }
+\CommentTok{\#\textgreater{}     {-}6.1884       0.2557}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(Girth }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Volume, }\AttributeTok{data =}\NormalTok{ trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Girth \textasciitilde{} 1 + Volume, data = trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{} (Intercept)       Volume  }
+\CommentTok{\#\textgreater{}      7.6779       0.1846}
+\end{Highlighting}
+\end{Shaded}
+
+However, when we include both terms in our model, our interpretation changes dramatically.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(Girth }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Height }\SpecialCharTok{+}\NormalTok{ Volume, }\AttributeTok{data =}\NormalTok{ trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Girth \textasciitilde{} 1 + Height + Volume, data = trees)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{} (Intercept)       Height       Volume  }
+\CommentTok{\#\textgreater{}    10.81637     {-}0.04548      0.19518}
+\end{Highlighting}
+\end{Shaded}
+
+Height is no longer positively associated with girth. This is because the size, direction and significance of our estimated effects is conditional on what other terms are included in the model. For a \emph{fixed volume} of wood, a taller tree necessarily has to have a smaller girth.
+
+Techniques such as \href{https://christophm.github.io/interpretable-ml-book/shap.html}{SHAP} try to quantify the importance of a predictor by averaging over all combinations of predictors that might be included within the model. You can read more about such techniques in \href{https://christophm.github.io/interpretable-ml-book/}{Interpretable Machine Learning} by Christoph Molnar.
+
+\hypertarget{simpsons-paradox}{%
+\section{Simpson's Paradox}\label{simpsons-paradox}}
+
+This effect is related to \textbf{Simpson's Paradox}, where a trend appears in several groups of data but disappears or reverses when the groups are combined.
+
+This regularly arises in fields like epidemiology, where population level trends are assumed to apply at the level of individuals or small groups, where this is known as the ecological fallacy.
+
+Actually, Simpson's parodox is a terrible name, because it isn't actually a paradox at all. It's not surprising that we have two different answers to two different questions, the supposed contradiction only arises when we fail to distinguish between those questions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_1 }\OtherTok{\textless{}{-}}\NormalTok{ mgcv}\SpecialCharTok{::}\FunctionTok{rmvn}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{, }\AttributeTok{mu =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{), }\AttributeTok{V =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{))}
+\NormalTok{data\_2 }\OtherTok{\textless{}{-}}\NormalTok{ mgcv}\SpecialCharTok{::}\FunctionTok{rmvn}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{, }\AttributeTok{mu =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{V =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{))}
+\NormalTok{data\_3 }\OtherTok{\textless{}{-}}\NormalTok{ mgcv}\SpecialCharTok{::}\FunctionTok{rmvn}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{, }\AttributeTok{mu =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{V =} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{))}
+
+\NormalTok{simpson }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{x\_1 =} \FunctionTok{c}\NormalTok{(data\_1[,}\DecValTok{1}\NormalTok{], data\_2[,}\DecValTok{1}\NormalTok{], data\_3[,}\DecValTok{1}\NormalTok{]), }
+  \AttributeTok{x\_2 =} \FunctionTok{c}\NormalTok{(data\_1[,}\DecValTok{2}\NormalTok{], data\_2[,}\DecValTok{2}\NormalTok{], data\_3[,}\DecValTok{2}\NormalTok{]),}
+  \AttributeTok{group =} \FunctionTok{as.factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{each =} \DecValTok{100}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{p3 }\OtherTok{\textless{}{-}}\NormalTok{ simpson }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x\_1, }\AttributeTok{y =}\NormalTok{ x\_2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Simpson\textquotesingle{}s Paradox"}\NormalTok{, }\StringTok{"Groupings Unknown"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{p4 }\OtherTok{\textless{}{-}}\NormalTok{ simpson }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(group) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x\_1, }\AttributeTok{y =}\NormalTok{ x\_2, }\AttributeTok{col =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"Groupings Unknown"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p3, p4, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} \textasciigrave{}geom\_smooth()\textasciigrave{} using formula = \textquotesingle{}y \textasciitilde{} x\textquotesingle{}}
+\CommentTok{\#\textgreater{} \textasciigrave{}geom\_smooth()\textasciigrave{} using formula = \textquotesingle{}y \textasciitilde{} x\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-production-explainability_files/figure-latex/unnamed-chunk-9-1} 
+
+}
+
+\caption{A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group.}\label{fig:unnamed-chunk-9}
+\end{figure}
+
+What I hope to have highlighted here is that for some of the simplest models we might use as data scietists, explanations are very much possible but must be made with care and attention to detail - correctly interpreting these models in context can be far from straightforward.
+
+\hypertarget{what-hope-do-we-have}{%
+\section{What hope do we have?}\label{what-hope-do-we-have}}
+
+At this stage, you might be asking yourself what hope we have of explaining more complex models like random forests or neural networks, given how difficuly it is to explain even the simple models we might take as our benchmark. You'd be right to worry about this and it is important to remain humble in what we can and cannot know about these complex systems that we are building.
+
+All hope isn't lost though - we still have a few tricks up our sleeve!
+
+\hypertarget{permutation-testing}{%
+\subsection{Permutation Testing}\label{permutation-testing}}
+
+Suppose we're asked by our product manager to determine which predictors or covariates are usually the most import in our model when determining credit scores and loan outcomes.
+
+One way to do this would be to remove each covariate from the model and investigate how that changes the predictions made by our model. However, we've seen already that removing a predictor can substantively change some models.
+
+So instead, we could answer this question by using permutation methods.
+
+If we take the observed values of a covariate, say income, and randomly allocate these among all our training examples then this will destroy any association between income and loan outcome. This allows us to remove the information provided by income but without altering the overall structure of our model. We can then refit our model to this modified data set and investigate how rearranging the covariate alters our predictions. If there is a large performance drop, then the covariate is playing an important role within our model.
+
+There are many variations on this sort of permutation test. They can be simple but powerful tools for understanding the behaviour of all sorts of model.
+
+\hypertarget{meta-modelling}{%
+\subsection{Meta-modelling}\label{meta-modelling}}
+
+Meta-models are, as the name suggests, models of models and these can be effective methods of providing localised explanations for complex models.
+
+The idea here is to look at a small region of the covariate space that is covered by a complex and highly flexible model, such as a neural network. We can't easily give a global explanation for this complex model's behaviour - it is just too complicated.
+
+However, we can interrogate the model's behaviour within a small region and construct a simplified version of the model (a meta-model) that lets us explain the model within that small region. Often this meta-model is chosen as a linear model.
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/local-linear-approximation} 
+
+}
+
+\caption{A local linear approximation in two dimensions}\label{fig:unnamed-chunk-10}
+\end{figure}
+
+This is partly for convenience and familiarity but also has a theoretical backing: if our complex model is sufficiently smooth then we can appeal to \href{https://en.wikipedia.org/wiki/Taylor\%27s_theorem}{Taylor's Theorem} to say that in a small enough region the mapping can be well approximated by a linear function.
+
+This sort of local model explanation is particularly useful where we want to explain individual predictions or decisions made by our model: for example why a single loan applicant was not granted a loan. By inspecting the coefficients of this local surrogate model we can identify which covariates were the most influential in the decision and suggest how the applicant could increase their chance of success by summarising those covariates that were both influential and are within the ability of the applicant to change. This is exactly the approach taken by the \href{https://christophm.github.io/interpretable-ml-book/lime.html}{LIME} methodology developed by Ribiero et al.~
+
+\hypertarget{aggregating-meta-models}{%
+\subsection{Aggregating Meta-models}\label{aggregating-meta-models}}
+
+Using local or conditional explanations of our model's behaviour can be useful in some circumstances but they don't give a broader understanding of what is going on overall. What if we want to know how a covariate influences \emph{all} outcomes not a particular one? What if we care about the covariate's expected effect over all loan applicants, or the \emph{distribution} of effects over all applicants?
+
+This is where local and conditional explanations are particularly nice. By making these explanations at many points we can aggregate these explanations to understand the global and marginal behaviour of our models.
+
+To aggregate our conditional effects into a marginal effect, or a local effect into a global effect we must integrate these over the joint distribution of all covariates. If this sounds a bit scary to you, then you are right. Integration is hard enough at the best of times without adding in the fact that we don't know the joint distribution of the covariates we are using as predictors.
+
+Don't worry though, we can take the easy way out and do both of these things approximately. We can approximate the joint distribution of the covariates by the empirical distribution that we observe in our sample, and then our nasty integrals simplify to averages over the measurement units in our data (the loan applicants in our case).
+
+If we construct a local, conditional model for each loan applicant in our data set, we can approximate the marginal effect of each covariate by averaging the conditional effects we obtain for each loan applicant.
+
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/local-neighbourhoods} 
+
+}
+
+\caption{Local approximations around each observation can be combined to understand global model behaviour.}\label{fig:unnamed-chunk-11}
+\end{figure}
+
+This gives us a global understanding of how each covariate influences the response of our model. It does this over all possible values of the other covariates and appropriately weights these according to their frequency within the sample (and also within the population, if our sample is representative).
+
+\hypertarget{wrapping-up-6}{%
+\section{Wrapping Up}\label{wrapping-up-6}}
+
+We've seen that as our models become more flexible they also become more difficult to explain, whether that is to ourselves, and subject expert or a user of our model.
+
+That's not to say that simple models are always easy to explain or interpret, simple models can be deceptively tricky to communicate accurately.
+
+Finally, we looked at a couple of techniques for explaining more complex models.
+
+We can use permutation tests measure feature importance in our models: shuffling the predictor values breaks any relationship to our response, and we can measure how much this degrades our model performance. A big dip implies that feature was doing a lot of explaining.
+
+We can also look at the local behaviour of models by making surrogate or meta models, that are interpretable, and aggregate these to understand the model globally.
+
+Effective explanations are essential if you want your model to be used in production and to feed into real decisions decision making. This requires some level of skill with rhetoric to tailor your explanation so that it is clear to the person who requested it. But this isn't a soft skill, it also requires a surprising amount of computational and mathematical skill to extract such explanations from complex modern models.
 
 \hypertarget{production-scalability}{%
 \chapter{Scalability}\label{production-scalability}}

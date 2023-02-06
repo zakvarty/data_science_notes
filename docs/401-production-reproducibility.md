@@ -1,8 +1,8 @@
 # Reproducibility {#production-reproducibility}
 
 
-::: {.rmdimportant} 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it. 
+::: {.rmdnote} 
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. 
 
 If you would like to contribute to the development of EDS, you may do so at <https://github.com/zakvarty/data_science_notes>.
 :::
@@ -186,9 +186,9 @@ This is especially useful for simulations that involve random variables, as it a
 ```r
 # different values
 rnorm(n = 4)
-#> [1] -0.2921875 -0.8644506 -1.0349997 -0.6697730
+#> [1] -0.709294420  0.005784619  0.763734829  0.847698939
 rnorm(n = 4)
-#> [1]  1.0854702 -0.3263379  2.2595919 -1.2282337
+#> [1]  0.6476672  1.8443970  2.6531645 -0.3394363
 ```
 
 ------

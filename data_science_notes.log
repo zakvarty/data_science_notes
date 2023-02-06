@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  6 FEB 2023 13:22
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  6 FEB 2023 16:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -478,6 +478,18 @@ LaTeX Warning: Label `fig:unnamed-chunk-2' multiply defined.
 
 
 LaTeX Warning: Label `fig:unnamed-chunk-3' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-2' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-3' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-4' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-5' multiply defined.
 
 )
 \openout1 = `data_science_notes.aux'.
@@ -1428,62 +1440,141 @@ le (type bmp)
 <images/401-production-reproducibility/contour-optimisation.png>
 [212] [213] [214] [215] [216]
 Chapter 13.
-
-Underfull \hbox (badness 1881) in paragraph at lines 5155--5155
-[]\TU/lmr/bx/n/17.28 Explainability ——————————————
- []
-
 [217
 
-] [218
+]
+File: images/402-production-explainability/ambulance-triage.png Graphic file (t
+ype bmp)
+<images/402-production-explainability/ambulance-triage.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5187--5188
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 41.36705pt on input line 5192.
+
+[218] [219]
+File: images/402-production-explainability/interpreting-linear-regression.png G
+raphic file (type bmp)
+<images/402-production-explainability/interpreting-linear-regression.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5207--5208
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5212.
+
+File: images/402-production-explainability/interpreting-nonlinear-regression.pn
+g Graphic file (type bmp)
+<images/402-production-explainability/interpreting-nonlinear-regression.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5224--5225
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5229.
+
+[220] [221] [222]
+File: 402-production-explainability_files/figure-latex/unnamed-chunk-5-1.pdf Gr
+aphic file (type pdf)
+<use 402-production-explainability_files/figure-latex/unnamed-chunk-5-1.pdf>
+
+Underfull \vbox (badness 10000) detected at line 5287
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[223] [224]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[225]
+Underfull \vbox (badness 5091) detected at line 5361
+ []
+
+
+Underfull \vbox (badness 3158) has occurred while \output is active []
+
+[226]
+File: 402-production-explainability_files/figure-latex/unnamed-chunk-9-1.pdf Gr
+aphic file (type pdf)
+<use 402-production-explainability_files/figure-latex/unnamed-chunk-9-1.pdf>
+[227] [228]
+File: images/402-production-explainability/local-linear-approximation.png Graph
+ic file (type bmp)
+<images/402-production-explainability/local-linear-approximation.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5405--5406
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 26.99905pt on input line 5410.
+
+[229] [230]
+File: images/402-production-explainability/local-neighbourhoods.png Graphic fil
+e (type bmp)
+<images/402-production-explainability/local-neighbourhoods.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5431--5432
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5436.
+
+[231] [232] [233] [234
 
 ]
 Chapter 14.
-[219] [220
+[235] [236
 
-] [221] [222]
+] [237] [238]
 Chapter 15.
-[223
+[239
 
-] [224
+] [240
 
-] [225] [226
+] [241] [242
 
 ]
 Chapter 16.
-[227] [228
+[243] [244
 
 ]
 Chapter 17.
-[229] [230
+[245] [246
 
 ]
 Chapter 18.
-[231] [232
+[247] [248
 
-] [233] [234
+] [249] [250
 
 ]
 Chapter 19.
-[235] [236] [237]
+[251] [252] [253]
 
-Package hyperref Warning: Suppressing link with empty target on input line 5456
+Package hyperref Warning: Suppressing link with empty target on input line 5754
 .
 
-[238] [239]
+[254] [255]
 No file data_science_notes.bbl.
-[240] (./data_science_notes.aux)
+[256] (./data_science_notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19605 strings out of 476919
- 364348 string characters out of 5821840
- 842359 words of memory out of 5000000
- 39245 multiletter control sequences out of 15000+600000
+ 19693 strings out of 476919
+ 369153 string characters out of 5821840
+ 843882 words of memory out of 5000000
+ 39325 multiletter control sequences out of 15000+600000
  410900 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,957b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on data_science_notes.pdf (240 pages).
+Output written on data_science_notes.pdf (256 pages).
