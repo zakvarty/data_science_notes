@@ -9,6 +9,8 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Explainability -------------------------------------------------
 
+<!-- 
+
 * LIME paper on ArXiV: https://arxiv.org/abs/1602.04938. Ribeiro et al (2016) "Why Should I Trust You?": Explaining the Predictions of Any Classifier.
 
 * LIME pacakge documentation on CRAN https://cran.r-project.org/web/packages/lime/index.html  
@@ -18,4 +20,4 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 https://cran.r-project.org/web/packages/lime/vignettes/Understanding_lime.html 
 
 * Reference: Interpretable Machine Learning: A Guide for Making Black Box Models Explainable by Christoph Molnar 
-
+-->

@@ -232,5 +232,5 @@ reading-list
 workflows-reading
 data-reading
 edav-reading
-preparing-for-production
+production-reading
 data-science-ethics

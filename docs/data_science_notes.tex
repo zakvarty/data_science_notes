@@ -121,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2023-01-29}
+\date{2023-02-06}
 
 \begin{document}
 \maketitle
@@ -4160,14 +4160,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   observ\textasciitilde{}1   V1\_A   V2\_B   V3\_C    V4\_D    V5\_E   V6\_F    V7\_G    V8\_H   V9\_I}
-\CommentTok{\#\textgreater{}      \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1        1 {-}1.01  {-}0.397  1.31  {-}0.0891 {-}0.0314  1.30  {-}0.0544  1.04    0.835}
-\CommentTok{\#\textgreater{} 2        2  0.444  0.294  0.961  0.659  {-}1.31   {-}1.43  {-}0.313  {-}0.0349 {-}0.704}
-\CommentTok{\#\textgreater{} 3        3 {-}1.23  {-}0.995 {-}0.222 {-}0.143  {-}0.806   1.15  {-}0.131   0.533   0.199}
-\CommentTok{\#\textgreater{} 4        4  0.768  0.871 {-}0.530 {-}0.319  {-}1.68   {-}0.200 {-}1.24    0.279   1.46 }
-\CommentTok{\#\textgreater{} 5        5  1.65   0.958 {-}1.61  {-}0.713   0.272  {-}0.640  0.307  {-}0.620  {-}0.758}
-\CommentTok{\#\textgreater{} 6        6  0.234  2.01   0.445  2.02    0.0356 {-}0.151 {-}0.460   0.165  {-}1.94 }
+\CommentTok{\#\textgreater{}   observati\textasciitilde{}1   V1\_A   V2\_B   V3\_C   V4\_D    V5\_E   V6\_F   V7\_G   V8\_H   V9\_I}
+\CommentTok{\#\textgreater{}         \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1           1  0.843  1.09  {-}0.544 {-}0.861  1.36    0.368  1.79   0.845 {-}0.711}
+\CommentTok{\#\textgreater{} 2           2 {-}0.418  0.346  0.531  0.862 {-}0.0447  0.706 {-}1.40   0.616  0.154}
+\CommentTok{\#\textgreater{} 3           3 {-}1.19   0.382 {-}0.169  1.77   0.400  {-}0.840  0.132  0.121 {-}2.26 }
+\CommentTok{\#\textgreater{} 4           4 {-}0.762  1.08  {-}1.70   1.55  {-}1.37    0.986 {-}1.08   0.430 {-}0.888}
+\CommentTok{\#\textgreater{} 5           5  0.846 {-}1.06   0.461 {-}1.30   0.837  {-}1.59   0.604  0.607 {-}1.16 }
+\CommentTok{\#\textgreater{} 6           6  0.327 {-}0.281  0.188  0.528 {-}0.875  {-}0.641 {-}0.807 {-}0.447  0.515}
 \CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
 \CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
@@ -4980,22 +4980,47 @@ If you would like to contribute to the development of EDS, you may do so at \url
 \section{Videos / Chapters}\label{videos-chapters-3}}
 
 \begin{itemize}
-\item
-  {[} {]}
-\item
-  {[} {]}
-\item
-  {[} {]}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f48d43b4-b370-4cfb-a438-af9e00bf79b5}{Reproducibility} (26 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/04-01-reproducibility/04-01-reproducibility.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2c64757-faea-470f-9dfc-af9e00ba4929}{Explainability} (16 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/04-02-explainability/04-02-explainability.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5305fbb1-8dc9-4232-82d0-afa00187f942}{Scalability} (30 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/04-03-scalability/04-03-scalability.pdf}{{[}slides{]}}
 \end{itemize}
 
 \hypertarget{reading-3}{%
 \section{Reading}\label{reading-3}}
 
+Use the \protect\hyperlink{production-reading}{Preparing for Production} section of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest.
+
 \hypertarget{activities-1}{%
 \section{Activities}\label{activities-1}}
 
+This week has fewer activities, since you will be working on the first assessment.
+
+\emph{Core}
+
+\begin{itemize}
+\item
+  Read the LIME paper, which we will discuss during the live session.
+\item
+  Work through the \href{https://cran.r-project.org/web/packages/lime/vignettes/Understanding_lime.html}{understanding LIME R tutorial}
+\item
+  Use code profiling tools to assess the performance of your \texttt{rolling\_mean()} and \texttt{rolling\_sd()} functions. Identify any efficiencies that can be made.
+\end{itemize}
+
+\emph{Bonus:}
+
+\begin{itemize}
+\tightlist
+\item
+  Write two functions to simulate a \href{https://en.wikipedia.org/wiki/Poisson_point_process\#Homogeneous_case_2}{homogeneous Poisson process} with intensity \(\lambda >0\) on the interval \((t_1, t_2) \subset \mathbb{R}\). The first should use the exponential distribution of inter-event times to simulate events in sequence. The second should use the Poisson distribution of the total event count to first simulate the number of events and then randomly allocate locations over the interval. Evaluate and compare the reproducibility and scalability of each implementations.
+\end{itemize}
+
 \hypertarget{live-session-3}{%
 \section{Live Session}\label{live-session-3}}
+
+In the live session we will begin with a discussion of this week's tasks. We will then break into small groups for a reading group style discussion of the LIME paper that was set as reading for this week.
 
 \hypertarget{part-data-science-ethics}{%
 \chapter{(PART) Data Science Ethics}\label{part-data-science-ethics}}
@@ -5260,8 +5285,8 @@ Chapters 3 and 4 are core reading, respectively introducing \href{https://bookdo
   \href{https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=alma991000211295101591\&context=L\&vid=44IMP_INST:ICL_VU1\&lang=en\&search_scope=MyInst_and_CI\&adaptor=Local\%20Search\%20Engine\&tab=Everything\&query=any,contains,Data\%20Visualization\%20\%E2\%80\%93\%20A\%20Practical\%20Introduction\&offset=0}{Data Visualization: A Practical Introduction} by Kieran Healy
 \end{itemize}
 
-\hypertarget{preparing-for-production}{%
-\section{Preparing for Production}\label{preparing-for-production}}
+\hypertarget{production-reading}{%
+\section{Preparing for Production}\label{production-reading}}
 
 \hypertarget{core-materials-3}{%
 \subsection*{Core Materials}\label{core-materials-3}}

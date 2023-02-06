@@ -9,6 +9,7 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Reproducibility and Replicability -----------------------------
 
+<!-- 
 Write chapter following structure of this article
 
 * https://www.kdnuggets.com/2019/11/reproducibility-replicability-data-science.html
@@ -24,4 +25,4 @@ hypothesis was posited ahead of time. A Gelman and E loken (2013) http://stat.co
 
 * https://docker-curriculum.com/ by Prakhar Srivastav
 
-
+-->

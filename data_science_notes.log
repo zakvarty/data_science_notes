@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  29 JAN 2023 17:51
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  6 FEB 2023 01:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1390,11 +1390,11 @@ Underfull \hbox (badness 1881) in paragraph at lines 4917--4917
 Chapter 14.
 [203] [204] [205
 
-] [206
-
-]
+] [206]
 Chapter 15.
-[207] [208
+[207
+
+] [208
 
 ] [209] [210
 
@@ -1416,7 +1416,7 @@ Chapter 18.
 Chapter 19.
 [219] [220] [221]
 
-Package hyperref Warning: Suppressing link with empty target on input line 5235
+Package hyperref Warning: Suppressing link with empty target on input line 5260
 .
 
 [222] [223]
@@ -1428,8 +1428,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  19535 strings out of 476919
- 361329 string characters out of 5821840
- 844399 words of memory out of 5000000
+ 361323 string characters out of 5821840
+ 844393 words of memory out of 5000000
  39184 multiletter control sequences out of 15000+600000
  409939 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

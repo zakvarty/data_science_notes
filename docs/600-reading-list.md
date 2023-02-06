@@ -145,7 +145,7 @@ Chapters 3 and 4 are core reading, respectively introducing [data frame manipula
 
 - [Data Visualization: A Practical Introduction](https://library-search.imperial.ac.uk/discovery/fulldisplay?docid=alma991000211295101591&context=L&vid=44IMP_INST:ICL_VU1&lang=en&search_scope=MyInst_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,Data%20Visualization%20%E2%80%93%20A%20Practical%20Introduction&offset=0) by Kieran Healy 
 
-## Preparing for Production 
+## Preparing for Production {#production-reading}
 
 ### Core Materials {.unnumbered}
 

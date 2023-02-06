@@ -10,6 +10,7 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Scalability --------------------------------------------------
 
+<!-- 
 Structure talk around Alex's parallelisation slides 
 
 - Code profiling 
@@ -26,3 +27,4 @@ Structure talk around Alex's parallelisation slides
 
 *  Advanced R (Second Edition) by Hadley Wickham. Chapter 25, measuring and improving performance 
 
+--> 
