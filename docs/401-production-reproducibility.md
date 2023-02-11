@@ -186,9 +186,9 @@ This is especially useful for simulations that involve random variables, as it a
 ```r
 # different values
 rnorm(n = 4)
-#> [1] -0.3429957  0.2102716 -0.9360333  0.5339222
+#> [1]  0.9446996 -1.5524758 -0.7576341  0.8296107
 rnorm(n = 4)
-#> [1] -0.1010310  1.2565021 -0.4447276  1.3345433
+#> [1] -0.00457865  1.06777891  1.67369184 -0.26110778
 ```
 
 ------
