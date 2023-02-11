@@ -4160,14 +4160,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   observation\textasciitilde{}1   V1\_A   V2\_B   V3\_C   V4\_D   V5\_E   V6\_F  V7\_G   V8\_H   V9\_I}
-\CommentTok{\#\textgreater{}           \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1             1  0.618 {-}0.555 {-}0.143  0.451 {-}0.427 {-}0.840 0.720  0.422  2.13 }
-\CommentTok{\#\textgreater{} 2             2 {-}0.529 {-}0.160  0.881  0.353 {-}0.361 {-}2.51  0.292 {-}0.446 {-}0.589}
-\CommentTok{\#\textgreater{} 3             3 {-}0.300 {-}1.81  {-}1.57   1.99   1.06  {-}0.459 0.574 {-}0.683  0.206}
-\CommentTok{\#\textgreater{} 4             4 {-}0.233 {-}0.683  0.785  1.01   0.617  0.877 0.596 {-}1.17   0.821}
-\CommentTok{\#\textgreater{} 5             5  0.157  1.36   1.37  {-}1.41  {-}0.175  0.582 0.161  0.617  1.21 }
-\CommentTok{\#\textgreater{} 6             6 {-}1.08  {-}1.47  {-}0.921 {-}1.15  {-}1.51   0.991 0.600 {-}1.06  {-}0.271}
+\CommentTok{\#\textgreater{}   obser\textasciitilde{}1    V1\_A     V2\_B    V3\_C   V4\_D   V5\_E   V6\_F    V7\_G   V8\_H   V9\_I}
+\CommentTok{\#\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1       1  1.12    2.14    {-}0.0451 {-}0.133 {-}0.483 {-}0.398  0.771   0.976 {-}0.441}
+\CommentTok{\#\textgreater{} 2       2 {-}0.408   0.513   {-}1.54    1.64   1.67  {-}0.118  0.463  {-}1.26  {-}1.13 }
+\CommentTok{\#\textgreater{} 3       3 {-}0.0994 {-}0.363    1.41   {-}0.635  0.734  0.807 {-}0.0797  1.14   0.213}
+\CommentTok{\#\textgreater{} 4       4  0.629   1.38    {-}0.226   0.531 {-}0.201  0.508  1.25   {-}0.718  0.969}
+\CommentTok{\#\textgreater{} 5       5  1.48   {-}0.00261 {-}0.534   1.27   0.779 {-}1.66  {-}0.398   0.217  1.62 }
+\CommentTok{\#\textgreater{} 6       6  1.68   {-}0.720    0.233   0.955 {-}0.350  0.925  1.89    0.635  0.941}
 \CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
 \CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
@@ -5094,9 +5094,9 @@ This is especially useful for simulations that involve random variables, as it a
 \begin{Highlighting}[]
 \CommentTok{\# different values}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  0.1235464  0.4531934  0.8700637 {-}0.7161100}
+\CommentTok{\#\textgreater{} [1] {-}0.3578288 {-}2.3766975  3.3392441  0.5881983}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  0.4849519 {-}0.2371506  1.0131367  0.1900926}
+\CommentTok{\#\textgreater{} [1]  1.8783800 {-}0.2379522 {-}0.8482045  1.0083467}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5540,7 +5540,7 @@ Firstly, you could record the time before your code starts executing, the time i
 \NormalTok{t\_end }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
 
 \NormalTok{t\_end }\SpecialCharTok{{-}}\NormalTok{ t\_start}
-\CommentTok{\#\textgreater{} Time difference of 0.5386419 secs}
+\CommentTok{\#\textgreater{} Time difference of 0.5377779 secs}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5552,7 +5552,7 @@ The system.time function provides a shorthand for this if your code runs sequent
   \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
 \NormalTok{)}
 \CommentTok{\#\textgreater{}    user  system elapsed }
-\CommentTok{\#\textgreater{}   0.000   0.000   0.502}
+\CommentTok{\#\textgreater{}   0.000   0.000   0.503}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5577,13 +5577,13 @@ With \texttt{\{tictoc\}} we can get fancy
 \FunctionTok{tic}\NormalTok{(}\StringTok{"first, easy part"}\NormalTok{)}
 \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
 \FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} first, easy part: 0.507 sec elapsed}
+\CommentTok{\#\textgreater{} first, easy part: 0.504 sec elapsed}
 \FunctionTok{tic}\NormalTok{(}\StringTok{"second, hard part"}\NormalTok{)}
 \FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} second, hard part: 3.007 sec elapsed}
+\CommentTok{\#\textgreater{} second, hard part: 3.01 sec elapsed}
 \FunctionTok{toc}\NormalTok{()}
-\CommentTok{\#\textgreater{} total: 3.521 sec elapsed}
+\CommentTok{\#\textgreater{} total: 3.519 sec elapsed}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5707,7 +5707,7 @@ This is equally true for functions within packages.
 \CommentTok{\#\textgreater{}     rounded\_values \textless{}{-} base::round(raw\_values, digits)}
 \CommentTok{\#\textgreater{}     return(rounded\_values)}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7ff201ffb5f8\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7feec6f638e0\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:eds\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5734,7 +5734,7 @@ Some functions use \emph{compiled code} that is written in another language. Thi
 \CommentTok{\#\textgreater{}     \}}
 \CommentTok{\#\textgreater{}     .Call(dplyr\_between, x, as.numeric(left), as.numeric(right))}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7ff203ea7cb0\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7feecc4bbeb0\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:dplyr\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5746,7 +5746,7 @@ It is also true for many functions from base R, for which there is (for obvious 
 \NormalTok{mean}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7ff2038b2178\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7feec902c5e0\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5884,13 +5884,13 @@ Iterate over a single object with \texttt{map()}.
 \NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
 \NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\AttributeTok{.x =}\NormalTok{ mu, }\AttributeTok{.f =}\NormalTok{ rnorm, }\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
 \CommentTok{\#\textgreater{} [[1]]}
-\CommentTok{\#\textgreater{} [1] {-}10.119917 {-}10.668830 {-}10.840841  {-}9.477703 {-}10.945340}
+\CommentTok{\#\textgreater{} [1] {-}10.290723 {-}10.271888  {-}9.963616  {-}9.305776  {-}9.676582}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1] {-}1.7956873 {-}2.5407902 {-}0.2323978  0.5308821 {-}0.6130484}
+\CommentTok{\#\textgreater{} [1]  0.78131762  0.89375292 {-}0.06818765 {-}1.80283554 {-}1.29835869}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
-\CommentTok{\#\textgreater{} [1] 10.985411  8.682705  9.772970 10.446018 10.112239}
+\CommentTok{\#\textgreater{} [1]  8.356612 10.900941 11.178047 11.589099  9.975397}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5905,7 +5905,7 @@ Iterate over multiple objects \texttt{map2()} and \texttt{pmap()}.
 \CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1] {-}0.004275950  0.001176753 {-}0.166702394  0.022419983 {-}0.055250380}
+\CommentTok{\#\textgreater{} [1] {-}0.0799868752  0.0720488703 {-}0.0300314538  0.0005321216  0.1304972256}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
 \CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
@@ -5927,7 +5927,7 @@ Iterate over multiple objects \texttt{map2()} and \texttt{pmap()}.
 \CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1] {-}0.02658812  0.08090903 {-}0.15474871 {-}0.09484919 {-}0.03626550}
+\CommentTok{\#\textgreater{} [1] {-}0.001848749  0.023970184  0.069415711 {-}0.057483361 {-}0.007393358}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
 \CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
@@ -5957,13 +5957,13 @@ For more details and variants see Advanced R \href{https://adv-r.hadley.nz/funct
   \AttributeTok{.options =}\NormalTok{ furrr}\SpecialCharTok{::}\FunctionTok{furrr\_options}\NormalTok{(}\AttributeTok{seed =} \ConstantTok{TRUE}\NormalTok{),}
   \AttributeTok{n =} \DecValTok{5}\NormalTok{) }
 \CommentTok{\#\textgreater{} [[1]]}
-\CommentTok{\#\textgreater{} [1]  {-}9.526605  {-}9.114605 {-}11.507295  {-}9.684683 {-}10.844529}
+\CommentTok{\#\textgreater{} [1]  {-}9.182855 {-}10.416788  {-}9.518981 {-}10.561906  {-}7.581207}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1]  0.8547975  0.6315823  0.1553639 {-}0.5577726  3.0078049}
+\CommentTok{\#\textgreater{} [1]  0.1482396  0.4801103  0.3492914 {-}0.7439513 {-}0.2093524}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
-\CommentTok{\#\textgreater{} [1]  9.929313 10.437458  9.925216  9.280383 11.276964}
+\CommentTok{\#\textgreater{} [1]  9.923742  7.880131 11.406064  9.850442  9.809461}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6396,9 +6396,252 @@ There are no universal answers to the question of privacy in data science, this 
 \hypertarget{ethics-fairness}{%
 \chapter{Fairness}\label{ethics-fairness}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
+
+\hypertarget{fairness-and-the-data-revolution}{%
+\section{Fairness and the Data Revolution}\label{fairness-and-the-data-revolution}}
+
+\begin{center}\includegraphics[width=1\linewidth]{images/502-ethics-fairness/90s-windows-wallpaper} \end{center}
+
+Before the 1990s, large datasets were typically only collected to understand huge, complex systems such as:
+
+\begin{itemize}
+\tightlist
+\item
+  the weather
+\item
+  infrastructure
+
+  \begin{itemize}
+  \tightlist
+  \item
+    hospitals
+  \item
+    roads
+  \item
+    train networks
+  \end{itemize}
+\item
+  stock markets
+\item
+  populations.
+\end{itemize}
+
+Collecting high quality data on these systems was immensely expensive but paid dividends by allowing us to describe the expected behaviour of these systems at an aggregate level. Using this sort of information, we can't make journeys or healthcare better at an individual level but we \emph{can} make changes to try and make these experiences better on average.
+
+Things changed with the widespread adoption of the internet in the mid-1990s and the subsequent surge in data collection, sharing and processing. Suddenly, we as individuals shifted from being just one part of these huge processes to being a complex process worth of modelling all on our own.
+
+\begin{center}\includegraphics{502-ethics-fairness_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+It was at this point that focus shifted toward making individual, personalised predictions for specific people, based on the vast amounts of data that we generate as we go about our daily lives.
+
+This shift from aggregate to individual behaviour creates the opportunity not only for these predictions to systematically harm groups of people, as they always could, but also to acutely harm individuals.
+
+\hypertarget{you-are-your-data}{%
+\section{You are Your Data}\label{you-are-your-data}}
+
+The blunt truth is that, as far as a data science model is concerned, you are nothing more than a point in a high-dimensional predictor space.
+
+\begin{center}\includegraphics[width=1\linewidth]{502-ethics-fairness_files/figure-latex/you-are-just-a-point-plot-1} \end{center}
+
+The model might use your location in that space to group you with other points that are in some sense ``nearby''. Alternatively, the model might estimate some information about you that it currently doesn't have, based on what it knows about those surrounding points. These other points also represent unique humans with rich and fascinating lives - but the model doesn't care about that, it is just there to group some points or predict some values.
+
+\begin{center}\includegraphics[width=1\linewidth]{502-ethics-fairness_files/figure-latex/classification-plot-1} \end{center}
+
+The idea of fairness comes into data science when we begin to ask ourselves which predictors we should provide the model with when carrying out these tasks. We aren't asking this from a model selection stand-point. We are asking what are morally permissible predictors, not what leads to a significant improvement in model fit.
+
+\hypertarget{forbidden-predictors}{%
+\section{Forbidden Predictors}\label{forbidden-predictors}}
+
+The argument about what features of a human being can be used to make decisions about them started well before the 1990s. The most contentious of these arguments centre around the inclusion of characteristics that are either immutable or not easily changed. Some of these characteristics including race, gender, age or religion receive legal protections. These protected attributes are often forbidden to be used in important decisions, such as whether a bank loan is accepted.
+
+This natural lead us to ask what classifies as an important decision?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\href{https://www.gov.uk/discrimination-your-rights}{Protected Characteristics} under the \href{https://www.legislation.gov.uk/ukpga/2010/15/contents}{Equality Act (2010)}
+
+\begin{itemize}
+\item
+  age
+\item
+  gender reassignment
+\item
+  marriage / civil partnership
+\item
+  pregnancy / parental leave
+\item
+  disability
+\item
+  race including colour, nationality, ethnic or national origin
+\item
+  religion or belief
+\item
+  sex
+\item
+  sexual orientation
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+We also need to be careful if these protected attributes actually have strong predictive power and would improve our predictions (potentially to the benefit of the groups that are being protected by these regulations). Just because a protected attribute isn't used directly within a model that doesn't mean the model will not discriminate according to that attribute.
+
+If we have multiple predictors within a model, then withholding a protected attribute does not make the model ignorant of that attribute. If you have access to someone's browsing history, where they live and some of their recent purchases you can probably make a fairly accurate profile of that person, including many of these supposedly protected attributes. In the same way, a model can use or combine attributes that are not legally protected to create a new variable that acts as an accurate proxy for the protected characteristic.
+
+And why wouldn't our model do this? When using a standard loss function we have literally asked it to get the best possible predictive performance. If a protected attribute has predictive power then the model is likely to approximate it using the predictors that are available to it.
+
+Before we see how to handle this concern, let's step back and consider how we can quantify and measure fairness in a model.
+
+\hypertarget{measuring-fairness}{%
+\section{Measuring Fairness}\label{measuring-fairness}}
+
+Converting the concept of fairness into a mathematical statement is a very difficult task. This is partly because moving from natural language to precise formalism is hard, but it's also because the term fairness means different things to different people in different contexts. Because of this, there are many complementary definitions of fairness that all try to capture some intuitive notion of a fair model. However, these measures all capture different facets of this complicated concept. Despite this, these measures vary to such an extent they can't all be satisfied simultaneously.
+
+I'll introduce four such measures shortly, focusing in on the case of binary outcomes where a ``positive'' response of 1 corresponds to an event that would be considered favourably when taken in context. For example this might be a loan that will be successfully repaid or that a person released on bail will not re-offend.
+
+\begin{itemize}
+\tightlist
+\item
+  Binary outcome \(Y \in \{0,1\}\).
+\end{itemize}
+
+We'll consider the simple case where a binary prediction is made in each instance, and where we want our predictions to be fair across the \(k\) distinct levels of some protected attribute \(A\).
+
+\begin{itemize}
+\tightlist
+\item
+  Binary Prediction \(\hat Y \in \{0,1\}\).
+\item
+  Protected attribute \(A\) takes values in \(\mathcal{A} = \{a_1, \ldots, a_k\}\).
+\end{itemize}
+
+\hypertarget{demographic-parity}{%
+\subsection{Demographic Parity}\label{demographic-parity}}
+
+The first, and potentially most obvious fairness definition is that of demographic parity. Here a model is deemed fair if, across all subgroups of the protected attribute, the probability of predicting a successful outcome is equal.
+
+\begin{quote}
+The probability of predicting a `positive' outcome is the same for all groups.
+\end{quote}
+
+\[\mathbb{P}(\hat Y = 1 | A = a_i) = \mathbb{P}( \hat Y = 1 | A = a_j), \  \text{ for all }\  i,j \in \mathcal{A}.\]
+
+An obvious shortcoming demographic parity is that it does not allow us to account for the fact that a positive outcome might not be equally likely in each of these subgroups. In this way demographic parity is analogous to treating people equally, rather than equitably.
+
+\hypertarget{equal-opportunity}{%
+\subsection{Equal Opportunity}\label{equal-opportunity}}
+
+Equality of opportunity addresses this shortcoming by conditioning on a truly positive outcome. Equality of opportunity states that of those who are ``worthy'' of a loan (in some sense), all subgroups of the protected characteristic should be treated equally.
+
+\begin{quote}
+Among those who have a true `positive' outcome, the probability of predicting a `positive' outcome is the same for all groups.
+\end{quote}
+
+\[\mathbb{P}(\hat Y = 1 | A = a_i, Y =1) = \mathbb{P}( \hat Y = 1 | A = a_j, Y=1), \  \text{ for all }\  i,j \in \mathcal{A}.\]
+
+\hypertarget{equal-odds}{%
+\subsection{Equal Odds}\label{equal-odds}}
+
+Of course, you have encountered two-way tables, type-I and type-II errors. Equally important as granting loans to people who will repay them is to deny loans to those who cannot afford them.
+
+A model satisfying the equal odds condition can identify true positives and false negatives equally well across all sub-groups of the protected characteristic.
+
+\begin{quote}
+Among those who have a true `positive' outcome, the probability of predicting a `positive' outcome is the same for all groups.
+
+\emph{AND}
+
+Among those who have a true `negative' outcome, the probability of predicting a `negative' outcome is the same for all groups.
+\end{quote}
+
+\[\mathbb{P}(\hat Y = y | A = a_i, Y =y) = \mathbb{P}( \hat Y = y | A = a_j, Y=y), \ \text{ for all } \ y \in \{0,1\} \ \text{ and } \  i,j \in \mathcal{A}.\]
+
+\hypertarget{predictive-parity}{%
+\subsection{Predictive Parity}\label{predictive-parity}}
+
+All of the measures we have considered so far consider the probability of a prediction given the true credit-worthiness of an applicant. Predictive Parity reverses the order of conditioning (as compared to equal opportunity).
+
+It ensures that among those predicted to have a successful outcome, the probability of a truly successful outcome should be the same for all subgroups of the protected characteristic. This ensures that, in our financial example, the bank is spreading its risk exposure equally across all subgroups; each subgroup should have an approximately equal proportion of approved loans being successfully repaid.
+
+\begin{quote}
+The probability of a true `positive' outcome for people who were predicted a `positive' outcome is equal across groups.
+\end{quote}
+
+\[\mathbb{P}(Y = 1 | \hat Y = 1, A = a_i) = \mathbb{P}(Y_1 = 1 | \hat Y = 1, A = a_j) \ \text{ for all } \  i,j \in \mathcal{A}.\]
+
+We can play devil's advocate here and say that this might not be appropriate if there is a genuine difference in the probability of successful repayment between groups.
+
+\hypertarget{metric-madness}{%
+\section{Metric Madness}\label{metric-madness}}
+
+Even with this very simple binary classification problem that there are many ways we can interpret the term fairness. Which, if any, of these will be appropriate is going to be highly context dependent.
+
+An issue with many of these metrics, including some of those introduced, is that they require knowledge of the true outcome. This means that these metrics can only be evaluated retrospectively: if we knew this information to begin with then we wouldn't need a model to decide who get a loan. On top of this, it means that we only ever get information about the loans that are granted - we don't have access to the counter factual outcome of whether a loan that was not granted would have been repaid.
+
+An additional problem is that evaluating these fairness metrics requires us to know which protected sub-group each individual belongs to. This is clearly a problem: to evaluate the fairness of our loan applications we need to know sensitive information about the applicants, who would - very reasonably - be unwilling to provide that information because it legally cannot be used to inform the decision making process. For this reason, an independent third-party is often required to assess fairness by collating data from the applicants and the bank.
+
+A third complication here is that these definitions deal in strict equalities. In any given sample, these are almost surely not going to be satisfied even if the metric is truly satisfied. A formal statistical test should be used to assess whether these differences are consistent with a truly fair model, however the more common approach is for regulators to set some acceptable tolerance on the discrepancy in metric values between sub-groups.
+
+Finally, it is worth noting that all of these problems arise for a simple binary classifier but most models are far more complicated than this. Even working with these conditional probability statements requires careful attention, but things get much trickier when the response or sensitive attribute are continuous valued or when other, non-sensitive predictors are also included in the model.
+
+\hypertarget{modelling-fairly}{%
+\section{Modelling Fairly}\label{modelling-fairly}}
+
+\hypertarget{fairness-aware-loss-functions}{%
+\subsection{Fairness Aware Loss Functions}\label{fairness-aware-loss-functions}}
+
+Now we have some methods to detect and quantify the fairness of our models, how do we incorporate that into the model fitting process?
+
+\includegraphics{images/502-ethics-fairness/fairness-error-pareto-front.png}
+
+We now have multiple objectives: to predict our outcome as accurately as possible while also treating people as fairly as possible (by which ever fairness metric or combination of metrics we care to consider). Unfortunately, these things are generally in competition with each other. There is no one best model but rather a family of best models, from which we have to pick a single model to implement.
+
+Can resolve this issue by linearisation, create our loss function as a linear weighted sum of the two component objectives. This simplifies the problem mathematically, but actually just shift the problem rather than resolving it. Up to scaling constant, each combination of weights corresponds to a unique point on the Pareto frontier, so we have just translated our problem from picking a point on the frontier to picking a pair of weights.
+
+To do actually resolve this issue we need to define our relative preference between fairness and predictive power. When I say ``our preference'', what I actually mean that of the company or organisation for whom we are doing an analysis - not our own personal view. Eliciting this preference and communicating the idea of an optimal frontier can be tricky. One solution is to present a small set of possible models, which represent a range of preferences between the two competing objectives, and ask the stakeholder to choose between these.
+
+\hypertarget{other-approaches}{%
+\subsection{Other Approaches}\label{other-approaches}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Re-weighting or resampling to better represent minority groups.
+\item
+  Forgetting factor to reduce impact of bias in historical data.
+\item
+  Meta-modelling to intervene in harmful feedback loops.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Whenever we treating all predictions equally and our loss function optimises purely for predictive performance, good predictions for minority groups will never be prioritised. One strategy to correct for this is to either re-weighting or re-sample each observation so that minority groups are given greater importance within the loss function.
+
+A lot of the problems of fairness that we see are because our models are replicating what happens or used to happen in reality. In some cases, this is being better addressed now and a model can be made more fair by down-weighting training data as it ages. This allows our model to more quickly adapt to changes in the system it is trying to represent.
+
+In other cases the use of historically biased data to train models that are put into production has lead to a feedback loop that makes more recent data even more unjust.
+One example of this, we can consider racial disparity in the interest rates offered on mortgages. Suppose that one racial group of applicants was in the past slightly more likely to default on loans, perhaps due to historical pay inequity. This means that models would likely suggest higher interest loans to this group, in an attempt to offset the bank's exposure to the risk of non-repayment.
+
+This not only reduces the number of loans that will be granted to that racial group but it \emph{also} makes the loans that are granted more difficult to repay and more likely to be defaulted on. This in turn leads to another increase in the offered interest rate, driving down the number of loans approved and pushing up the chance of non-repayment even further.
+
+The decisions made using this model are impacting its future training data and creating a harmful and self-reinforcing feedback loop. Historical down weighting will do nothing to address this sort of issue, which requires active intervention.
+
+A meta-modelling approach is possible type of intervention. Here post-hoc methods used to estimate the biases within a fitted model and these estimates are used to explicitly correct for historical biases, \emph{before} the model is used to make predictions or decisions.
+
+\hypertarget{wrapping-up-9}{%
+\section{Wrapping Up}\label{wrapping-up-9}}
+
+That's a good point for us to wrap up this introduction to fairness in data science.
+
+We have seen that optimising for predictive accuracy alone can lead to unjust models. We also raised concerns about protected characteristics being included in models, whether that is directly as a predictor or via a collection of other predictors that well approximate them.
+
+We have seen that there are a multitude of measures to assess the fairness of our models. We can combine these with standard metrics for goodness-of-fit to create custom loss functions which represent our preference between fairness and predictive performance.
+
+As with privacy, there are no universal answers when it comes to measuring and implementing fair data science methodology. This is still a relatively new and rapidly evolving field of data science.
 
 \hypertarget{ethics-conduct}{%
 \chapter{Codes of Conduct}\label{ethics-conduct}}
