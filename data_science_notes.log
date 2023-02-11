@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  11 FEB 2023 17:45
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  11 FEB 2023 21:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1263,7 +1263,7 @@ type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [165]
-Underfull \vbox (badness 7851) has occurred while \output is active []
+Underfull \vbox (badness 7030) has occurred while \output is active []
 
 [166] [167] [168
 
@@ -1611,37 +1611,61 @@ File: images/501-ethics-privacy/netflix-logo-old.png Graphic file (type bmp)
 <images/501-ethics-privacy/netflix-logo-old.png>
 [268] [269] [270]
 Chapter 17.
+File: images/502-ethics-fairness/90s-windows-wallpaper.jpg Graphic file (type b
+mp)
+<images/502-ethics-fairness/90s-windows-wallpaper.jpg>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [271
 
-] [272
+] [272]
+File: 502-ethics-fairness_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file
+ (type pdf)
+<use 502-ethics-fairness_files/figure-latex/unnamed-chunk-3-1.pdf>
+File: 502-ethics-fairness_files/figure-latex/you-are-just-a-point-plot-1.pdf Gr
+aphic file (type pdf)
+<use 502-ethics-fairness_files/figure-latex/you-are-just-a-point-plot-1.pdf>
+[273]
+File: 502-ethics-fairness_files/figure-latex/classification-plot-1.pdf Graphic 
+file (type pdf)
+<use 502-ethics-fairness_files/figure-latex/classification-plot-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[274] [275] [276] [277] [278] [279]
+File: images/502-ethics-fairness/fairness-error-pareto-front.png Graphic file (
+type bmp)
+<images/502-ethics-fairness/fairness-error-pareto-front.png>
+[280] [281] [282] [283] [284
 
 ]
 Chapter 18.
-[273] [274
+[285] [286
 
-] [275] [276
+] [287] [288
 
 ]
 Chapter 19.
-[277] [278] [279]
+[289] [290] [291]
 
-Package hyperref Warning: Suppressing link with empty target on input line 6613
+Package hyperref Warning: Suppressing link with empty target on input line 6856
 .
 
-[280] [281]
+[292] [293]
 No file data_science_notes.bbl.
-[282] (./data_science_notes.aux)
+[294] (./data_science_notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19815 strings out of 476919
- 373299 string characters out of 5821840
- 851932 words of memory out of 5000000
- 39438 multiletter control sequences out of 15000+600000
+ 19876 strings out of 476919
+ 375961 string characters out of 5821840
+ 852965 words of memory out of 5000000
+ 39493 multiletter control sequences out of 15000+600000
  410900 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,957b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on data_science_notes.pdf (282 pages).
+Output written on data_science_notes.pdf (294 pages).

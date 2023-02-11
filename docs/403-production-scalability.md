@@ -87,7 +87,7 @@ Sys.sleep(0.5) # YOUR CODE
 t_end <- Sys.time()
 
 t_end - t_start
-#> Time difference of 0.5086389 secs
+#> Time difference of 0.505352 secs
 ```
 
 The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.
@@ -98,7 +98,7 @@ system.time(
   Sys.sleep(0.5)
 )
 #>    user  system elapsed 
-#>   0.000   0.000   0.505
+#>     0.0     0.0     0.5
 ```
 
 
@@ -111,7 +111,7 @@ library(tictoc)
 tic() 
 Sys.sleep(0.5) # YOUR CODE 
 toc()
-#> 0.505 sec elapsed
+#> 0.509 sec elapsed
 ```
 
 
@@ -123,13 +123,13 @@ tic("total")
 tic("first, easy part")
 Sys.sleep(0.5)
 toc(log = TRUE)
-#> first, easy part: 0.508 sec elapsed
+#> first, easy part: 0.51 sec elapsed
 tic("second, hard part")
 Sys.sleep(3)
 toc(log = TRUE)
 #> second, hard part: 3.009 sec elapsed
 toc()
-#> total: 3.524 sec elapsed
+#> total: 3.526 sec elapsed
 ```
 
 
@@ -236,7 +236,7 @@ eds::rnorm_rounded
 #>     rounded_values <- base::round(raw_values, digits)
 #>     return(rounded_values)
 #> }
-#> <bytecode: 0x7ff2bec01ca0>
+#> <bytecode: 0x7f839ab1b1f8>
 #> <environment: namespace:eds>
 ```
 
@@ -262,7 +262,7 @@ dplyr::between
 #>     }
 #>     .Call(dplyr_between, x, as.numeric(left), as.numeric(right))
 #> }
-#> <bytecode: 0x7ff2c591d560>
+#> <bytecode: 0x7f83a090d800>
 #> <environment: namespace:dplyr>
 ```
 
@@ -273,7 +273,7 @@ It is also true for many functions from base R, for which there is (for obvious 
 mean
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x7ff2c001b778>
+#> <bytecode: 0x7f83981cebe0>
 #> <environment: namespace:base>
 ```
 
@@ -408,13 +408,13 @@ Iterate over a single object with `map()`.
 mu <- c(-10, 0, 10)
 purrr::map(.x = mu, .f = rnorm, n = 5)
 #> [[1]]
-#> [1]  -8.195087  -8.989368 -10.088199  -9.163319  -8.464575
+#> [1] -11.657135 -10.936301  -9.959539 -10.691660  -9.731813
 #> 
 #> [[2]]
-#> [1] -1.654084 -1.038659  1.139102 -1.252187  0.481957
+#> [1]  1.09783843  0.72487655  1.55603387 -0.70175702 -0.06799908
 #> 
 #> [[3]]
-#> [1]  9.597727 10.527231  9.612874  9.696898  9.875628
+#> [1] 11.15565 10.16889 10.37320 10.44063 11.97697
 ```
 
 Iterate over multiple objects `map2()` and `pmap()`.
@@ -428,7 +428,7 @@ purrr::map2(.x = mu, .y = sigma, .f = rnorm, n = 5)
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1] -0.03801368 -0.04968966  0.02012459  0.02915498 -0.06340106
+#> [1]  0.05815193  0.09738201  0.01668048 -0.26957976  0.09972400
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -450,7 +450,7 @@ purrr::pmap(
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1]  0.02739999 -0.06905531 -0.08768763  0.25609801 -0.15034565
+#> [1]  0.030676504  0.131540987  0.166535630 -0.004768422 -0.050359843
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -477,13 +477,13 @@ furrr::future_map(
   .options = furrr::furrr_options(seed = TRUE),
   n = 5) 
 #> [[1]]
-#> [1]  -9.444776 -11.577150 -10.534959  -9.629299  -9.998628
+#> [1]  -8.966471  -9.365646 -10.428271 -10.997106  -8.540580
 #> 
 #> [[2]]
-#> [1] -1.61985299 -0.04103247 -0.10977868  0.12614107  0.48226926
+#> [1] -1.4195382 -1.3998228 -1.0552439  0.2698095 -0.7364758
 #> 
 #> [[3]]
-#> [1] 9.656295 8.772487 9.237617 9.776204 9.996922
+#> [1] 10.562081 11.546343  9.200652  9.628792  9.929461
 ```
 
 
