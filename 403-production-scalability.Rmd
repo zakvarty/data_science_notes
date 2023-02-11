@@ -55,8 +55,10 @@ Sub-optimal optimisation can be worse than doing nothing
 
 > ... programmers have spent far too much time worrying about efficiency in _the wrong places_ and at _the wrong times_; premature optimisation is the root of all evil (or at least most of it) in programming. - Donald Knuth
 
+```{r, echo=FALSE, echo=FALSE, alt="Plot of computation time agains coding time with feasible solutions shown as crosses and the Pareto frontier added as an orange curve."}
+knitr::include_graphics(path = "images/403-production-scalability/pareto-frontier.png" )
+```
 
-![](images/403-production-scalability/pareto-frontier.png){alt="Plot of computation time agains coding time with feasible solutions shown as crosses and the Pareto frontier added as an orange curve."}
 
 
 
@@ -104,8 +106,7 @@ tic()
 Sys.sleep(0.5) # YOUR CODE 
 toc()
 ``` 
-::: 
-:::{.column width="50%"}
+
 
 With `{tictoc}` we can get fancy 
 
@@ -119,8 +120,7 @@ Sys.sleep(3)
 toc(log = TRUE)
 toc()
 ```
-:::
-::::
+
 
 If your code is already very fast (but will be run _very_ many times, so further efficiency gains are required) then the methods may fail because they do not sample the state of the code at a high enough frequency. In those cases you might want to explore the `{mircobenchmark}` package.
 
@@ -167,7 +167,10 @@ f <- function() {
 
 Then the call stack for `f()` would look something like this. 
 
-![](images/403-production-scalability/call-stack.png){alt="schematic diagram of a call stack. x-axis shows time and nested function calls are shown as stacked blocks of varying widths, with the deepest function call at the top. At time tau = 2.5, the pause function is being evaluated within function h, which is being evaluated within function g, which in turn is being evaluated within function f."}
+```{r, echo=FALSE, echo=FALSE, alt="schematic diagram of a call stack. x-axis shows time and nested function calls are shown as stacked blocks of varying widths, with the deepest function call at the top. At time tau = 2.5, the pause function is being evaluated within function h, which is being evaluated within function g, which in turn is being evaluated within function f."}
+knitr::include_graphics("images/403-production-scalability/call-stack.png")
+```
+
 
 
 We can examine the true call stack using the `profvis()` function from the `{profvis}` package. By saving the code in a separate file and sourcing it into our session, this function will also give us line-by-line information about the time and memory demands of our code.
@@ -177,9 +180,12 @@ source("prof-vis-example.R")
 profvis::profvis(f())
 ```
 
-![](images/403-production-scalability/profiling-example-speed.png){alt="RStudio window showing interacting profile of function f. A veritcal bar chart shows how much time is spent evaluating functions f,g,h, and pause."}
+```{r, echo=FALSE, echo=FALSE, alt="RStudio window showing interacting profile of function f. A veritcal bar chart shows how much time is spent evaluating functions f,g,h, and pause.", out.width="100%"}
+knitr::include_graphics("images/403-production-scalability/profiling-example-speed.png")
+```
 
-In both the upper histogram and the lower flame plot we can see that the majority of time is being spent in `pause()` and `h()`. What we have to be careful of here is that the upper plot shows the total amount of time in each function call, so $h()$ appears to take longer than $g()$, but this is because it is called more often in the code snippet we are profiling.
+
+In both the upper histogram and the lower flame plot we can see that the majority of time is being spent in `pause()` and `h()`. What we have to be careful of here is that the upper plot shows the total amount of time in each function call, so `h()` appears to take longer than `g()`, but this is because it is called more often in the code snippet we are profiling.
 
 ## Notes on Time Profiling
 
@@ -240,7 +246,11 @@ for (i in 1:1e4) {
 }
 ``` 
 
-![](images/403-production-scalability/profiling-example-memory.png){alt="RStudio interactive code profiler. Code to iteratively extend a vector uses and clears a lot of working memory. The garbage collector function GC causes most of the runtime."}
+
+```{r, echo=FALSE, echo=FALSE, alt="RStudio interactive code profiler. Code to iteratively extend a vector uses and clears a lot of working memory. The garbage collector function GC causes most of the runtime.", out.width="100%"}
+knitr::include_graphics("images/403-production-scalability/profiling-example-memory.png")
+```
+
 
 - Copy-on-modify behaviour makes growing objects slow.  
 - Pre-allocate storage where possible. 
@@ -383,8 +393,8 @@ One thing to be aware of is that we need to be very careful handling random numb
 
 ## Sometimes R doesn't cut it 
 
-::: .medium-right
-![](images/Rccp.png){alt="Logo of the Rcpp package. A speed dial turned up to 11 out of 10 in a blue hexagon."}
+::: .medium_right
+![](images/403-production-scalability/Rccp.png){alt="Logo of the Rcpp package. A speed dial turned up to 11 out of 10 in a blue hexagon."}
 :::
 
 RCPP: An API for running C++ code in R. Useful when you need: 
@@ -398,7 +408,7 @@ Rewriting R code in C++ and other low-level programming languages is beyond our 
 
 ## Wrapping up 
 
-### Summary
+### Summary {.unnumbered}
 
 1. Pick you battles wisely
 2. Target your energy with profiling
@@ -406,7 +416,7 @@ Rewriting R code in C++ and other low-level programming languages is beyond our 
 4. Scale loops in parallel processing
 5. Scale in another language
 
-### Help!
+### Help! {.unnumbered}
 - Articles and blog links
 - The R inferno [(Circles 2-4)](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf) 
 - Advanced R [(Chapters 23-25)](https://adv-r.hadley.nz/techniques.html), 

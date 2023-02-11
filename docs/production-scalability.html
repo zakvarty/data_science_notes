@@ -94,10 +94,6 @@
 <p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
 <p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
 </div>
-<div id="scalability" class="section level2" number="14.1">
-<h2>
-<span class="header-section-number">14.1</span> Scalability ————————————————–<a class="anchor" aria-label="anchor" href="#scalability"><i class="fas fa-link"></i></a>
-</h2>
 <!-- 
 Structure talk around Alex's parallelisation slides 
 
@@ -116,7 +112,424 @@ Structure talk around Alex's parallelisation slides
 *  Advanced R (Second Edition) by Hadley Wickham. Chapter 25, measuring and improving performance 
 
 -->
-
+<div id="scalability-and-production" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Scalability and Production<a class="anchor" aria-label="anchor" href="#scalability-and-production"><i class="fas fa-link"></i></a>
+</h2>
+<p>When put into production code gets used more and on more data. We will likely have to consider scalability of our methods in terms of</p>
+<ul>
+<li><p>Computation time</p></li>
+<li><p>Memory requirements</p></li>
+</ul>
+<p>When doing so we have to balance a trade-off between development costs and usage costs.</p>
+<div id="example-bayesian-inference" class="section level3" number="14.1.1">
+<h3>
+<span class="header-section-number">14.1.1</span> Example: Bayesian Inference<a class="anchor" aria-label="anchor" href="#example-bayesian-inference"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>MCMC originally takes ~24 hours</p></li>
+<li><p>Identifying and amending bottlenecks in code reduced this to ~24 minutes.</p></li>
+</ul>
+<p><em>Is this actually better?</em> That will depend on a number of factors, including:</p>
+<ul>
+<li>human hours invested</li>
+<li>frequency of use</li>
+<li>safe / stable / general / readable</li>
+<li>trade for scalability</li>
+</ul>
+</div>
+<div id="knowing-when-to-worry" class="section level3" number="14.1.2">
+<h3>
+<span class="header-section-number">14.1.2</span> Knowing when to worry<a class="anchor" aria-label="anchor" href="#knowing-when-to-worry"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sub-optimal optimisation can be worse than doing nothing</p>
+<blockquote>
+<p>… programmers have spent far too much time worrying about efficiency in <em>the wrong places</em> and at <em>the wrong times</em>; premature optimisation is the root of all evil (or at least most of it) in programming. - Donald Knuth</p>
+</blockquote>
+<div class="inline-figure"><img src="images/403-production-scalability/pareto-frontier.png" width="450"></div>
+</div>
+<div id="our-focus" class="section level3" number="14.1.3">
+<h3>
+<span class="header-section-number">14.1.3</span> Our Focus<a class="anchor" aria-label="anchor" href="#our-focus"><i class="fas fa-link"></i></a>
+</h3>
+<p>Writing code that scales well in terms of computaiton time or memory used is a huge topic. In this section we restrict our aims to:</p>
+<ul>
+<li>Basic profiling to find bottlenecks.</li>
+<li>Strategies for writing scalable (R) code.</li>
+<li>Signpost advanced methods &amp; further reading.</li>
+</ul>
+</div>
+</div>
+<div id="basics-of-code-profiling" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Basics of Code Profiling<a class="anchor" aria-label="anchor" href="#basics-of-code-profiling"><i class="fas fa-link"></i></a>
+</h2>
+<div id="r-as-a-stopwatch" class="section level3" number="14.2.1">
+<h3>
+<span class="header-section-number">14.2.1</span> R as a stopwatch<a class="anchor" aria-label="anchor" href="#r-as-a-stopwatch"><i class="fas fa-link"></i></a>
+</h3>
+<p>The simplest way to profile your code is to time how long it takes to run. There are three common ways to do this.</p>
+<p>Firstly, you could record the time before your code starts executing, the time it completes and look at the difference of those.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">t_start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># YOUR CODE</span></span>
+<span><span class="va">t_end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">t_end</span> <span class="op">-</span> <span class="va">t_start</span></span>
+<span><span class="co">#&gt; Time difference of 0.5057671 secs</span></span></code></pre></div>
+<p>The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;    user  system elapsed </span></span>
+<span><span class="co">#&gt;   0.000   0.000   0.504</span></span></code></pre></div>
+<p>The <a href="https://github.com/jabiru/tictoc">tictoc</a> package has similar features, but also allows you to add intermediate timers to more understand which parts of your code are taking the most time to run.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jabiru/tictoc">tictoc</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># YOUR CODE </span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 0.509 sec elapsed</span></span></code></pre></div>
+<p>With <a href="https://github.com/jabiru/tictoc">tictoc</a> we can get fancy</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"total"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"first, easy part"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; first, easy part: 0.508 sec elapsed</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"second, hard part"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; second, hard part: 3.007 sec elapsed</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; total: 3.521 sec elapsed</span></span></code></pre></div>
+<p>If your code is already very fast (but will be run <em>very</em> many times, so further efficiency gains are required) then the methods may fail because they do not sample the state of the code at a high enough frequency. In those cases you might want to explore the <code>{mircobenchmark}</code> package.</p>
+</div>
+</div>
+<div id="profiling-your-code" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> Profiling Your Code<a class="anchor" aria-label="anchor" href="#profiling-your-code"><i class="fas fa-link"></i></a>
+</h2>
+<p>To diagnose scaling issues you have to understand what your code is doing.</p>
+<ul>
+<li>
+<p>Stop the code at time <span class="math inline">\(\tau\)</span> and examine the <em>call-stack</em>.</p>
+<ul>
+<li>The current function being evaluated, the function that called that, the function that called that, …, top level function.</li>
+</ul>
+</li>
+<li><p>Do this a lot and you can measure (estimate) the proportion of working memory (RAM) uses over time and the time spent evaluating each function.</p></li>
+</ul>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/profvis/">profvis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bench.r-lib.org/">bench</a></span><span class="op">)</span></span></code></pre></div>
+<div id="profiling-toy-example" class="section level3" number="14.3.1">
+<h3>
+<span class="header-section-number">14.3.1</span> Profiling: Toy Example<a class="anchor" aria-label="anchor" href="#profiling-toy-example"><i class="fas fa-link"></i></a>
+</h3>
+<p>Suppose we have the following code in a file called <code>prof-vis-example.R</code>.</p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">h</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/pause.html">pause</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/pause.html">pause</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="fu">h</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/pause.html">pause</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="fu">g</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/pause.html">pause</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="fu">h</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Then the call stack for <code>f()</code> would look something like this.</p>
+<div class="inline-figure"><img src="images/403-production-scalability/call-stack.png" width="450"></div>
+<p>We can examine the true call stack using the <code><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis()</a></code> function from the <a href="https://rstudio.github.io/profvis/">profvis</a> package. By saving the code in a separate file and sourcing it into our session, this function will also give us line-by-line information about the time and memory demands of our code.</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"prof-vis-example.R"</span><span class="op">)</span></span>
+<span><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="images/403-production-scalability/profiling-example-speed.png" width="100%"></div>
+<p>In both the upper histogram and the lower flame plot we can see that the majority of time is being spent in <code><a href="https://rdrr.io/pkg/profvis/man/pause.html">pause()</a></code> and <code>h()</code>. What we have to be careful of here is that the upper plot shows the total amount of time in each function call, so <code>h()</code> appears to take longer than <code>g()</code>, but this is because it is called more often in the code snippet we are profiling.</p>
+</div>
+</div>
+<div id="notes-on-time-profiling" class="section level2" number="14.4">
+<h2>
+<span class="header-section-number">14.4</span> Notes on Time Profiling<a class="anchor" aria-label="anchor" href="#notes-on-time-profiling"><i class="fas fa-link"></i></a>
+</h2>
+<p>We will get slightly different results each time you run the function</p>
+<ul>
+<li>Changes to internal state of computer</li>
+<li>Usually not a big deal, mainly effects fastest parts of code</li>
+<li>Be careful with stochastic simulations</li>
+<li>Use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> to make a fair comparison over many runs.</li>
+</ul>
+<div id="source-code-and-compiled-functions" class="section level3" number="14.4.1">
+<h3>
+<span class="header-section-number">14.4.1</span> Source code and compiled functions<a class="anchor" aria-label="anchor" href="#source-code-and-compiled-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you write a function you can see the source of that function by calling it’s name</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pad_with_NAs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n_left</span>, <span class="va">n_right</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">n_left</span><span class="op">)</span>, <span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">n_right</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pad_with_NAs</span></span>
+<span><span class="co">#&gt; function(x, n_left, n_right){</span></span>
+<span><span class="co">#&gt;   c(rep(NA, n_left), x, rep(NA, n_right))</span></span>
+<span><span class="co">#&gt; }</span></span></code></pre></div>
+<p>This is equally true for functions within packages.</p>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">eds</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/eds/man/rnorm_rounded.html">rnorm_rounded</a></span></span>
+<span><span class="co">#&gt; function (n, mu = 0, sigma = 1, digits = 0) </span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;     raw_values &lt;- stats::rnorm(n, mean = mu, sd = sigma)</span></span>
+<span><span class="co">#&gt;     rounded_values &lt;- base::round(raw_values, digits)</span></span>
+<span><span class="co">#&gt;     return(rounded_values)</span></span>
+<span><span class="co">#&gt; }</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7feb8c79d9c0&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:eds&gt;</span></span></code></pre></div>
+<p>Some functions use <em>compiled code</em> that is written in another language. This is the case for dplyr’s between function, which calls some compiled C++ code in the final line.</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span></span>
+<span><span class="co">#&gt; function (x, left, right) </span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;     if (!is.null(attr(x, "class")) &amp;&amp; !inherits(x, c("Date", </span></span>
+<span><span class="co">#&gt;         "POSIXct"))) {</span></span>
+<span><span class="co">#&gt;         warn("between() called on numeric vector with S3 class")</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     if (length(left) != 1) {</span></span>
+<span><span class="co">#&gt;         abort("`left` must be length 1")</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     if (length(right) != 1) {</span></span>
+<span><span class="co">#&gt;         abort("`right` must be length 1")</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     if (!is.double(x)) {</span></span>
+<span><span class="co">#&gt;         x &lt;- as.numeric(x)</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     .Call(dplyr_between, x, as.numeric(left), as.numeric(right))</span></span>
+<span><span class="co">#&gt; }</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7feb8f5ba208&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:dplyr&gt;</span></span></code></pre></div>
+<p>It is also true for many functions from base R, for which there is (for obvious reason) no R source code.</p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mean</span></span>
+<span><span class="co">#&gt; function (x, ...) </span></span>
+<span><span class="co">#&gt; UseMethod("mean")</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7feb861ce978&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
+<p><br></p>
+<p>These compiled functions have no R source code, and the profiling methods we have used here don’t extend into compiled code. See <a href="https://github.com/r-prof/jointprof">{jointprof}</a> if you really need this profiling functionality.</p>
+</div>
+</div>
+<div id="memory-profiling" class="section level2" number="14.5">
+<h2>
+<span class="header-section-number">14.5</span> Memory Profiling<a class="anchor" aria-label="anchor" href="#memory-profiling"><i class="fas fa-link"></i></a>
+</h2>
+<p><code><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis()</a></code> can similarly measure the memory usage of your code.</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1e4</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">i</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="inline-figure"><img src="images/403-production-scalability/profiling-example-memory.png" width="100%"></div>
+<ul>
+<li>Copy-on-modify behaviour makes growing objects slow.<br>
+</li>
+<li>Pre-allocate storage where possible.</li>
+<li>Strategies and structures, see <a href="https://www.burns-stat.com/pages/Tutor/R_inferno.pdf">R inferno</a> and <a href="https://csgillespie.github.io/efficientR/performance.html">Effecient R</a>.</li>
+</ul>
+</div>
+<div id="tips-to-work-at-scale" class="section level2" number="14.6">
+<h2>
+<span class="header-section-number">14.6</span> Tips to work at scale<a class="anchor" aria-label="anchor" href="#tips-to-work-at-scale"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>TL;DR:</strong> pick your object types carefully, vectorise your code and as a last resort implement your code in a faster language.</p>
+<div id="vectorise" class="section level3" number="14.6.1">
+<h3>
+<span class="header-section-number">14.6.1</span> Vectorise<a class="anchor" aria-label="anchor" href="#vectorise"><i class="fas fa-link"></i></a>
+</h3>
+<p>Two bits of code do the same task, but the second is much faster, because it involves fewer function calls.</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">11</span><span class="op">:</span><span class="fl">20</span> </span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">z</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">*</span> <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">11</span><span class="op">:</span><span class="fl">20</span> </span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="va">y</span></span></code></pre></div>
+<p>Where possible write and use functions to take advantage of vectorised inputs. E.g.</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Be careful of recycling!</p>
+</div>
+<div id="linear-algebra" class="section level3" number="14.6.2">
+<h3>
+<span class="header-section-number">14.6.2</span> Linear Algebra<a class="anchor" aria-label="anchor" href="#linear-algebra"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span>
+<span><span class="co">#&gt;      [,1]</span></span>
+<span><span class="co">#&gt; [1,]  2.0</span></span>
+<span><span class="co">#&gt; [2,]  0.5</span></span></code></pre></div>
+<p>More on vectorising: <a href="http://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/">Noam Ross Blog Post</a></p>
+</div>
+</div>
+<div id="for-loops-in-disguise" class="section level2" number="14.7">
+<h2>
+<span class="header-section-number">14.7</span> For loops in disguise<a class="anchor" aria-label="anchor" href="#for-loops-in-disguise"><i class="fas fa-link"></i></a>
+</h2>
+<div id="the-apply-family" class="section level3" number="14.7.1">
+<h3>
+<span class="header-section-number">14.7.1</span> The apply family<a class="anchor" aria-label="anchor" href="#the-apply-family"><i class="fas fa-link"></i></a>
+</h3>
+<p>Functional programming equivalent of a for loop. [<code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code><a href="https://rdrr.io/r/base/mapply.html">mapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, …]</p>
+<p>Apply a function to each element of a list-like object.</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">A</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span><span class="co">#&gt; [1,]    1    4    7   10</span></span>
+<span><span class="co">#&gt; [2,]    2    5    8   11</span></span>
+<span><span class="co">#&gt; [3,]    3    6    9   12</span></span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># MARGIN = 1 =&gt; rows,  MARGIN = 2 =&gt; columns</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span>X <span class="op">=</span> <span class="va">A</span>, MARGIN <span class="op">=</span> <span class="fl">1</span>, FUN <span class="op">=</span> <span class="va">sum</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 22 26 30</span></span></code></pre></div>
+<p>This generalises functions from <a href="https://github.com/HenrikBengtsson/matrixStats">matrixStats</a></p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 22 26 30</span></span></code></pre></div>
+</div>
+<div id="purrr" class="section level3" number="14.7.2">
+<h3>
+<span class="header-section-number">14.7.2</span> <code>{purrr}</code><a class="anchor" aria-label="anchor" href="#purrr"><i class="fas fa-link"></i></a>
+</h3>
+<p>Iterate over a single object with <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">mu</span>, .f <span class="op">=</span> <span class="va">rnorm</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [1] -10.505030 -10.042463 -10.618546  -8.066876 -10.964030</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; [1]  3.03739461 -0.04253922 -0.74196369  0.43469673 -1.45623073</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; [1] 10.87085 11.55202 11.80584  9.84506 10.65508</span></span></code></pre></div>
+<p>Iterate over multiple objects <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code>.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">mu</span>, .y <span class="op">=</span> <span class="va">sigma</span>, .f <span class="op">=</span> <span class="va">rnorm</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [1] -10 -10 -10 -10 -10</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; [1] -0.02612560 -0.03777375  0.10860371  0.04677374 -0.15198862</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; [1] 10 10 10 10 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap</a></span><span class="op">(</span></span>
+<span>  .f <span class="op">=</span> <span class="va">rnorm</span>, </span>
+<span>  n <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  .l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    mean <span class="op">=</span> <span class="va">mu</span>, </span>
+<span>    sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [1] -10 -10 -10 -10 -10</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; [1]  0.02337706  0.06280403  0.01333536 -0.08678957 -0.01957396</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; [1] 10 10 10 10 10</span></span></code></pre></div>
+<p>For more details and variants see Advanced R <a href="https://adv-r.hadley.nz/functionals.html">chapters 9-11</a> on functional programming.</p>
+</div>
+</div>
+<div id="easy-parallelisation-with-furrr" class="section level2" number="14.8">
+<h2>
+<span class="header-section-number">14.8</span> Easy parallelisation with furrr<a class="anchor" aria-label="anchor" href="#easy-parallelisation-with-furrr"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p><code>{parallel}</code> and <code>{futures}</code> allow parallel coding over multiple cores.</p></li>
+<li><p>Powerful, but steep learning curve.</p></li>
+<li><p><a href="https://github.com/DavisVaughan/furrr">furrr</a> makes this very easy, just add <code>future_</code> to purrr verbs.</p></li>
+</ul>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/future_map.html">future_map</a></span><span class="op">(</span></span>
+<span>  .x <span class="op">=</span> <span class="va">mu</span>, </span>
+<span>  .f <span class="op">=</span> <span class="va">rnorm</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html">furrr_options</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [1] -10.421437  -8.926005  -9.942768 -11.107114 -10.055472</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; [1]  0.4045290  0.8517474 -0.6714615  0.3124049  1.0207766</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; [1] 10.422139  9.836823 10.917717 10.758651  7.865383</span></span></code></pre></div>
+<p>This is, of course excessive for this small example!</p>
+<p>One thing to be aware of is that we need to be very careful handling random number generation in relation to parallelisation. There are many options for how you might want to set this up, see <a href="https://www.r-bloggers.com/2020/09/future-1-19-1-making-sure-proper-random-numbers-are-produced-in-parallel-processing/">R-bloggers</a> for more details.</p>
+</div>
+<div id="sometimes-r-doesnt-cut-it" class="section level2" number="14.9">
+<h2>
+<span class="header-section-number">14.9</span> Sometimes R doesn’t cut it<a class="anchor" aria-label="anchor" href="#sometimes-r-doesnt-cut-it"><i class="fas fa-link"></i></a>
+</h2>
+<div class=".medium_right">
+<div class="inline-figure"><img src="images/403-production-scalability/Rccp.png" alt="Logo of the Rcpp package. A speed dial turned up to 11 out of 10 in a blue hexagon."></div>
+</div>
+<p>RCPP: An API for running C++ code in R. Useful when you need:</p>
+<ul>
+<li>loops to be run in order</li>
+<li>lots of function calls (e.g. deep recursion)</li>
+<li>optimised data structures</li>
+</ul>
+<p>Rewriting R code in C++ and other low-level programming languages is beyond our scope, but good to know exists. Starting point: Advanced R <a href="https://adv-r.hadley.nz/rcpp.html">Chapter 25</a>.</p>
+</div>
+<div id="wrapping-up-7" class="section level2" number="14.10">
+<h2>
+<span class="header-section-number">14.10</span> Wrapping up<a class="anchor" aria-label="anchor" href="#wrapping-up-7"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-2" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-2"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Pick you battles wisely</li>
+<li>Target your energy with profiling</li>
+<li>Scale loops with vectors</li>
+<li>Scale loops in parallel processing</li>
+<li>Scale in another language</li>
+</ol>
+</div>
+<div id="help" class="section level3 unnumbered">
+<h3>Help!<a class="anchor" aria-label="anchor" href="#help"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Articles and blog links</li>
+<li>The R inferno <a href="https://www.burns-stat.com/pages/Tutor/R_inferno.pdf">(Circles 2-4)</a>
+</li>
+<li>Advanced R <a href="https://adv-r.hadley.nz/techniques.html">(Chapters 23-25)</a>,</li>
+<li>Efficient R <a href="https://csgillespie.github.io/efficientR/performance.html#prerequisites-6">(Chapter 7)</a>.</li>
+</ul>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -126,7 +539,43 @@ Structure talk around Alex's parallelisation slides
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#production-scalability"><span class="header-section-number">14</span> Scalability</a></li>
-<li><a class="nav-link" href="#scalability"><span class="header-section-number">14.1</span> Scalability ————————————————–</a></li>
+<li>
+<a class="nav-link" href="#scalability-and-production"><span class="header-section-number">14.1</span> Scalability and Production</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#example-bayesian-inference"><span class="header-section-number">14.1.1</span> Example: Bayesian Inference</a></li>
+<li><a class="nav-link" href="#knowing-when-to-worry"><span class="header-section-number">14.1.2</span> Knowing when to worry</a></li>
+<li><a class="nav-link" href="#our-focus"><span class="header-section-number">14.1.3</span> Our Focus</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#basics-of-code-profiling"><span class="header-section-number">14.2</span> Basics of Code Profiling</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#r-as-a-stopwatch"><span class="header-section-number">14.2.1</span> R as a stopwatch</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#profiling-your-code"><span class="header-section-number">14.3</span> Profiling Your Code</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#profiling-toy-example"><span class="header-section-number">14.3.1</span> Profiling: Toy Example</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#notes-on-time-profiling"><span class="header-section-number">14.4</span> Notes on Time Profiling</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#source-code-and-compiled-functions"><span class="header-section-number">14.4.1</span> Source code and compiled functions</a></li></ul>
+</li>
+<li><a class="nav-link" href="#memory-profiling"><span class="header-section-number">14.5</span> Memory Profiling</a></li>
+<li>
+<a class="nav-link" href="#tips-to-work-at-scale"><span class="header-section-number">14.6</span> Tips to work at scale</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#vectorise"><span class="header-section-number">14.6.1</span> Vectorise</a></li>
+<li><a class="nav-link" href="#linear-algebra"><span class="header-section-number">14.6.2</span> Linear Algebra</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#for-loops-in-disguise"><span class="header-section-number">14.7</span> For loops in disguise</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-apply-family"><span class="header-section-number">14.7.1</span> The apply family</a></li>
+<li><a class="nav-link" href="#purrr"><span class="header-section-number">14.7.2</span> {purrr}</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#easy-parallelisation-with-furrr"><span class="header-section-number">14.8</span> Easy parallelisation with furrr</a></li>
+<li><a class="nav-link" href="#sometimes-r-doesnt-cut-it"><span class="header-section-number">14.9</span> Sometimes R doesn’t cut it</a></li>
+<li>
+<a class="nav-link" href="#wrapping-up-7"><span class="header-section-number">14.10</span> Wrapping up</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-2">Summary</a></li>
+<li><a class="nav-link" href="#help">Help!</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -144,7 +593,7 @@ Structure talk around Alex's parallelisation slides
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-02-06.</p>
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

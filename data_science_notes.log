@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  6 FEB 2023 16:42
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  11 FEB 2023 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1530,51 +1530,109 @@ LaTeX Warning: Float too large for page by 41.49905pt on input line 5436.
 
 ]
 Chapter 14.
-[235] [236
+[235]
+File: images/403-production-scalability/pareto-frontier.png Graphic file (type 
+bmp)
+<images/403-production-scalability/pareto-frontier.png>
 
-] [237] [238]
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5509--5510
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[236] [237] [238] [239]
+File: images/403-production-scalability/call-stack.png Graphic file (type bmp)
+<images/403-production-scalability/call-stack.png>
+
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5645--5646
+[][] 
+ []
+
+
+Underfull \vbox (badness 2027) has occurred while \output is active []
+
+[240] [241]
+File: images/403-production-scalability/profiling-example-speed.png Graphic fil
+e (type bmp)
+<images/403-production-scalability/profiling-example-speed.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[242] [243] [244]
+File: images/403-production-scalability/profiling-example-memory.png Graphic fi
+le (type bmp)
+<images/403-production-scalability/profiling-example-memory.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[245]
+Underfull \hbox (badness 10000) in paragraph at lines 5775--5777
+
+ []
+
+
+Underfull \vbox (badness 1259) has occurred while \output is active []
+
+[246]
+Underfull \vbox (badness 1253) has occurred while \output is active []
+
+[247] [248]
+Underfull \vbox (badness 10000) detected at line 5935
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[249]
+File: images/403-production-scalability/Rccp.png Graphic file (type bmp)
+<images/403-production-scalability/Rccp.png>
+[250] [251] [252] [253
+
+] [254]
 Chapter 15.
-[239
+[255
 
-] [240
+] [256
 
-] [241] [242
+] [257] [258
 
 ]
 Chapter 16.
-[243] [244
+[259] [260
 
 ]
 Chapter 17.
-[245] [246
+[261] [262
 
 ]
 Chapter 18.
-[247] [248
+[263] [264
 
-] [249] [250
+] [265] [266
 
 ]
 Chapter 19.
-[251] [252] [253]
+[267] [268] [269]
 
-Package hyperref Warning: Suppressing link with empty target on input line 5754
+Package hyperref Warning: Suppressing link with empty target on input line 6320
 .
 
-[254] [255]
+[270] [271]
 No file data_science_notes.bbl.
-[256] (./data_science_notes.aux)
+[272] (./data_science_notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19693 strings out of 476919
- 369153 string characters out of 5821840
- 843882 words of memory out of 5000000
- 39325 multiletter control sequences out of 15000+600000
+ 19774 strings out of 476919
+ 372266 string characters out of 5821840
+ 845296 words of memory out of 5000000
+ 39400 multiletter control sequences out of 15000+600000
  410900 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,957b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on data_science_notes.pdf (256 pages).
+Output written on data_science_notes.pdf (272 pages).

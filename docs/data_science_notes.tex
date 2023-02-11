@@ -121,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2023-02-06}
+\date{2023-02-11}
 
 \begin{document}
 \maketitle
@@ -4160,14 +4160,14 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   obser\textasciitilde{}1    V1\_A    V2\_B   V3\_C   V4\_D   V5\_E    V6\_F    V7\_G    V8\_H   V9\_I}
-\CommentTok{\#\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1       1 {-}0.0923  1.33    0.136 {-}0.976  0.625 {-}0.717  {-}0.987  {-}0.430  {-}1.79 }
-\CommentTok{\#\textgreater{} 2       2  2.72    0.808  {-}0.528 {-}2.58   0.818  0.596  {-}0.0533 {-}1.45   {-}0.566}
-\CommentTok{\#\textgreater{} 3       3  0.282   0.0861 {-}2.84   1.08  {-}0.900 {-}2.08    0.699   0.0331 {-}0.925}
-\CommentTok{\#\textgreater{} 4       4  0.563   0.407   0.763 {-}0.256  0.558 {-}0.251   1.69    0.865  {-}0.777}
-\CommentTok{\#\textgreater{} 5       5 {-}0.222  {-}0.962  {-}0.169 {-}0.901 {-}1.72   0.0686 {-}0.486  {-}1.11    2.14 }
-\CommentTok{\#\textgreater{} 6       6  1.29    0.691  {-}1.31  {-}1.15  {-}0.382  0.455   0.203  {-}0.170  {-}2.02 }
+\CommentTok{\#\textgreater{}   observa\textasciitilde{}1    V1\_A    V2\_B   V3\_C   V4\_D   V5\_E   V6\_F   V7\_G    V8\_H   V9\_I}
+\CommentTok{\#\textgreater{}       \textless{}int\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1         1  1.14   {-}0.682  {-}0.833  0.397  0.160  0.855  1.79  {-}1.79   {-}0.952}
+\CommentTok{\#\textgreater{} 2         2  0.415  {-}0.0403  0.669  1.20   0.682 {-}1.40   0.469  1.52    0.604}
+\CommentTok{\#\textgreater{} 3         3  0.0572  0.584   0.277  0.981 {-}0.315  2.08  {-}0.696  0.164   1.12 }
+\CommentTok{\#\textgreater{} 4         4 {-}0.827   0.228  {-}0.113 {-}0.427  0.761  0.871 {-}0.891  0.0926  0.410}
+\CommentTok{\#\textgreater{} 5         5 {-}0.748   1.19    0.953  1.01  {-}0.417 {-}1.06   0.111  0.219   0.121}
+\CommentTok{\#\textgreater{} 6         6  1.15    0.879  {-}0.142 {-}0.429 {-}0.232 {-}0.797  0.115  0.193  {-}3.01 }
 \CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
 \CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
@@ -5094,9 +5094,9 @@ This is especially useful for simulations that involve random variables, as it a
 \begin{Highlighting}[]
 \CommentTok{\# different values}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  0.0931039 {-}1.1002910 {-}0.4368046 {-}1.3852128}
+\CommentTok{\#\textgreater{} [1] {-}0.8997240 {-}0.7691028  1.8885742  0.9513767}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  1.2776530  1.0750664 {-}0.5366750 {-}0.1021981}
+\CommentTok{\#\textgreater{} [1] {-}0.5901249  0.1499823 {-}0.5335945 {-}0.4282151}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5459,8 +5459,574 @@ Effective Data Science is still a work-in-progress. This chapter is currently a 
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
-\hypertarget{scalability}{%
-\section{Scalability --------------------------------------------------}\label{scalability}}
+\hypertarget{scalability-and-production}{%
+\section{Scalability and Production}\label{scalability-and-production}}
+
+When put into production code gets used more and on more data. We will likely have to consider scalability of our methods in terms of
+
+\begin{itemize}
+\item
+  Computation time
+\item
+  Memory requirements
+\end{itemize}
+
+When doing so we have to balance a trade-off between development costs and usage costs.
+
+\hypertarget{example-bayesian-inference}{%
+\subsection{Example: Bayesian Inference}\label{example-bayesian-inference}}
+
+\begin{itemize}
+\item
+  MCMC originally takes \textasciitilde24 hours
+\item
+  Identifying and amending bottlenecks in code reduced this to \textasciitilde24 minutes.
+\end{itemize}
+
+\emph{Is this actually better?} That will depend on a number of factors, including:
+
+\begin{itemize}
+\tightlist
+\item
+  human hours invested
+\item
+  frequency of use
+\item
+  safe / stable / general / readable
+\item
+  trade for scalability
+\end{itemize}
+
+\hypertarget{knowing-when-to-worry}{%
+\subsection{Knowing when to worry}\label{knowing-when-to-worry}}
+
+Sub-optimal optimisation can be worse than doing nothing
+
+\begin{quote}
+\ldots{} programmers have spent far too much time worrying about efficiency in \emph{the wrong places} and at \emph{the wrong times}; premature optimisation is the root of all evil (or at least most of it) in programming. - Donald Knuth
+\end{quote}
+
+\includegraphics[width=12.5in]{images/403-production-scalability/pareto-frontier}
+
+\hypertarget{our-focus}{%
+\subsection{Our Focus}\label{our-focus}}
+
+Writing code that scales well in terms of computaiton time or memory used is a huge topic. In this section we restrict our aims to:
+
+\begin{itemize}
+\tightlist
+\item
+  Basic profiling to find bottlenecks.
+\item
+  Strategies for writing scalable (R) code.
+\item
+  Signpost advanced methods \& further reading.
+\end{itemize}
+
+\hypertarget{basics-of-code-profiling}{%
+\section{Basics of Code Profiling}\label{basics-of-code-profiling}}
+
+\hypertarget{r-as-a-stopwatch}{%
+\subsection{R as a stopwatch}\label{r-as-a-stopwatch}}
+
+The simplest way to profile your code is to time how long it takes to run. There are three common ways to do this.
+
+Firstly, you could record the time before your code starts executing, the time it completes and look at the difference of those.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_start }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{) }\CommentTok{\# YOUR CODE}
+\NormalTok{t\_end }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+
+\NormalTok{t\_end }\SpecialCharTok{{-}}\NormalTok{ t\_start}
+\CommentTok{\#\textgreater{} Time difference of 0.5466402 secs}
+\end{Highlighting}
+\end{Shaded}
+
+The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{system.time}\NormalTok{(}
+  \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\#\textgreater{}    user  system elapsed }
+\CommentTok{\#\textgreater{}   0.001   0.000   0.505}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{\{tictoc\}} package has similar features, but also allows you to add intermediate timers to more understand which parts of your code are taking the most time to run.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tictoc)}
+
+\FunctionTok{tic}\NormalTok{() }
+\FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{) }\CommentTok{\# YOUR CODE }
+\FunctionTok{toc}\NormalTok{()}
+\CommentTok{\#\textgreater{} 0.509 sec elapsed}
+\end{Highlighting}
+\end{Shaded}
+
+With \texttt{\{tictoc\}} we can get fancy
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tic}\NormalTok{(}\StringTok{"total"}\NormalTok{)}
+\FunctionTok{tic}\NormalTok{(}\StringTok{"first, easy part"}\NormalTok{)}
+\FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
+\FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} first, easy part: 0.51 sec elapsed}
+\FunctionTok{tic}\NormalTok{(}\StringTok{"second, hard part"}\NormalTok{)}
+\FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} second, hard part: 3.011 sec elapsed}
+\FunctionTok{toc}\NormalTok{()}
+\CommentTok{\#\textgreater{} total: 3.529 sec elapsed}
+\end{Highlighting}
+\end{Shaded}
+
+If your code is already very fast (but will be run \emph{very} many times, so further efficiency gains are required) then the methods may fail because they do not sample the state of the code at a high enough frequency. In those cases you might want to explore the \texttt{\{mircobenchmark\}} package.
+
+\hypertarget{profiling-your-code}{%
+\section{Profiling Your Code}\label{profiling-your-code}}
+
+To diagnose scaling issues you have to understand what your code is doing.
+
+\begin{itemize}
+\item
+  Stop the code at time \(\tau\) and examine the \emph{call-stack}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The current function being evaluated, the function that called that, the function that called that, \ldots, top level function.
+  \end{itemize}
+\item
+  Do this a lot and you can measure (estimate) the proportion of working memory (RAM) uses over time and the time spent evaluating each function.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(profvis)}
+\FunctionTok{library}\NormalTok{(bench)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{profiling-toy-example}{%
+\subsection{Profiling: Toy Example}\label{profiling-toy-example}}
+
+Suppose we have the following code in a file called \texttt{prof-vis-example.R}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{h }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  profvis}\SpecialCharTok{::}\FunctionTok{pause}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{g }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  profvis}\SpecialCharTok{::}\FunctionTok{pause}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \FunctionTok{h}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  profvis}\SpecialCharTok{::}\FunctionTok{pause}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \FunctionTok{g}\NormalTok{()}
+\NormalTok{  profvis}\SpecialCharTok{::}\FunctionTok{pause}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+  \FunctionTok{h}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Then the call stack for \texttt{f()} would look something like this.
+
+\includegraphics[width=12.5in]{images/403-production-scalability/call-stack}
+
+We can examine the true call stack using the \texttt{profvis()} function from the \texttt{\{profvis\}} package. By saving the code in a separate file and sourcing it into our session, this function will also give us line-by-line information about the time and memory demands of our code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{"prof{-}vis{-}example.R"}\NormalTok{)}
+\NormalTok{profvis}\SpecialCharTok{::}\FunctionTok{profvis}\NormalTok{(}\FunctionTok{f}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{images/403-production-scalability/profiling-example-speed}
+
+In both the upper histogram and the lower flame plot we can see that the majority of time is being spent in \texttt{pause()} and \texttt{h()}. What we have to be careful of here is that the upper plot shows the total amount of time in each function call, so \texttt{h()} appears to take longer than \texttt{g()}, but this is because it is called more often in the code snippet we are profiling.
+
+\hypertarget{notes-on-time-profiling}{%
+\section{Notes on Time Profiling}\label{notes-on-time-profiling}}
+
+We will get slightly different results each time you run the function
+
+\begin{itemize}
+\tightlist
+\item
+  Changes to internal state of computer
+\item
+  Usually not a big deal, mainly effects fastest parts of code
+\item
+  Be careful with stochastic simulations
+\item
+  Use \texttt{set.seed()} to make a fair comparison over many runs.
+\end{itemize}
+
+\hypertarget{source-code-and-compiled-functions}{%
+\subsection{Source code and compiled functions}\label{source-code-and-compiled-functions}}
+
+If you write a function you can see the source of that function by calling it's name
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pad\_with\_NAs }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, n\_left, n\_right)\{}
+  \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, n\_left), x, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, n\_right))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pad\_with\_NAs}
+\CommentTok{\#\textgreater{} function(x, n\_left, n\_right)\{}
+\CommentTok{\#\textgreater{}   c(rep(NA, n\_left), x, rep(NA, n\_right))}
+\CommentTok{\#\textgreater{} \}}
+\end{Highlighting}
+\end{Shaded}
+
+This is equally true for functions within packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eds}\SpecialCharTok{::}\NormalTok{rnorm\_rounded}
+\CommentTok{\#\textgreater{} function (n, mu = 0, sigma = 1, digits = 0) }
+\CommentTok{\#\textgreater{} \{}
+\CommentTok{\#\textgreater{}     raw\_values \textless{}{-} stats::rnorm(n, mean = mu, sd = sigma)}
+\CommentTok{\#\textgreater{}     rounded\_values \textless{}{-} base::round(raw\_values, digits)}
+\CommentTok{\#\textgreater{}     return(rounded\_values)}
+\CommentTok{\#\textgreater{} \}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f7e6c3fc7f8\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}environment: namespace:eds\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Some functions use \emph{compiled code} that is written in another language. This is the case for dplyr's between function, which calls some compiled C++ code in the final line.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dplyr}\SpecialCharTok{::}\NormalTok{between}
+\CommentTok{\#\textgreater{} function (x, left, right) }
+\CommentTok{\#\textgreater{} \{}
+\CommentTok{\#\textgreater{}     if (!is.null(attr(x, "class")) \&\& !inherits(x, c("Date", }
+\CommentTok{\#\textgreater{}         "POSIXct"))) \{}
+\CommentTok{\#\textgreater{}         warn("between() called on numeric vector with S3 class")}
+\CommentTok{\#\textgreater{}     \}}
+\CommentTok{\#\textgreater{}     if (length(left) != 1) \{}
+\CommentTok{\#\textgreater{}         abort("\textasciigrave{}left\textasciigrave{} must be length 1")}
+\CommentTok{\#\textgreater{}     \}}
+\CommentTok{\#\textgreater{}     if (length(right) != 1) \{}
+\CommentTok{\#\textgreater{}         abort("\textasciigrave{}right\textasciigrave{} must be length 1")}
+\CommentTok{\#\textgreater{}     \}}
+\CommentTok{\#\textgreater{}     if (!is.double(x)) \{}
+\CommentTok{\#\textgreater{}         x \textless{}{-} as.numeric(x)}
+\CommentTok{\#\textgreater{}     \}}
+\CommentTok{\#\textgreater{}     .Call(dplyr\_between, x, as.numeric(left), as.numeric(right))}
+\CommentTok{\#\textgreater{} \}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f7e72b04c78\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}environment: namespace:dplyr\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+It is also true for many functions from base R, for which there is (for obvious reason) no R source code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean}
+\CommentTok{\#\textgreater{} function (x, ...) }
+\CommentTok{\#\textgreater{} UseMethod("mean")}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f7e6c1ce978\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+These compiled functions have no R source code, and the profiling methods we have used here don't extend into compiled code. See \href{https://github.com/r-prof/jointprof}{\{jointprof\}} if you really need this profiling functionality.
+
+\hypertarget{memory-profiling}{%
+\section{Memory Profiling}\label{memory-profiling}}
+
+\texttt{profvis()} can similarly measure the memory usage of your code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{integer}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FloatTok{1e4}\NormalTok{) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x, i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{images/403-production-scalability/profiling-example-memory}
+
+\begin{itemize}
+\tightlist
+\item
+  Copy-on-modify behaviour makes growing objects slow.\\
+\item
+  Pre-allocate storage where possible.
+\item
+  Strategies and structures, see \href{https://www.burns-stat.com/pages/Tutor/R_inferno.pdf}{R inferno} and \href{https://csgillespie.github.io/efficientR/performance.html}{Effecient R}.
+\end{itemize}
+
+\hypertarget{tips-to-work-at-scale}{%
+\section{Tips to work at scale}\label{tips-to-work-at-scale}}
+
+\textbf{TL;DR:} pick your object types carefully, vectorise your code and as a last resort implement your code in a faster language.
+
+\hypertarget{vectorise}{%
+\subsection{Vectorise}\label{vectorise}}
+
+Two bits of code do the same task, but the second is much faster, because it involves fewer function calls.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{11}\SpecialCharTok{:}\DecValTok{20} 
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\FunctionTok{length}\NormalTok{(x))}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(x)) \{}
+\NormalTok{  z[i] }\OtherTok{\textless{}{-}}\NormalTok{ x[i] }\SpecialCharTok{*}\NormalTok{ y[i]}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{11}\SpecialCharTok{:}\DecValTok{20} 
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y}
+\end{Highlighting}
+\end{Shaded}
+
+Where possible write and use functions to take advantage of vectorised inputs. E.g.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{, }\AttributeTok{mean =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{sd =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Be careful of recycling!
+
+\hypertarget{linear-algebra}{%
+\subsection{Linear Algebra}\label{linear-algebra}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{))}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{)}
+
+\NormalTok{X }\SpecialCharTok{\%*\%}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]  2.0}
+\CommentTok{\#\textgreater{} [2,]  0.5}
+\end{Highlighting}
+\end{Shaded}
+
+More on vectorising: \href{http://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/}{Noam Ross Blog Post}
+
+\hypertarget{for-loops-in-disguise}{%
+\section{For loops in disguise}\label{for-loops-in-disguise}}
+
+\hypertarget{the-apply-family}{%
+\subsection{The apply family}\label{the-apply-family}}
+
+Functional programming equivalent of a for loop. {[}\texttt{apply()}, \texttt{mapply()}, \texttt{lapply()}, \ldots{]}
+
+Apply a function to each element of a list-like object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7   10}
+\CommentTok{\#\textgreater{} [2,]    2    5    8   11}
+\CommentTok{\#\textgreater{} [3,]    3    6    9   12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# MARGIN = 1 =\textgreater{} rows,  MARGIN = 2 =\textgreater{} columns}
+\FunctionTok{apply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ A, }\AttributeTok{MARGIN =} \DecValTok{1}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ sum)}
+\CommentTok{\#\textgreater{} [1] 22 26 30}
+\end{Highlighting}
+\end{Shaded}
+
+This generalises functions from \texttt{\{matrixStats\}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rowSums}\NormalTok{(A)}
+\CommentTok{\#\textgreater{} [1] 22 26 30}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{purrr}{%
+\subsection{\texorpdfstring{\texttt{\{purrr\}}}{\{purrr\}}}\label{purrr}}
+
+Iterate over a single object with \texttt{map()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\AttributeTok{.x =}\NormalTok{ mu, }\AttributeTok{.f =}\NormalTok{ rnorm, }\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] {-}9.633835 {-}9.311436 {-}9.223266 {-}9.746906 {-}9.062802}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1]  0.74841757  0.24544071  1.39149361 {-}0.05068406  1.57800542}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 12.895658  9.686211  8.821486 10.314792 10.701851}
+\end{Highlighting}
+\end{Shaded}
+
+Iterate over multiple objects \texttt{map2()} and \texttt{pmap()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{sigma }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map2}\NormalTok{(}\AttributeTok{.x =}\NormalTok{ mu, }\AttributeTok{.y =}\NormalTok{ sigma, }\AttributeTok{.f =}\NormalTok{ rnorm, }\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1]  0.12446048  0.13572455 {-}0.19428130 {-}0.02912266  0.13408649}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{sigma }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{pmap}\NormalTok{(}
+  \AttributeTok{.f =}\NormalTok{ rnorm, }
+  \AttributeTok{n =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{.l =} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{mean =}\NormalTok{ mu, }
+    \AttributeTok{sd =}\NormalTok{ sigma))}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] {-}0.05313973 {-}0.15804747 {-}0.04981268  0.10597000 {-}0.02126859}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
+\end{Highlighting}
+\end{Shaded}
+
+For more details and variants see Advanced R \href{https://adv-r.hadley.nz/functionals.html}{chapters 9-11} on functional programming.
+
+\hypertarget{easy-parallelisation-with-furrr}{%
+\section{Easy parallelisation with furrr}\label{easy-parallelisation-with-furrr}}
+
+\begin{itemize}
+\item
+  \texttt{\{parallel\}} and \texttt{\{futures\}} allow parallel coding over multiple cores.
+\item
+  Powerful, but steep learning curve.
+\item
+  \texttt{\{furrr\}} makes this very easy, just add \texttt{future\_} to purrr verbs.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{furrr}\SpecialCharTok{::}\FunctionTok{future\_map}\NormalTok{(}
+  \AttributeTok{.x =}\NormalTok{ mu, }
+  \AttributeTok{.f =}\NormalTok{ rnorm,}
+  \AttributeTok{.options =}\NormalTok{ furrr}\SpecialCharTok{::}\FunctionTok{furrr\_options}\NormalTok{(}\AttributeTok{seed =} \ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{n =} \DecValTok{5}\NormalTok{) }
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] {-}10.126546  {-}9.462236  {-}8.673239  {-}9.293819  {-}8.757421}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] {-}0.52511640 {-}1.56160415  0.08338079 {-}0.27390123  0.38874076}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 10.497391  9.042826  9.816556 11.460542  8.590216}
+\end{Highlighting}
+\end{Shaded}
+
+This is, of course excessive for this small example!
+
+One thing to be aware of is that we need to be very careful handling random number generation in relation to parallelisation. There are many options for how you might want to set this up, see \href{https://www.r-bloggers.com/2020/09/future-1-19-1-making-sure-proper-random-numbers-are-produced-in-parallel-processing/}{R-bloggers} for more details.
+
+\hypertarget{sometimes-r-doesnt-cut-it}{%
+\section{Sometimes R doesn't cut it}\label{sometimes-r-doesnt-cut-it}}
+
+\includegraphics{images/403-production-scalability/Rccp.png}
+
+RCPP: An API for running C++ code in R. Useful when you need:
+
+\begin{itemize}
+\tightlist
+\item
+  loops to be run in order
+\item
+  lots of function calls (e.g.~deep recursion)
+\item
+  optimised data structures
+\end{itemize}
+
+Rewriting R code in C++ and other low-level programming languages is beyond our scope, but good to know exists. Starting point: Advanced R \href{https://adv-r.hadley.nz/rcpp.html}{Chapter 25}.
+
+\hypertarget{wrapping-up-7}{%
+\section{Wrapping up}\label{wrapping-up-7}}
+
+\hypertarget{summary-2}{%
+\subsection*{Summary}\label{summary-2}}
+\addcontentsline{toc}{subsection}{Summary}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Pick you battles wisely
+\item
+  Target your energy with profiling
+\item
+  Scale loops with vectors
+\item
+  Scale loops in parallel processing
+\item
+  Scale in another language
+\end{enumerate}
+
+\hypertarget{help}{%
+\subsection*{Help!}\label{help}}
+\addcontentsline{toc}{subsection}{Help!}
+
+\begin{itemize}
+\tightlist
+\item
+  Articles and blog links
+\item
+  The R inferno \href{https://www.burns-stat.com/pages/Tutor/R_inferno.pdf}{(Circles 2-4)}
+\item
+  Advanced R \href{https://adv-r.hadley.nz/techniques.html}{(Chapters 23-25)},
+\item
+  Efficient R \href{https://csgillespie.github.io/efficientR/performance.html\#prerequisites-6}{(Chapter 7)}.
+\end{itemize}
 
 \hypertarget{production-checklist}{%
 \chapter*{Checklist}\label{production-checklist}}
