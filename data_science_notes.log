@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  11 FEB 2023 13:32
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  11 FEB 2023 17:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1600,39 +1600,48 @@ Chapter 15.
 
 ]
 Chapter 16.
-[259] [260
+[259] [260] [261] [262] [263]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]
+[264] [265] [266]
+File: images/501-ethics-privacy/latanya-sweeney.jpg Graphic file (type bmp)
+<images/501-ethics-privacy/latanya-sweeney.jpg>
+[267]
+File: images/501-ethics-privacy/netflix-logo-old.png Graphic file (type bmp)
+<images/501-ethics-privacy/netflix-logo-old.png>
+[268] [269] [270]
 Chapter 17.
-[261] [262
+[271
+
+] [272
 
 ]
 Chapter 18.
-[263] [264
+[273] [274
 
-] [265] [266
+] [275] [276
 
 ]
 Chapter 19.
-[267] [268] [269]
+[277] [278] [279]
 
-Package hyperref Warning: Suppressing link with empty target on input line 6320
+Package hyperref Warning: Suppressing link with empty target on input line 6613
 .
 
-[270] [271]
+[280] [281]
 No file data_science_notes.bbl.
-[272] (./data_science_notes.aux)
+[282] (./data_science_notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19774 strings out of 476919
- 372266 string characters out of 5821840
- 845296 words of memory out of 5000000
- 39400 multiletter control sequences out of 15000+600000
+ 19815 strings out of 476919
+ 373299 string characters out of 5821840
+ 851932 words of memory out of 5000000
+ 39438 multiletter control sequences out of 15000+600000
  410900 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,957b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on data_science_notes.pdf (272 pages).
+Output written on data_science_notes.pdf (282 pages).

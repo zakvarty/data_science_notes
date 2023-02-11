@@ -28,7 +28,7 @@ One key aspect of EDA is generating quick and simple summaries and plots of the 
 
 
 <div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-2-1.png" alt="Investigating marginal and pairwise relationships in the Iris dataset." width="672" />
+<img src="302-edav-analysis_files/figure-epub3/unnamed-chunk-2-1.png" alt="Investigating marginal and pairwise relationships in the Iris dataset."  />
 <p class="caption">(\#fig:unnamed-chunk-2)Investigating marginal and pairwise relationships in the Iris dataset.</p>
 </div>
 
@@ -84,7 +84,7 @@ Some degree of statistical rigour can be added through the use of non-parametric
 
 
 <div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-3-1.png" alt="Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval." width="672" />
+<img src="302-edav-analysis_files/figure-epub3/unnamed-chunk-3-1.png" alt="Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval."  />
 <p class="caption">(\#fig:unnamed-chunk-3)Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval.</p>
 </div>
 
@@ -131,7 +131,7 @@ There are various methods or corrections that we can apply during our testing an
 Examples of these corrections have been developed across many fields of statistics. In medical statistics we have approaches like the Bonferroni correction, to account for carrying out multiple hypothesis tests. In the change-point literature there are techniques for estimating a change location given that a change has been detected somewhere in a time series. While in the extreme value literature there are methods to estimate the required level of protection against rare events, given that the analysis was triggered by the current protections having been compromised.
 
 <div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-5-1.png" alt="Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below)." width="672" />
+<img src="302-edav-analysis_files/figure-epub3/unnamed-chunk-5-1.png" alt="Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below)."  />
 <p class="caption">(\#fig:unnamed-chunk-5)Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below).</p>
 </div>
 :::

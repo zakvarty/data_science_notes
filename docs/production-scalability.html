@@ -176,14 +176,14 @@ Structure talk around Alex's parallelisation slides
 <span><span class="va">t_end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">t_end</span> <span class="op">-</span> <span class="va">t_start</span></span>
-<span><span class="co">#&gt; Time difference of 0.5094299 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.5040469 secs</span></span></code></pre></div>
 <p>The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;   0.000   0.000   0.503</span></span></code></pre></div>
+<span><span class="co">#&gt;   0.000   0.000   0.501</span></span></code></pre></div>
 <p>The <a href="https://github.com/jabiru/tictoc">tictoc</a> package has similar features, but also allows you to add intermediate timers to more understand which parts of your code are taking the most time to run.</p>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jabiru/tictoc">tictoc</a></span><span class="op">)</span></span>
@@ -191,20 +191,20 @@ Structure talk around Alex's parallelisation slides
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># YOUR CODE </span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 0.507 sec elapsed</span></span></code></pre></div>
+<span><span class="co">#&gt; 0.508 sec elapsed</span></span></code></pre></div>
 <p>With <a href="https://github.com/jabiru/tictoc">tictoc</a> we can get fancy</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"total"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"first, easy part"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; first, easy part: 0.509 sec elapsed</span></span>
+<span><span class="co">#&gt; first, easy part: 0.508 sec elapsed</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="st">"second, hard part"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span>log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; second, hard part: 3.008 sec elapsed</span></span>
+<span><span class="co">#&gt; second, hard part: 3.003 sec elapsed</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; total: 3.524 sec elapsed</span></span></code></pre></div>
+<span><span class="co">#&gt; total: 3.515 sec elapsed</span></span></code></pre></div>
 <p>If your code is already very fast (but will be run <em>very</em> many times, so further efficiency gains are required) then the methods may fail because they do not sample the state of the code at a high enough frequency. In those cases you might want to explore the <code>{mircobenchmark}</code> package.</p>
 </div>
 </div>
@@ -291,7 +291,7 @@ Structure talk around Alex's parallelisation slides
 <span><span class="co">#&gt;     rounded_values &lt;- base::round(raw_values, digits)</span></span>
 <span><span class="co">#&gt;     return(rounded_values)</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x7fb5242729c0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7f784af0b788&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:eds&gt;</span></span></code></pre></div>
 <p>Some functions use <em>compiled code</em> that is written in another language. This is the case for dplyr’s between function, which calls some compiled C++ code in the final line.</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
@@ -313,14 +313,14 @@ Structure talk around Alex's parallelisation slides
 <span><span class="co">#&gt;     }</span></span>
 <span><span class="co">#&gt;     .Call(dplyr_between, x, as.numeric(left), as.numeric(right))</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x7fb523fe4a08&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7f7849a37800&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:dplyr&gt;</span></span></code></pre></div>
 <p>It is also true for many functions from base R, for which there is (for obvious reason) no R source code.</p>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mean</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x7fb51b9b1578&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7f7843177178&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p><br></p>
 <p>These compiled functions have no R source code, and the profiling methods we have used here don’t extend into compiled code. See <a href="https://github.com/r-prof/jointprof">{jointprof}</a> if you really need this profiling functionality.</p>
@@ -421,13 +421,13 @@ Structure talk around Alex's parallelisation slides
 <code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">mu</span>, .f <span class="op">=</span> <span class="va">rnorm</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1]  -9.243941 -10.706699  -9.988320 -10.775494  -9.262006</span></span>
+<span><span class="co">#&gt; [1] -10.412337  -9.669071 -11.773259  -9.887568 -12.028773</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1]  0.8816767  0.3407997  2.1863488  1.4765877 -1.4926613</span></span>
+<span><span class="co">#&gt; [1] -1.2461177 -0.6870757  1.9940357  1.1130373 -0.5111674</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 11.429219  9.855103  9.891337 10.540697  9.196123</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 9.346934 9.572013 8.562533 8.973403 9.703294</span></span></code></pre></div>
 <p>Iterate over multiple objects <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code>.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
@@ -437,7 +437,7 @@ Structure talk around Alex's parallelisation slides
 <span><span class="co">#&gt; [1] -10 -10 -10 -10 -10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] -0.156597713  0.117800505  0.007859139 -0.171179884  0.167105510</span></span>
+<span><span class="co">#&gt; [1] -0.17938496 -0.16837735  0.01267014 -0.16154766  0.19728398</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] 10 10 10 10 10</span></span></code></pre></div>
@@ -455,7 +455,7 @@ Structure talk around Alex's parallelisation slides
 <span><span class="co">#&gt; [1] -10 -10 -10 -10 -10</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1]  0.06192850  0.05696118  0.02134303  0.05933912 -0.24224028</span></span>
+<span><span class="co">#&gt; [1] -0.0009923689 -0.0665697993  0.0237183997  0.0142866993 -0.1414659902</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] 10 10 10 10 10</span></span></code></pre></div>
@@ -479,13 +479,13 @@ Structure talk around Alex's parallelisation slides
 <span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html">furrr_options</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] -10.385959 -10.811090 -10.909455  -9.342841 -10.116237</span></span>
+<span><span class="co">#&gt; [1] -11.587225  -9.132852  -9.756093  -9.735933  -9.292569</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1]  0.74805541 -0.94001512 -0.18279747  0.07324209  0.12776879</span></span>
+<span><span class="co">#&gt; [1]  0.09351273  0.12792098  0.80932279  0.28775213 -0.51245041</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 11.498242  9.013843  9.658712  9.250806 10.010299</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 11.334606 11.407636 10.571801 10.068568  8.969691</span></span></code></pre></div>
 <p>This is, of course excessive for this small example!</p>
 <p>One thing to be aware of is that we need to be very careful handling random number generation in relation to parallelisation. There are many options for how you might want to set this up, see <a href="https://www.r-bloggers.com/2020/09/future-1-19-1-making-sure-proper-random-numbers-are-produced-in-parallel-processing/">R-bloggers</a> for more details.</p>
 </div>
