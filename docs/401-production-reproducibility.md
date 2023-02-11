@@ -12,7 +12,7 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 In what we have covered so far we have been very much focused on the first aspect of data science: the data. When we come to consider about whether our work can be reproduced or our results can be replicated, this shifts our focus to the second other, the science. 
 
 <div class="figure">
-<img src="images/401-production-reproducibility/scientific-method.png" alt="Cycle of scientific enqiry." width="1200" />
+<img src="images/401-production-reproducibility/scientific-method.png" alt="Cycle of scientific enqiry." width="600" />
 <p class="caption">(\#fig:unnamed-chunk-2)Cycle of scientific enqiry.</p>
 </div>
 
@@ -132,7 +132,7 @@ In data science we rely a lot on the use of stochastic methods. These are often 
 
 ::: medium_left
 <div class="figure">
-<img src="401-production-reproducibility_files/figure-epub3/unnamed-chunk-3-1.png" alt="Monte Carlo approximation of $\pi$"  />
+<img src="401-production-reproducibility_files/figure-html/unnamed-chunk-3-1.png" alt="Monte Carlo approximation of $\pi$" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-3)Monte Carlo approximation of $\pi$</p>
 </div>
 :::
@@ -186,9 +186,9 @@ This is especially useful for simulations that involve random variables, as it a
 ```r
 # different values
 rnorm(n = 4)
-#> [1] -0.3429957  0.2102716 -0.9360333  0.5339222
+#> [1]  0.3347013  2.2256797 -1.0344398  1.1986288
 rnorm(n = 4)
-#> [1] -0.1010310  1.2565021 -0.4447276  1.3345433
+#> [1] -0.9325549  1.6761801  0.3476054  1.0657373
 ```
 
 ------
