@@ -1,0 +1,98 @@
+---
+title: "MCQ SOLUTIONS - Buolamwini and Gebru (2018)"
+author: "Zak Varty"
+format: pdf
+---
+
+## Question 1 
+
+Gender biases were previously shown to exist in the Word2Vec embedding by which paper? 
+
+- A: Angwin et al. (2016)
+- _B: Bolukbasi et al. (2016)_
+- C: Caliskan et al. (2017)
+- D: Dehghan et al. (2017) 
+
+## Question 2
+
+How many unique individuals are presented in the phenotypically balanced dataset that is provided by this paper?
+
+_1270_
+
+
+## Question 3
+
+What is the name of the phenotypically balanced data set that is provided by this paper?
+
+_The Pilot Parliaments Benchmark_
+
+
+ 
+## Question 4 
+
+Gender classification accuracy is evaluted using intersectional subgroups of:
+
+- A: Gender and Ethnicity
+- B: Gender and Nationality
+- C: Gender and Race
+- _D: Gender and Skin Type_
+
+## Question 5 
+
+Which of the following are commercial gender classification systems used in the analysis within this paper?
+
+- A: Adience
+- B: Google
+- _C: Face++_
+- D: Affectiva
+- E: Faception
+- _F: Miscrosoft_
+- _G: IBM_
+
+## Question 6 
+
+The gender classification systems used in this paper use training data labelled with:
+
+- A: Gender Identity
+- B: Biological Sex
+- C: Both
+- D: Neither
+- _E: Unknown_
+
+## Question 7 
+
+The positive predictive value (PPV) is used as an accuracy metric in this paper. Which of the following is definitions relates to PPV?
+
+- _A: number of individuals correctly labelled / total number of individuals_
+- B: number of individuals correctly labelled / number of individuals incorrectly labelled
+- C: total number of individuals / number of individuals correctly labelled
+- D: number of individuals incorrectly labelled / number of individuals correctly labelled
+
+
+## Question 8 
+
+Which sub-group has the highest true positive rate across all classification systems?
+
+- A: Darker Females
+- B: Darker Males
+- _C: Lighter Females_
+- D: Lighter Males
+
+## Question 9
+
+Which sub-group has the highest error rate across all classification systems? 
+
+- _A: Darker Females_
+- B: Darker Males
+- C: Lighter Females
+- D: Lighter Males
+
+## Question 10
+
+Which sub-group has the highest positive predictive value for the Face++ classification system? 
+
+- A: Darker Females
+- _B: Darker Males_
+- C: Lighter Females
+- D: Lighter Males
+

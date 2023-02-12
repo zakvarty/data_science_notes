@@ -19,8 +19,27 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 ## Reading 
 
+Use the [Data Science Ethics](#ethics-reading) section of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest. 
 
 ## Activities 
 
+This week has fewer activities, so that you may look over the second assessment before the end of the course. 
+
+_Core:_ 
+
+- Read [Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification](https://proceedings.mlr.press/v81/buolamwini18a.html) by Joy Buolamwini and Timnit Gebru (2018). Proceedings of the 1st Conference on Fairness, Accountability and Transparency.  
+
+- Find an example case study or method relating to ethical data science that has not been covered in the lectures. Share what you find by writing a short summary of the case study or method on the discussion forum.
+
+- Skim over the Professional Guidelines listed in the reference materials for this week, in preparation for the live session.
+
+_Bonus_
+
+- Answer the [multiple choice questions](data/510-ethics-checklist/gender-shades-mcq.pdf) on Buolamwini and Timnit Gebru (2018).
+
 
 ## Live Session 
+
+In the live session this week we will begin with a few minutes of Q&A about the assessments. We will then break into groups to discuss and compare the professional guidelines on ethical data science. 
+
+Finally, if time allows we will round up the session with an activity on randomised response survey designs.
