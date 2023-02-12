@@ -29,7 +29,7 @@ Between each of these examples, the level of technical detail differs but more i
 ## Explaining a Decision Tree
 
 <div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/ambulance-triage.png" alt="An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible." width="900" />
+<img src="images/402-production-explainability/ambulance-triage.png" alt="An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible." width="450" />
 <p class="caption">(\#fig:unnamed-chunk-2)An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible.</p>
 </div>
 <!--![An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as pew questions as possible.](images/402-production-explainability/ambulance-triage.png){alt="Descision tree to traige ambulance calls into urgency categories.", width="80%"}-->
@@ -46,7 +46,7 @@ Another model that is relatively straightforward to interpret is a linear regres
 
 
 <div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/interpreting-linear-regression.png" alt="Linear models have global, conditional explanations, provided by the estimated regression coefficients." width="900" />
+<img src="images/402-production-explainability/interpreting-linear-regression.png" alt="Linear models have global, conditional explanations, provided by the estimated regression coefficients." width="450" />
 <p class="caption">(\#fig:unnamed-chunk-3)Linear models have global, conditional explanations, provided by the estimated regression coefficients.</p>
 </div>
 
@@ -59,7 +59,7 @@ The explanation is __conditional__ because it assumes that all other values are 
 This can be contrasted against non-linear regression, where covariate effects are still interpreted conditional on the value of other covariates but the size or direction of that effect might vary depending on the value of the covariate. 
 
 <div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/interpreting-nonlinear-regression.png" alt="Non-linear models have local, conditional explanations, provided by the estimated regression coefficients." width="900" />
+<img src="images/402-production-explainability/interpreting-nonlinear-regression.png" alt="Non-linear models have local, conditional explanations, provided by the estimated regression coefficients." width="450" />
 <p class="caption">(\#fig:unnamed-chunk-4)Non-linear models have local, conditional explanations, provided by the estimated regression coefficients.</p>
 </div>
 
@@ -99,7 +99,7 @@ cowplot::plot_grid(p1, p2, ncol = 2)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="402-production-explainability_files/figure-epub3/unnamed-chunk-5-1.png" alt="Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume"  />
+<img src="402-production-explainability_files/figure-html/unnamed-chunk-5-1.png" alt="Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-5)Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume</p>
 </div>
 
@@ -187,7 +187,7 @@ cowplot::plot_grid(p3, p4, ncol = 2)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="402-production-explainability_files/figure-epub3/unnamed-chunk-9-1.png" alt="A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group."  />
+<img src="402-production-explainability_files/figure-html/unnamed-chunk-9-1.png" alt="A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-9)A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group.</p>
 </div>
 
@@ -222,7 +222,7 @@ The idea here is to look at a small region of the covariate space that is covere
 However, we can interrogate the model's behaviour within a small region and construct a simplified version of the model (a meta-model) that lets us explain the model within that small region. Often this meta-model is chosen as a linear model. 
 
 <div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/local-linear-approximation.png" alt="A local linear approximation in two dimensions" width="900" />
+<img src="images/402-production-explainability/local-linear-approximation.png" alt="A local linear approximation in two dimensions" width="450" />
 <p class="caption">(\#fig:unnamed-chunk-10)A local linear approximation in two dimensions</p>
 </div>
 
@@ -247,7 +247,7 @@ If we construct a local, conditional model for each loan applicant in our data s
 
 
 <div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/local-neighbourhoods.png" alt="Local approximations around each observation can be combined to understand global model behaviour." width="900" />
+<img src="images/402-production-explainability/local-neighbourhoods.png" alt="Local approximations around each observation can be combined to understand global model behaviour." width="450" />
 <p class="caption">(\#fig:unnamed-chunk-11)Local approximations around each observation can be combined to understand global model behaviour.</p>
 </div>
 

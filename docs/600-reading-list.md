@@ -177,7 +177,7 @@ hypothesis was posited ahead of time](http://stat.columbia.edu/~gelman/research/
 
 - [Advanced R (Second Edition)](https://adv-r.hadley.nz/index.html) by Hadley Wickham. [Chapter 25](https://adv-r.hadley.nz/rcpp.html) on writing R code in C++.
 
-## Data Science Ethics {#ethics-reading}
+## Data Science Ethics 
 
 ### Core Materials {.unnumbered}
 

@@ -26,7 +26,7 @@ Collecting high quality data on these systems was immensely expensive but paid d
 
 Things changed with the widespread adoption of the internet in the mid-1990s and the subsequent surge in data collection, sharing and processing. Suddenly, we as individuals shifted from being just one part of these huge processes to being a complex process worth of modelling all on our own. 
 
-<img src="502-ethics-fairness_files/figure-epub3/unnamed-chunk-3-1.png" alt="Barplot showing an exponential-like increase in the volume of data created, captured, copied, and consumed worldwide in each year from 2010 to 2022." style="display: block; margin: auto;" />
+<img src="502-ethics-fairness_files/figure-html/unnamed-chunk-3-1.png" alt="Barplot showing an exponential-like increase in the volume of data created, captured, copied, and consumed worldwide in each year from 2010 to 2022." width="672" style="display: block; margin: auto;" />
 
 It was at this point that focus shifted toward making individual, personalised predictions for specific people, based on the vast amounts of data that we generate as we go about our daily lives. 
 
@@ -39,11 +39,11 @@ This shift from aggregate to individual behaviour creates the opportunity not on
 
 The blunt truth is that, as far as a data science model is concerned, you are nothing more than a point in a high-dimensional predictor space. 
 
-<img src="502-ethics-fairness_files/figure-epub3/you-are-just-a-point-plot-1.png" alt="scatter plot of two predictors, x_1 and x_2. An arrow points to one observation, with the caption 'you are just a point in predictor space.'" width="100%" style="display: block; margin: auto;" />
+<img src="502-ethics-fairness_files/figure-html/you-are-just-a-point-plot-1.png" alt="scatter plot of two predictors, x_1 and x_2. An arrow points to one observation, with the caption 'you are just a point in predictor space.'" width="100%" style="display: block; margin: auto;" />
 
 The model might use your location in that space to group you with other points that are in some sense “nearby”. Alternatively, the model might estimate some information about you that it currently doesn’t have, based on what it knows about those surrounding points. These other points also represent unique humans with rich and fascinating lives - but the model doesn’t care about that, it is just there to group some points or predict some values.  
 
-<img src="502-ethics-fairness_files/figure-epub3/classification-plot-1.png" alt="Two scatter plots illustrating classification and regression with two predictors. The outcome values are shown by colour for all but one point. This point is grey and represents the predictor values at a prediction point representing the reader." width="100%" style="display: block; margin: auto;" />
+<img src="502-ethics-fairness_files/figure-html/classification-plot-1.png" alt="Two scatter plots illustrating classification and regression with two predictors. The outcome values are shown by colour for all but one point. This point is grey and represents the predictor values at a prediction point representing the reader." width="100%" style="display: block; margin: auto;" />
 
 The idea of fairness comes into data science when we begin to ask ourselves which predictors we should provide the model with when carrying out these tasks. We aren’t asking this from a model selection stand-point. We are asking what are morally permissible predictors, not what leads to a significant improvement in model fit. 
 

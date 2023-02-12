@@ -57,7 +57,7 @@ Sub-optimal optimisation can be worse than doing nothing
 
 > ... programmers have spent far too much time worrying about efficiency in _the wrong places_ and at _the wrong times_; premature optimisation is the root of all evil (or at least most of it) in programming. - Donald Knuth
 
-<img src="images/403-production-scalability/pareto-frontier.png" width="900" />
+<img src="images/403-production-scalability/pareto-frontier.png" width="450" />
 
 
 
@@ -87,7 +87,7 @@ Sys.sleep(0.5) # YOUR CODE
 t_end <- Sys.time()
 
 t_end - t_start
-#> Time difference of 0.5069141 secs
+#> Time difference of 0.5107181 secs
 ```
 
 The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.
@@ -98,7 +98,7 @@ system.time(
   Sys.sleep(0.5)
 )
 #>    user  system elapsed 
-#>   0.000   0.000   0.503
+#>   0.000   0.000   0.502
 ```
 
 
@@ -111,7 +111,7 @@ library(tictoc)
 tic() 
 Sys.sleep(0.5) # YOUR CODE 
 toc()
-#> 0.506 sec elapsed
+#> 0.509 sec elapsed
 ```
 
 
@@ -127,9 +127,9 @@ toc(log = TRUE)
 tic("second, hard part")
 Sys.sleep(3)
 toc(log = TRUE)
-#> second, hard part: 3.01 sec elapsed
+#> second, hard part: 3.005 sec elapsed
 toc()
-#> total: 3.523 sec elapsed
+#> total: 3.515 sec elapsed
 ```
 
 
@@ -180,7 +180,7 @@ f <- function() {
 
 Then the call stack for `f()` would look something like this. 
 
-<img src="images/403-production-scalability/call-stack.png" width="900" />
+<img src="images/403-production-scalability/call-stack.png" width="450" />
 
 
 
@@ -236,7 +236,7 @@ eds::rnorm_rounded
 #>     rounded_values <- base::round(raw_values, digits)
 #>     return(rounded_values)
 #> }
-#> <bytecode: 0x7fd2865127f8>
+#> <bytecode: 0x7fd0fa5c6dc0>
 #> <environment: namespace:eds>
 ```
 
@@ -262,7 +262,7 @@ dplyr::between
 #>     }
 #>     .Call(dplyr_between, x, as.numeric(left), as.numeric(right))
 #> }
-#> <bytecode: 0x7fd28c209ae0>
+#> <bytecode: 0x7fd101dd0278>
 #> <environment: namespace:dplyr>
 ```
 
@@ -273,7 +273,7 @@ It is also true for many functions from base R, for which there is (for obvious 
 mean
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x7fd28410a9e0>
+#> <bytecode: 0x7fd0fa93a178>
 #> <environment: namespace:base>
 ```
 
@@ -408,13 +408,13 @@ Iterate over a single object with `map()`.
 mu <- c(-10, 0, 10)
 purrr::map(.x = mu, .f = rnorm, n = 5)
 #> [[1]]
-#> [1]  -8.094763  -9.643679 -10.572935  -9.076206  -9.301300
+#> [1] -10.006744  -7.826381  -8.955369  -9.024526 -10.142356
 #> 
 #> [[2]]
-#> [1]  0.3630647  1.0337699 -0.6243617  0.4156622 -0.3401776
+#> [1]  2.0695378 -1.1022019 -1.4134660  0.3345005 -1.0604494
 #> 
 #> [[3]]
-#> [1] 11.097582  7.490931  8.322144  8.646637 11.289096
+#> [1] 10.583952 12.468985 10.656350  9.783068  9.527540
 ```
 
 Iterate over multiple objects `map2()` and `pmap()`.
@@ -428,7 +428,7 @@ purrr::map2(.x = mu, .y = sigma, .f = rnorm, n = 5)
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1] -0.05237261 -0.23939228  0.02104127 -0.01852731  0.06199056
+#> [1]  0.08117066  0.08209940  0.08576523  0.09881041 -0.08628525
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -450,7 +450,7 @@ purrr::pmap(
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1] -0.05920309 -0.05533237 -0.06954555 -0.02416331 -0.12236980
+#> [1]  0.098790110 -0.006621058  0.045159451  0.112034109 -0.114105940
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -477,13 +477,13 @@ furrr::future_map(
   .options = furrr::furrr_options(seed = TRUE),
   n = 5) 
 #> [[1]]
-#> [1] -10.489920  -9.044866 -10.609896 -10.359899  -8.925529
+#> [1]  -8.584559 -10.247573 -11.009584  -8.334020 -10.763944
 #> 
 #> [[2]]
-#> [1]  0.11507236 -0.20516873 -1.11396791 -0.08987579 -1.69124154
+#> [1]  0.08379831  1.65522184  0.47388360  0.34717369 -0.52648125
 #> 
 #> [[3]]
-#> [1] 10.588431 11.111136  8.544884  9.121263  7.641826
+#> [1] 10.610942 10.020489 10.676503  9.270691  9.278389
 ```
 
 
