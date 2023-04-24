@@ -240,9 +240,14 @@
 <span><span class="co">#&gt; [1] &lt;h2 id="toc-title"&gt;On this page&lt;/h2&gt;</span></span>
 <span><span class="co">#&gt; [2] &lt;h2 class="anchored" data-anchor-id="course-history"&gt;Course History&lt;/h2&gt;</span></span>
 <span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; {xml_nodeset (2)}</span></span>
+<span><span class="co">#&gt; {xml_nodeset (7)}</span></span>
 <span><span class="co">#&gt; [1] &lt;p&gt;I am fortunate to have had the opportunity to teach in a variety of ...</span></span>
-<span><span class="co">#&gt; [2] &lt;p&gt;I am an associate fellow of the Higher Education Academy, which you ...</span></span></code></pre></div>
+<span><span class="co">#&gt; [2] &lt;p&gt;Developing and teaching a number of modules in statistics, data sci ...</span></span>
+<span><span class="co">#&gt; [3] &lt;p&gt;Supervising undergraduate, postgraduate and doctoral research proje ...</span></span>
+<span><span class="co">#&gt; [4] &lt;p&gt;Adapting and leading short courses on scientific writing and commun ...</span></span>
+<span><span class="co">#&gt; [5] &lt;p&gt;Running workshops and computer labs for undergraduate and postgradu ...</span></span>
+<span><span class="co">#&gt; [6] &lt;p&gt;Speaking at univerisity open days and providing one-to-one tuition  ...</span></span>
+<span><span class="co">#&gt; [7] &lt;p&gt;I am an associate fellow of the Higher Education Academy, which you ...</span></span></code></pre></div>
 <p>You can also combine and nest these selectors. For example you might want to extract all links that are within paragraphs <em>and</em> all second level headers.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p a,h2"</span><span class="op">)</span></span>
@@ -266,11 +271,11 @@
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"#teaching li"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "one-to-one tuition for high school students;"                                   </span></span>
-<span><span class="co">#&gt; [2] "running workshops and computer labs for undergraduate and postgraduate modules;"</span></span>
-<span><span class="co">#&gt; [3] "delivering short courses on scientific communication and LaTeX;"                </span></span>
-<span><span class="co">#&gt; [4] "supervising an undergraduate research project;"                                 </span></span>
-<span><span class="co">#&gt; [5] "developing and lecturing postgraduate modules in statistics and data science."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Developing and teaching a number of modules in statistics, data science and data ethics. These were predominantly at the postgradute-level and include courses designed for in-person and remote learning."</span></span>
+<span><span class="co">#&gt; [2] "Supervising undergraduate, postgraduate and doctoral research projects."                                                                                                                                   </span></span>
+<span><span class="co">#&gt; [3] "Adapting and leading short courses on scientific writing and communication."                                                                                                                               </span></span>
+<span><span class="co">#&gt; [4] "Running workshops and computer labs for undergraduate and postgraduate modules."                                                                                                                           </span></span>
+<span><span class="co">#&gt; [5] "Speaking at univerisity open days and providing one-to-one tuition to high school students."</span></span></code></pre></div>
 <p>The difference between <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> is in how they handle whitespace. In HTML whitespace and line breaks have very little influence over how the code is interpreted by the computer (this is similar to R but very different from Python). <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code> will extract the text as it is in the raw html, while <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> will do its best to extract the text in a way that gives you something similar to what you’d see in the browser.</p>
 </div>
 <div id="extracting-attributes" class="section level3" number="6.9.2">
@@ -346,16 +351,16 @@
 <code class="sourceCode R"><span><span class="va">html</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 25 × 3</span></span>
-<span><span class="co">#&gt;   Year      Course                            Role                       </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                             &lt;chr&gt;                      </span></span>
-<span><span class="co">#&gt; 1 "2021-22" Supervised Learning               Lecturer                   </span></span>
-<span><span class="co">#&gt; 2 ""        Ethics in Data Science I          Lecturer                   </span></span>
-<span><span class="co">#&gt; 3 ""        Ethics in Data Science II         Lecturer                   </span></span>
-<span><span class="co">#&gt; 4 "—"       —                                 —                          </span></span>
-<span><span class="co">#&gt; 5 "2020-21" MATH562/582: Extreme Value Theory Lecturer                   </span></span>
-<span><span class="co">#&gt; 6 ""        MATH331: Bayesian Inference       Graduate teaching assistant</span></span>
-<span><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 31 × 3</span></span>
+<span><span class="co">#&gt;   Year      Course                                     Role    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                                      &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 "2022-23" Data Science                               Lecturer</span></span>
+<span><span class="co">#&gt; 2 ""        Ethics in Data Science I, II and III       Lecturer</span></span>
+<span><span class="co">#&gt; 3 ""        Data Ethics for Digital Chemistry          Lecturer</span></span>
+<span><span class="co">#&gt; 4 ""        Y1 research projects: point process models Lecturer</span></span>
+<span><span class="co">#&gt; 5 "2021-22" Supervised Learning                        Lecturer</span></span>
+<span><span class="co">#&gt; 6 ""        Ethics in Data Science I                   Lecturer</span></span>
+<span><span class="co">#&gt; # … with 25 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div id="tip-for-building-tibbles" class="section level2" number="6.10">
@@ -459,7 +464,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-02-12.</p>
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-04-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -37,10 +37,9 @@ When you think of data visualisation, you might immediately think of impressive 
 
 Such tools are no doubt impressive but they are by no means necessary for an effective data visualisation. In many cases there is no technology is needed at all. The history of data visualisation vastly pre-dates that of computers and some of the most effective visualisations remain analogue creations. 
 
-<div class="figure">
-<img src="images/303-data-visualisation/coffee-2.png" alt="12 sheets of paper arranged to make a calendar. Each sheet has been folded into squares, with each square and used as a coaster for a single day. Ring-shaped coffee stains visualise daily coffee consumption over the year, which is greatest in May and least in December." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Coffee consumption, visualised. Jaime Serra Palou.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/coffee-2} \caption{Coffee consumption, visualised. Jaime Serra Palou.}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 
 This visualisation of a year's coffee consumption is an ideal example. Displaying the number of cups of coffee in a bar chart or line graph would have been a more accurate way to collect and display this data, but that wouldn't have the same resonance or impact and it certainly wouldn't have been as memorable. 
@@ -51,10 +50,9 @@ This visualisation of a year's coffee consumption is an ideal example. Displayin
 
 Here we have another example of an analogue data visualisation that is created as part of data collection. Each member of the department is invited to place a Lego brick on a grid to indicate how much caffeine they have consumed and how much sleep they have had. The beauty of using Lego bricks here is that they are stackable and so create a bar plot over two dimensions. 
 
-<div class="figure">
-<img src="images/303-data-visualisation/lego-coffee.jpg" alt="A 2D barplot with axes for how caffeinated staf members are and how much sleep they have had. The height of stacked bricks appears to show a fairly uniform distribution, other than there being lots of people who have not had much sleep or caffeine." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)Caffeination vs sleep, shown in lego. Elsie Lee-Robbins</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/lego-coffee} \caption{Caffeination vs sleep, shown in lego. Elsie Lee-Robbins}(\#fig:unnamed-chunk-3)
+\end{figure}
 
 
 
@@ -166,10 +164,9 @@ It's worth considering these prior beliefs and how strongly they are held when c
 When crafting a visualisation we want to require as little work as possible from the viewer. 
 To do this, we can use pre-attentive attributes, such as colour, shape size and position to encode our data values. 
 
-<div class="figure">
-<img src="images/303-data-visualisation/preattentive-attributes.png" alt="An illustration of how several pre-attentive attributes can be used to draw the attention of the viewer. In each case there is a grid of nine hollow squares and attention is drawn to a subset of those but altering the following attributes: shape, enclosure, line weight, fill colour/saturation, size and position. Similar examples are given of line length and line curvature." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Examples of preattentive attributes</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/preattentive-attributes} \caption{Examples of preattentive attributes}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 
 These preattentive attributes are properties of lines and shapes that provide immediate visual contrast without requiring active thought from the viewer. As we will see, care needs to be taken here to ensure that we are don't mislead the viewer with how we use these attributes. 
@@ -201,18 +198,16 @@ If you are representing a measurement that has a _reference value_ (for example 
 For colour scales without such a reference point then a gradient in a single colour is likely the best option. In either case, it is important to check that a unit change in data value represents a consistent change in colour across all values. This is not the case for the rainbow palette here (which is neither a single gradient or diverging). 
 
 
-<div class="figure">
-<img src="images/303-data-visualisation/saturated-colour-scales.png" alt="Six default continuous colour scales used by various R packages, including gradient and diverging and rainbow palette types." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-5)Some default colour scales in R</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/saturated-colour-scales} \caption{Some default colour scales in R}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 
 To ensure accessibility of your designs, I would recommend one of the many on-line tools to simulate colour vision deficiency or using a pre-made palette where this has been considered for you. A good, low-tech rule of thumb is to design your visualisations so that they're still easily understood when printed in grey-scale. This can mean picking appropriate colours or additionally varying the point shape, line width or line types used. 
 
-<div class="figure">
-<img src="images/303-data-visualisation/desaturated-colour-scales.png" alt="Six default continuous colour scales used by various R packages, this time shown in greyscale." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)Desatureated colour scales in R</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/303-data-visualisation/desaturated-colour-scales} \caption{Desatureated colour scales in R}(\#fig:unnamed-chunk-6)
+\end{figure}
 
 
 For a practical guide on setting colours see this [chapter](https://bookdown.org/rdpeng/exdata/plotting-and-color-in-r.html) of exploratory data analysis by Roger Peng.

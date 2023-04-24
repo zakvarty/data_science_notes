@@ -54,7 +54,8 @@ Golden Rule:
 This is worth repeating. Every single project that you work on should be self-contained and live in a single directory. An analogy here might be having a separate ring-binder folder for each of your modules on a degree program. 
 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-1.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-1} 
 
 This one golden rule is deceptively simple. 
 
@@ -83,7 +84,8 @@ Don't worry if you haven't heard of some of these terms already. We're going to 
 A project is said to be portable if it can be easily moved without breaking. 
 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-2.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-2} 
 
 This might be a small move, like relocating the directory to a different location on your own computer. It might also mean a moderate move, say to another machine if yours dies just before a big deadline. Alternatively, it might be a large shift - to be uses by another person who is using a different operating system. 
 
@@ -145,18 +147,21 @@ One final caveat before we get started: companies and businesses will many times
 
 Okay, so imagine now that you've been assigned a shiny new project and have created a single directory in which to house that project. Here we've, quite imaginatively, called that directory `exciting-new-project`. What do we populate this folder with? 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-3.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-3} 
 
 In the rest of this video, I'll define the house-style for organizing the root directory of your data science projects in this module. 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-4.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-4} 
 
 Within the project directory there will be some subdirectories, which you can  tell a folders in this file structure because they have a forward slash following their names. There will also be some files directly in the root directory. One of these is called `readme.md` and the another called either `makefile` or `make.r`. We're going to explore each of these files and directories in turn.
 
 
 ### README.md
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-5.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-5} 
 
 Let's begin with the readme file. This gives a brief introduction to your project and  gives information on what the project aims to do. The readme file should describe how to get started using the project and how to contribute to its development. 
 
@@ -198,13 +203,15 @@ attribution to your work in any modifications that they use.
 
 ### data 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-7.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-7} 
 
 Moving back to our project structure, next we have the data directory.
 
 The data directory will have two subdirectories one called `raw` and one called `derived`. All data that is not generate as part of your project is stored in the `raw` subdirectory. To ensure that a project is reproducible, data in the Raw folder should never be edited or modified. 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-8.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-8} 
 
 In this example we've got two different data types: an Excel spreadsheet the XLS file and a JSON file. These files are exacty as we received them from our project stakeholder.
 
@@ -212,14 +219,16 @@ The text file `metadata.txt` is a plain text file explaining the contents and in
 
 The raw data likely isn't going to be in a form that's amenable to analyzing straight away. To get the data into a more pleasant form to work, it will require some data manipulation and cleaning. Any manipulation or cleaning that is applied should be well documented and the resulting cleaned files saved within the `derived` data directory.
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12} 
 
 In our exciting new project, we can see the clean versions of the previous data sets which are ready for modelling. There's also a third file in this folder. This is data that we've acquired for ourselves through web scraping, using a script within the project. 
 
 ### src
 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-16.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-16} 
 
 The `src` or source directory contains all the source code for your project. This will typically be the functions that you've written to make the analysis or modelling code more accessible. 
 
@@ -232,7 +241,8 @@ web data we saw in the derived data subdirectory.
 
 ### tests
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-12} 
 
 Moving on then to the tests directory. The structure of this directory mirrors that of the source directory. Each function file has its own counterpart file of tests. 
 
@@ -242,7 +252,8 @@ yourself that you haven't broken anything while fixing some small bug or adding 
 
 ### analyses
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-23.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-23} 
 
 The analyses directory contains what you probably think of as the bulk of your
 data science work. It's going to have one subdirectory for each major analysis that's performed within your project and within each of these there might be a series of steps that we collect into separate scripts. 
@@ -256,7 +267,8 @@ forecasts.
 
 ### outputs
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-26.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-26} 
 
 The outputs directory has again one subdirectory for each meta-analysis within the project. These are then further organized by the output type whether that be some data, a figure, or a table. 
 
@@ -264,7 +276,8 @@ Depending on the nature of your project, you might want to use a modified subdir
 
 ### reports 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-29.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-29} 
 
 The reports directory is then where everything comes together. This is where the written documents that form the final deliverables of your project are created. If these final documents are written in LaTeX or markdown, both the source and
 the compiled documents can be found within this directory. 
@@ -280,7 +293,8 @@ In our exciting new project, here we can see that the annual report is written i
 
 ### make file 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-32.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-32} 
 
 The final element of our template project structure is a make file. We aren't going to cover how to read or write make files in this course. Instead, I'll give you a brief description of what they are and what it is supposed to do. 
 
@@ -296,7 +310,8 @@ Wrapping up then, that's everything for this chapter.
 
 I've introduced a project structure that will serve you well as a baseline for the vast majority of projects in data science. 
 
-<img src="images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-33.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/101-workflows-organising-your-work/directory-structure-drawings/directory-structure-drawing-33} 
 
 In your own work, remember that the key here is standardisation. Working consistently across projects, a company or a group is more important than sticking rigidly to the particular structure that I have defined here. 
 

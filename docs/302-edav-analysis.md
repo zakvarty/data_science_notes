@@ -27,10 +27,7 @@ Exploratory data analysis (or EDA) is a process of examining a data set to under
 One key aspect of EDA is generating quick and simple summaries and plots of the data. These plots and summary statistics can help to quickly understand the distribution of and relationships between the recorded variables. Additionally, during an exploratory analysis you will familiarise yourself with the structure of the data you're working with and how that data was collected.
 
 
-<div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-2-1.png" alt="Investigating marginal and pairwise relationships in the Iris dataset." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Investigating marginal and pairwise relationships in the Iris dataset.</p>
-</div>
+![(\#fig:unnamed-chunk-2)Investigating marginal and pairwise relationships in the Iris dataset.](302-edav-analysis_files/figure-latex/unnamed-chunk-2-1.pdf) 
 
 Since EDA is an initial and iterative process, it's rare that any component of the analysis will be put into production. Instead, the goal is to get a general understanding of the data that can inform the next steps of the analysis.
 
@@ -83,18 +80,22 @@ Though it might inform the choice of baseline model, EDA is usually not model ba
 Some degree of statistical rigour can be added through the use of non-parametric techniques; methods like rolling averages, smoothing or partitioning can to help identify trends or patterns while making minimal assumptions about the data generating process.
 
 
-<div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-3-1.png" alt="Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval.</p>
-</div>
+![(\#fig:unnamed-chunk-3)Daily change in Dow Jones Index with smoothed estimate of mean and 95% confidence interval.](302-edav-analysis_files/figure-latex/unnamed-chunk-3-1.pdf) 
 
+\begin{table}
 
-Table: (\#tab:unnamed-chunk-4)Mean and standard deviation of daily change in Dow Jones Index, before and after 1st of June 1998.
-
-|after_june_98 |     mean|        sd|
-|:-------------|--------:|---------:|
-|FALSE         | 5.916798|  65.19093|
-|TRUE          | 3.972929| 119.56067|
+\caption{(\#tab:unnamed-chunk-4)Mean and standard deviation of daily change in Dow Jones Index, before and after 1st of June 1998.}
+\centering
+\begin{tabular}[t]{l|r|r}
+\hline
+after\_june\_98 & mean & sd\\
+\hline
+FALSE & 5.916798 & 65.19093\\
+\hline
+TRUE & 3.972929 & 119.56067\\
+\hline
+\end{tabular}
+\end{table}
 
 Though the assumptions in an EDA are often minimal it can help to make them explicit. For example, in this plot a moving averages is shown with a confidence band, but the construction of this band makes the implicit assumption that, at least locally, our observations have the same distribution and so are exchangeable. 
 
@@ -130,10 +131,7 @@ There are various methods or corrections that we can apply during our testing an
 
 Examples of these corrections have been developed across many fields of statistics. In medical statistics we have approaches like the Bonferroni correction, to account for carrying out multiple hypothesis tests. In the change-point literature there are techniques for estimating a change location given that a change has been detected somewhere in a time series. While in the extreme value literature there are methods to estimate the required level of protection against rare events, given that the analysis was triggered by the current protections having been compromised.
 
-<div class="figure">
-<img src="302-edav-analysis_files/figure-html/unnamed-chunk-5-1.png" alt="Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below).</p>
-</div>
+![(\#fig:unnamed-chunk-5)Example sea-height datasets where an analysis has been triggered by an extreme value (above) or a visually identified change in mean (below).](302-edav-analysis_files/figure-latex/unnamed-chunk-5-1.pdf) 
 :::
 ::::
 

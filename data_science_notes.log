@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  12 FEB 2023 23:35
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.12)  24 APR 2023 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,6 +490,15 @@ LaTeX Warning: Label `fig:unnamed-chunk-4' multiply defined.
 
 
 LaTeX Warning: Label `fig:unnamed-chunk-5' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-2' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-3' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-4' multiply defined.
 
 )
 \openout1 = `data_science_notes.aux'.
@@ -1110,8 +1119,11 @@ Underfull \vbox (badness 3471) has occurred while \output is active []
 
 [91
 
-] [92] [93] [94] [95] [96] [97] [98] [99]
-Underfull \vbox (badness 3302) detected at line 2623
+] [92] [93] [94] [95] [96]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[97] [98] [99]
+Underfull \vbox (badness 3302) detected at line 2628
  []
 
 
@@ -1125,14 +1137,14 @@ Chapter 7.
 Underfull \vbox (badness 6493) has occurred while \output is active []
 
 [105] [106] [107] [108] [109] [110] [111] [112]
-Underfull \vbox (badness 1552) detected at line 3004
+Underfull \vbox (badness 1552) detected at line 3009
  []
 
 
 Underfull \vbox (badness 1024) has occurred while \output is active []
 
 [113] [114]
-Overfull \hbox (61.31511pt too wide) in paragraph at lines 3050--3050
+Overfull \hbox (61.31511pt too wide) in paragraph at lines 3055--3055
 []\TU/lmtt/m/n/12 http://www.omdbapi.com/?t=<TITLE>&y=<YEAR>&plot=<LENGTH>&r=<F
 ORMAT>&apikey=<API_KEY>[] 
  []
@@ -1141,19 +1153,19 @@ ORMAT>&apikey=<API_KEY>[]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [115] [116]
-Underfull \vbox (badness 10000) detected at line 3204
+Underfull \vbox (badness 10000) detected at line 3209
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3204
+Underfull \vbox (badness 10000) detected at line 3209
  []
 
 [117]
-Underfull \vbox (badness 10000) detected at line 3204
+Underfull \vbox (badness 10000) detected at line 3209
  []
 
 
-Overfull \vbox (1.10777pt too high) detected at line 3204
+Overfull \vbox (1.10777pt too high) detected at line 3209
  []
 
 [118] [119] [120] [121
@@ -1164,7 +1176,7 @@ ex-text;!
 Missing character: There is no ⭐ (U+2B50) in font [lmroman12-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (272.30328pt too wide) in paragraph at lines 3286--3293
+Overfull \hbox (272.30328pt too wide) in paragraph at lines 3291--3298
 [][] 
  []
 
@@ -1189,7 +1201,7 @@ File: images/301-edav-wrangling/view-penguins-screenshot.png Graphic file (type
 Underfull \vbox (badness 1430) has occurred while \output is active []
 
 [130] [131]
-Underfull \vbox (badness 1466) detected at line 3475
+Underfull \vbox (badness 1466) detected at line 3480
  []
 
 [132]
@@ -1202,29 +1214,29 @@ Underfull \vbox (badness 7433) has occurred while \output is active []
 Underfull \vbox (badness 2119) has occurred while \output is active []
 
 [136]
-Underfull \vbox (badness 10000) detected at line 3685
+Underfull \vbox (badness 10000) detected at line 3690
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [137]
-Underfull \vbox (badness 10000) detected at line 3685
+Underfull \vbox (badness 10000) detected at line 3690
  []
 
 
-Overfull \vbox (1.03577pt too high) detected at line 3685
+Overfull \vbox (1.03577pt too high) detected at line 3690
  []
 
 [138] [139]
-Underfull \vbox (badness 2717) detected at line 3765
+Underfull \vbox (badness 2717) detected at line 3770
  []
 
 
 Underfull \vbox (badness 2662) has occurred while \output is active []
 
 [140] [141] [142] [143] [144] [145]
-Underfull \vbox (badness 1688) detected at line 4004
+Underfull \vbox (badness 1688) detected at line 4009
  []
 
 [146] [147] [148] [149] [150] [151]
@@ -1397,23 +1409,23 @@ File: images/401-production-reproducibility/scientific-method.png Graphic file
 (type bmp)
 <images/401-production-reproducibility/scientific-method.png>
 
-Overfull \hbox (661.21071pt too wide) in paragraph at lines 4895--4895
+Overfull \hbox (661.21071pt too wide) in paragraph at lines 4900--4900
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 27.01283pt on input line 4896.
+LaTeX Warning: Float too large for page by 27.01283pt on input line 4901.
 
 [201] [202]
 File: images/401-production-reproducibility/forking-paths-abstract.png Graphic 
 file (type bmp)
 <images/401-production-reproducibility/forking-paths-abstract.png>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 4931.
+(Font)              scaled to size 17.28pt on input line 4936.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 17.28157pt on input line 4931.
+(Font)              scaled to size 17.28157pt on input line 4936.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 17.27815pt on input line 4931.
+(Font)              scaled to size 17.27815pt on input line 4936.
 File: images/401-production-reproducibility/p-values-in-medical-papers.jpg Grap
 hic file (type bmp)
 <images/401-production-reproducibility/p-values-in-medical-papers.jpg>
@@ -1427,7 +1439,7 @@ Underfull \vbox (badness 2229) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [209]
-Underfull \hbox (badness 1983) in paragraph at lines 5024--5024
+Underfull \hbox (badness 1983) in paragraph at lines 5029--5029
 []\TU/lmr/bx/n/17.28 Reproduction and Replication in Statistical
  []
 
@@ -1447,42 +1459,42 @@ File: images/402-production-explainability/ambulance-triage.png Graphic file (t
 ype bmp)
 <images/402-production-explainability/ambulance-triage.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5187--5188
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5192--5193
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.36705pt on input line 5192.
+LaTeX Warning: Float too large for page by 41.36705pt on input line 5197.
 
 [218] [219]
 File: images/402-production-explainability/interpreting-linear-regression.png G
 raphic file (type bmp)
 <images/402-production-explainability/interpreting-linear-regression.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5207--5208
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5212--5213
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.49905pt on input line 5212.
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5217.
 
 File: images/402-production-explainability/interpreting-nonlinear-regression.pn
 g Graphic file (type bmp)
 <images/402-production-explainability/interpreting-nonlinear-regression.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5224--5225
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5229--5230
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.49905pt on input line 5229.
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5234.
 
 [220] [221] [222]
 File: 402-production-explainability_files/figure-latex/unnamed-chunk-5-1.pdf Gr
 aphic file (type pdf)
 <use 402-production-explainability_files/figure-latex/unnamed-chunk-5-1.pdf>
 
-Underfull \vbox (badness 10000) detected at line 5287
+Underfull \vbox (badness 10000) detected at line 5292
  []
 
 
@@ -1492,7 +1504,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [225]
-Underfull \vbox (badness 5091) detected at line 5361
+Underfull \vbox (badness 5091) detected at line 5366
  []
 
 
@@ -1507,24 +1519,24 @@ File: images/402-production-explainability/local-linear-approximation.png Graph
 ic file (type bmp)
 <images/402-production-explainability/local-linear-approximation.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5405--5406
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5410--5411
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 26.99905pt on input line 5410.
+LaTeX Warning: Float too large for page by 26.99905pt on input line 5415.
 
 [229] [230]
 File: images/402-production-explainability/local-neighbourhoods.png Graphic fil
 e (type bmp)
 <images/402-production-explainability/local-neighbourhoods.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5431--5432
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5436--5437
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.49905pt on input line 5436.
+LaTeX Warning: Float too large for page by 41.49905pt on input line 5441.
 
 [231] [232] [233] [234
 
@@ -1535,7 +1547,7 @@ File: images/403-production-scalability/pareto-frontier.png Graphic file (type
 bmp)
 <images/403-production-scalability/pareto-frontier.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5509--5510
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5514--5515
 [][] 
  []
 
@@ -1546,7 +1558,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/403-production-scalability/call-stack.png Graphic file (type bmp)
 <images/403-production-scalability/call-stack.png>
 
-Overfull \hbox (194.94043pt too wide) in paragraph at lines 5645--5646
+Overfull \hbox (194.94043pt too wide) in paragraph at lines 5650--5651
 [][] 
  []
 
@@ -1568,7 +1580,7 @@ le (type bmp)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [245]
-Underfull \hbox (badness 10000) in paragraph at lines 5775--5777
+Underfull \hbox (badness 10000) in paragraph at lines 5780--5782
 
  []
 
@@ -1579,7 +1591,7 @@ Underfull \vbox (badness 1259) has occurred while \output is active []
 Underfull \vbox (badness 1253) has occurred while \output is active []
 
 [247] [248]
-Underfull \vbox (badness 10000) detected at line 5935
+Underfull \vbox (badness 10000) detected at line 5940
  []
 
 
@@ -1641,31 +1653,53 @@ type bmp)
 
 ]
 Chapter 18.
-[285] [286
+File: images/503-ethics-conduct/harvard-business-review-sexiest-job.png Graphic
+ file (type bmp)
+<images/503-ethics-conduct/harvard-business-review-sexiest-job.png>
 
-] [287] [288
+Underfull \vbox (badness 1184) has occurred while \output is active []
 
-]
+[285] [286]
+File: images/503-ethics-conduct/bbc-facial-recognition.png Graphic file (type b
+mp)
+<images/503-ethics-conduct/bbc-facial-recognition.png>
+[287]
+File: images/503-ethics-conduct/bbc-self-driving_1.png Graphic file (type bmp)
+<images/503-ethics-conduct/bbc-self-driving_1.png>
+File: images/503-ethics-conduct/pregnancy-prediction.png Graphic file (type bmp
+)
+<images/503-ethics-conduct/pregnancy-prediction.png>
+[288] [289]
+File: images/503-ethics-conduct/collapsed-bridge.png Graphic file (type bmp)
+<images/503-ethics-conduct/collapsed-bridge.png>
+[290] [291]
+File: images/503-ethics-conduct/wired-hippocratic.png Graphic file (type bmp)
+<images/503-ethics-conduct/wired-hippocratic.png>
+[292] [293] [294] [295] [296
+
+] [297] [298]
 Chapter 19.
-[289] [290] [291]
+[299
 
-Package hyperref Warning: Suppressing link with empty target on input line 6856
+] [300] [301]
+
+Package hyperref Warning: Suppressing link with empty target on input line 7027
 .
 
-[292] [293]
+[302] [303]
 No file data_science_notes.bbl.
-[294] (./data_science_notes.aux)
+[304] (./data_science_notes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19876 strings out of 476919
- 375961 string characters out of 5821840
- 852963 words of memory out of 5000000
- 39493 multiletter control sequences out of 15000+600000
- 410900 words of font info for 94 fonts, out of 8000000 for 9000
+ 19945 strings out of 476919
+ 378802 string characters out of 5821840
+ 853761 words of memory out of 5000000
+ 39554 multiletter control sequences out of 15000+600000
+ 410908 words of font info for 95 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,8n,122p,957b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on data_science_notes.pdf (294 pages).
+Output written on data_science_notes.pdf (304 pages).

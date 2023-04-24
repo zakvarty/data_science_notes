@@ -36,9 +36,13 @@ _Core:_
   - Turn your code into a function that will return a tibble of the form: 
   
 
-|product      | n_reviews| percent_5_star| percent_4_star| percent_3_star| percent_2_star| percent_1_star|url             |
-|:------------|---------:|--------------:|--------------:|--------------:|--------------:|--------------:|:---------------|
-|example_name |      1000|             20|             20|             20|             20|             20|www.example.com |
+\begin{tabular}{l|r|r|r|r|r|r|l}
+\hline
+product & n\_reviews & percent\_5\_star & percent\_4\_star & percent\_3\_star & percent\_2\_star & percent\_1\_star & url\\
+\hline
+example\_name & 1000 & 20 & 20 & 20 & 20 & 20 & www.example.com\\
+\hline
+\end{tabular}
 
   - Generalise your function to work for other Amazon products, where the function takes as input a vector of product names and an associated vector of URLs.
   

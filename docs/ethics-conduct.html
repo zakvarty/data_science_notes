@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 18 Codes of Conduct | Effective Data Science</title>
 <meta name="author" content="Zak Varty">
-<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 18 Codes of Conduct | Effective Data Science">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://eds-book.zakvarty.com/ethics-conduct.html">
 <meta property="og:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
-<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta property="og:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 18 Codes of Conduct | Effective Data Science">
-<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it. If you would like to contribute to the development of...">
+<meta name="twitter:description" content="Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading. If you would like to contribute to the development of EDS, you may do so at...">
 <meta name="twitter:image" content="https://eds-book.zakvarty.com/images/EDS-logo.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -90,18 +90,136 @@
 <h1>
 <span class="header-section-number">18</span> Codes of Conduct<a class="anchor" aria-label="anchor" href="#ethics-conduct"><i class="fas fa-link"></i></a>
 </h1>
-<div class="rmdimportant">
-<p>Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don’t recommend reading it.</p>
+<div class="rmdnote">
+<p>Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.</p>
 <p>If you would like to contribute to the development of EDS, you may do so at <a href="https://github.com/zakvarty/data_science_notes" class="uri">https://github.com/zakvarty/data_science_notes</a>.</p>
 </div>
+<div id="data-science-miracle-cure-and-sexiest-job" class="section level2" number="18.1">
+<h2>
+<span class="header-section-number">18.1</span> Data Science: Miracle Cure and Sexiest Job<a class="anchor" aria-label="anchor" href="#data-science-miracle-cure-and-sexiest-job"><i class="fas fa-link"></i></a>
+</h2>
+<p>It has been more than 10 years since it was proclaimed that data science was the sexiest job of the century. Current turbulence in the technology sector may have you questioning the veracity of that claim, but it still rings true if we take a less myopic view of where data science is used.</p>
+<div class="medium_left">
+<div class="figure">
+<img src="images/503-ethics-conduct/harvard-business-review-sexiest-job.png" alt=""><p class="caption">Title of Harvard Business Review article: Is data scientist still the sexiest job of the 21st Century?</p>
+</div>
+</div>
+<p>Data science and machine learning are being used more extensively than ever across fields including medicine, healthcare and sociology. Data science is also applied to understand our environment, study ecological systems and inform our strategies for their preservation. In addition to this, data science is used widely across the private sector, where it informs business strategies and financial services, alongside the public sector where it influences governance and policy development.</p>
+</div>
+<div id="what-could-go-wrong" class="section level2" number="18.2">
+<h2>
+<span class="header-section-number">18.2</span> What could go wrong?<a class="anchor" aria-label="anchor" href="#what-could-go-wrong"><i class="fas fa-link"></i></a>
+</h2>
+<p>While data science methods can be wonderful, they are not infallible. As the number of use cases increases, we should also expect that the number of misuses or high-profile failures to increase too.</p>
+<p>These two news articles highlight just how badly this can all go.</p>
+<div class="medium_right">
+<div class="figure">
+<img src="images/503-ethics-conduct/bbc-facial-recognition.png" alt=""><p class="caption">BBC news article: facial recognition fails on race, government study says.</p>
+</div>
+</div>
+<p>The first article shows how a combination of non-representative training data and lack of consideration on the part of developers led to a facial recognition system that was much less accurate for people with darker skin. This is absolutely unacceptable, particularly given the widespread use of similar systems in important security applications such as biometric ID for online banking or automatic passport gates.</p>
+<p>A second example shows the risk of catastrophic failures in self-driving cars. We know that misclassification and missed edge cases are inevitable and that in the case of self-driving cars these errors can cause serious and even fatal accidents. We might then ask ourselves if these errors are acceptable if they lead to fewer accidents or fatalities than would be caused by human drivers.</p>
+<div class="medium_right">
+<div class="figure">
+<img src="images/503-ethics-conduct/bbc-self-driving_1.png" alt=""><p class="caption">BBC news article: Uber’s self-driving operator charged over fatal crash.</p>
+</div>
+</div>
+<p>Another important point to establish is where liability falls in such cases: should it be with the operator of the self-driving vehicle, the vendor who solid it or the data scientist who wrote the script controlling the car’s actions? If this behaviour was determined by training data for test-drives, should that driver share in the liability.</p>
+<p>These are all important questions that we haven’t necessarily thought to ask before deploying data science solutions into the world.</p>
+</div>
+<div id="thats-not-my-type-of-data-science" class="section level2" number="18.3">
+<h2>
+<span class="header-section-number">18.3</span> That’s not <em>my</em> type of data science …<a class="anchor" aria-label="anchor" href="#thats-not-my-type-of-data-science"><i class="fas fa-link"></i></a>
+</h2>
+<p>You might be thinking at this doesn’t effect you because you don’t work in image analysis or on self-driving cars, but related issues come up in more standard applications of data science.</p>
+<p>Consider a retailer implementing targeted promotions. They might combine previous shopping habits and recent product searches to target their offers.</p>
+<div class="medium_right">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/503-ethics-conduct/pregnancy-prediction.png" alt="An arrow connects a supemarket points card and search bar to a pregancy test, representing pregancy prediction." width="90%"><p class="caption">
+Figure 10.1: Predicting pregnancy from search and purchase history.
+</p>
+</div>
+</div>
+<p>Around 7 months ago, one customer stopped regularly buying contraceptives and alcohol and started buying supplements for vitamin D and folic acid. Based on similar behaviour by lots of other customers, a recommender model might now expect a good way to increase sales would be to send that customer offers for nappies, baby food and talcum powder.</p>
+<p>This could be seriously upsetting if that customer also happened to be experiencing fertility issues or had been pregnant but had an abortion or miscarriage. It is important that human-overrides are included in such systems like this so that the customer could contact the retailer and prevent this sort of advertising from continuing to happen for months or years to come.</p>
+</div>
+<div id="technological-adoption-relies-on-public-trust" class="section level2 smaller" number="18.4">
+<h2>
+<span class="header-section-number">18.4</span> Technological Adoption Relies on Public Trust<a class="anchor" aria-label="anchor" href="#technological-adoption-relies-on-public-trust"><i class="fas fa-link"></i></a>
+</h2>
+<div class="medium_left">
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="images/503-ethics-conduct/collapsed-bridge.png" alt="Eight-lane roadbridge collapsed into the Mississippi river." width="100%"><p class="caption">
+Figure 10.2: Thirteen people were killed and 145 injured during the Interstate 35W bridge collapse in 2007.
+</p>
+</div>
+</div>
+<p>Data science is a new discipline, which means that some of the issues we have mentioned are new and happening for the first time. However, many of these issues are not unique to data science and that means we can learn from other disciplines that have already invested a lot of time and energy into those problems.</p>
+<p>Across many other professions it’s standard to follow a professional code of practice or to have a code of ethics that applies to everyone working in that space. Usually, the professions that have this in place are also those who are legally liable in some way for the outcomes and consequences of their work.</p>
+<p>The most obvious example of this might be doctors and other medical professionals, but this holds equally true in many jobs from law to engineering, where practitioner’s work can impact the freedom or safety of other people. When thinking critically about the practical and ethical implications of our work as data scientists, we shouldn’t start from scratch but should learn as much as possible from these other fields.</p>
+<p>One profession in particular that we can learn from is medicine. Around the world, doctors agree to uphold the privacy of their patients by maintaining medical confidentiality. The also agree to only act in what they believe to be the best interests of the patient and to do them no harm. These are both admirable principles that can be tracked directly onto our work in data science.</p>
+<p>Google’s original internal code encapsulated a more extreme version of this non-maleficence principle, starting with the phrase ‘Don’t be evil’ (thought this was later rephrased to ‘You can make money without being evil’).</p>
+</div>
+<div id="a-hippocratic-oath-for-data-scientists" class="section level2" number="18.5">
+<h2>
+<span class="header-section-number">18.5</span> A Hippocratic Oath for Data Scientists<a class="anchor" aria-label="anchor" href="#a-hippocratic-oath-for-data-scientists"><i class="fas fa-link"></i></a>
+</h2>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="images/503-ethics-conduct/wired-hippocratic.png" alt="Wired article: To work for society, data scientists need a hippocratic oath with teeth" width="90%"><p class="caption">
+Figure 11.1: In Weapons of Math Destruction (2016), Cathy O’Neil was among the first authors to make a call for a Hippocratic oath for data scientists
+</p>
+</div>
+<p>We’ve seen examples of both the broad and the acute harms that can befall individuals because of data science. With these in mind, it seems reasonable to expect that data scientists should have to be aware of the negative impacts of their work and be required to mitigate these wherever possible.</p>
+<p>This is the argument made by Cathy O’Neil in her book Weapons of Math Destruction: data scientists, and those working with mathematical models more generally, need an equivalent of the Hippocratic oath that’s used in medicine. To understand why this is necessary, we have to understand why it is <em>not</em> the case already.</p>
+<p>Doing the right thing, in data science as in life,is neither obvious nor easy.</p>
+<p>In the most naive sense, negative consequences can come about as a result of a lack of understanding or because of unanticipated consequences. This lack of understanding might relate to the model itself (which might not be explainable) or about the setting in which the model is being applied (which might require domain specific expertise that the data scientist lacks).</p>
+<p>Alternatively, this ignorance can be about the groups of people who are most at risk of harm from data science models. Data science methods tend to model expected behaviour and echo biases from within the training data. This means that minority groups or groups that have been historically disadvantaged are most at risk of further harm. This same minority status or historical disadvantage means that these same groups have low representation within data science teams. This increases the chance that data science teams are ignorant of or ignore the breadth and depth of the damage they might be causing.</p>
+<p>A second way that data science can lead to harm is when incentives are not properly aligned. As an example we consider a credit scoring application where a data scientist is trying to include fairness measures in addition to optimising predictive accuracy for loan repayments. If business incentives are purely based around immediate increases in profit, then this will likely be very difficult to get put into production. There is a misalignment between the priorities of the business and the ethics of the data scientist.</p>
+<p>As we have seen,some errors are inevitable and sometimes the best we can do is to balance an inherent trade-off between conflicting priorities or different sources of harm. In these cases it is vitally important that we highlight this trade-off explicitly and offer decision makers a range of solutions that they may choose according to their own priorities.</p>
+<p>Doing the right thing is neither obvious or easy:</p>
+<ul>
+<li><p>Lack of understanding,</p></li>
+<li><p>Unanticipated consequences</p></li>
+<li><p>Incentive structures,</p></li>
+<li><p>Inherent trade-offs.</p></li>
+</ul>
+</div>
+<div id="codes-of-conduct" class="section level2" number="18.6">
+<h2>
+<span class="header-section-number">18.6</span> Codes of Conduct<a class="anchor" aria-label="anchor" href="#codes-of-conduct"><i class="fas fa-link"></i></a>
+</h2>
+<p>Membership of a professional body can offer some of the ethical benefits of a Hippocratic oath, because these memberships often require agreement to abide by a code of conduct.</p>
+<p>This provides individual data scientists with accountability for their actions in a broader sense than through their direct accountability to their employer. This can be helpful as a motivator to at a high quality and in line with ethical guidelines.</p>
+<p>It can also be useful as a form of external support, to convince organisations who employ data scientists that ethical considerations are an important aspect of our work. There is also the opportunity for peer-to-peer support, so that best practices can be established and improved in a unified way across industries, rather than in isolation within individual organisations. This might be through informal networking and knowledge sharing or through formal training organised by that professional body.</p>
+<p>Data science is still a developing field and there currently is no professional body specifically dedicated to data science. Instead, data scientists might join one or more related professional bodies, such as the <a href="https://rss.org.uk/">Royal Statistical Society</a>, the <a href="https://www.theorsociety.com/">Operational Research Society</a>,) or the <a href="https://www.siam.org/">Society for Industrial and Applied Mathematics</a>.</p>
+</div>
+<div id="wrapping-up-10" class="section level2" number="18.7">
+<h2>
+<span class="header-section-number">18.7</span> Wrapping Up<a class="anchor" aria-label="anchor" href="#wrapping-up-10"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data Science is still maturing, both as a field of study and as a career path. In combination with the widespread adoption of data science in recent years, this means that as a discipline we’re now navigating many new modes of failure and ethical issues. However, not all of these issues are entirely novel. There is an awful lot that we can learn, borrow or adapt from more established fields such as medicine, engineering or physics.</p>
+<p>It is important that we remain alert to the dangers of our work: both the liability it opens us up to and the harm we might be causing to others, potentially without being aware of either of these things. By joining professional bodies and upholding their codes of conduct we can push back against bad practices and reward good ones.</p>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="ethics-fairness.html"><span class="header-section-number">17</span> Fairness</a></div>
 <div class="next"><a href="ethics-checklist.html">Checklist</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#ethics-conduct"><span class="header-section-number">18</span> Codes of Conduct</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ethics-conduct"><span class="header-section-number">18</span> Codes of Conduct</a></li>
+<li><a class="nav-link" href="#data-science-miracle-cure-and-sexiest-job"><span class="header-section-number">18.1</span> Data Science: Miracle Cure and Sexiest Job</a></li>
+<li><a class="nav-link" href="#what-could-go-wrong"><span class="header-section-number">18.2</span> What could go wrong?</a></li>
+<li><a class="nav-link" href="#thats-not-my-type-of-data-science"><span class="header-section-number">18.3</span> That’s not my type of data science …</a></li>
+<li><a class="nav-link" href="#technological-adoption-relies-on-public-trust"><span class="header-section-number">18.4</span> Technological Adoption Relies on Public Trust</a></li>
+<li><a class="nav-link" href="#a-hippocratic-oath-for-data-scientists"><span class="header-section-number">18.5</span> A Hippocratic Oath for Data Scientists</a></li>
+<li><a class="nav-link" href="#codes-of-conduct"><span class="header-section-number">18.6</span> Codes of Conduct</a></li>
+<li><a class="nav-link" href="#wrapping-up-10"><span class="header-section-number">18.7</span> Wrapping Up</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -118,7 +236,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-02-12.</p>
+    <p>"<strong>Effective Data Science</strong>" was written by Zak Varty. It was last built on 2023-04-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

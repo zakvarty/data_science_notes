@@ -11,10 +11,9 @@ If you would like to contribute to the development of EDS, you may do so at <htt
 
 In what we have covered so far we have been very much focused on the first aspect of data science: the data. When we come to consider about whether our work can be reproduced or our results can be replicated, this shifts our focus to the second other, the science. 
 
-<div class="figure">
-<img src="images/401-production-reproducibility/scientific-method.png" alt="Cycle of scientific enqiry." width="600" />
-<p class="caption">(\#fig:unnamed-chunk-2)Cycle of scientific enqiry.</p>
-</div>
+\begin{figure}
+\includegraphics[width=16.67in]{images/401-production-reproducibility/scientific-method} \caption{Cycle of scientific enqiry.}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 
 
@@ -131,10 +130,7 @@ Parallel deployment or A/B tests have both the current and the proposed new mode
 In data science we rely a lot on the use of stochastic methods. These are often used to increase the chance of our findings being replicated by another person or in production. However, they also make it more difficult to ensure that our exact results can be reproduced, whether by another person or our future selves.   
 
 ::: medium_left
-<div class="figure">
-<img src="401-production-reproducibility_files/figure-html/unnamed-chunk-3-1.png" alt="Monte Carlo approximation of $\pi$" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Monte Carlo approximation of $\pi$</p>
-</div>
+![(\#fig:unnamed-chunk-3)Monte Carlo approximation of $\pi$](401-production-reproducibility_files/figure-latex/unnamed-chunk-3-1.pdf) 
 :::
 
 Monte Carlo methods are any modelling, estimation or approximation technique that leverages randomness in some way. 
@@ -186,9 +182,9 @@ This is especially useful for simulations that involve random variables, as it a
 ```r
 # different values
 rnorm(n = 4)
-#> [1] -1.7549930 -0.1497677 -0.3222254 -1.0835036
+#> [1]  0.4624751 -0.3871861 -0.5701800 -1.4868294
 rnorm(n = 4)
-#> [1] -2.0308711 -1.2675480 -1.0475454 -0.3360193
+#> [1]  0.06874178  1.01720749 -0.41299002 -0.52409752
 ```
 
 ------

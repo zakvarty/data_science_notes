@@ -77,15 +77,15 @@ Output is a `data.frame` object. (List of vectors with some nice methods)
 ```r
 random_tbl <- readr::read_csv(file = 'random-data.csv')
 #> Rows: 26 Columns: 4
-#> ── Column specification ─────────────────────────────────────────────────────
+#> -- Column specification -----------------------------------------------------
 #> Delimiter: ","
 #> chr (1): id
 #> dbl (3): gaussian, gamma, uniform
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 print(random_tbl)
-#> # A tibble: 26 × 4
+#> # A tibble: 26 x 4
 #>   id    gaussian  gamma uniform
 #>   <chr>    <dbl>  <dbl>   <dbl>
 #> 1 a       -1.21  0.989   0.225 
@@ -94,7 +94,7 @@ print(random_tbl)
 #> 4 d       -2.35  1.49    0.431 
 #> 5 e        0.429 5.40    0.0727
 #> 6 f        0.506 1.72    0.802 
-#> # … with 20 more rows
+#> # ... with 20 more rows
 ```
 
 Output is a `tibble` object. (List of vectors with some nicer methods)
@@ -125,13 +125,13 @@ Output is a `tibble` object. (List of vectors with some nicer methods)
 ```r
 # print first three rows and all columns
 print(random_tbl, n = 3, width = Inf)
-#> # A tibble: 26 × 4
+#> # A tibble: 26 x 4
 #>   id    gaussian  gamma uniform
 #>   <chr>    <dbl>  <dbl>   <dbl>
 #> 1 a       -1.21  0.989   0.225 
 #> 2 b        0.277 0.0381  0.0850
 #> 3 c        1.08  1.09    0.637 
-#> # … with 23 more rows
+#> # ... with 23 more rows
 ```
 
 
@@ -309,7 +309,7 @@ Consider trying to plot these data as time series. The `year` variable is trappe
 
 ```r
 countries
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   country     `1999` `2000`
 #>   <chr>        <dbl>  <dbl>
 #> 1 Afghanistan    745   2666
@@ -324,7 +324,7 @@ To tidy this data, we need to `pivot_longer()`. We will turn the column names in
 library(magrittr)
 countries %>% 
   tidyr::pivot_longer(cols = c(`1999`,`2000`), names_to = "year", values_to = "cases")
-#> # A tibble: 6 × 3
+#> # A tibble: 6 x 3
 #>   country     year   cases
 #>   <chr>       <chr>  <dbl>
 #> 1 Afghanistan 1999     745
@@ -390,7 +390,7 @@ tournament %>%
     id_cols = "Team", 
     names_from = "Variable",
     values_from = "Value")
-#> # A tibble: 4 × 4
+#> # A tibble: 4 x 4
 #>   Team  Points Assists Rebounds
 #>   <chr>  <dbl>   <dbl>    <dbl>
 #> 1 A         88      12       22

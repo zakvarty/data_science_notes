@@ -28,10 +28,14 @@ Between each of these examples, the level of technical detail differs but more i
 
 ## Explaining a Decision Tree
 
-<div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/ambulance-triage.png" alt="An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible." width="450" />
-<p class="caption">(\#fig:unnamed-chunk-2)An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/ambulance-triage} 
+
+}
+
+\caption{An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as few questions as possible.}(\#fig:unnamed-chunk-2)
+\end{figure}
 <!--![An example of a decision tree, optimised to correctly identify category 1 ambulance calls in as pew questions as possible.](images/402-production-explainability/ambulance-triage.png){alt="Descision tree to traige ambulance calls into urgency categories.", width="80%"}-->
 
 With some models giving an explanation is relatively straightforward. Decision trees are perhaps the easiest model to explain because they mimic human decision making and can be represented like flow-charts that make sequential, linear partitions of the predictor space.
@@ -45,10 +49,14 @@ The issue is that these decision trees are limited in the relationships they can
 Another model that is relatively straightforward to interpret is a linear regression. We can interpret this model using the estimated regression coefficients, which describe how the predicted outcome changes with a unit change in each covariate while the values of all other covariates are held constant. 
 
 
-<div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/interpreting-linear-regression.png" alt="Linear models have global, conditional explanations, provided by the estimated regression coefficients." width="450" />
-<p class="caption">(\#fig:unnamed-chunk-3)Linear models have global, conditional explanations, provided by the estimated regression coefficients.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/interpreting-linear-regression} 
+
+}
+
+\caption{Linear models have global, conditional explanations, provided by the estimated regression coefficients.}(\#fig:unnamed-chunk-3)
+\end{figure}
 
 This is a global and a conditional explanation. 
 
@@ -58,10 +66,14 @@ The explanation is __conditional__ because it assumes that all other values are 
 
 This can be contrasted against non-linear regression, where covariate effects are still interpreted conditional on the value of other covariates but the size or direction of that effect might vary depending on the value of the covariate. 
 
-<div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/interpreting-nonlinear-regression.png" alt="Non-linear models have local, conditional explanations, provided by the estimated regression coefficients." width="450" />
-<p class="caption">(\#fig:unnamed-chunk-4)Non-linear models have local, conditional explanations, provided by the estimated regression coefficients.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/interpreting-nonlinear-regression} 
+
+}
+
+\caption{Non-linear models have local, conditional explanations, provided by the estimated regression coefficients.}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 Here we have an example where a unit increase in the covariate is associated with a large change in the model response at low values of the covariate, but a much smaller change at large values of the covariate.
 
@@ -98,10 +110,14 @@ p2 <- ggplot(data = trees, aes(x = Volume, y = Girth)) +
 cowplot::plot_grid(p1, p2, ncol = 2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="402-production-explainability_files/figure-html/unnamed-chunk-5-1.png" alt="Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{402-production-explainability_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Cherry tree girth can be well modelled as a linear function of either tree height or harvestable volume}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 
 ```r
@@ -186,10 +202,14 @@ cowplot::plot_grid(p3, p4, ncol = 2)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<div class="figure" style="text-align: center">
-<img src="402-production-explainability_files/figure-html/unnamed-chunk-9-1.png" alt="A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-9)A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics{402-production-explainability_files/figure-latex/unnamed-chunk-9-1} 
+
+}
+
+\caption{A simulated example in which a covariate has a negative trend at the population level but a positive trend within each sub-group.}(\#fig:unnamed-chunk-9)
+\end{figure}
 
 What I hope to have highlighted here is that for some of the simplest models we might use as data scietists, explanations are very much possible but must be made with care and attention to detail - correctly interpreting these models in context can be far from straightforward.  
 
@@ -221,10 +241,14 @@ The idea here is to look at a small region of the covariate space that is covere
 
 However, we can interrogate the model's behaviour within a small region and construct a simplified version of the model (a meta-model) that lets us explain the model within that small region. Often this meta-model is chosen as a linear model. 
 
-<div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/local-linear-approximation.png" alt="A local linear approximation in two dimensions" width="450" />
-<p class="caption">(\#fig:unnamed-chunk-10)A local linear approximation in two dimensions</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/local-linear-approximation} 
+
+}
+
+\caption{A local linear approximation in two dimensions}(\#fig:unnamed-chunk-10)
+\end{figure}
 
 
 
@@ -246,10 +270,14 @@ Don't worry though, we can take the easy way out and do both of these things app
 If we construct a local, conditional model for each loan applicant in our data set, we can approximate the marginal effect of each covariate by averaging the conditional effects we obtain for each loan applicant. 
 
 
-<div class="figure" style="text-align: center">
-<img src="images/402-production-explainability/local-neighbourhoods.png" alt="Local approximations around each observation can be combined to understand global model behaviour." width="450" />
-<p class="caption">(\#fig:unnamed-chunk-11)Local approximations around each observation can be combined to understand global model behaviour.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=12.5in]{images/402-production-explainability/local-neighbourhoods} 
+
+}
+
+\caption{Local approximations around each observation can be combined to understand global model behaviour.}(\#fig:unnamed-chunk-11)
+\end{figure}
 
 
 This gives us a global understanding of how each covariate influences the response of our model. It does this over all possible values of the other covariates and appropriately weights these according to their frequency within the sample (and also within the population, if our sample is representative). 

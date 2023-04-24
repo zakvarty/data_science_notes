@@ -57,7 +57,8 @@ Sub-optimal optimisation can be worse than doing nothing
 
 > ... programmers have spent far too much time worrying about efficiency in _the wrong places_ and at _the wrong times_; premature optimisation is the root of all evil (or at least most of it) in programming. - Donald Knuth
 
-<img src="images/403-production-scalability/pareto-frontier.png" width="450" />
+
+\includegraphics[width=12.5in]{images/403-production-scalability/pareto-frontier} 
 
 
 
@@ -87,7 +88,7 @@ Sys.sleep(0.5) # YOUR CODE
 t_end <- Sys.time()
 
 t_end - t_start
-#> Time difference of 0.5107181 secs
+#> Time difference of 0.5401821 secs
 ```
 
 The system.time function provides a shorthand for this if your code runs sequentially and extends the functionality to work for parallel code too.
@@ -98,7 +99,7 @@ system.time(
   Sys.sleep(0.5)
 )
 #>    user  system elapsed 
-#>   0.000   0.000   0.502
+#>   0.000   0.000   0.504
 ```
 
 
@@ -111,7 +112,7 @@ library(tictoc)
 tic() 
 Sys.sleep(0.5) # YOUR CODE 
 toc()
-#> 0.509 sec elapsed
+#> 0.505 sec elapsed
 ```
 
 
@@ -123,13 +124,13 @@ tic("total")
 tic("first, easy part")
 Sys.sleep(0.5)
 toc(log = TRUE)
-#> first, easy part: 0.507 sec elapsed
+#> first, easy part: 0.508 sec elapsed
 tic("second, hard part")
 Sys.sleep(3)
 toc(log = TRUE)
-#> second, hard part: 3.005 sec elapsed
+#> second, hard part: 3.009 sec elapsed
 toc()
-#> total: 3.515 sec elapsed
+#> total: 3.525 sec elapsed
 ```
 
 
@@ -180,7 +181,8 @@ f <- function() {
 
 Then the call stack for `f()` would look something like this. 
 
-<img src="images/403-production-scalability/call-stack.png" width="450" />
+
+\includegraphics[width=12.5in]{images/403-production-scalability/call-stack} 
 
 
 
@@ -192,7 +194,8 @@ source("prof-vis-example.R")
 profvis::profvis(f())
 ```
 
-<img src="images/403-production-scalability/profiling-example-speed.png" width="100%" />
+
+\includegraphics[width=1\linewidth]{images/403-production-scalability/profiling-example-speed} 
 
 
 In both the upper histogram and the lower flame plot we can see that the majority of time is being spent in `pause()` and `h()`. What we have to be careful of here is that the upper plot shows the total amount of time in each function call, so `h()` appears to take longer than `g()`, but this is because it is called more often in the code snippet we are profiling.
@@ -236,7 +239,7 @@ eds::rnorm_rounded
 #>     rounded_values <- base::round(raw_values, digits)
 #>     return(rounded_values)
 #> }
-#> <bytecode: 0x7fd0fa5c6dc0>
+#> <bytecode: 0x7f9cdbd09718>
 #> <environment: namespace:eds>
 ```
 
@@ -262,7 +265,7 @@ dplyr::between
 #>     }
 #>     .Call(dplyr_between, x, as.numeric(left), as.numeric(right))
 #> }
-#> <bytecode: 0x7fd101dd0278>
+#> <bytecode: 0x7f9ce05cc8b0>
 #> <environment: namespace:dplyr>
 ```
 
@@ -273,7 +276,7 @@ It is also true for many functions from base R, for which there is (for obvious 
 mean
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x7fd0fa93a178>
+#> <bytecode: 0x7f9cdb056688>
 #> <environment: namespace:base>
 ```
 
@@ -297,7 +300,8 @@ for (i in 1:1e4) {
 ```
 
 
-<img src="images/403-production-scalability/profiling-example-memory.png" width="100%" />
+
+\includegraphics[width=1\linewidth]{images/403-production-scalability/profiling-example-memory} 
 
 
 - Copy-on-modify behaviour makes growing objects slow.  
@@ -408,13 +412,13 @@ Iterate over a single object with `map()`.
 mu <- c(-10, 0, 10)
 purrr::map(.x = mu, .f = rnorm, n = 5)
 #> [[1]]
-#> [1] -10.006744  -7.826381  -8.955369  -9.024526 -10.142356
+#> [1] -10.178730 -11.033306 -10.008374 -10.112767  -9.892151
 #> 
 #> [[2]]
-#> [1]  2.0695378 -1.1022019 -1.4134660  0.3345005 -1.0604494
+#> [1] -0.2649701 -1.4605120 -0.9057747 -1.4914774 -1.8609142
 #> 
 #> [[3]]
-#> [1] 10.583952 12.468985 10.656350  9.783068  9.527540
+#> [1] 10.228843 10.082947 11.663554  7.941658 10.420085
 ```
 
 Iterate over multiple objects `map2()` and `pmap()`.
@@ -428,7 +432,7 @@ purrr::map2(.x = mu, .y = sigma, .f = rnorm, n = 5)
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1]  0.08117066  0.08209940  0.08576523  0.09881041 -0.08628525
+#> [1]  0.10606533 -0.01879864  0.13336907 -0.17104704 -0.03595513
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -450,7 +454,7 @@ purrr::pmap(
 #> [1] -10 -10 -10 -10 -10
 #> 
 #> [[2]]
-#> [1]  0.098790110 -0.006621058  0.045159451  0.112034109 -0.114105940
+#> [1] -0.005163149  0.002678377 -0.162822011 -0.063205904 -0.097522678
 #> 
 #> [[3]]
 #> [1] 10 10 10 10 10
@@ -477,13 +481,13 @@ furrr::future_map(
   .options = furrr::furrr_options(seed = TRUE),
   n = 5) 
 #> [[1]]
-#> [1]  -8.584559 -10.247573 -11.009584  -8.334020 -10.763944
+#> [1]  -9.194768  -9.240920 -10.081810 -10.404889  -9.325792
 #> 
 #> [[2]]
-#> [1]  0.08379831  1.65522184  0.47388360  0.34717369 -0.52648125
+#> [1] -0.3695858  1.8293933  0.7881837 -0.2116163 -0.9215905
 #> 
 #> [[3]]
-#> [1] 10.610942 10.020489 10.676503  9.270691  9.278389
+#> [1]  7.844160 11.006323 10.010643  9.437171  9.545368
 ```
 
 

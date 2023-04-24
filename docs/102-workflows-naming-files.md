@@ -192,7 +192,8 @@ You likely already use file extensions to distinguish between code scripts, writ
 
 The first feature we'll consider is whether the file type is open source, and can be used by anyone without charge, or if specialist software must be paid for in order to interact with those files. 
 
-<img src="images/102-workflows-naming-files/file-types-image.png" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{images/102-workflows-naming-files/file-types-image} 
 
 In the figure above, each column represents a different class of file, moving left to right we have example file types for tabular data, list-like data and text documents. File types closer to the top are open source while those lower down rely on proprietary software, which may or may not require payment. 
 

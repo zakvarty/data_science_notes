@@ -121,7 +121,7 @@
 
 \title{Effective Data Science}
 \author{Zak Varty}
-\date{2023-02-12}
+\date{2023-04-24}
 
 \begin{document}
 \maketitle
@@ -2466,9 +2466,14 @@ In \texttt{\{rvest\}} you can extract a single element with \texttt{html\_elemen
 \CommentTok{\#\textgreater{} [1] \textless{}h2 id="toc{-}title"\textgreater{}On this page\textless{}/h2\textgreater{}}
 \CommentTok{\#\textgreater{} [2] \textless{}h2 class="anchored" data{-}anchor{-}id="course{-}history"\textgreater{}Course History\textless{}/h2\textgreater{}}
 \NormalTok{html }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_elements}\NormalTok{(}\StringTok{"p"}\NormalTok{)}
-\CommentTok{\#\textgreater{} \{xml\_nodeset (2)\}}
+\CommentTok{\#\textgreater{} \{xml\_nodeset (7)\}}
 \CommentTok{\#\textgreater{} [1] \textless{}p\textgreater{}I am fortunate to have had the opportunity to teach in a variety of ...}
-\CommentTok{\#\textgreater{} [2] \textless{}p\textgreater{}I am an associate fellow of the Higher Education Academy, which you ...}
+\CommentTok{\#\textgreater{} [2] \textless{}p\textgreater{}Developing and teaching a number of modules in statistics, data sci ...}
+\CommentTok{\#\textgreater{} [3] \textless{}p\textgreater{}Supervising undergraduate, postgraduate and doctoral research proje ...}
+\CommentTok{\#\textgreater{} [4] \textless{}p\textgreater{}Adapting and leading short courses on scientific writing and commun ...}
+\CommentTok{\#\textgreater{} [5] \textless{}p\textgreater{}Running workshops and computer labs for undergraduate and postgradu ...}
+\CommentTok{\#\textgreater{} [6] \textless{}p\textgreater{}Speaking at univerisity open days and providing one{-}to{-}one tuition  ...}
+\CommentTok{\#\textgreater{} [7] \textless{}p\textgreater{}I am an associate fellow of the Higher Education Academy, which you ...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2501,11 +2506,11 @@ The functions \texttt{rvest::html\_text()} and \texttt{rvest::html\_text2()} can
 \NormalTok{html }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{html\_elements}\NormalTok{(}\StringTok{"\#teaching li"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{html\_text2}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "one{-}to{-}one tuition for high school students;"                                   }
-\CommentTok{\#\textgreater{} [2] "running workshops and computer labs for undergraduate and postgraduate modules;"}
-\CommentTok{\#\textgreater{} [3] "delivering short courses on scientific communication and LaTeX;"                }
-\CommentTok{\#\textgreater{} [4] "supervising an undergraduate research project;"                                 }
-\CommentTok{\#\textgreater{} [5] "developing and lecturing postgraduate modules in statistics and data science."}
+\CommentTok{\#\textgreater{} [1] "Developing and teaching a number of modules in statistics, data science and data ethics. These were predominantly at the postgradute{-}level and include courses designed for in{-}person and remote learning."}
+\CommentTok{\#\textgreater{} [2] "Supervising undergraduate, postgraduate and doctoral research projects."                                                                                                                                   }
+\CommentTok{\#\textgreater{} [3] "Adapting and leading short courses on scientific writing and communication."                                                                                                                               }
+\CommentTok{\#\textgreater{} [4] "Running workshops and computer labs for undergraduate and postgraduate modules."                                                                                                                           }
+\CommentTok{\#\textgreater{} [5] "Speaking at univerisity open days and providing one{-}to{-}one tuition to high school students."}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2609,16 +2614,16 @@ Applying this to our real scraped data we can easily extract the table of taught
 \NormalTok{html }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{html\_element}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{html\_table}\NormalTok{()}
-\CommentTok{\#\textgreater{} \# A tibble: 25 x 3}
-\CommentTok{\#\textgreater{}   Year      Course                            Role                       }
-\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}     \textless{}chr\textgreater{}                             \textless{}chr\textgreater{}                      }
-\CommentTok{\#\textgreater{} 1 "2021{-}22" Supervised Learning               Lecturer                   }
-\CommentTok{\#\textgreater{} 2 ""        Ethics in Data Science I          Lecturer                   }
-\CommentTok{\#\textgreater{} 3 ""        Ethics in Data Science II         Lecturer                   }
-\CommentTok{\#\textgreater{} 4 "—"       —                                 —                          }
-\CommentTok{\#\textgreater{} 5 "2020{-}21" MATH562/582: Extreme Value Theory Lecturer                   }
-\CommentTok{\#\textgreater{} 6 ""        MATH331: Bayesian Inference       Graduate teaching assistant}
-\CommentTok{\#\textgreater{} \# ... with 19 more rows}
+\CommentTok{\#\textgreater{} \# A tibble: 31 x 3}
+\CommentTok{\#\textgreater{}   Year      Course                                     Role    }
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}     \textless{}chr\textgreater{}                                      \textless{}chr\textgreater{}   }
+\CommentTok{\#\textgreater{} 1 "2022{-}23" Data Science                               Lecturer}
+\CommentTok{\#\textgreater{} 2 ""        Ethics in Data Science I, II and III       Lecturer}
+\CommentTok{\#\textgreater{} 3 ""        Data Ethics for Digital Chemistry          Lecturer}
+\CommentTok{\#\textgreater{} 4 ""        Y1 research projects: point process models Lecturer}
+\CommentTok{\#\textgreater{} 5 "2021{-}22" Supervised Learning                        Lecturer}
+\CommentTok{\#\textgreater{} 6 ""        Ethics in Data Science I                   Lecturer}
+\CommentTok{\#\textgreater{} \# ... with 25 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4160,16 +4165,16 @@ Suppose we wanted to keep only the text following an underscore in these column 
 \begin{Highlighting}[]
 \FunctionTok{head}\NormalTok{(poorly\_named\_df)}
 \CommentTok{\#\textgreater{} \# A tibble: 6 x 11}
-\CommentTok{\#\textgreater{}   observatio\textasciitilde{}1     V1\_A   V2\_B   V3\_C   V4\_D     V5\_E    V6\_F   V7\_G     V8\_H}
-\CommentTok{\#\textgreater{}          \textless{}int\textgreater{}    \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1            1  1.64     2.11  {-}0.721  0.435 {-}0.113    0.226   0.160  2.27   }
-\CommentTok{\#\textgreater{} 2            2 {-}0.00656 {-}0.973 {-}0.343  1.32  {-}0.00605  1.68   {-}0.275  0.406  }
-\CommentTok{\#\textgreater{} 3            3 {-}0.553    2.30   0.108  0.553  0.00840  1.20    1.35   0.00871}
-\CommentTok{\#\textgreater{} 4            4  0.398   {-}0.897 {-}0.659 {-}0.463  0.0203   1.37    1.11  {-}0.604  }
-\CommentTok{\#\textgreater{} 5            5 {-}0.239    0.231  0.633  1.27   3.04    {-}0.0706 {-}0.136  1.84   }
-\CommentTok{\#\textgreater{} 6            6 {-}0.981    2.12  {-}1.17  {-}0.488 {-}0.680   {-}0.909   1.75  {-}0.873  }
-\CommentTok{\#\textgreater{} \# ... with 2 more variables: V9\_I \textless{}dbl\textgreater{}, V10\_J \textless{}dbl\textgreater{}, and abbreviated}
-\CommentTok{\#\textgreater{} \#   variable name 1: observation\_id}
+\CommentTok{\#\textgreater{}   observat\textasciitilde{}1   V1\_A   V2\_B   V3\_C   V4\_D   V5\_E    V6\_F   V7\_G   V8\_H    V9\_I}
+\CommentTok{\#\textgreater{}        \textless{}int\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1          1  0.455  0.812 {-}1.14  {-}0.373 {-}1.45   0.937  {-}1.48   1.54   0.0782}
+\CommentTok{\#\textgreater{} 2          2 {-}1.32   0.170  0.550 {-}0.955  0.769 {-}0.242  {-}0.790 {-}0.838 {-}0.403 }
+\CommentTok{\#\textgreater{} 3          3 {-}1.18   0.802 {-}1.04   1.12   1.44   1.47    0.641  0.911 {-}0.0454}
+\CommentTok{\#\textgreater{} 4          4  0.498 {-}1.22   1.39  {-}1.68   2.58  {-}0.0478 {-}0.938 {-}0.150  0.498 }
+\CommentTok{\#\textgreater{} 5          5 {-}0.945 {-}0.731  0.220  1.41  {-}1.65   0.618  {-}1.33   1.79  {-}0.376 }
+\CommentTok{\#\textgreater{} 6          6 {-}1.49   0.153  1.93   1.28   0.436  1.88   {-}0.733 {-}0.441  0.293 }
+\CommentTok{\#\textgreater{} \# ... with 1 more variable: V10\_J \textless{}dbl\textgreater{}, and abbreviated variable name}
+\CommentTok{\#\textgreater{} \#   1: observation\_id}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5094,9 +5099,9 @@ This is especially useful for simulations that involve random variables, as it a
 \begin{Highlighting}[]
 \CommentTok{\# different values}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}0.07645681  0.47167429  0.61260489  0.56436991}
+\CommentTok{\#\textgreater{} [1]  0.4624751 {-}0.3871861 {-}0.5701800 {-}1.4868294}
 \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{4}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1]  0.4787822349  0.0005371763  0.5727171717 {-}0.4638614445}
+\CommentTok{\#\textgreater{} [1]  0.06874178  1.01720749 {-}0.41299002 {-}0.52409752}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5540,7 +5545,7 @@ Firstly, you could record the time before your code starts executing, the time i
 \NormalTok{t\_end }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
 
 \NormalTok{t\_end }\SpecialCharTok{{-}}\NormalTok{ t\_start}
-\CommentTok{\#\textgreater{} Time difference of 0.5451539 secs}
+\CommentTok{\#\textgreater{} Time difference of 0.5401821 secs}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5552,7 +5557,7 @@ The system.time function provides a shorthand for this if your code runs sequent
   \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
 \NormalTok{)}
 \CommentTok{\#\textgreater{}    user  system elapsed }
-\CommentTok{\#\textgreater{}   0.001   0.000   0.504}
+\CommentTok{\#\textgreater{}   0.000   0.000   0.504}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5565,7 +5570,7 @@ The \texttt{\{tictoc\}} package has similar features, but also allows you to add
 \FunctionTok{tic}\NormalTok{() }
 \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{) }\CommentTok{\# YOUR CODE }
 \FunctionTok{toc}\NormalTok{()}
-\CommentTok{\#\textgreater{} 0.507 sec elapsed}
+\CommentTok{\#\textgreater{} 0.505 sec elapsed}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5577,7 +5582,7 @@ With \texttt{\{tictoc\}} we can get fancy
 \FunctionTok{tic}\NormalTok{(}\StringTok{"first, easy part"}\NormalTok{)}
 \FunctionTok{Sys.sleep}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
 \FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} first, easy part: 0.51 sec elapsed}
+\CommentTok{\#\textgreater{} first, easy part: 0.508 sec elapsed}
 \FunctionTok{tic}\NormalTok{(}\StringTok{"second, hard part"}\NormalTok{)}
 \FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \FunctionTok{toc}\NormalTok{(}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}
@@ -5707,7 +5712,7 @@ This is equally true for functions within packages.
 \CommentTok{\#\textgreater{}     rounded\_values \textless{}{-} base::round(raw\_values, digits)}
 \CommentTok{\#\textgreater{}     return(rounded\_values)}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7fa1a336d9f8\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f9cdbd09718\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:eds\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5734,7 +5739,7 @@ Some functions use \emph{compiled code} that is written in another language. Thi
 \CommentTok{\#\textgreater{}     \}}
 \CommentTok{\#\textgreater{}     .Call(dplyr\_between, x, as.numeric(left), as.numeric(right))}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7fa1a436b4b0\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f9ce05cc8b0\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:dplyr\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5746,7 +5751,7 @@ It is also true for many functions from base R, for which there is (for obvious 
 \NormalTok{mean}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7fa1a40d2178\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x7f9cdb056688\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -5884,13 +5889,13 @@ Iterate over a single object with \texttt{map()}.
 \NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
 \NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\AttributeTok{.x =}\NormalTok{ mu, }\AttributeTok{.f =}\NormalTok{ rnorm, }\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
 \CommentTok{\#\textgreater{} [[1]]}
-\CommentTok{\#\textgreater{} [1] {-}8.947187 {-}8.995540 {-}9.847916 {-}9.830168 {-}9.168449}
+\CommentTok{\#\textgreater{} [1] {-}10.178730 {-}11.033306 {-}10.008374 {-}10.112767  {-}9.892151}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1]  0.3628396  0.5338634  1.2938580 {-}0.2438162 {-}0.3105884}
+\CommentTok{\#\textgreater{} [1] {-}0.2649701 {-}1.4605120 {-}0.9057747 {-}1.4914774 {-}1.8609142}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
-\CommentTok{\#\textgreater{} [1] 12.501840 10.790848  8.023228  9.129146  8.955115}
+\CommentTok{\#\textgreater{} [1] 10.228843 10.082947 11.663554  7.941658 10.420085}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5905,7 +5910,7 @@ Iterate over multiple objects \texttt{map2()} and \texttt{pmap()}.
 \CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1] {-}0.06500674 {-}0.04882167 {-}0.09466829 {-}0.11615655 {-}0.11318629}
+\CommentTok{\#\textgreater{} [1]  0.10606533 {-}0.01879864  0.13336907 {-}0.17104704 {-}0.03595513}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
 \CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
@@ -5927,7 +5932,7 @@ Iterate over multiple objects \texttt{map2()} and \texttt{pmap()}.
 \CommentTok{\#\textgreater{} [1] {-}10 {-}10 {-}10 {-}10 {-}10}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1]  0.03505045 {-}0.01374134 {-}0.04087222  0.06251719 {-}0.13920495}
+\CommentTok{\#\textgreater{} [1] {-}0.005163149  0.002678377 {-}0.162822011 {-}0.063205904 {-}0.097522678}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
 \CommentTok{\#\textgreater{} [1] 10 10 10 10 10}
@@ -5957,13 +5962,13 @@ For more details and variants see Advanced R \href{https://adv-r.hadley.nz/funct
   \AttributeTok{.options =}\NormalTok{ furrr}\SpecialCharTok{::}\FunctionTok{furrr\_options}\NormalTok{(}\AttributeTok{seed =} \ConstantTok{TRUE}\NormalTok{),}
   \AttributeTok{n =} \DecValTok{5}\NormalTok{) }
 \CommentTok{\#\textgreater{} [[1]]}
-\CommentTok{\#\textgreater{} [1]  {-}9.149730  {-}9.307363 {-}10.085592 {-}10.755996 {-}11.193133}
+\CommentTok{\#\textgreater{} [1]  {-}9.194768  {-}9.240920 {-}10.081810 {-}10.404889  {-}9.325792}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[2]]}
-\CommentTok{\#\textgreater{} [1] {-}0.0301065  0.5400712  0.0442776  0.3186509 {-}1.7501582}
+\CommentTok{\#\textgreater{} [1] {-}0.3695858  1.8293933  0.7881837 {-}0.2116163 {-}0.9215905}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[3]]}
-\CommentTok{\#\textgreater{} [1]  9.526979  8.450717 10.393848 10.365799 10.741460}
+\CommentTok{\#\textgreater{} [1]  7.844160 11.006323 10.010643  9.437171  9.545368}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6646,15 +6651,154 @@ As with privacy, there are no universal answers when it comes to measuring and i
 \hypertarget{ethics-conduct}{%
 \chapter{Codes of Conduct}\label{ethics-conduct}}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
+
+\hypertarget{data-science-miracle-cure-and-sexiest-job}{%
+\section{Data Science: Miracle Cure and Sexiest Job}\label{data-science-miracle-cure-and-sexiest-job}}
+
+It has been more than 10 years since it was proclaimed that data science was the sexiest job of the century. Current turbulence in the technology sector may have you questioning the veracity of that claim, but it still rings true if we take a less myopic view of where data science is used.
+
+\begin{figure}
+\centering
+\includegraphics{images/503-ethics-conduct/harvard-business-review-sexiest-job.png}
+\caption{Title of Harvard Business Review article: Is data scientist still the sexiest job of the 21st Century?}
+\end{figure}
+
+Data science and machine learning are being used more extensively than ever across fields including medicine, healthcare and sociology. Data science is also applied to understand our environment, study ecological systems and inform our strategies for their preservation. In addition to this, data science is used widely across the private sector, where it informs business strategies and financial services, alongside the public sector where it influences governance and policy development.
+
+\hypertarget{what-could-go-wrong}{%
+\section{What could go wrong?}\label{what-could-go-wrong}}
+
+While data science methods can be wonderful, they are not infallible. As the number of use cases increases, we should also expect that the number of misuses or high-profile failures to increase too.
+
+These two news articles highlight just how badly this can all go.
+
+\begin{figure}
+\centering
+\includegraphics{images/503-ethics-conduct/bbc-facial-recognition.png}
+\caption{BBC news article: facial recognition fails on race, government study says.}
+\end{figure}
+
+The first article shows how a combination of non-representative training data and lack of consideration on the part of developers led to a facial recognition system that was much less accurate for people with darker skin. This is absolutely unacceptable, particularly given the widespread use of similar systems in important security applications such as biometric ID for online banking or automatic passport gates.
+
+A second example shows the risk of catastrophic failures in self-driving cars. We know that misclassification and missed edge cases are inevitable and that in the case of self-driving cars these errors can cause serious and even fatal accidents. We might then ask ourselves if these errors are acceptable if they lead to fewer accidents or fatalities than would be caused by human drivers.
+
+\begin{figure}
+\centering
+\includegraphics{images/503-ethics-conduct/bbc-self-driving_1.png}
+\caption{BBC news article: Uber's self-driving operator charged over fatal crash.}
+\end{figure}
+
+Another important point to establish is where liability falls in such cases: should it be with the operator of the self-driving vehicle, the vendor who solid it or the data scientist who wrote the script controlling the car's actions? If this behaviour was determined by training data for test-drives, should that driver share in the liability.
+
+These are all important questions that we haven't necessarily thought to ask before deploying data science solutions into the world.
+
+\hypertarget{thats-not-my-type-of-data-science}{%
+\section{\texorpdfstring{That's not \emph{my} type of data science \ldots{}}{That's not my type of data science \ldots{}}}\label{thats-not-my-type-of-data-science}}
+
+You might be thinking at this doesn't effect you because you don't work in image analysis or on self-driving cars, but related issues come up in more standard applications of data science.
+
+Consider a retailer implementing targeted promotions. They might combine previous shopping habits and recent product searches to target their offers.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/503-ethics-conduct/pregnancy-prediction} 
+
+}
+
+\caption{Predicting pregnancy from search and purchase history.}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+Around 7 months ago, one customer stopped regularly buying contraceptives and alcohol and started buying supplements for vitamin D and folic acid. Based on similar behaviour by lots of other customers, a recommender model might now expect a good way to increase sales would be to send that customer offers for nappies, baby food and talcum powder.
+
+This could be seriously upsetting if that customer also happened to be experiencing fertility issues or had been pregnant but had an abortion or miscarriage. It is important that human-overrides are included in such systems like this so that the customer could contact the retailer and prevent this sort of advertising from continuing to happen for months or years to come.
+
+\hypertarget{technological-adoption-relies-on-public-trust}{%
+\section{Technological Adoption Relies on Public Trust}\label{technological-adoption-relies-on-public-trust}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/503-ethics-conduct/collapsed-bridge} 
+
+}
+
+\caption{Thirteen people were killed and 145 injured during the Interstate 35W bridge collapse in 2007.}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+Data science is a new discipline, which means that some of the issues we have mentioned are new and happening for the first time. However, many of these issues are not unique to data science and that means we can learn from other disciplines that have already invested a lot of time and energy into those problems.
+
+Across many other professions it's standard to follow a professional code of practice or to have a code of ethics that applies to everyone working in that space. Usually, the professions that have this in place are also those who are legally liable in some way for the outcomes and consequences of their work.
+
+The most obvious example of this might be doctors and other medical professionals, but this holds equally true in many jobs from law to engineering, where practitioner's work can impact the freedom or safety of other people. When thinking critically about the practical and ethical implications of our work as data scientists, we shouldn't start from scratch but should learn as much as possible from these other fields.
+
+One profession in particular that we can learn from is medicine. Around the world, doctors agree to uphold the privacy of their patients by maintaining medical confidentiality. The also agree to only act in what they believe to be the best interests of the patient and to do them no harm. These are both admirable principles that can be tracked directly onto our work in data science.
+
+Google's original internal code encapsulated a more extreme version of this non-maleficence principle, starting with the phrase `Don't be evil' (thought this was later rephrased to `You can make money without being evil').
+
+\hypertarget{a-hippocratic-oath-for-data-scientists}{%
+\section{A Hippocratic Oath for Data Scientists}\label{a-hippocratic-oath-for-data-scientists}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/503-ethics-conduct/wired-hippocratic} 
+
+}
+
+\caption{In Weapons of Math Destruction (2016), Cathy O’Neil was among the first authors to make a call for a Hippocratic oath for data scientists}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+We've seen examples of both the broad and the acute harms that can befall individuals because of data science. With these in mind, it seems reasonable to expect that data scientists should have to be aware of the negative impacts of their work and be required to mitigate these wherever possible.
+
+This is the argument made by Cathy O'Neil in her book Weapons of Math Destruction: data scientists, and those working with mathematical models more generally, need an equivalent of the Hippocratic oath that's used in medicine. To understand why this is necessary, we have to understand why it is \emph{not} the case already.
+
+Doing the right thing, in data science as in life,is neither obvious nor easy.
+
+In the most naive sense, negative consequences can come about as a result of a lack of understanding or because of unanticipated consequences. This lack of understanding might relate to the model itself (which might not be explainable) or about the setting in which the model is being applied (which might require domain specific expertise that the data scientist lacks).
+
+Alternatively, this ignorance can be about the groups of people who are most at risk of harm from data science models. Data science methods tend to model expected behaviour and echo biases from within the training data. This means that minority groups or groups that have been historically disadvantaged are most at risk of further harm. This same minority status or historical disadvantage means that these same groups have low representation within data science teams. This increases the chance that data science teams are ignorant of or ignore the breadth and depth of the damage they might be causing.
+
+A second way that data science can lead to harm is when incentives are not properly aligned. As an example we consider a credit scoring application where a data scientist is trying to include fairness measures in addition to optimising predictive accuracy for loan repayments. If business incentives are purely based around immediate increases in profit, then this will likely be very difficult to get put into production. There is a misalignment between the priorities of the business and the ethics of the data scientist.
+
+As we have seen,some errors are inevitable and sometimes the best we can do is to balance an inherent trade-off between conflicting priorities or different sources of harm. In these cases it is vitally important that we highlight this trade-off explicitly and offer decision makers a range of solutions that they may choose according to their own priorities.
+
+Doing the right thing is neither obvious or easy:
+
+\begin{itemize}
+\item
+  Lack of understanding,
+\item
+  Unanticipated consequences
+\item
+  Incentive structures,
+\item
+  Inherent trade-offs.
+\end{itemize}
+
+\hypertarget{codes-of-conduct}{%
+\section{Codes of Conduct}\label{codes-of-conduct}}
+
+Membership of a professional body can offer some of the ethical benefits of a Hippocratic oath, because these memberships often require agreement to abide by a code of conduct.
+
+This provides individual data scientists with accountability for their actions in a broader sense than through their direct accountability to their employer. This can be helpful as a motivator to at a high quality and in line with ethical guidelines.
+
+It can also be useful as a form of external support, to convince organisations who employ data scientists that ethical considerations are an important aspect of our work. There is also the opportunity for peer-to-peer support, so that best practices can be established and improved in a unified way across industries, rather than in isolation within individual organisations. This might be through informal networking and knowledge sharing or through formal training organised by that professional body.
+
+Data science is still a developing field and there currently is no professional body specifically dedicated to data science. Instead, data scientists might join one or more related professional bodies, such as the \href{https://rss.org.uk/}{Royal Statistical Society}, the \href{https://www.theorsociety.com/}{Operational Research Society},) or the \href{https://www.siam.org/}{Society for Industrial and Applied Mathematics}.
+
+\hypertarget{wrapping-up-10}{%
+\section{Wrapping Up}\label{wrapping-up-10}}
+
+Data Science is still maturing, both as a field of study and as a career path. In combination with the widespread adoption of data science in recent years, this means that as a discipline we're now navigating many new modes of failure and ethical issues. However, not all of these issues are entirely novel. There is an awful lot that we can learn, borrow or adapt from more established fields such as medicine, engineering or physics.
+
+It is important that we remain alert to the dangers of our work: both the liability it opens us up to and the harm we might be causing to others, potentially without being aware of either of these things. By joining professional bodies and upholding their codes of conduct we can push back against bad practices and reward good ones.
 
 \hypertarget{ethics-checklist}{%
 \chapter*{Checklist}\label{ethics-checklist}}
 \addcontentsline{toc}{chapter}{Checklist}
 
-Effective Data Science is still a work-in-progress. This chapter is currently a dumping ground for ideas, and we don't recommend reading it.
+Effective Data Science is still a work-in-progress. This chapter is largely complete and just needs final proof reading.
 
 If you would like to contribute to the development of EDS, you may do so at \url{https://github.com/zakvarty/data_science_notes}.
 
@@ -6662,22 +6806,49 @@ If you would like to contribute to the development of EDS, you may do so at \url
 \section{Videos / Chapters}\label{videos-chapters-4}}
 
 \begin{itemize}
-\item
-  {[} {]}
-\item
-  {[} {]}
-\item
-  {[} {]}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5d85c64e-ce0a-4a18-bd3b-afa5010ceca8}{Privacy} (19 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/05-01-privacy/05-01-privacy.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=96301a9c-c129-44fd-bd3f-afa700fdeeaa}{Fairness} (20 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/05-02-fairness/05-02-fairness.pdf}{{[}slides{]}}
+\item[$\square$]
+  \href{https://imperial.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5c457e71-1f44-4272-a46b-afa701747ba6}{Codes of Conduct} (14 min) \href{https://github.com/zakvarty/effective-data-science-slides-2022/raw/main/05-03-codes-of-conduct/05-03-codes-of-conduct.pdf}{{[}slides{]}}
 \end{itemize}
 
 \hypertarget{reading-4}{%
 \section{Reading}\label{reading-4}}
 
+Use the \protect\hyperlink{ethics-reading}{Data Science Ethics} section of the reading list to support and guide your exploration of this week's topics. Note that these texts are divided into core reading, reference materials and materials of interest.
+
 \hypertarget{activities-2}{%
 \section{Activities}\label{activities-2}}
 
+This week has fewer activities, so that you may look over the second assessment before the end of the course.
+
+\emph{Core:}
+
+\begin{itemize}
+\item
+  Read \href{https://proceedings.mlr.press/v81/buolamwini18a.html}{Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification} by Joy Buolamwini and Timnit Gebru (2018). Proceedings of the 1st Conference on Fairness, Accountability and Transparency.
+\item
+  Find an example case study or method relating to ethical data science that has not been covered in the lectures. Share what you find by writing a short summary of the case study or method on the discussion forum.
+\item
+  Skim over the Professional Guidelines listed in the reference materials for this week, in preparation for the live session.
+\end{itemize}
+
+\emph{Bonus}
+
+\begin{itemize}
+\tightlist
+\item
+  Answer the \href{data/510-ethics-checklist/gender-shades-mcq.pdf}{multiple choice questions} on Buolamwini and Timnit Gebru (2018).
+\end{itemize}
+
 \hypertarget{live-session-4}{%
 \section{Live Session}\label{live-session-4}}
+
+In the live session this week we will begin with a few minutes of Q\&A about the assessments. We will then break into groups to discuss and compare the professional guidelines on ethical data science.
+
+Finally, if time allows we will round up the session with an activity on randomised response survey designs.
 
 \hypertarget{reading-list}{%
 \chapter{Reading List}\label{reading-list}}

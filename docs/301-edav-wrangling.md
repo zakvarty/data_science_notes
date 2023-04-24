@@ -61,13 +61,13 @@ For large data sets, you might not want (or be able to) view it all at once. You
 
 ```r
 head(x = pengins, n = 3)
-#> # A tibble: 3 × 8
-#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#> # A tibble: 3 x 8
+#>   species island    bill_length_mm bill_depth_mm flippe~1 body_~2 sex    year
 #>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
 #> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
-#> 2 Adelie  Torgersen           39.5          17.4      186    3800 fema…  2007
-#> 3 Adelie  Torgersen           40.3          18        195    3250 fema…  2007
-#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+#> 2 Adelie  Torgersen           39.5          17.4      186    3800 fema~  2007
+#> 3 Adelie  Torgersen           40.3          18        195    3250 fema~  2007
+#> # ... with abbreviated variable names 1: flipper_length_mm, 2: body_mass_g
 ```
 
 
@@ -78,7 +78,7 @@ An alternative way to view the a large data set, or one with a complicated forma
 
 ```r
 str(penguins)
-#> tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+#> tibble [344 x 8] (S3: tbl_df/tbl/data.frame)
 #>  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
 #>  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
 #>  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
@@ -197,15 +197,15 @@ In base R you can extract rows, columns and combinations thereof using index not
 ```r
 # First row
 penguins[1, ]
-#> # A tibble: 1 × 8
-#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#> # A tibble: 1 x 8
+#>   species island    bill_length_mm bill_depth_mm flippe~1 body_~2 sex    year
 #>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
 #> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
-#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+#> # ... with abbreviated variable names 1: flipper_length_mm, 2: body_mass_g
 
 # First Column 
 penguins[ , 1]
-#> # A tibble: 344 × 1
+#> # A tibble: 344 x 1
 #>   species
 #>   <fct>  
 #> 1 Adelie 
@@ -214,11 +214,11 @@ penguins[ , 1]
 #> 4 Adelie 
 #> 5 Adelie 
 #> 6 Adelie 
-#> # … with 338 more rows
+#> # ... with 338 more rows
 
 # Rows 2-3 of columns 1, 2 and 4
 penguins[2:3, c(1, 2, 4)]
-#> # A tibble: 2 × 3
+#> # A tibble: 2 x 3
 #>   species island    bill_depth_mm
 #>   <fct>   <fct>             <dbl>
 #> 1 Adelie  Torgersen          17.4
@@ -231,18 +231,18 @@ Using negative indexing you can remove rows or columns
 ```r
 # Drop all but first row
 penguins[-(2:344), ]
-#> # A tibble: 1 × 8
-#>   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#> # A tibble: 1 x 8
+#>   species island    bill_length_mm bill_depth_mm flippe~1 body_~2 sex    year
 #>   <fct>   <fct>              <dbl>         <dbl>    <int>   <int> <fct> <int>
 #> 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
-#> # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+#> # ... with abbreviated variable names 1: flipper_length_mm, 2: body_mass_g
 ```
 
 
 ```r
 # Drop all but first column 
 penguins[ , -(2:8)]
-#> # A tibble: 344 × 1
+#> # A tibble: 344 x 1
 #>   species
 #>   <fct>  
 #> 1 Adelie 
@@ -251,7 +251,7 @@ penguins[ , -(2:8)]
 #> 4 Adelie 
 #> 5 Adelie 
 #> 6 Adelie 
-#> # … with 338 more rows
+#> # ... with 338 more rows
 ```
 
 You can also select rows or columns by their names. This can be done using the bracket syntax (`[ ]`) or the dollar syntax (`$`). 
@@ -259,7 +259,7 @@ You can also select rows or columns by their names. This can be done using the b
 
 ```r
 pengins[ , "species"]
-#> # A tibble: 344 × 1
+#> # A tibble: 344 x 1
 #>   species
 #>   <fct>  
 #> 1 Adelie 
@@ -268,7 +268,7 @@ pengins[ , "species"]
 #> 4 Adelie 
 #> 5 Adelie 
 #> 6 Adelie 
-#> # … with 338 more rows
+#> # ... with 338 more rows
 penguins$species
 #>   [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
 #>   [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
@@ -336,7 +336,7 @@ In both functions you list what you would like to retain. Filter and select call
 ```r
 penguins %>% 
   select(species, island, body_mass_g)
-#> # A tibble: 344 × 3
+#> # A tibble: 344 x 3
 #>   species island    body_mass_g
 #>   <fct>   <fct>           <int>
 #> 1 Adelie  Torgersen        3750
@@ -345,7 +345,7 @@ penguins %>%
 #> 4 Adelie  Torgersen          NA
 #> 5 Adelie  Torgersen        3450
 #> 6 Adelie  Torgersen        3650
-#> # … with 338 more rows
+#> # ... with 338 more rows
 ```
 
 
@@ -353,7 +353,7 @@ penguins %>%
 penguins %>% 
   select(species, island, body_mass_g) %>% 
   filter(body_mass_g > 6000)
-#> # A tibble: 2 × 3
+#> # A tibble: 2 x 3
 #>   species island body_mass_g
 #>   <fct>   <fct>        <int>
 #> 1 Gentoo  Biscoe        6300
@@ -367,7 +367,7 @@ Subsetting rows can be inverted by negating the `filter()` statement
 penguins %>% 
   select(species, island, body_mass_g) %>% 
   filter(!(body_mass_g > 6000))
-#> # A tibble: 340 × 3
+#> # A tibble: 340 x 3
 #>   species island    body_mass_g
 #>   <fct>   <fct>           <int>
 #> 1 Adelie  Torgersen        3750
@@ -376,7 +376,7 @@ penguins %>%
 #> 4 Adelie  Torgersen        3450
 #> 5 Adelie  Torgersen        3650
 #> 6 Adelie  Torgersen        3625
-#> # … with 334 more rows
+#> # ... with 334 more rows
 ```
 
 and dropping columns can done by selecting all columns except the one(s) you want to drop.
@@ -387,7 +387,7 @@ penguins %>%
   select(species, island, body_mass_g) %>% 
   filter(!(body_mass_g > 6000)) %>% 
   select(!c(species, island))
-#> # A tibble: 340 × 1
+#> # A tibble: 340 x 1
 #>   body_mass_g
 #>         <int>
 #> 1        3750
@@ -396,7 +396,7 @@ penguins %>%
 #> 4        3450
 #> 5        3650
 #> 6        3625
-#> # … with 334 more rows
+#> # ... with 334 more rows
 ```
 
 ## Creating New Variables {#creating-new-variables}
@@ -523,7 +523,7 @@ We can calculate the average bill length of all penguins in a single `summarise(
 
 ```r
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm))
-#> # A tibble: 1 × 1
+#> # A tibble: 1 x 1
 #>   average_bill_length_mm
 #>                    <dbl>
 #> 1                     NA
@@ -534,7 +534,7 @@ Since we have missing values, we might instead want to calculate the mean of the
 
 ```r
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm, na.rm = TRUE))
-#> # A tibble: 1 × 1
+#> # A tibble: 1 x 1
 #>   average_bill_length_mm
 #>                    <dbl>
 #> 1                   43.9
@@ -556,7 +556,7 @@ bill_length_mm_summary <- penguins %>%
     q_4 = max(bill_length_mm, na.rm = TRUE))
 
 bill_length_mm_summary
-#> # A tibble: 1 × 8
+#> # A tibble: 1 x 8
 #>    mean median   min   q_0   q_1   q_2   q_3   q_4
 #>   <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1  43.9   44.4  59.6  32.1  39.2  44.4  39.2  59.6
@@ -583,7 +583,7 @@ penguins %>%
     q_2 = median(bill_length_mm, na.rm = TRUE),
     q_3 = quantile(bill_length_mm, prob = 0.25, na.rm = TRUE),
     q_4 = max(bill_length_mm, na.rm = TRUE))
-#> # A tibble: 3 × 9
+#> # A tibble: 3 x 9
 #>   species    mean median   min   q_0   q_1   q_2   q_3   q_4
 #>   <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1 Adelie     38.8   38.8  46    32.1  36.8  38.8  36.8  46  
@@ -610,7 +610,7 @@ penguin_summary_stats <- penguins %>%
 #> `.groups` argument.
 
 penguin_summary_stats
-#> # A tibble: 5 × 10
+#> # A tibble: 5 x 10
 #> # Groups:   species [3]
 #>   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
 #>   <fct>     <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
@@ -638,7 +638,7 @@ Since we have grouped by two variables, R expects us to use two summaries before
 ```r
 penguin_summary_stats %>% 
   summarise_all(mean, na.rm = TRUE)
-#> # A tibble: 3 × 10
+#> # A tibble: 3 x 10
 #>   species   island  mean median   min   q_0   q_1   q_2   q_3   q_4
 #>   <fct>      <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1 Adelie        NA  38.8   38.7  45.2  33.4  37.0  38.7  37.0  45.2
@@ -651,7 +651,7 @@ However, we won't always want to do apply another summary. In that case, we can 
 
 ```r
 ungroup(penguin_summary_stats)
-#> # A tibble: 5 × 10
+#> # A tibble: 5 x 10
 #>   species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
 #>   <fct>     <fct>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6
@@ -697,7 +697,7 @@ Irritatingly, the sizes aren't in order and extra large isn't included because i
 
 ```r
 tshirts %>% group_by(size) %>% summarise(count = n())
-#> # A tibble: 6 × 2
+#> # A tibble: 6 x 2
 #>   size  count
 #>   <fct> <int>
 #> 1 L         3
@@ -718,7 +718,7 @@ tshirts %>%
   mutate(size_tidy = factor(size, levels = tidy_tshirt_levels)) %>% 
   group_by(size_tidy, .drop = FALSE ) %>% 
   summarise(count = n())
-#> # A tibble: 7 × 2
+#> # A tibble: 7 x 2
 #>   size_tidy count
 #>   <fct>     <int>
 #> 1 XS            2
@@ -727,7 +727,7 @@ tshirts %>%
 #> 4 L             3
 #> 5 XL            0
 #> 6 XXL           1
-#> # … with 1 more row
+#> # ... with 1 more row
 ```
 
 
@@ -759,17 +759,17 @@ Suppose we wanted to keep only the text following an underscore in these column 
 
 ```r
 head(poorly_named_df)
-#> # A tibble: 6 × 11
-#>   observa…¹    V1_A    V2_B   V3_C   V4_D   V5_E   V6_F   V7_G   V8_H    V9_I
-#>       <int>   <dbl>   <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>   <dbl>
-#> 1         1 -1.71   -0.0950  0.376  0.479  1.71  -0.296  0.894 -0.412 -1.89  
-#> 2         2  0.0909  0.187  -0.664  1.53  -0.356  0.126 -0.766 -0.323  0.293 
-#> 3         3 -1.17   -0.840   0.244  0.480  0.351  0.419  1.13  -0.948 -0.459 
-#> 4         4  1.47    1.91    0.351 -0.261 -0.321  0.908 -1.85   0.307 -0.0837
-#> 5         5  0.390  -0.657   2.16   1.13   0.681  0.525 -0.128  0.164 -2.70  
-#> 6         6  0.371   1.54    0.792 -0.310 -0.718 -0.933 -1.39  -0.343  1.65  
-#> # … with 1 more variable: V10_J <dbl>, and abbreviated variable name
-#> #   ¹​observation_id
+#> # A tibble: 6 x 11
+#>   observat~1   V1_A   V2_B   V3_C   V4_D   V5_E    V6_F   V7_G   V8_H    V9_I
+#>        <int>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>   <dbl>  <dbl>  <dbl>   <dbl>
+#> 1          1  0.455  0.812 -1.14  -0.373 -1.45   0.937  -1.48   1.54   0.0782
+#> 2          2 -1.32   0.170  0.550 -0.955  0.769 -0.242  -0.790 -0.838 -0.403 
+#> 3          3 -1.18   0.802 -1.04   1.12   1.44   1.47    0.641  0.911 -0.0454
+#> 4          4  0.498 -1.22   1.39  -1.68   2.58  -0.0478 -0.938 -0.150  0.498 
+#> 5          5 -0.945 -0.731  0.220  1.41  -1.65   0.618  -1.33   1.79  -0.376 
+#> 6          6 -1.49   0.153  1.93   1.28   0.436  1.88   -0.733 -0.441  0.293 
+#> # ... with 1 more variable: V10_J <dbl>, and abbreviated variable name
+#> #   1: observation_id
 ```
 
 ```r

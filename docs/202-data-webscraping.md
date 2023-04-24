@@ -176,9 +176,14 @@ html %>% html_elements("h2")
 #> [1] <h2 id="toc-title">On this page</h2>
 #> [2] <h2 class="anchored" data-anchor-id="course-history">Course History</h2>
 html %>% html_elements("p")
-#> {xml_nodeset (2)}
+#> {xml_nodeset (7)}
 #> [1] <p>I am fortunate to have had the opportunity to teach in a variety of ...
-#> [2] <p>I am an associate fellow of the Higher Education Academy, which you ...
+#> [2] <p>Developing and teaching a number of modules in statistics, data sci ...
+#> [3] <p>Supervising undergraduate, postgraduate and doctoral research proje ...
+#> [4] <p>Adapting and leading short courses on scientific writing and commun ...
+#> [5] <p>Running workshops and computer labs for undergraduate and postgradu ...
+#> [6] <p>Speaking at univerisity open days and providing one-to-one tuition  ...
+#> [7] <p>I am an associate fellow of the Higher Education Academy, which you ...
 ```
 
 You can also combine and nest these selectors. For example you might want to extract all links that are within paragraphs *and* all second level headers.
@@ -207,11 +212,11 @@ The functions `rvest::html_text()` and `rvest::html_text2()` can be used to extr
 html %>% 
   html_elements("#teaching li") %>% 
   html_text2()
-#> [1] "one-to-one tuition for high school students;"                                   
-#> [2] "running workshops and computer labs for undergraduate and postgraduate modules;"
-#> [3] "delivering short courses on scientific communication and LaTeX;"                
-#> [4] "supervising an undergraduate research project;"                                 
-#> [5] "developing and lecturing postgraduate modules in statistics and data science."
+#> [1] "Developing and teaching a number of modules in statistics, data science and data ethics. These were predominantly at the postgradute-level and include courses designed for in-person and remote learning."
+#> [2] "Supervising undergraduate, postgraduate and doctoral research projects."                                                                                                                                   
+#> [3] "Adapting and leading short courses on scientific writing and communication."                                                                                                                               
+#> [4] "Running workshops and computer labs for undergraduate and postgraduate modules."                                                                                                                           
+#> [5] "Speaking at univerisity open days and providing one-to-one tuition to high school students."
 ```
 
 The difference between `html_text()` and `html_text2()` is in how they handle whitespace. In HTML whitespace and line breaks have very little influence over how the code is interpreted by the computer (this is similar to R but very different from Python). `html_text()` will extract the text as it is in the raw html, while `html_text2()` will do its best to extract the text in a way that gives you something similar to what you’d see in the browser.
@@ -284,7 +289,7 @@ Since tables are a common way to store data, `{rvest}` includes a useful functio
 html_2 %>% 
   html_element("table") %>% 
   html_table()
-#> # A tibble: 3 × 2
+#> # A tibble: 3 x 2
 #>   Name  Number
 #>   <chr>  <int>
 #> 1 A          1
@@ -299,16 +304,16 @@ Applying this to our real scraped data we can easily extract the table of taught
 html %>% 
   html_element("table") %>% 
   html_table()
-#> # A tibble: 25 × 3
-#>   Year      Course                            Role                       
-#>   <chr>     <chr>                             <chr>                      
-#> 1 "2021-22" Supervised Learning               Lecturer                   
-#> 2 ""        Ethics in Data Science I          Lecturer                   
-#> 3 ""        Ethics in Data Science II         Lecturer                   
-#> 4 "—"       —                                 —                          
-#> 5 "2020-21" MATH562/582: Extreme Value Theory Lecturer                   
-#> 6 ""        MATH331: Bayesian Inference       Graduate teaching assistant
-#> # … with 19 more rows
+#> # A tibble: 31 x 3
+#>   Year      Course                                     Role    
+#>   <chr>     <chr>                                      <chr>   
+#> 1 "2022-23" Data Science                               Lecturer
+#> 2 ""        Ethics in Data Science I, II and III       Lecturer
+#> 3 ""        Data Ethics for Digital Chemistry          Lecturer
+#> 4 ""        Y1 research projects: point process models Lecturer
+#> 5 "2021-22" Supervised Learning                        Lecturer
+#> 6 ""        Ethics in Data Science I                   Lecturer
+#> # ... with 25 more rows
 ```
 
 
@@ -372,7 +377,7 @@ tibble::tibble(
   species = starwars_characters %>% html_element("i") %>% html_text2(),
   weight = starwars_characters %>% html_element(".weight") %>% html_text2()
 )
-#> # A tibble: 4 × 3
+#> # A tibble: 4 x 3
 #>   name   species weight
 #>   <chr>  <chr>   <chr> 
 #> 1 C-3PO  droid   167 kg
